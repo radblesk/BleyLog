@@ -1,0 +1,374 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
+    "%@ °%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ °%2$@"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ °%2$@"
+          }
+        }
+      }
+    },
+    "%lld people" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld osôb"
+          }
+        }
+      }
+    },
+    "Amount" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suma"
+          }
+        }
+      }
+    },
+    "Amount per person" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suma na osobu"
+          }
+        }
+      }
+    },
+    "App developed by Radoslav Bley" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikácia vyvinutá Radoslavom Bleyom"
+          }
+        }
+      }
+    },
+    "Continue" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokračovať"
+          }
+        }
+      }
+    },
+    "Converted Temperature" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prevedená teplota"
+          }
+        }
+      }
+    },
+    "Course not started yet..." : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurz sa ešte nezačal..."
+          }
+        }
+      }
+    },
+    "Days %lld-%lld: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Days %1$lld-%2$lld: %3$@"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dni %1$lld-%2$lld: %3$@"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hotovo"
+          }
+        }
+      }
+    },
+    "Enter temperature" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zadajte teplotu"
+          }
+        }
+      }
+    },
+    "Grand Total" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celková suma"
+          }
+        }
+      }
+    },
+    "Guess the Flag" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hádaj vlajku"
+          }
+        }
+      }
+    },
+    "How much do you want to tip?" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aké sprepitné chcete nechať?"
+          }
+        }
+      }
+    },
+    "Input Unit" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vstupná jednotka"
+          }
+        }
+      }
+    },
+    "Insert Temperature" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vložte teplotu"
+          }
+        }
+      }
+    },
+    "Inspector" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inšpektor"
+          }
+        }
+      }
+    },
+    "No projects found" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenašli sa žiadne projekty"
+          }
+        }
+      }
+    },
+    "Number of people" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Počet osôb"
+          }
+        }
+      }
+    },
+    "Output Unit" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Výstupná jednotka"
+          }
+        }
+      }
+    },
+    "Projects" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Projekty"
+          }
+        }
+      }
+    },
+    "Score: %lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Score: %1$lld / %2$lld"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skóre: %1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "Select course" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyberte kurz"
+          }
+        }
+      }
+    },
+    "Select project" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyberte projekt"
+          }
+        }
+      }
+    },
+    "Select units to convert from and to." : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyberte jednotky na prevod."
+          }
+        }
+      }
+    },
+    "Start over" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Začať odznova"
+          }
+        }
+      }
+    },
+    "Swift Courses" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swift Kurzy"
+          }
+        }
+      }
+    },
+    "Tap the flag of" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ťukni na vlajku"
+          }
+        }
+      }
+    },
+    "TempConvert" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TempConvert"
+          }
+        }
+      }
+    },
+    "Tip Percentage" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Percento sprepitného"
+          }
+        }
+      }
+    },
+    "To find more interesting stuff, visit [my website](https://www.radobley.sk/)" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pre viac zaujímavostí navštívte [moju webovú stránku](https://www.radobley.sk/)"
+          }
+        }
+      }
+    },
+    "Units" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jednotky"
+          }
+        }
+      }
+    },
+    "WeSplit" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WeSplit"
+          }
+        }
+      }
+    },
+    "Your score is %lld" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tvoje skóre je %lld"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
