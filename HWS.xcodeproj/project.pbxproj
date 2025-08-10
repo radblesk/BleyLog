@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F946925D2E49532D009E637D /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F946925C2E49532D009E637D /* HighlightSwift */; };
+		F94692892E49596C009E637D /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F94692882E49596C009E637D /* HighlightSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F946925D2E49532D009E637D /* HighlightSwift in Frameworks */,
+				F94692892E49596C009E637D /* HighlightSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 			);
 			name = HWS;
 			packageProductDependencies = (
-				F946925C2E49532D009E637D /* HighlightSwift */,
+				F94692882E49596C009E637D /* HighlightSwift */,
 			);
 			productName = HWS;
 			productReference = F94692062E49185A009E637D /* HWS.app */;
@@ -97,12 +97,11 @@
 			knownRegions = (
 				en,
 				Base,
-				sk,
 			);
 			mainGroup = F94691FD2E49185A009E637D;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				F946925B2E49532D009E637D /* XCRemoteSwiftPackageReference "highlightswift" */,
+				F94692872E49596C009E637D /* XCRemoteSwiftPackageReference "highlightswift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F94692072E49185A009E637D /* Products */;
@@ -193,7 +192,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -249,7 +247,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
@@ -355,7 +352,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F946925B2E49532D009E637D /* XCRemoteSwiftPackageReference "highlightswift" */ = {
+		F94692872E49596C009E637D /* XCRemoteSwiftPackageReference "highlightswift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/appstefan/highlightswift";
 			requirement = {
@@ -366,9 +363,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F946925C2E49532D009E637D /* HighlightSwift */ = {
+		F94692882E49596C009E637D /* HighlightSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F946925B2E49532D009E637D /* XCRemoteSwiftPackageReference "highlightswift" */;
+			package = F94692872E49596C009E637D /* XCRemoteSwiftPackageReference "highlightswift" */;
 			productName = HighlightSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
