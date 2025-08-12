@@ -17,7 +17,10 @@ struct ContentView: View {
     @Query(sort: \Course.title) private var courses: [Course]
     @Environment(\.modelContext) private var context
 
-    @State var selectedLesson: Lesson?
+    @State var selectedLesson: Lesson? = Course.self.coursesData.first(
+        where: {
+            $0.lessons.count > 0
+        })?.lessons.first(where: { $0.finished != true })
     @State private var selectedProject: Project?
 
     var body: some View {
@@ -26,7 +29,6 @@ struct ContentView: View {
             preferredCompactColumn: $preferredCompactColumn
         ) {
             LessonsList(courses: courses, selectedLesson: $selectedLesson)
-                .modelContainer(ModelData.shared.modelContainer)
 
         } content: {
             if let selectedLesson {
@@ -34,8 +36,6 @@ struct ContentView: View {
                     selectedProject: $selectedProject,
                     selectedLesson: selectedLesson
                 )
-                .modelContainer(ModelData.shared.modelContainer)
-
             } else {
                 Text("Select a lesson")
             }
