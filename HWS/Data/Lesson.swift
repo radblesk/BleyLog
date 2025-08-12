@@ -9,69 +9,66 @@ import SwiftData
 import SwiftUI
 
 @Model
-class Days {
+class Lesson {
     var firstDay: Int
     var lastDay: Int
     var title: String
-    var courseName: String
     var finished: Bool = false
+
+    @Relationship(deleteRule: .cascade) var projects: [Project] = []
 
     init(
         firstDay: Int,
         lastDay: Int,
         title: String,
-        courseName: String,
-        finished: Bool = false
+        finished: Bool = false,
+        projects: [Project] = []
+
     ) {
         self.firstDay = firstDay
         self.lastDay = lastDay
         self.title = title
-        self.courseName = courseName
         self.finished = finished
+        self.projects = projects
+
     }
 
-    static let daysData = [
-        Days(
+    static let hundreedDaysOfSwiftUILessons = [
+        Lesson(
             firstDay: 16,
             lastDay: 24,
             title: "Starting SwiftUI",
-            courseName: "100 days of SwiftUI"
+            projects: Project.startingSwiftUI
         ),
-        Days(
+        Lesson(
             firstDay: 26,
             lastDay: 34,
             title: "Expanding your skills",
-            courseName: "100 days of SwiftUI"
         ),
-        Days(
+        Lesson(
             firstDay: 36,
             lastDay: 46,
             title: "Scaling up to bigger apps",
-            courseName: "100 days of SwiftUI"
         ),
-        Days(
+        Lesson(
             firstDay: 49,
             lastDay: 59,
             title: "Focus on data",
-            courseName: "100 days of SwiftUI"
         ),
-        Days(
+        Lesson(
             firstDay: 62,
             lastDay: 76,
             title: "Filters, maps, and more",
-            courseName: "100 days of SwiftUI"
         ),
-        Days(
+        Lesson(
             firstDay: 79,
             lastDay: 94,
             title: "Controlling UI flow",
-            courseName: "100 days of SwiftUI"
         ),
-        Days(
+        Lesson(
             firstDay: 96,
             lastDay: 99,
             title: "One last project",
-            courseName: "100 days of SwiftUI"
         ),
     ]
 }
