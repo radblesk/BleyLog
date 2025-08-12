@@ -25,44 +25,14 @@ struct DaysList: View {
                     }
 
                     if groupedDays.count > 0 {
-                        Section {
-                            ForEach(groupedDays) { day in
-                                HStack {
-                                    if day.finished {
-                                        Image(systemName: "checkmark")
-                                            .foregroundStyle(.green)
-                                    }
-                                    Text(
-                                        "Days \(day.firstDay)-\(day.lastDay): \(day.title)"
-                                    )
-                                }
-                                .tag(day.firstDay)
-                            }
-                        } header: {
-                            Text(course.title)
-                        } footer: {
-                            HStack {
-                                if let footer = course.footer {
-                                    Text(
-                                        try! AttributedString(markdown: footer)
-                                    )
-                                }
-                            }
-                        }
+                        DaysListSection(
+                            groupedDays: groupedDays,
+                            course: course
+                        )
                     } else {
-                        Section {
+                        Section(course.title) {
                             Text("Course not started yet...")
                                 .foregroundStyle(.secondary)
-                        } header: {
-                            Text(course.title)
-                        } footer: {
-                            HStack {
-                                if let footer = course.footer {
-                                    Text(
-                                        try! AttributedString(markdown: footer)
-                                    )
-                                }
-                            }
                         }
                     }
                 }
@@ -73,7 +43,7 @@ struct DaysList: View {
                         .foregroundStyle(.secondary)
                 } footer: {
                     Text(
-                        "To find more interesting stuff, visit [my website](https://www.radobley.sk/)"
+                        "To find more interesting stuff, visit [my website](https://www.radobley.sk/)."
                     )
                 }
             }
