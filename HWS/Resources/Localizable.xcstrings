@@ -57,12 +57,12 @@
         }
       }
     },
-    "App developed by Radoslav Bley" : {
+    "Close" : {
       "localizations" : {
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aplikácia vyvinutá Radoslavom Bleyom"
+            "value" : "Zatvoriť"
           }
         }
       }
@@ -112,6 +112,9 @@
           }
         }
       }
+    },
+    "Developed by [Radoslav Bley](https://www.radobley.sk)" : {
+      "shouldTranslate" : false
     },
     "Done" : {
       "localizations" : {
@@ -179,16 +182,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vložte teplotu"
-          }
-        }
-      }
-    },
-    "Inspector" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inšpektor"
           }
         }
       }
@@ -279,6 +272,16 @@
         }
       }
     },
+    "Source Code" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zdrojový Kód"
+          }
+        }
+      }
+    },
     "Start over" : {
       "localizations" : {
         "sk" : {
@@ -329,16 +332,6 @@
         }
       }
     },
-    "To find more interesting stuff, visit [my website](https://www.radobley.sk/)" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pre viac zaujímavostí navštívte [moju webovú stránku](https://www.radobley.sk/)"
-          }
-        }
-      }
-    },
     "Units" : {
       "localizations" : {
         "sk" : {
@@ -348,6 +341,9 @@
           }
         }
       }
+    },
+    "v0.1.0 (2025.08.12)" : {
+      "shouldTranslate" : false
     },
     "WeSplit" : {
       "localizations" : {
