@@ -16,8 +16,10 @@ struct LessonsList: View {
 
         NavigationStack {
             ZStack {
-                Color(.systemGroupedBackground)
-                    .ignoresSafeArea()
+                #if os(iOS)
+                    Color(.systemGroupedBackground)
+                        .ignoresSafeArea()
+                #endif
                 VStack {
                     List(selection: $selectedLesson) {
                         ForEach(courses) { course in
