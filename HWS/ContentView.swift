@@ -5,40 +5,43 @@
 //  Created by Radoslav Bley on 10/08/2025.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
     @State private var columnVisibility = NavigationSplitViewVisibility
-        .all
+        .doubleColumn
     @State private var preferredCompactColumn = NavigationSplitViewColumn
         .sidebar
-    @State private var selectedDays: Int?
-    @State private var selectedProject: Int?
+
+    @Query(sort: \Course.title) private var courses: [Course]
+    @Environment(\.modelContext) private var context
+
+    @State var selectedLesson: Lesson?
+    @State private var selectedProject: Project?
 
     var body: some View {
         NavigationSplitView(
             columnVisibility: $columnVisibility,
             preferredCompactColumn: $preferredCompactColumn
         ) {
-            DaysList(selectedDays: $selectedDays)
-                .modelContainer(ProjectsData.shared.modelContainer)
+            LessonsList(courses: courses, selectedLesson: $selectedLesson)
+                .modelContainer(ModelData.shared.modelContainer)
 
         } content: {
-            if let selectedDays {
+            if let selectedLesson {
                 ProjectsList(
                     selectedProject: $selectedProject,
-                    selectedDays: selectedDays
+                    selectedLesson: selectedLesson
                 )
-                .modelContainer(ProjectsData.shared.modelContainer)
+                .modelContainer(ModelData.shared.modelContainer)
 
             } else {
-                Text("Select course")
+                Text("Select a lesson")
             }
         } detail: {
-            // Group the views so you can apply a modifier once.
             Group {
-                // Use a switch statement for better readability.
-                switch selectedProject {
+                switch selectedProject?.projectNumber {
                 case 1:
                     WeSplit()
                 case 2:
@@ -46,7 +49,7 @@ struct ContentView: View {
                 case 3:
                     GuessTheFlag()
                 default:
-                    Text("Select project")
+                    Text("Select a project")
                 }
             }
             // Apply the conditional modifier only once.
@@ -54,10 +57,11 @@ struct ContentView: View {
                 .padding()
             #endif
         }
+        .navigationSplitViewStyle(.balanced)
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(ProjectsData.shared.modelContainer)
+        .modelContainer(ModelData.shared.modelContainer)
 }

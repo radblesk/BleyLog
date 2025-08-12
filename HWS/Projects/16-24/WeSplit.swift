@@ -112,7 +112,7 @@ struct WeSplit: View {
                             .highlightLanguage(.swift)
                             .codeTextColors(.theme(.xcode))
                             .toolbar {
-                                ToolbarItem(placement: .cancellationAction) {
+                                ToolbarItem(placement: .destructiveAction) {
                                     Button("Close", systemImage: "xmark") {
                                         isPresenting = false
                                     }

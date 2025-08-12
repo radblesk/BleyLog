@@ -9,16 +9,16 @@ import Foundation
 import SwiftData
 
 @MainActor
-class ProjectsData {
-    static let shared = ProjectsData()
+class ModelData {
+    static let shared = ModelData()
     let modelContainer: ModelContainer
     var context: ModelContext {
         modelContainer.mainContext
     }
     init() {
         let schema = Schema([
-            Courses.self,
-            Days.self,
+            Course.self,
+            Lesson.self,
             Project.self,
         ])
         let modelConfiguration = ModelConfiguration(
@@ -32,7 +32,7 @@ class ProjectsData {
                 configurations: [modelConfiguration]
             )
 
-            insertProjecData()
+            insertModelData()
 
             try context.save()
         } catch {
@@ -42,17 +42,9 @@ class ProjectsData {
 
     }
 
-    private func insertProjecData() {
-        for courses in Courses.coursesData {
+    private func insertModelData() {
+        for courses in Course.coursesData {
             context.insert(courses)
-        }
-
-        for days in Days.daysData {
-            context.insert(days)
-        }
-
-        for project in Project.projectsData {
-            context.insert(project)
         }
     }
 }

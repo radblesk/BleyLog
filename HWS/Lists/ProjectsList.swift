@@ -9,25 +9,17 @@ import SwiftData
 import SwiftUI
 
 struct ProjectsList: View {
-    @Query(sort: \Project.projectNumber) private var projects: [Project]
-    @Environment(\.modelContext) private var context
-
-    @Binding var selectedProject: Int?
-    var selectedDays: Int
+    @Binding var selectedProject: Project?
+    var selectedLesson: Lesson
 
     var body: some View {
-        let courseFilter = Days.daysData.filter({ $0.firstDay == selectedDays })
-        let courseName =
-            "Day \(courseFilter.first?.firstDay ?? 0)-\(courseFilter.first?.lastDay ?? 0) \(courseFilter.first?.title ?? "")"
-        let filteredProjects = projects.filter({
-            $0.startingDay == selectedDays
-        })
-
         NavigationStack {
             List(selection: $selectedProject) {
                 Section(header: Text("Projects")) {
-                    if filteredProjects.count > 0 {
-                        ForEach(filteredProjects) { project in
+                    if selectedLesson.projects.count > 0 {
+                        ForEach(
+                            selectedLesson.projects.sorted { $0.date < $1.date }
+                        ) { project in
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text(project.title)
@@ -45,20 +37,15 @@ struct ProjectsList: View {
                                     .imageScale(.small)
                                     .foregroundStyle(.secondary)
                             }
-                            .tag(project.projectNumber)
+                            .tag(project)
                         }
                     } else {
-                        Text("No projects found")
+                        Text("No projects, yet.")
                     }
 
                 }
             }
-            .navigationTitle(courseName)
+            .navigationTitle(selectedLesson.title)
         }
     }
-}
-
-#Preview {
-    ProjectsList(selectedProject: .constant(1), selectedDays: 26)
-        .modelContainer(ProjectsData.shared.modelContainer)
 }
