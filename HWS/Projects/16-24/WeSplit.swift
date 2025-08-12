@@ -13,7 +13,7 @@ struct WeSplit: View {
     @State private var numberOfPeople = 0
     @State private var tipPercentage = 20
     @FocusState private var amountIsFocused: Bool
-    @State private var inspectorShown = false
+    @State private var isPresenting = false
 
     let tipPercentages = [10, 15, 20, 25, 0]
 
@@ -95,25 +95,34 @@ struct WeSplit: View {
             .navigationTitle("WeSplit")
             .toolbar {
                 Button {
-                    inspectorShown = true
+                    isPresenting = true
                 } label: {
-                    Label("Inspector", systemImage: "info.circle.fill")
+                    Label("Source Code", systemImage: "info.circle.fill")
                 }
-                .buttonStyle(.borderedProminent)
                 if amountIsFocused {
                     Button("Done", systemImage: "checkmark") {
                         amountIsFocused = false
                     }
                 }
             }
-            .inspector(isPresented: $inspectorShown) {
-                ScrollView {
-                    CodeText(CodeSnippets.weSplit)
-                        .highlightLanguage(.swift)
-                        .codeTextColors(.theme(.xcode))
+            .sheet(isPresented: $isPresenting) {
+                NavigationStack {
+                    ScrollView {
+                        CodeText(CodeSnippets.weSplit)
+                            .highlightLanguage(.swift)
+                            .codeTextColors(.theme(.xcode))
+                            .toolbar {
+                                ToolbarItem(placement: .cancellationAction) {
+                                    Button("Close", systemImage: "xmark") {
+                                        isPresenting = false
+                                    }
+                                }
+                            }
+                            .navigationTitle("Source Code")
+                    }
+                    .padding()
+                    .font(.callout)
                 }
-                .padding()
-                .font(.callout)
             }
         }
     }

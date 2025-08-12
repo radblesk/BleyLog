@@ -19,7 +19,7 @@ struct GuessTheFlag: View {
     @State private var scoreTitle = ""
     @State private var score: Int = 0
     @State private var tries: Int = 0
-    @State private var inspectorShown = false
+    @State private var isPresenting = false
 
     var body: some View {
         ZStack {
@@ -78,11 +78,10 @@ struct GuessTheFlag: View {
                 Spacer()
 
                 Button {
-                    inspectorShown = true
+                    isPresenting = true
                 } label: {
-                    Label("Inspector", systemImage: "info.circle.fill")
+                    Label("Source Code", systemImage: "info.circle.fill")
                 }
-                .buttonStyle(.borderedProminent)
 
             }
             .padding()
@@ -99,15 +98,24 @@ struct GuessTheFlag: View {
                 Text("Your score is \(score)")
             }
         }
-
-        .inspector(isPresented: $inspectorShown) {
-            ScrollView {
-                CodeText(CodeSnippets.guessTheFlag)
-                    .highlightLanguage(.swift)
-                    .codeTextColors(.theme(.xcode))
+        .sheet(isPresented: $isPresenting) {
+            NavigationStack {
+                ScrollView {
+                    CodeText(CodeSnippets.weSplit)
+                        .highlightLanguage(.swift)
+                        .codeTextColors(.theme(.xcode))
+                        .toolbar {
+                            ToolbarItem(placement: .cancellationAction) {
+                                Button("Close", systemImage: "xmark") {
+                                    isPresenting = false
+                                }
+                            }
+                        }
+                        .navigationTitle("Source Code")
+                }
+                .padding()
+                .font(.callout)
             }
-            .padding()
-            .font(.callout)
         }
     }
 
