@@ -44,7 +44,7 @@ struct TempConvert: View {
         return convertedValue
     }
 
-    @State private var inspectorShown = false
+    @State private var isPresenting = false
 
     var body: some View {
         NavigationStack {
@@ -90,26 +90,34 @@ struct TempConvert: View {
             .navigationTitle("TempConvert")
             .toolbar {
                 Button {
-                    inspectorShown = true
+                    isPresenting = true
                 } label: {
-                    Label("Inspector", systemImage: "info.circle.fill")
+                    Label("Source Code", systemImage: "info.circle.fill")
                 }
-                .buttonStyle(.borderedProminent)
                 if temperatureFieldIsFocused {
                     Button("Done", systemImage: "checkmark") {
                         temperatureFieldIsFocused = false
                     }
                 }
             }
-
-            .inspector(isPresented: $inspectorShown) {
-                ScrollView {
-                    CodeText(CodeSnippets.tempConvert)
-                        .highlightLanguage(.swift)
-                        .codeTextColors(.theme(.xcode))
+            .sheet(isPresented: $isPresenting) {
+                NavigationStack {
+                    ScrollView {
+                        CodeText(CodeSnippets.tempConvert)
+                            .highlightLanguage(.swift)
+                            .codeTextColors(.theme(.xcode))
+                            .toolbar {
+                                ToolbarItem(placement: .cancellationAction) {
+                                    Button("Close", systemImage: "xmark") {
+                                        isPresenting = false
+                                    }
+                                }
+                            }
+                            .navigationTitle("Source Code")
+                    }
+                    .padding()
+                    .font(.callout)
                 }
-                .padding()
-                .font(.callout)
             }
         }
     }
