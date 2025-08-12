@@ -8,12 +8,9 @@
 import SwiftData
 import SwiftUI
 
-struct DaysList: View {
-    @Query(sort: \Days.firstDay) private var days: [Days]
-    @Query(sort: \Courses.title) private var courses: [Courses]
-    @Environment(\.modelContext) private var context
-
-    @Binding var selectedDays: Int?
+struct LessonsList: View {
+    var courses: [Course]
+    @Binding var selectedLesson: Lesson?
 
     var body: some View {
 
@@ -22,15 +19,11 @@ struct DaysList: View {
                 Color(.systemGroupedBackground)
                     .ignoresSafeArea()
                 VStack {
-                    List(selection: $selectedDays) {
+                    List(selection: $selectedLesson) {
                         ForEach(courses) { course in
-                            let groupedDays = days.filter {
-                                $0.courseName == course.title
-                            }
-
-                            if groupedDays.count > 0 {
-                                DaysListSection(
-                                    groupedDays: groupedDays,
+                            if course.lessons.count > 0 {
+                                LessonsListSection(
+                                    lessons: course.lessons,
                                     course: course
                                 )
                             } else {
@@ -53,7 +46,7 @@ struct DaysList: View {
                     .foregroundStyle(.secondary)
 
                     Text(
-                        "v0.1.0 (2025.08.12)"
+                        "v0.1.0 (2025.08.13)"
                     )
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -61,9 +54,4 @@ struct DaysList: View {
             }
         }
     }
-}
-
-#Preview {
-    DaysList(selectedDays: .constant(16))
-        .modelContainer(ProjectsData.shared.modelContainer)
 }

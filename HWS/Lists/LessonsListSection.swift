@@ -7,25 +7,25 @@
 
 import SwiftUI
 
-struct DaysListSection: View {
-    var groupedDays: [Days]
-    var course: Courses
+struct LessonsListSection: View {
+    var lessons: [Lesson]
+    var course: Course
 
     @State private var isExpanded = true
 
     var body: some View {
         Section(course.title, isExpanded: $isExpanded) {
-            ForEach(groupedDays) { day in
+            ForEach(lessons.sorted { $0.firstDay < $1.firstDay }) { lesson in
                 HStack {
-                    if day.finished {
+                    if lesson.finished {
                         Image(systemName: "checkmark")
                             .foregroundStyle(.green)
                     }
                     Text(
-                        "Days \(day.firstDay)-\(day.lastDay): \(day.title)"
+                        "Days \(lesson.firstDay)-\(lesson.lastDay): \(lesson.title)"
                     )
                 }
-                .tag(day.firstDay)
+                .tag(lesson)
             }
         }
     }
