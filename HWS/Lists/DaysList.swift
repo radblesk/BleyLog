@@ -18,37 +18,47 @@ struct DaysList: View {
     var body: some View {
 
         NavigationStack {
-            List(selection: $selectedDays) {
-                ForEach(courses) { course in
-                    let groupedDays = days.filter {
-                        $0.courseName == course.title
-                    }
+            ZStack {
+                Color(.systemGroupedBackground)
+                    .ignoresSafeArea()
+                VStack {
+                    List(selection: $selectedDays) {
+                        ForEach(courses) { course in
+                            let groupedDays = days.filter {
+                                $0.courseName == course.title
+                            }
 
-                    if groupedDays.count > 0 {
-                        DaysListSection(
-                            groupedDays: groupedDays,
-                            course: course
-                        )
-                    } else {
-                        Section(course.title) {
-                            Text("Course not started yet...")
-                                .foregroundStyle(.secondary)
+                            if groupedDays.count > 0 {
+                                DaysListSection(
+                                    groupedDays: groupedDays,
+                                    course: course
+                                )
+                            } else {
+                                Section(course.title) {
+                                    Text("Course not started yet...")
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
                         }
                     }
-                }
+                    .listStyle(.sidebar)
+                    .navigationTitle("Swift Courses")
 
-                Section {
-                    Text("App developed by Radoslav Bley")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                } footer: {
+                    Spacer()
+
                     Text(
-                        "To find more interesting stuff, visit [my website](https://www.radobley.sk/)."
+                        "Developed by [Radoslav Bley](https://www.radobley.sk)"
                     )
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                    Text(
+                        "v0.1.0 (2025.08.12)"
+                    )
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
                 }
             }
-            .listStyle(.sidebar)
-            .navigationTitle("Swift Courses")
         }
     }
 }
