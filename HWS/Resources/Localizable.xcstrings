@@ -57,12 +57,12 @@
         }
       }
     },
-    "App developed by Radoslav Bley" : {
+    "Close" : {
       "localizations" : {
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aplikácia vyvinutá Radoslavom Bleyom"
+            "value" : "Zatvoriť"
           }
         }
       }
@@ -112,6 +112,9 @@
           }
         }
       }
+    },
+    "Developed by [Radoslav Bley](https://www.radobley.sk)" : {
+      "shouldTranslate" : false
     },
     "Done" : {
       "localizations" : {
@@ -183,22 +186,12 @@
         }
       }
     },
-    "Inspector" : {
+    "No projects, yet." : {
       "localizations" : {
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Inšpektor"
-          }
-        }
-      }
-    },
-    "No projects found" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nenašli sa žiadne projekty"
+            "value" : "Žiadne projekty, zatiaľ."
           }
         }
       }
@@ -249,22 +242,22 @@
         }
       }
     },
-    "Select course" : {
+    "Select a lesson" : {
       "localizations" : {
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vyberte kurz"
+            "value" : "Vyber lekciu"
           }
         }
       }
     },
-    "Select project" : {
+    "Select a project" : {
       "localizations" : {
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vyberte projekt"
+            "value" : "Vyber projekt"
           }
         }
       }
@@ -275,6 +268,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vyberte jednotky na prevod."
+          }
+        }
+      }
+    },
+    "Source Code" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zdrojový Kód"
           }
         }
       }
@@ -329,16 +332,6 @@
         }
       }
     },
-    "To find more interesting stuff, visit [my website](https://www.radobley.sk/)" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pre viac zaujímavostí navštívte [moju webovú stránku](https://www.radobley.sk/)"
-          }
-        }
-      }
-    },
     "Units" : {
       "localizations" : {
         "sk" : {
@@ -348,6 +341,9 @@
           }
         }
       }
+    },
+    "v0.1.0 (2025.08.13)" : {
+      "shouldTranslate" : false
     },
     "WeSplit" : {
       "localizations" : {
