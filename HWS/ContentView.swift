@@ -28,7 +28,10 @@ struct ContentView: View {
             columnVisibility: $columnVisibility,
             preferredCompactColumn: $preferredCompactColumn
         ) {
-            LessonList(courses: courses, selectedLesson: $selectedLesson)
+            LessonList(
+                courses: courses,
+                selectedLesson: $selectedLesson
+            )
 
         } content: {
             if let selectedLesson {
@@ -59,6 +62,7 @@ struct ContentView: View {
         }
         .navigationSplitViewStyle(.balanced)
     }
+
 }
 
 #Preview {

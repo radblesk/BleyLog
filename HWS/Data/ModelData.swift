@@ -24,7 +24,7 @@ class ModelData {
         ])
         let modelConfiguration = ModelConfiguration(
             schema: schema,
-            isStoredInMemoryOnly: true
+            isStoredInMemoryOnly: false
         )
 
         do {
@@ -44,8 +44,24 @@ class ModelData {
     }
 
     private func insertModelData() {
-        for courses in Course.coursesData {
-            context.insert(courses)
+        let descriptor = FetchDescriptor<Course>()
+
+        guard let course = try? context.fetch(descriptor) else { return }
+
+        if course.isEmpty {
+            for courses in Course.coursesData {
+                context.insert(courses)
+            }
+        }
+    }
+
+    func removeAll() {
+        let descriptor = FetchDescriptor<Course>()
+
+        if let course = try? context.fetch(descriptor) {
+            for item in course {
+                context.delete(item)
+            }
         }
     }
 }

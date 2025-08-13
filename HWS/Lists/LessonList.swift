@@ -57,6 +57,13 @@ struct LessonList: View {
                     .foregroundStyle(.secondary)
                 }
             }
+            .toolbar {
+                ToolbarItem {
+                    Button("Reset", systemImage: "arrow.counterclockwise") {
+                        try? context.delete(model: Course.self)
+                    }
+                }
+            }
         }
     }
 }
