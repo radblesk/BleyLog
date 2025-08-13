@@ -12,12 +12,19 @@ import SwiftUI
 class Project {
     var title: String
     var projectNumber: Int
-    var date: Date  // 1. Added date property
+    var date: Date
+    var desription: String?
 
-    init(title: String, projectNumber: Int, date: Date) {
+    init(
+        title: String,
+        projectNumber: Int,
+        date: Date,
+        description: String? = nil
+    ) {
         self.title = title
         self.projectNumber = projectNumber
         self.date = date
+        self.desription = description
     }
 
     static func createDate(year: Int, month: Int, day: Int) -> Date {
@@ -32,17 +39,20 @@ class Project {
         Project(
             title: "WeSplit",
             projectNumber: 1,
-            date: createDate(year: 2025, month: 7, day: 8)
+            date: createDate(year: 2025, month: 7, day: 8),
+            description: "A simple split app for splitting bills."
         ),
         Project(
             title: "TempConvert",
             projectNumber: 2,
-            date: createDate(year: 2025, month: 7, day: 21)
+            date: createDate(year: 2025, month: 7, day: 21),
+            description: "A simple temperature converter app."
         ),
         Project(
             title: "GuessTheFlag",
             projectNumber: 3,
-            date: createDate(year: 2025, month: 8, day: 3)
+            date: createDate(year: 2025, month: 8, day: 3),
+            description: "A simple flag guessing game."
         ),
     ]
 }
