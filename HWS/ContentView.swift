@@ -28,11 +28,11 @@ struct ContentView: View {
             columnVisibility: $columnVisibility,
             preferredCompactColumn: $preferredCompactColumn
         ) {
-            LessonsList(courses: courses, selectedLesson: $selectedLesson)
+            LessonList(courses: courses, selectedLesson: $selectedLesson)
 
         } content: {
             if let selectedLesson {
-                ProjectsList(
+                ProjectList(
                     selectedProject: $selectedProject,
                     selectedLesson: selectedLesson
                 )

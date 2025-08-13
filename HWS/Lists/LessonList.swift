@@ -8,7 +8,10 @@
 import SwiftData
 import SwiftUI
 
-struct LessonsList: View {
+struct LessonList: View {
+
+    @Environment(\.modelContext) private var context
+
     var courses: [Course]
     @Binding var selectedLesson: Lesson?
 
@@ -24,7 +27,7 @@ struct LessonsList: View {
                     List(selection: $selectedLesson) {
                         ForEach(courses) { course in
                             if course.lessons.count > 0 {
-                                LessonsListSection(
+                                LessonListSection(
                                     lessons: course.lessons,
                                     course: course
                                 )
@@ -56,4 +59,11 @@ struct LessonsList: View {
             }
         }
     }
+}
+
+#Preview {
+    LessonList(
+        courses: Course.coursesData,
+        selectedLesson: .constant(Lesson.hundreedDaysOfSwiftUILessons.first)
+    )
 }
