@@ -15,39 +15,39 @@ struct CodeSnippets {
         //
         //  Created by Radoslav Bley on 08/07/2025.
         //
-        
+
         import HighlightSwift
         import SwiftUI
-        
+
         struct WeSplit: View {
         @State private var checkAmount = 0.0
         @State private var numberOfPeople = 0
         @State private var tipPercentage = 20
         @FocusState private var amountIsFocused: Bool
-        @State private var inspectorShown = false
-        
+        @State private var isPresenting = false
+
         let tipPercentages = [10, 15, 20, 25, 0]
-        
+
         var totalPerPerson: Double {
         let peopleCount = Double(numberOfPeople + 2)
         let tipSelection = Double(tipPercentage)
-        
+
         let tipValue = checkAmount / 100 * tipSelection
         let grandTotal = checkAmount + tipValue
         let amountPerPerson = grandTotal / peopleCount
-        
+
         return amountPerPerson
         }
-        
+
         var totalCheckAmount: Double {
         let tipSelection = Double(tipPercentage)
-        
+
         let tipValue = checkAmount / 100 * tipSelection
         let grandTotal = checkAmount + tipValue
-        
+
         return grandTotal
         }
-        
+
         var body: some View {
         NavigationStack {
             Form {
@@ -63,7 +63,7 @@ struct CodeSnippets {
                         .keyboardType(.decimalPad)
                     #endif
                     .focused($amountIsFocused)
-        
+
                     Picker("Number of people", selection: $numberOfPeople) {
                         ForEach(2..<100) {
                             Text("\($0) people")
@@ -73,7 +73,7 @@ struct CodeSnippets {
                         .pickerStyle(.navigationLink)
                     #endif
                 }
-        
+
                 Section("How much do you want to tip?") {
                     Picker("Tip Percentage", selection: $tipPercentage) {
                         ForEach(tipPercentages, id: \.self) {
@@ -82,7 +82,7 @@ struct CodeSnippets {
                     }
                     .pickerStyle(.segmented)
                 }
-        
+
                 Section("Grand Total") {
                     Text(
                         totalCheckAmount,
@@ -93,7 +93,7 @@ struct CodeSnippets {
                             )
                     )
                 }
-        
+
                 Section("Amount per person") {
                     Text(
                         totalPerPerson,
@@ -106,30 +106,39 @@ struct CodeSnippets {
             .navigationTitle("WeSplit")
             .toolbar {
                 Button {
-                    inspectorShown = true
+                    isPresenting = true
                 } label: {
-                    Label("Inspector", systemImage: "info.circle.fill")
+                    Label("Source Code", systemImage: "info.circle.fill")
                 }
-                .buttonStyle(.borderedProminent)
                 if amountIsFocused {
                     Button("Done", systemImage: "checkmark") {
                         amountIsFocused = false
                     }
                 }
             }
-            .inspector(isPresented: $inspectorShown) {
-                ScrollView {
-                    CodeText(CodeSnippets.weSplit)
-                        .highlightLanguage(.swift)
-                        .codeTextColors(.theme(.xcode))
+            .sheet(isPresented: $isPresenting) {
+                NavigationStack {
+                    ScrollView {
+                        CodeText(CodeSnippets.weSplit)
+                            .highlightLanguage(.swift)
+                            .codeTextColors(.theme(.xcode))
+                            .toolbar {
+                                ToolbarItem(placement: .destructiveAction) {
+                                    Button("Close", systemImage: "xmark") {
+                                        isPresenting = false
+                                    }
+                                }
+                            }
+                            .navigationTitle("Source Code")
+                    }
+                    .padding()
+                    .font(.callout)
                 }
-                .padding()
-                .font(.callout)
             }
         }
         }
         }
-        
+
         #Preview {
         WeSplit()
         }
@@ -143,24 +152,24 @@ struct CodeSnippets {
         //
         //  Created by Radoslav Bley on 21/07/2025.
         //
-        
+
         import HighlightSwift
         import SwiftUI
-        
+
         struct TempConvert: View {
         @State private var temperature = 0.0
         @FocusState private var temperatureFieldIsFocused: Bool
-        
+
         var units = ["Celsius", "Fahrenheit", "Kelvin"]
         @State private var inputUnit = "Celsius"
         @State private var outputUnit = "Fahrenheit"
-        
+
         var convertedTemperature: Double {
         let inputValue = temperature
         let inputUnit = inputUnit
         let outputUnit = outputUnit
         var baseValue: Double = 0.0
-        
+
         if inputUnit == "Celsius" {
             baseValue = inputValue
         } else if inputUnit == "Fahrenheit" {
@@ -168,7 +177,7 @@ struct CodeSnippets {
         } else if inputUnit == "Kelvin" {
             baseValue = inputValue - 273.15
         }
-        
+
         var convertedValue: Double {
             if outputUnit == "Celsius" {
                 return baseValue
@@ -179,12 +188,12 @@ struct CodeSnippets {
             }
             return 0.0
         }
-        
+
         return convertedValue
         }
-        
-        @State private var inspectorShown = false
-        
+
+        @State private var isPresenting = false
+
         var body: some View {
         NavigationStack {
             Form {
@@ -199,7 +208,7 @@ struct CodeSnippets {
                     #endif
                     .focused($temperatureFieldIsFocused)
                 }
-        
+
                 Section(
                     header: Text("Units"),
                     footer: Text("Select units to convert from and to.")
@@ -209,14 +218,14 @@ struct CodeSnippets {
                             Text($0)
                         }
                     }
-        
+
                     Picker("Output Unit", selection: $outputUnit) {
                         ForEach(units, id: \.self) {
                             Text($0)
                         }
                     }
                 }
-        
+
                 Section("Converted Temperature") {
                     Text(
                         "\(convertedTemperature, format: .number) °\(outputUnit.first?.uppercased() ?? "")"
@@ -229,31 +238,39 @@ struct CodeSnippets {
             .navigationTitle("TempConvert")
             .toolbar {
                 Button {
-                    inspectorShown = true
+                    isPresenting = true
                 } label: {
-                    Label("Inspector", systemImage: "info.circle.fill")
+                    Label("Source Code", systemImage: "info.circle.fill")
                 }
-                .buttonStyle(.borderedProminent)
                 if temperatureFieldIsFocused {
                     Button("Done", systemImage: "checkmark") {
                         temperatureFieldIsFocused = false
                     }
                 }
             }
-        
-            .inspector(isPresented: $inspectorShown) {
-                ScrollView {
-                    CodeText(CodeSnippets.tempConvert)
-                        .highlightLanguage(.swift)
-                        .codeTextColors(.theme(.xcode))
+            .sheet(isPresented: $isPresenting) {
+                NavigationStack {
+                    ScrollView {
+                        CodeText(CodeSnippets.tempConvert)
+                            .highlightLanguage(.swift)
+                            .codeTextColors(.theme(.xcode))
+                            .toolbar {
+                                ToolbarItem(placement: .destructiveAction) {
+                                    Button("Close", systemImage: "xmark") {
+                                        isPresenting = false
+                                    }
+                                }
+                            }
+                            .navigationTitle("Source Code")
+                    }
+                    .padding()
+                    .font(.callout)
                 }
-                .padding()
-                .font(.callout)
             }
         }
         }
         }
-        
+
         #Preview {
         TempConvert()
         }
@@ -267,23 +284,23 @@ struct CodeSnippets {
         //
         //  Created by Radoslav Bley on 03/08/2025.
         //
-        
+
         import HighlightSwift
         import SwiftUI
-        
+
         struct GuessTheFlag: View {
         @State private var countries = [
         "Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland",
         "Spain", "UK", "Ukraine", "US",
         ].shuffled()
         @State private var correctAnswer = Int.random(in: 0...2)
-        
+
         @State private var showingScore = false
         @State private var scoreTitle = ""
         @State private var score: Int = 0
         @State private var tries: Int = 0
-        @State private var inspectorShown = false
-        
+        @State private var isPresenting = false
+
         var body: some View {
         ZStack {
             RadialGradient(
@@ -300,24 +317,24 @@ struct CodeSnippets {
             .ignoresSafeArea()
             VStack {
                 Spacer()
-        
+
                 Text("Guess the Flag")
                     .font(.largeTitle.bold())
                     .foregroundStyle(.white)
-        
+
                 Spacer()
-        
+
                 VStack(spacing: 30) {
                     VStack {
                         Text("Tap the flag of")
                             .foregroundStyle(.secondary)
                             .font(.subheadline.weight(.heavy))
-        
+
                         Text(countries[correctAnswer])
                             .foregroundStyle(.secondary)
                             .font(.largeTitle.weight(.semibold))
                     }
-        
+
                     ForEach(0..<3) { number in
                         Button {
                             flagTapped(number)
@@ -332,21 +349,20 @@ struct CodeSnippets {
                 .padding(.vertical, 20)
                 .background(.ultraThinMaterial)
                 .clipShape(.rect(cornerRadius: 20))
-        
+
                 Spacer()
                 Spacer()
                 Text("Score: \(score) / \(countries.count)")
                     .foregroundStyle(.white)
                     .font(.headline.bold())
                 Spacer()
-        
+
                 Button {
-                    inspectorShown = true
+                    isPresenting = true
                 } label: {
-                    Label("Inspector", systemImage: "info.circle.fill")
+                    Label("Source Code", systemImage: "info.circle.fill")
                 }
-                .buttonStyle(.borderedProminent)
-        
+
             }
             .padding()
         }
@@ -362,18 +378,27 @@ struct CodeSnippets {
                 Text("Your score is \(score)")
             }
         }
-        
-        .inspector(isPresented: $inspectorShown) {
-            ScrollView {
-                CodeText(CodeSnippets.guessTheFlag)
-                    .highlightLanguage(.swift)
-                    .codeTextColors(.theme(.xcode))
+        .sheet(isPresented: $isPresenting) {
+            NavigationStack {
+                ScrollView {
+                    CodeText(CodeSnippets.guessTheFlag)
+                        .highlightLanguage(.swift)
+                        .codeTextColors(.theme(.xcode))
+                        .toolbar {
+                            ToolbarItem(placement: .destructiveAction) {
+                                Button("Close", systemImage: "xmark") {
+                                    isPresenting = false
+                                }
+                            }
+                        }
+                        .navigationTitle("Source Code")
+                }
+                .padding()
+                .font(.callout)
             }
-            .padding()
-            .font(.callout)
         }
         }
-        
+
         func flagTapped(_ number: Int) {
         if number == correctAnswer {
             score += 1
@@ -386,7 +411,7 @@ struct CodeSnippets {
             }
         } else {
             tries += 1
-        
+
             if tries < countries.count {
                 scoreTitle = "Wrong! That's \(countries[number])"
             } else {
@@ -394,25 +419,26 @@ struct CodeSnippets {
                     "Game Over! Your score is \(score) / \(countries.count)."
             }
         }
-        
+
         showingScore = true
         }
-        
+
         func askQuestion() {
         countries = countries.shuffled()
         correctAnswer = Int.random(in: 0...2)
         }
-        
+
         func restart() {
         score = 0
         tries = 0
         print(score)
         }
         }
-        
+
         #Preview {
         GuessTheFlag()
         }
+
 
         """#
 }
