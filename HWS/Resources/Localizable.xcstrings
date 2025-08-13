@@ -186,6 +186,36 @@
         }
       }
     },
+    "Mark as complete" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Označiť ako dokončené"
+          }
+        }
+      }
+    },
+    "Mark as done" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Označiť ako dokončené"
+          }
+        }
+      }
+    },
+    "Mark as in progress" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Označiť ako rozpracované"
+          }
+        }
+      }
+    },
     "No projects, yet." : {
       "localizations" : {
         "sk" : {

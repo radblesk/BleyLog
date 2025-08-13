@@ -15,6 +15,7 @@ class ModelData {
     var context: ModelContext {
         modelContainer.mainContext
     }
+
     init() {
         let schema = Schema([
             Course.self,
