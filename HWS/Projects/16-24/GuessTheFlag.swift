@@ -101,7 +101,7 @@ struct GuessTheFlag: View {
         .sheet(isPresented: $isPresenting) {
             NavigationStack {
                 ScrollView {
-                    CodeText(CodeSnippets.weSplit)
+                    CodeText(CodeSnippets.guessTheFlag)
                         .highlightLanguage(.swift)
                         .codeTextColors(.theme(.xcode))
                         .toolbar {
