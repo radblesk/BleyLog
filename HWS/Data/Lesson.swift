@@ -13,6 +13,7 @@ class Lesson {
     var firstDay: Int
     var lastDay: Int
     var title: String
+    var inProgress: Bool = false
     var finished: Bool = false
 
     @Relationship(deleteRule: .cascade) var projects: [Project] = []
@@ -21,6 +22,7 @@ class Lesson {
         firstDay: Int,
         lastDay: Int,
         title: String,
+        inProgress: Bool = false,
         finished: Bool = false,
         projects: [Project] = []
 
@@ -28,6 +30,7 @@ class Lesson {
         self.firstDay = firstDay
         self.lastDay = lastDay
         self.title = title
+        self.inProgress = inProgress
         self.finished = finished
         self.projects = projects
 
@@ -38,7 +41,7 @@ class Lesson {
             firstDay: 16,
             lastDay: 24,
             title: "Starting SwiftUI",
-            projects: Project.startingSwiftUI
+            projects: Project.startingSwiftUI,
         ),
         Lesson(
             firstDay: 26,
