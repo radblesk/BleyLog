@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+      "shouldTranslate" : false
+    },
     "%@" : {
       "localizations" : {
         "sk" : {
@@ -37,6 +40,16 @@
         }
       }
     },
+    "About" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O aplikácii"
+          }
+        }
+      }
+    },
     "Amount" : {
       "localizations" : {
         "sk" : {
@@ -53,6 +66,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suma na osobu"
+          }
+        }
+      }
+    },
+    "Are you sure? This will remove all user data and replace it with default values." : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si si istý? Toto vymaže a nahradí všetky dáta."
+          }
+        }
+      }
+    },
+    "Caution! All data will be deleted and replaced with default values." : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pozor! Všetky užívateľské dáta budú odstránené a nahradené pôvodnými."
           }
         }
       }
@@ -97,6 +130,26 @@
         }
       }
     },
+    "Data reset" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetovanie dát"
+          }
+        }
+      }
+    },
+    "Data successfully removed. Please restart the app." : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dáta boli úspešne odstránené. Prosím, reštartuj aplikáciu."
+          }
+        }
+      }
+    },
     "Days %lld-%lld: %@" : {
       "localizations" : {
         "en" : {
@@ -136,6 +189,16 @@
         }
       }
     },
+    "Error" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chyba"
+          }
+        }
+      }
+    },
     "Grand Total" : {
       "localizations" : {
         "sk" : {
@@ -152,6 +215,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hádaj vlajku"
+          }
+        }
+      }
+    },
+    "Home" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domov"
           }
         }
       }
@@ -186,16 +259,6 @@
         }
       }
     },
-    "Mark as complete" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Označiť ako dokončené"
-          }
-        }
-      }
-    },
     "Mark as done" : {
       "localizations" : {
         "sk" : {
@@ -212,6 +275,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Označiť ako rozpracované"
+          }
+        }
+      }
+    },
+    "No lesson selected." : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nevybral si žiadnu lekciu."
           }
         }
       }
@@ -236,6 +309,9 @@
         }
       }
     },
+    "OK" : {
+      "shouldTranslate" : false
+    },
     "Output Unit" : {
       "localizations" : {
         "sk" : {
@@ -256,6 +332,36 @@
         }
       }
     },
+    "Remove" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vymazať"
+          }
+        }
+      }
+    },
+    "Remove all user data" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vymazať všetky užívateľské dáta"
+          }
+        }
+      }
+    },
+    "Remove user data" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vymazať užívateľské dáta"
+          }
+        }
+      }
+    },
     "Score: %lld / %lld" : {
       "localizations" : {
         "en" : {
@@ -268,16 +374,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Skóre: %1$lld / %2$lld"
-          }
-        }
-      }
-    },
-    "Select a lesson" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vyber lekciu"
           }
         }
       }
@@ -298,6 +394,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vyberte jednotky na prevod."
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nastavenia"
           }
         }
       }
@@ -372,7 +478,7 @@
         }
       }
     },
-    "v0.1.0 (2025.08.13)" : {
+    "v0.1.0 %@" : {
       "shouldTranslate" : false
     },
     "WeSplit" : {
