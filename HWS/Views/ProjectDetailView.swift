@@ -8,31 +8,33 @@
 import SwiftUI
 
 struct ProjectDetailView: View {
-    var project: Project?
+    var selectedProject: Project?
 
     var body: some View {
-        Group {
-            switch project?.title {
-            case "WeSplit":
-                WeSplit()
-            case "TempConvert":
-                TempConvert()
-            case "GuessTheFlag":
-                GuessTheFlag()
-            default:
-                Text("Select a project")
+        NavigationStack {
+            Group {
+                switch selectedProject?.title {
+                case "WeSplit":
+                    WeSplit()
+                case "TempConvert":
+                    TempConvert()
+                case "GuessTheFlag":
+                    GuessTheFlag()
+                default:
+                    Text("Select a project")
+                }
             }
+            // Apply the conditional modifier only once.
+            #if os(macOS)
+                .padding()
+            #endif
         }
-        // Apply the conditional modifier only once.
-        #if os(macOS)
-            .padding()
-        #endif
     }
 }
 
 #Preview {
     ProjectDetailView(
-        project: Project(
+        selectedProject: Project(
             title: "WeSplit",
             projectNumber: 1,
             date: Date(),

@@ -13,96 +13,92 @@ struct LessonList: View {
     @Environment(\.modelContext) private var context
 
     var courses: [Course]
+    @Binding var selectedLesson: Lesson?
 
     var body: some View {
-
-        VStack {
-            List {
-                ForEach(courses) { course in
-                    if course.lessons.count > 0 {
-                        Section(course.title) {
-                            ForEach(
-                                course.lessons.sorted {
-                                    $0.firstDay < $1.firstDay
-                                }
-                            ) { lesson in
-                                NavigationLink {
-                                    ProjectList(lesson: lesson)
-                                } label: {
-                                    if lesson.inProgress {
-                                        ProgressView()
-                                            .tint(.orange)
-                                    } else if lesson.finished {
-                                        Image(systemName: "checkmark")
-                                            .foregroundStyle(.green)
+        NavigationStack {
+            VStack {
+                List(selection: $selectedLesson) {
+                    ForEach(courses, id: \.self) { course in
+                        if course.lessons.count > 0 {
+                            Section(course.title) {
+                                ForEach(
+                                    course.lessons.sorted {
+                                        $0.firstDay < $1.firstDay
+                                    },
+                                    id: \.self
+                                ) { lesson in
+                                    HStack {
+                                        Label(
+                                            "Days \(lesson.firstDay)-\(lesson.lastDay): \(lesson.title)",
+                                            systemImage: lesson.finished
+                                                ? "checkmark"
+                                                : lesson.inProgress
+                                                    ? "circle.dotted"
+                                                    : "book.pages.fill"
+                                        )
+                                        Spacer()
+                                        Image(systemName: "chevron.right")
+                                            .foregroundStyle(.secondary)
+                                            .imageScale(.small)
                                     }
-                                    Text(
-                                        "Days \(lesson.firstDay)-\(lesson.lastDay): \(lesson.title)"
-                                    )
-                                }
-                                .swipeActions(edge: .leading) {
-                                    Button(
-                                        "Mark as done",
-                                        systemImage: lesson.finished
-                                            ? "xmark" : "checkmark"
-                                    ) {
-                                        if lesson.inProgress {
-                                            lesson.inProgress.toggle()
-                                        }
+                                    .swipeActions(edge: .leading) {
+                                        Button(
+                                            "Mark as done",
+                                            systemImage: lesson.finished
+                                                ? "xmark" : "checkmark"
+                                        ) {
+                                            if lesson.inProgress {
+                                                lesson.inProgress.toggle()
+                                            }
 
-                                        lesson.finished.toggle()
-
-                                        do {
-                                            try context.save()
-                                        } catch {
-                                            print(error)
-                                        }
-                                    }
-                                    .tint(.green)
-                                    Button(
-                                        "Mark as in progress",
-                                        systemImage:
-                                            "arrow.triangle.2.circlepath"
-                                    ) {
-                                        if lesson.finished {
                                             lesson.finished.toggle()
-                                        }
-                                        lesson.inProgress.toggle()
 
-                                        do {
-                                            try context.save()
-                                        } catch {
-                                            print(error)
+                                            do {
+                                                try context.save()
+                                            } catch {
+                                                print(error)
+                                            }
                                         }
+                                        .tint(.green)
+                                        Button(
+                                            "Mark as in progress",
+                                            systemImage:
+                                                "circle.dotted"
+                                        ) {
+                                            if lesson.finished {
+                                                lesson.finished.toggle()
+                                            }
+                                            lesson.inProgress.toggle()
+
+                                            do {
+                                                try context.save()
+                                            } catch {
+                                                print(error)
+                                            }
+                                        }
+                                        .tint(.orange)
                                     }
-                                    .tint(.orange)
                                 }
-                                .tag(lesson)
                             }
-                        }
-                    } else {
-                        Section(course.title) {
-                            Text("Course not started yet...")
-                                .foregroundStyle(.secondary)
+                        } else {
+                            Section(course.title) {
+                                Text("Course not started yet...")
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     }
                 }
+                .listStyle(.sidebar)
+                .navigationTitle("Swift Courses")
             }
-            .listStyle(.sidebar)
-            .navigationTitle("Swift Courses")
         }
-        #if os(iOS)
-            .toolbar {
-                ToolbarItem {
-                    EditButton()
-                }
-            }
-        #endif
     }
 }
 
 #Preview {
     LessonList(
         courses: Course.coursesData,
+        selectedLesson: .constant(ModelData.shared.defaultLesson)
     )
 }
