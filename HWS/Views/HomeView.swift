@@ -22,17 +22,23 @@ struct HomeView: View {
             columnVisibility: $columnVisibility,
             preferredCompactColumn: $preferredCompactColumn
         ) {
-            LessonList(
-                courses: courses,
-            )
-            .navigationSplitViewColumnWidth(min: 200, ideal: 250)
+            NavigationStack {
+                LessonList(
+                    courses: courses,
+                )
+                .navigationSplitViewColumnWidth(min: 200, ideal: 250)
+            }
 
         } content: {
-            ProjectList()
-                .navigationSplitViewColumnWidth(min: 300, ideal: 350)
+            NavigationStack {
+                ProjectList()
+                    .navigationSplitViewColumnWidth(min: 300, ideal: 350)
+            }
         } detail: {
-            ProjectDetailView()
-                .navigationSplitViewColumnWidth(min: 300, ideal: 450)
+            NavigationStack {
+                ProjectDetailView()
+                    .navigationSplitViewColumnWidth(min: 300, ideal: 450)
+            }
         }
         .navigationSplitViewStyle(.balanced)
     }
