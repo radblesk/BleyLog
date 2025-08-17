@@ -17,28 +17,29 @@ struct HomeView: View {
     @Query private var courses: [Course]
     @Environment(\.modelContext) private var context
 
+    @State private var selectedLesson: Lesson? = ModelData.shared.defaultLesson
+    @State private var selectedProject: Project?
+
     var body: some View {
         NavigationSplitView(
             columnVisibility: $columnVisibility,
             preferredCompactColumn: $preferredCompactColumn
         ) {
-            NavigationStack {
-                LessonList(
-                    courses: courses,
-                )
-                .navigationSplitViewColumnWidth(min: 200, ideal: 250)
-            }
+            LessonList(
+                courses: courses,
+                selectedLesson: $selectedLesson
+            )
+            .navigationSplitViewColumnWidth(min: 200, ideal: 250)
 
         } content: {
-            NavigationStack {
-                ProjectList()
-                    .navigationSplitViewColumnWidth(min: 300, ideal: 350)
-            }
+            ProjectList(
+                selectedLesson: selectedLesson,
+                selectedProject: $selectedProject
+            )
+            .navigationSplitViewColumnWidth(min: 300, ideal: 350)
         } detail: {
-            NavigationStack {
-                ProjectDetailView()
-                    .navigationSplitViewColumnWidth(min: 300, ideal: 450)
-            }
+            ProjectDetailView(selectedProject: selectedProject)
+                .navigationSplitViewColumnWidth(min: 300, ideal: 450)
         }
         .navigationSplitViewStyle(.balanced)
     }
