@@ -41,10 +41,6 @@ struct ProjectListRow: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 }
-
-                Image(systemName: "chevron.right")
-                    .imageScale(.small)
-                    .foregroundStyle(.secondary)
             }
 
             Text(project.desc)
