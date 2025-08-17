@@ -39,6 +39,7 @@ struct SettingsAboutView: View {
                     .navigationBarTitleDisplayMode(.inline)
                 #endif
             }
+            .preferredColorScheme(.dark)
         }
     }
 }
