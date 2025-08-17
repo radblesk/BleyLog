@@ -16,6 +16,8 @@ class ModelData {
         modelContainer.mainContext
     }
 
+    var defaultLesson: Lesson?
+
     init() {
         let schema = Schema([
             Course.self,
@@ -35,6 +37,8 @@ class ModelData {
 
             insertModelData()
 
+            defaultLesson = Course.coursesData.first?.lessons.first
+
             try context.save()
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
@@ -53,6 +57,7 @@ class ModelData {
                 context.insert(courses)
             }
         }
+
     }
 
     func removeAll() {
