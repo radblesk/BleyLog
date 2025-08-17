@@ -119,6 +119,9 @@ struct WeSplit: View {
                                 }
                             }
                             .navigationTitle("Source Code")
+                            #if os(iOS)
+                                .navigationBarTitleDisplayMode(.inline)
+                            #endif
                     }
                     .padding()
                     .font(.callout)

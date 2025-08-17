@@ -22,99 +22,104 @@ struct GuessTheFlag: View {
     @State private var isPresenting = false
 
     var body: some View {
-        ZStack {
-            RadialGradient(
-                stops: [
-                    .init(
-                        color: Color(red: 0.1, green: 0.2, blue: 0.45),
-                        location: 0
-                    ), .init(color: .black, location: 1),
-                ],
-                center: .top,
-                startRadius: 10,
-                endRadius: 700
-            )
-            .ignoresSafeArea()
-            VStack {
-                Spacer()
+        NavigationStack {
+            ZStack {
+                RadialGradient(
+                    stops: [
+                        .init(
+                            color: Color(red: 0.1, green: 0.2, blue: 0.45),
+                            location: 0
+                        ), .init(color: .black, location: 1),
+                    ],
+                    center: .top,
+                    startRadius: 10,
+                    endRadius: 700
+                )
+                .ignoresSafeArea()
+                VStack {
+                    Spacer()
 
-                Text("Guess the Flag")
-                    .font(.largeTitle.bold())
-                    .foregroundStyle(.white)
+                    Text("Guess the Flag")
+                        .font(.largeTitle.bold())
+                        .foregroundStyle(.white)
 
-                Spacer()
+                    Spacer()
 
-                VStack(spacing: 30) {
-                    VStack {
-                        Text("Tap the flag of")
-                            .foregroundStyle(.secondary)
-                            .font(.subheadline.weight(.heavy))
+                    VStack(spacing: 30) {
+                        VStack {
+                            Text("Tap the flag of")
+                                .foregroundStyle(.secondary)
+                                .font(.subheadline.weight(.heavy))
 
-                        Text(countries[correctAnswer])
-                            .foregroundStyle(.secondary)
-                            .font(.largeTitle.weight(.semibold))
-                    }
-
-                    ForEach(0..<3) { number in
-                        Button {
-                            flagTapped(number)
-                        } label: {
-                            Image(countries[number])
-                                .clipShape(.capsule)
-                                .shadow(radius: 12, y: 10)
+                            Text(countries[correctAnswer])
+                                .foregroundStyle(.secondary)
+                                .font(.largeTitle.weight(.semibold))
                         }
-                    }
-                }
-                .frame(maxWidth: 500)
-                .padding(.vertical, 20)
-                .background(.ultraThinMaterial)
-                .clipShape(.rect(cornerRadius: 20))
 
-                Spacer()
-                Spacer()
-                Text("Score: \(score) / \(countries.count)")
-                    .foregroundStyle(.white)
-                    .font(.headline.bold())
-                Spacer()
-
-                Button {
-                    isPresenting = true
-                } label: {
-                    Label("Source Code", systemImage: "info.circle.fill")
-                }
-
-            }
-            .padding()
-        }
-        .preferredColorScheme(.dark)
-        .alert(scoreTitle, isPresented: $showingScore) {
-            if tries < countries.count {
-                Button("Continue", action: askQuestion)
-            } else {
-                Button("Start over", role: .destructive, action: restart)
-            }
-        } message: {
-            if tries < countries.count {
-                Text("Your score is \(score)")
-            }
-        }
-        .sheet(isPresented: $isPresenting) {
-            NavigationStack {
-                ScrollView {
-                    CodeText(CodeSnippets.guessTheFlag)
-                        .highlightLanguage(.swift)
-                        .codeTextColors(.theme(.xcode))
-                        .toolbar {
-                            ToolbarItem(placement: .destructiveAction) {
-                                Button("Close", systemImage: "xmark") {
-                                    isPresenting = false
-                                }
+                        ForEach(0..<3) { number in
+                            Button {
+                                flagTapped(number)
+                            } label: {
+                                Image(countries[number])
+                                    .clipShape(.capsule)
+                                    .shadow(radius: 12, y: 10)
                             }
                         }
-                        .navigationTitle("Source Code")
+                    }
+                    .frame(maxWidth: 500)
+                    .padding(.vertical, 20)
+                    .background(.ultraThinMaterial)
+                    .clipShape(.rect(cornerRadius: 20))
+
+                    Spacer()
+                    Spacer()
+                    Text("Score: \(score) / \(countries.count)")
+                        .foregroundStyle(.white)
+                        .font(.headline.bold())
+                    Spacer()
+
+                    Button {
+                        isPresenting = true
+                    } label: {
+                        Label("Source Code", systemImage: "info.circle.fill")
+                    }
+
                 }
                 .padding()
-                .font(.callout)
+            }
+            .preferredColorScheme(.dark)
+            .alert(scoreTitle, isPresented: $showingScore) {
+                if tries < countries.count {
+                    Button("Continue", action: askQuestion)
+                } else {
+                    Button("Start over", role: .destructive, action: restart)
+                }
+            } message: {
+                if tries < countries.count {
+                    Text("Your score is \(score)")
+                }
+            }
+            .sheet(isPresented: $isPresenting) {
+                NavigationStack {
+                    ScrollView {
+                        CodeText(CodeSnippets.guessTheFlag)
+                            .highlightLanguage(.swift)
+                            .codeTextColors(.theme(.xcode))
+                            .toolbar {
+                                ToolbarItem(placement: .destructiveAction) {
+                                    Button("Close", systemImage: "xmark") {
+                                        isPresenting = false
+                                    }
+                                }
+                            }
+                            .navigationTitle("Source Code")
+                            #if os(iOS)
+                                .navigationBarTitleDisplayMode(.inline)
+                            #endif
+                    }
+                    .padding()
+                    .font(.callout)
+                }
             }
         }
     }
