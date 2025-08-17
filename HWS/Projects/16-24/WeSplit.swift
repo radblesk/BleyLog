@@ -81,6 +81,7 @@ struct WeSplit: View {
                                     ?? "EUR"
                             )
                     )
+                    .foregroundStyle(tipPercentage == 0 ? .red : .primary)
                 }
 
                 Section("Amount per person") {
