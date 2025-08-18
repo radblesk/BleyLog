@@ -50,6 +50,16 @@
         }
       }
     },
+    "All your in progress lessons in one place. Browse, search and start working." : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Všetky tvoje rozpracované lekcie na jednom mieste. Prehliadaj, hľadaj, začni pracovať."
+          }
+        }
+      }
+    },
     "Amount" : {
       "localizations" : {
         "sk" : {
@@ -130,6 +140,16 @@
         }
       }
     },
+    "Courses" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurzy"
+          }
+        }
+      }
+    },
     "Data reset" : {
       "localizations" : {
         "sk" : {
@@ -199,6 +219,16 @@
         }
       }
     },
+    "For You" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pre Teba"
+          }
+        }
+      }
+    },
     "Grand Total" : {
       "localizations" : {
         "sk" : {
@@ -215,16 +245,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hádaj vlajku"
-          }
-        }
-      }
-    },
-    "Home" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Domov"
           }
         }
       }
@@ -259,6 +279,9 @@
         }
       }
     },
+    "Lessons in progress" : {
+
+    },
     "Mark as done" : {
       "localizations" : {
         "sk" : {
@@ -289,12 +312,32 @@
         }
       }
     },
+    "No lessons in progress..." : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žiadne rozpracované lekcie…"
+          }
+        }
+      }
+    },
     "No projects, yet." : {
       "localizations" : {
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Žiadne projekty, zatiaľ."
+          }
+        }
+      }
+    },
+    "No results for \"%@\"" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žiadne výsledky pre “%@”"
           }
         }
       }
@@ -374,6 +417,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Skóre: %1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "Search" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hľadať"
+          }
+        }
+      }
+    },
+    "Searching in %lld lessons..." : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyhľadávam v %lld lekciách…"
           }
         }
       }
