@@ -280,7 +280,14 @@
       }
     },
     "Lessons in progress" : {
-
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozpracované lekcie"
+          }
+        }
+      }
     },
     "Mark as done" : {
       "localizations" : {
@@ -361,6 +368,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Výstupná jednotka"
+          }
+        }
+      }
+    },
+    "Programming courses from various sources. Track your progress and learn new programming languages." : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurzy programovania z rôznych zdrojov. Sledujte svoj postup a naučte sa nové programovacie jazyky."
           }
         }
       }
@@ -487,16 +504,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Začať odznova"
-          }
-        }
-      }
-    },
-    "Swift Courses" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swift Kurzy"
           }
         }
       }

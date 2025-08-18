@@ -14,17 +14,67 @@ struct LessonList: View {
 
     var courses: [Course]
 
+    @State private var searchText: String = ""
+    @State private var expanded: Set<String> = ["100 days of SwiftUI"]
+
     var body: some View {
         NavigationStack {
             VStack {
                 List {
+                    if searchText.isEmpty {
+                        Section {
+                            HStack {
+                                Spacer()
+                                VStack {
+                                    Image(systemName: "books.vertical.fill")
+                                        .resizable()
+                                        .frame(width: 32, height: 32)
+                                        .padding(8)
+                                        .background(.orange)
+                                        .clipShape(.rect(cornerRadius: 10))
+                                    Text(
+                                        "Programming courses from various sources. Track your progress and learn new programming languages."
+                                    )
+                                    .multilineTextAlignment(.center)
+                                    .font(.subheadline)
+                                }
+                                Spacer()
+                            }
+                        }
+                    } else {
+                        Section {
+                            Text(
+                                "Searching in \(courses.reduce(0) { $0 + $1.lessons.count }) lessons..."
+                            )
+                        }
+                    }
                     ForEach(courses, id: \.self) { course in
                         if course.lessons.count > 0 {
-                            Section(course.title) {
+                            Section(
+                                course.title,
+                                isExpanded: Binding<Bool>(
+                                    get: { expanded.contains(course.title) },
+                                    set: { isExpanding in
+                                        if isExpanding {
+                                            expanded.insert(course.title)
+                                        } else {
+                                            expanded.remove(course.title)
+                                        }
+                                    }
+                                )
+                            ) {
+                                let sortedLessons = course.lessons.sorted {
+                                    $0.firstDay < $1.firstDay
+                                }
+
+                                let searchResults = sortedLessons.filter {
+                                    $0.title.lowercased().contains(
+                                        searchText.lowercased()
+                                    )
+                                }
                                 ForEach(
-                                    course.lessons.sorted {
-                                        $0.firstDay < $1.firstDay
-                                    },
+                                    searchText.isEmpty
+                                        ? sortedLessons : searchResults,
                                     id: \.self
                                 ) { lesson in
                                     NavigationLink {
@@ -36,8 +86,9 @@ struct LessonList: View {
                                                 ? "checkmark"
                                                 : lesson.inProgress
                                                     ? "circle.dotted"
-                                                    : "book.pages.fill"
+                                                    : "book.pages"
                                         )
+                                        .tint(.orange)
                                     }
                                     .swipeActions(edge: .leading) {
                                         Button(
@@ -86,8 +137,18 @@ struct LessonList: View {
                         }
                     }
                 }
+                .searchable(text: $searchText)
+                .onChange(of: searchText) { _, newValue in
+                    if !newValue.isEmpty {
+                        expanded = Set(
+                            courses.filter { !$0.lessons.isEmpty }.map(\.title)
+                        )
+                    } else {
+                        expanded = ["100 days of SwiftUI"]
+                    }
+                }
                 .listStyle(.sidebar)
-                .navigationTitle("Swift Courses")
+                .navigationTitle("Courses")
             }
 
         }
