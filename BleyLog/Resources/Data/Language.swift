@@ -9,27 +9,24 @@ import SwiftData
 import SwiftUI
 
 @Model
-class Course {
+class Language {
     var title: String
 
-    @Relationship(deleteRule: .cascade) var lessons: [Lesson] = []
+    @Relationship(deleteRule: .cascade) var courses: [Course] = []
 
     init(
         title: String,
-        lessons: [Lesson] = []
+        courses: [Course] = []
     ) {
         self.title = title
-        self.lessons = lessons
+        self.courses = courses
 
     }
 
-    static let coursesData = [
-        Course(
-            title: "100 days of SwiftUI",
-            lessons: Lesson.hundreedDaysOfSwiftUILessons
-        ),
-        Course(
-            title: "100 days of Swift",
-        ),
+    static let languages = [
+        Language(title: "Swift", courses: Course.swiftCourses),
+        Language(title: "Next.js"),
+        Language(title: "React"),
+        Language(title: "TypeScript"),
     ]
 }
