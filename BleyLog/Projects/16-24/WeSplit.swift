@@ -5,7 +5,6 @@
 //  Created by Radoslav Bley on 08/07/2025.
 //
 
-import HighlightSwift
 import SwiftUI
 
 struct WeSplit: View {
@@ -107,26 +106,7 @@ struct WeSplit: View {
                 }
             }
             .sheet(isPresented: $isPresenting) {
-                NavigationStack {
-                    ScrollView {
-                        CodeText(CodeSnippets.weSplit)
-                            .highlightLanguage(.swift)
-                            .codeTextColors(.theme(.xcode))
-                            .toolbar {
-                                ToolbarItem(placement: .destructiveAction) {
-                                    Button("Close", systemImage: "xmark") {
-                                        isPresenting = false
-                                    }
-                                }
-                            }
-                            .navigationTitle("Source Code")
-                            #if os(iOS)
-                                .navigationBarTitleDisplayMode(.inline)
-                            #endif
-                    }
-                    .padding()
-                    .font(.callout)
-                }
+                SheetView(isPresenting: $isPresenting, project: "weSplit")
             }
         }
     }

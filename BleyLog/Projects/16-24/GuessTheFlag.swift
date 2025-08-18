@@ -5,7 +5,6 @@
 //  Created by Radoslav Bley on 03/08/2025.
 //
 
-import HighlightSwift
 import SwiftUI
 
 struct GuessTheFlag: View {
@@ -98,26 +97,7 @@ struct GuessTheFlag: View {
                 }
             }
             .sheet(isPresented: $isPresenting) {
-                NavigationStack {
-                    ScrollView {
-                        CodeText(CodeSnippets.guessTheFlag)
-                            .highlightLanguage(.swift)
-                            .codeTextColors(.theme(.xcode))
-                            .toolbar {
-                                ToolbarItem(placement: .destructiveAction) {
-                                    Button("Close", systemImage: "xmark") {
-                                        isPresenting = false
-                                    }
-                                }
-                            }
-                            .navigationTitle("Source Code")
-                            #if os(iOS)
-                                .navigationBarTitleDisplayMode(.inline)
-                            #endif
-                    }
-                    .padding()
-                    .font(.callout)
-                }
+                SheetView(isPresenting: $isPresenting, project: "guessTheFlag")
             }
         }
     }

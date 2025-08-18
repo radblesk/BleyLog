@@ -51,6 +51,7 @@
       }
     },
     "About" : {
+      "extractionState" : "stale",
       "localizations" : {
         "sk" : {
           "stringUnit" : {

@@ -5,7 +5,6 @@
 //  Created by Radoslav Bley on 21/07/2025.
 //
 
-import HighlightSwift
 import SwiftUI
 
 struct TempConvert: View {
@@ -101,26 +100,7 @@ struct TempConvert: View {
                 }
             }
             .sheet(isPresented: $isPresenting) {
-                NavigationStack {
-                    ScrollView {
-                        CodeText(CodeSnippets.tempConvert)
-                            .highlightLanguage(.swift)
-                            .codeTextColors(.theme(.xcode))
-                            .toolbar {
-                                ToolbarItem(placement: .destructiveAction) {
-                                    Button("Close", systemImage: "xmark") {
-                                        isPresenting = false
-                                    }
-                                }
-                            }
-                            .navigationTitle("Source Code")
-                            #if os(iOS)
-                                .navigationBarTitleDisplayMode(.inline)
-                            #endif
-                    }
-                    .padding()
-                    .font(.callout)
-                }
+                SheetView(isPresenting: $isPresenting, project: "tempConvert")
             }
         }
     }
