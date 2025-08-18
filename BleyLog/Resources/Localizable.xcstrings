@@ -30,6 +30,16 @@
         }
       }
     },
+    "%@ Courses" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Kurzy"
+          }
+        }
+      }
+    },
     "%lld people" : {
       "localizations" : {
         "sk" : {
@@ -170,6 +180,22 @@
         }
       }
     },
+    "Days %lld-%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Days %1$lld-%2$lld"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dni %1$lld-%2$lld"
+          }
+        }
+      }
+    },
     "Days %lld-%lld: %@" : {
       "localizations" : {
         "en" : {
@@ -279,6 +305,16 @@
         }
       }
     },
+    "Language" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jazyk"
+          }
+        }
+      }
+    },
     "Lessons in progress" : {
       "localizations" : {
         "sk" : {
@@ -305,6 +341,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Označiť ako rozpracované"
+          }
+        }
+      }
+    },
+    "No courses for %@." : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žiadne kurzy pre %@"
           }
         }
       }
@@ -434,16 +480,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Skóre: %1$lld / %2$lld"
-          }
-        }
-      }
-    },
-    "Search" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hľadať"
           }
         }
       }

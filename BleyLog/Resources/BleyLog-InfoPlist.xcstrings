@@ -3,7 +3,7 @@
   "strings" : {
     "CFBundleName" : {
       "comment" : "Bundle name",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -14,7 +14,7 @@
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "HWS"
+            "value" : "BleyLog"
           }
         }
       }
