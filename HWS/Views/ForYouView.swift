@@ -65,7 +65,7 @@ struct ForYouView: View {
                     Text("Searching in \(lessonsForYou.count) lessons...")
                     if filteredLessons.count > 0 {
                         ForEach(
-                            lessonsForYou,
+                            filteredLessons,
                             id: \.self
                         ) {
                             lesson in
