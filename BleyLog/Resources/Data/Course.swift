@@ -23,7 +23,7 @@ class Course {
 
     }
 
-    static let coursesData = [
+    static let swiftCourses = [
         Course(
             title: "100 days of SwiftUI",
             lessons: Lesson.hundreedDaysOfSwiftUILessons
