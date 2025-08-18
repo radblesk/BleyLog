@@ -41,12 +41,14 @@ class Lesson {
             firstDay: 16,
             lastDay: 24,
             title: "Starting SwiftUI",
+            finished: true,
             projects: Project.startingSwiftUI,
         ),
         Lesson(
             firstDay: 26,
             lastDay: 34,
             title: "Expanding your skills",
+            inProgress: true,
         ),
         Lesson(
             firstDay: 36,
