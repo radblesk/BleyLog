@@ -55,7 +55,11 @@ struct SettingsView: View {
             .alert("Remove user data", isPresented: $showAlert) {
                 Button("Remove", role: .destructive) {
                     do {
+                        try context.delete(model: Language.self)
                         try context.delete(model: Course.self)
+                        try context.delete(model: Lesson.self)
+                        try context.delete(model: Project.self)
+                        try context.save()
                         showDeleteConfirmation = true
                     } catch {
                         showErrorAlert = true
