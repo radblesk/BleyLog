@@ -25,7 +25,7 @@ struct ForYouView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                Image(systemName: "magnifyingglass")
+                                Image(systemName: "star.fill")
                                     .resizable()
                                     .frame(width: 32, height: 32)
                                     .padding(8)
