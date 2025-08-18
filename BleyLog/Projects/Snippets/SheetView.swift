@@ -21,20 +21,25 @@ struct SheetView: View {
                 )
                 .highlightLanguage(.swift)
                 .codeTextColors(.theme(.xcode))
-                .toolbar {
-                    ToolbarItem(placement: .destructiveAction) {
-                        Button("Close", systemImage: "xmark") {
-                            isPresenting = false
-                        }
+            }
+            .textSelection(.enabled)
+            .font(.system(size: 12))
+            .navigationTitle("Source Code")
+            #if os(iOS)
+                .navigationBarTitleDisplayMode(.inline)
+            #endif
+            .toolbar {
+                ToolbarItem(placement: .destructiveAction) {
+                    Button("Close", systemImage: "xmark") {
+                        isPresenting = false
                     }
                 }
-                .navigationTitle("Source Code")
-                #if os(iOS)
-                    .navigationBarTitleDisplayMode(.inline)
-                #endif
             }
-            .font(.callout)
         }
         .presentationDetents([.medium, .large])
     }
+}
+
+#Preview {
+    SheetView(isPresenting: .constant(true), project: "weSplit")
 }
