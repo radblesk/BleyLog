@@ -14,7 +14,8 @@ struct HomeView: View {
     @State private var preferredCompactColumn = NavigationSplitViewColumn
         .sidebar
 
-    @Query private var courses: [Course]
+    @Query(sort: \Language.title) private var languages: [Language]
+
     @Environment(\.modelContext) private var context
 
     var body: some View {
@@ -23,7 +24,7 @@ struct HomeView: View {
             preferredCompactColumn: $preferredCompactColumn
         ) {
             LessonList(
-                courses: courses,
+                languages: languages,
             )
             .navigationSplitViewColumnWidth(min: 400, ideal: 450)
 
