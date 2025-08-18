@@ -13,5 +13,6 @@ struct BleyLogApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(ModelData.shared.modelContainer)
     }
 }
