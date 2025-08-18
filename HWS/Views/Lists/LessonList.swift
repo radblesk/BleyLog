@@ -13,12 +13,11 @@ struct LessonList: View {
     @Environment(\.modelContext) private var context
 
     var courses: [Course]
-    @Binding var selectedLesson: Lesson?
 
     var body: some View {
         NavigationStack {
             VStack {
-                List(selection: $selectedLesson) {
+                List {
                     ForEach(courses, id: \.self) { course in
                         if course.lessons.count > 0 {
                             Section(course.title) {
@@ -28,7 +27,9 @@ struct LessonList: View {
                                     },
                                     id: \.self
                                 ) { lesson in
-                                    HStack {
+                                    NavigationLink {
+                                        ProjectList(lesson: lesson)
+                                    } label: {
                                         Label(
                                             "Days \(lesson.firstDay)-\(lesson.lastDay): \(lesson.title)",
                                             systemImage: lesson.finished
@@ -37,10 +38,6 @@ struct LessonList: View {
                                                     ? "circle.dotted"
                                                     : "book.pages.fill"
                                         )
-                                        Spacer()
-                                        Image(systemName: "chevron.right")
-                                            .foregroundStyle(.secondary)
-                                            .imageScale(.small)
                                     }
                                     .swipeActions(edge: .leading) {
                                         Button(
@@ -92,13 +89,13 @@ struct LessonList: View {
                 .listStyle(.sidebar)
                 .navigationTitle("Swift Courses")
             }
+
         }
     }
 }
 
 #Preview {
     LessonList(
-        courses: Course.coursesData,
-        selectedLesson: .constant(ModelData.shared.defaultLesson)
+        courses: Course.coursesData
     )
 }

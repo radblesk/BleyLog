@@ -9,26 +9,22 @@ import SwiftData
 import SwiftUI
 
 struct ProjectList: View {
-    var selectedLesson: Lesson?
-
-    @Binding var selectedProject: Project?
+    var lesson: Lesson?
 
     var body: some View {
         NavigationStack {
-            List(selection: $selectedProject) {
+            List {
                 Section(header: Text("Projects")) {
-                    if let lesson = selectedLesson {
+                    if let lesson = lesson {
                         if lesson.projects.count > 0 {
                             ForEach(
                                 lesson.projects.sorted { $0.date < $1.date },
                                 id: \.self
                             ) { project in
-                                HStack {
+                                NavigationLink {
+                                    ProjectDetailView(project: project)
+                                } label: {
                                     Label(project.title, systemImage: "folder")
-                                    Spacer()
-                                    Image(systemName: "chevron.right")
-                                        .foregroundStyle(.secondary)
-                                        .imageScale(.small)
                                 }
                             }
                         } else {
@@ -39,7 +35,7 @@ struct ProjectList: View {
                     }
                 }
             }
-            .navigationTitle(selectedLesson?.title ?? "")
+            .navigationTitle(lesson?.title ?? "")
             #if os(iOS)
                 .navigationBarTitleDisplayMode(.inline)
             #endif
@@ -49,7 +45,6 @@ struct ProjectList: View {
 
 #Preview {
     ProjectList(
-        selectedLesson: ModelData.shared.defaultLesson,
-        selectedProject: .constant(nil)
+        lesson: ModelData.shared.defaultLesson,
     )
 }

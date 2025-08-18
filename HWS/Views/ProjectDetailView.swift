@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ProjectDetailView: View {
-    var selectedProject: Project?
+    var project: Project?
 
     var body: some View {
         NavigationStack {
             Group {
-                switch selectedProject?.title {
+                switch project?.title {
                 case "WeSplit":
                     WeSplit()
                 case "TempConvert":
@@ -34,7 +34,7 @@ struct ProjectDetailView: View {
 
 #Preview {
     ProjectDetailView(
-        selectedProject: Project(
+        project: Project(
             title: "WeSplit",
             projectNumber: 1,
             date: Date(),

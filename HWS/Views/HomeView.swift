@@ -12,13 +12,10 @@ struct HomeView: View {
     @State private var columnVisibility = NavigationSplitViewVisibility
         .doubleColumn
     @State private var preferredCompactColumn = NavigationSplitViewColumn
-        .content
+        .sidebar
 
     @Query private var courses: [Course]
     @Environment(\.modelContext) private var context
-
-    @State private var selectedLesson: Lesson? = ModelData.shared.defaultLesson
-    @State private var selectedProject: Project?
 
     var body: some View {
         NavigationSplitView(
@@ -27,18 +24,14 @@ struct HomeView: View {
         ) {
             LessonList(
                 courses: courses,
-                selectedLesson: $selectedLesson
             )
             .navigationSplitViewColumnWidth(min: 200, ideal: 250)
 
         } content: {
-            ProjectList(
-                selectedLesson: selectedLesson,
-                selectedProject: $selectedProject
-            )
-            .navigationSplitViewColumnWidth(min: 300, ideal: 350)
+            ProjectList()
+                .navigationSplitViewColumnWidth(min: 300, ideal: 350)
         } detail: {
-            ProjectDetailView(selectedProject: selectedProject)
+            ProjectDetailView()
                 .navigationSplitViewColumnWidth(min: 300, ideal: 450)
         }
         .navigationSplitViewStyle(.balanced)
