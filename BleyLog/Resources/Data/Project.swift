@@ -14,17 +14,20 @@ class Project {
     var projectNumber: Int
     var date: Date
     var desc: String
+    var icon: String?
 
     init(
         title: String,
         projectNumber: Int,
         date: Date,
-        desc: String
+        desc: String,
+        icon: String? = nil
     ) {
         self.title = title
         self.projectNumber = projectNumber
         self.date = date
         self.desc = desc
+        self.icon = icon
     }
 
     static func createDate(year: Int, month: Int, day: Int) -> Date {
@@ -40,19 +43,22 @@ class Project {
             title: "WeSplit",
             projectNumber: 1,
             date: createDate(year: 2025, month: 7, day: 8),
-            desc: "A simple split app for splitting bills."
+            desc: "A simple split app for splitting bills.",
+            icon: "WeSplit-icon"
         ),
         Project(
             title: "TempConvert",
             projectNumber: 2,
             date: createDate(year: 2025, month: 7, day: 21),
-            desc: "A simple temperature converter app."
+            desc: "A simple temperature converter app.",
+            icon: "TempConvert-icon"
         ),
         Project(
             title: "GuessTheFlag",
             projectNumber: 3,
             date: createDate(year: 2025, month: 8, day: 3),
-            desc: "A simple flag guessing game."
+            desc: "A simple flag guessing game.",
+            icon: "GuessTheFlag-icon"
         ),
     ]
 }

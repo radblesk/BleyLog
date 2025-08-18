@@ -13,11 +13,20 @@ struct ProjectListRow: View {
     var body: some View {
         HStack(spacing: 20) {
 
-            Image(systemName: "folder")
-                .foregroundStyle(Color.accentColor)
-                .imageScale(.large)
+            if let icon = project.icon {
+                Image(icon)
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .clipShape(.rect(cornerRadius: 8))
+                    .foregroundStyle(Color.accentColor)
+                    .shadow(radius: 2, x: 0, y: 2)
+            } else {
+                Image(systemName: "folder")
+                    .foregroundStyle(Color.accentColor)
+                    .imageScale(.large)
+            }
 
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
 
                 HStack {
                     Text(project.title)
@@ -38,13 +47,13 @@ struct ProjectListRow: View {
                         Text(
                             "\(project.date.formatted(.relative(presentation: .named, unitsStyle: .wide)))"
                         )
-                        .font(.subheadline)
+                        .font(.caption)
                         .foregroundStyle(.secondary)
                     } else {
                         Text(
                             "\(project.date.formatted(date: .abbreviated, time: .omitted))"
                         )
-                        .font(.subheadline)
+                        .font(.caption)
                         .foregroundStyle(.secondary)
                     }
                 }
@@ -57,9 +66,12 @@ struct ProjectListRow: View {
 
             }
         }
+        .padding(.vertical, 8)
     }
 }
 
 #Preview {
-    ProjectListRow(project: Project.startingSwiftUI.first!)
+    List {
+        ProjectListRow(project: Project.startingSwiftUI.first!)
+    }
 }

@@ -45,6 +45,6 @@ struct ProjectList: View {
 
 #Preview {
     ProjectList(
-        lesson: ModelData.shared.defaultLesson,
+        lesson: Language.languages.first?.courses.first?.lessons.first
     )
 }

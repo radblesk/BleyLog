@@ -16,8 +16,6 @@ class ModelData {
         modelContainer.mainContext
     }
 
-    var defaultLesson: Lesson?
-
     init() {
         let schema = Schema([
             Language.self,
