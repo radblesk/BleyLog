@@ -20,6 +20,7 @@ class ModelData {
 
     init() {
         let schema = Schema([
+            Language.self,
             Course.self,
             Lesson.self,
             Project.self,
@@ -37,8 +38,6 @@ class ModelData {
 
             insertModelData()
 
-            defaultLesson = Course.coursesData.first?.lessons.first
-
             try context.save()
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
@@ -48,24 +47,13 @@ class ModelData {
     }
 
     private func insertModelData() {
-        let descriptor = FetchDescriptor<Course>()
+        let descriptor = FetchDescriptor<Language>()
 
-        guard let course = try? context.fetch(descriptor) else { return }
+        guard let languages = try? context.fetch(descriptor) else { return }
 
-        if course.isEmpty {
-            for courses in Course.coursesData {
-                context.insert(courses)
-            }
-        }
-
-    }
-
-    func removeAll() {
-        let descriptor = FetchDescriptor<Course>()
-
-        if let course = try? context.fetch(descriptor) {
-            for item in course {
-                context.delete(item)
+        if languages.isEmpty {
+            for language in Language.languages {
+                context.insert(language)
             }
         }
     }
