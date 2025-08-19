@@ -14,5 +14,9 @@ struct BleyLogApp: App {
             ContentView()
         }
         .modelContainer(ModelData.shared.modelContainer)
+        #if os(macOS)
+        .defaultSize(width: 800, height: 600)
+        .defaultPosition(.topLeading)
+        #endif
     }
 }
