@@ -9,42 +9,41 @@ import SwiftData
 import SwiftUI
 
 struct ProjectList: View {
+    // DataModel
     var lesson: Lesson?
+
+    // Bindings
+    @Binding var project: Project?
 
     var body: some View {
         NavigationStack {
-            List {
-                Section(header: Text("Projects")) {
-                    if let lesson = lesson {
-                        if lesson.projects.count > 0 {
-                            ForEach(
-                                lesson.projects.sorted { $0.date < $1.date },
-                                id: \.self
-                            ) { project in
-                                NavigationLink {
-                                    ProjectDetailView(project: project)
-                                } label: {
-                                    ProjectListRow(project: project)
-                                }
-                            }
-                        } else {
-                            Text("No projects, yet.")
+            if let lesson = lesson {
+                if !lesson.projects.isEmpty {
+                    List(
+                        lesson.projects.sorted {
+                            $0.date
+                                < $1.date
+                        },
+                        selection: $project
+                    ) { project in
+                        NavigationLink(value: project) {
+                            ProjectListRow(project: project)
                         }
-                    } else {
-                        Text("No lesson selected.")
                     }
+                    .navigationTitle(lesson.title)
+                } else {
+                    Text("No projects")
                 }
+            } else {
+                Text("Select a lesson")
             }
-            .navigationTitle(lesson?.title ?? "")
-            #if os(iOS)
-                .navigationBarTitleDisplayMode(.inline)
-            #endif
         }
     }
 }
 
 #Preview {
     ProjectList(
-        lesson: Language.languages.first?.courses.first?.lessons.first
+        lesson: Lesson.hundreedDaysOfSwiftUILessons.last,
+        project: .constant(nil)
     )
 }

@@ -9,206 +9,166 @@ import SwiftData
 import SwiftUI
 
 struct LessonList: View {
-
+    // DataModel
     @Environment(\.modelContext) private var context
-
     var languages: [Language]
 
+    // States
     @State private var searchText: String = ""
     @State private var expanded: Set<String> = ["100 days of SwiftUI"]
     @State private var isPresented = false
-    @State private var selectedLanguage: Language?
+    @Binding var selectedLanguage: Language?
+
+    // Bindings
+    @Binding var lesson: Lesson?
+
+    // OS Specifics
+    private var buttonPlacement: ToolbarItemPlacement {
+        #if os(iOS)
+            .bottomBar
+        #else
+            .automatic
+        #endif
+    }
 
     var body: some View {
         NavigationStack {
             VStack {
-                if let lang = selectedLanguage {
-                    List {
-                        if lang.courses.count > 0 {
-                            if searchText.isEmpty {
-                                Section {
-                                    HStack {
-                                        Spacer()
-                                        VStack(spacing: 16) {
-                                            Image(
-                                                systemName:
-                                                    "books.vertical.fill"
-                                            )
-                                            .resizable()
-                                            .frame(width: 32, height: 32)
-                                            .padding(8)
-                                            .background(.orange)
-                                            .clipShape(.rect(cornerRadius: 10))
-                                            .foregroundStyle(.white)
-                                            Text(
-                                                "Programming courses from various sources. Track your progress and learn new programming languages."
-                                            )
-                                            .multilineTextAlignment(.center)
-                                            .font(.subheadline)
-                                        }
-                                        Spacer()
-                                    }
-                                    .padding()
-                                }
-                            } else {
-                                Section {
-                                    Text(
-                                        "Searching in \(lang.courses.reduce(0) { $0 + $1.lessons.count }) lessons..."
-                                    )
-                                }
+                if let selectedLanguage {
+                    if !selectedLanguage.courses.isEmpty {
+                        let sortedCourses = selectedLanguage
+                            .courses
+                            .sorted {
+                                $0.lessons
+                                    .count > $1.lessons.count
                             }
-                            ForEach(
-                                lang.courses.sorted {
-                                    $0.lessons.count > $1.lessons.count
-                                },
-                                id: \.self
-                            ) { course in
-                                if course.lessons.count > 0 {
-                                    Section(
-                                        course.title,
-                                        isExpanded: Binding<Bool>(
-                                            get: {
-                                                expanded.contains(course.title)
-                                            },
-                                            set: { isExpanding in
-                                                if isExpanding {
-                                                    expanded.insert(
-                                                        course.title
-                                                    )
-                                                } else {
-                                                    expanded.remove(
-                                                        course.title
-                                                    )
-                                                }
-                                            }
-                                        )
-                                    ) {
-                                        let sortedLessons = course.lessons
-                                            .sorted {
-                                                $0.firstDay < $1.firstDay
-                                            }
-
-                                        let searchResults = sortedLessons.filter
-                                        {
-                                            $0.title.lowercased().contains(
-                                                searchText.lowercased()
+                        List(
+                            sortedCourses,
+                            selection: $lesson
+                        ) {
+                            course in
+                            Section(
+                                course.title,
+                                isExpanded: Binding<Bool>(
+                                    get: {
+                                        expanded.contains(course.title)
+                                    },
+                                    set: { isExpanding in
+                                        if isExpanding {
+                                            expanded.insert(
+                                                course.title
+                                            )
+                                        } else {
+                                            expanded.remove(
+                                                course.title
                                             )
                                         }
-                                        ForEach(
-                                            searchText.isEmpty
-                                                ? sortedLessons : searchResults,
-                                            id: \.self
-                                        ) { lesson in
-                                            NavigationLink {
-                                                ProjectList(lesson: lesson)
-                                            } label: {
-                                                HStack(spacing: 20) {
-                                                    if lesson.inProgress {
-                                                        ProgressView()
-                                                            .tint(.orange)
-                                                    } else {
-                                                        Image(
-                                                            systemName: lesson
-                                                                .finished
-                                                                ? "checkmark"
-                                                                : "book.pages"
-                                                        )
-                                                        .imageScale(.large)
-                                                        .foregroundStyle(
-                                                            lesson.finished
-                                                                ? .green
-                                                                : .orange
-                                                        )
-                                                    }
-                                                    VStack(alignment: .leading)
-                                                    {
-                                                        Text(lesson.title)
-                                                            .font(.headline)
-                                                        Text(
-                                                            "Days \(lesson.firstDay)-\(lesson.lastDay)"
-                                                        )
-                                                        .font(.subheadline)
-                                                        .foregroundStyle(
-                                                            .secondary
-                                                        )
-                                                    }
-                                                }
-                                            }
-                                            .swipeActions(edge: .leading) {
-                                                Button(
-                                                    "Mark as done",
-                                                    systemImage: lesson.finished
-                                                        ? "xmark" : "checkmark"
-                                                ) {
-                                                    if lesson.inProgress {
-                                                        lesson.inProgress
-                                                            .toggle()
-                                                    }
+                                    }
+                                )
+                            ) {
+                                if !course.lessons.isEmpty {
+                                    let searchResults = course.lessons.filter {
+                                        $0.title.lowercased().contains(
+                                            searchText.lowercased()
+                                        )
+                                    }
 
-                                                    lesson.finished.toggle()
-
-                                                    do {
-                                                        try context.save()
-                                                        print("Saved")
-                                                    } catch {
-                                                        print(error)
-                                                    }
+                                    let sortedLessons = course.lessons.sorted {
+                                        $0.firstDay
+                                            < $1.firstDay
+                                    }
+                                    ForEach(
+                                        searchText.isEmpty
+                                            ? sortedLessons : searchResults,
+                                        id: \.self
+                                    ) { lesson in
+                                        NavigationLink(value: lesson) {
+                                            HStack(spacing: 20) {
+                                                if lesson.inProgress {
+                                                    Image(systemName: "target")
+                                                        .symbolEffect(
+                                                            .variableColor
+                                                                .iterative
+                                                                .dimInactiveLayers
+                                                                .reversing,
+                                                            options: .repeat(
+                                                                .continuous
+                                                            )
+                                                        )
+                                                        .foregroundStyle(.blue)
+                                                } else {
+                                                    Image(
+                                                        systemName: lesson
+                                                            .finished
+                                                            ? "checkmark"
+                                                            : "book.pages"
+                                                    )
+                                                    .imageScale(.large)
+                                                    .foregroundStyle(
+                                                        lesson.finished
+                                                            ? .green
+                                                            : .orange
+                                                    )
                                                 }
-                                                .tint(.green)
-                                                Button(
-                                                    "Mark as in progress",
-                                                    systemImage:
-                                                        "circle.dotted"
-                                                ) {
-                                                    if lesson.finished {
-                                                        lesson.finished.toggle()
-                                                    }
-                                                    lesson.inProgress.toggle()
-
-                                                    do {
-                                                        try context.save()
-                                                    } catch {
-                                                        print(error)
-                                                    }
+                                                VStack(alignment: .leading) {
+                                                    Text(lesson.title)
+                                                        .font(.headline)
+                                                    Text(
+                                                        "Days \(lesson.firstDay)-\(lesson.lastDay)"
+                                                    )
+                                                    .font(.subheadline)
+                                                    .foregroundStyle(
+                                                        .secondary
+                                                    )
                                                 }
-                                                .tint(.orange)
+                                                Spacer()
+                                                Text("\(lesson.projects.count)")
+                                                    .foregroundStyle(.secondary)
                                             }
                                         }
+                                        .disabled(
+                                            lesson.projects.count == 0
+                                                && !lesson.inProgress
+                                        )
+                                        .selectionDisabled(
+                                            lesson.projects.count == 0
+                                                && !lesson.inProgress
+                                        )
                                     }
                                 } else {
-                                    Section(course.title) {
-                                        Text("Course not started yet...")
-                                            .foregroundStyle(.secondary)
-                                    }
+                                    Text("Course not started...")
+                                        .foregroundStyle(.secondary)
                                 }
                             }
-                        } else {
-                            Text("No courses for \(lang.title).")
                         }
+                        .searchable(text: $searchText)
+                    } else {
+                        Text("No courses")
                     }
-                    .searchable(text: $searchText)
-                    .onChange(of: searchText) { _, newValue in
-                        if !newValue.isEmpty {
-                            expanded = Set(
-                                lang.courses.filter {
-                                    !$0.lessons.isEmpty
-                                }.map(\.title)
-                            )
-                        } else {
-                            expanded = ["100 days of SwiftUI"]
-                        }
-                    }
-                    .listStyle(.sidebar)
-                    .navigationTitle("\(lang.title) Courses")
+                } else {
+                    Text("Select a language")
                 }
             }
+            //            .navigationTitle("Courses")
+            //            .toolbarTitleDisplayMode(.inlineLarge)
             .onAppear {
                 if selectedLanguage == nil {
                     selectedLanguage = languages.first { $0.title == "Swift" }
                 }
             }
+            .navigationTitle("Courses")
+            .toolbarTitleDisplayMode(.inlineLarge)
             .toolbar {
-                ToolbarItem {
+                ToolbarItem(placement: .status) {
+                    if let selectedLanguage {
+                        Text(
+                            "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
+                        )
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    }
+                }
+                ToolbarItem(placement: buttonPlacement) {
                     Button(
                         "Language",
                         systemImage: "line.3.horizontal.decrease"
@@ -216,6 +176,14 @@ struct LessonList: View {
                         isPresented = true
                     }
                 }
+                ToolbarItem(placement: buttonPlacement) {
+                    NavigationLink {
+                        SettingsView()
+                    } label: {
+                        Label("Settings", systemImage: "gear")
+                    }
+                }
+
             }
             .sheet(isPresented: $isPresented) {
                 VStack {
@@ -229,7 +197,8 @@ struct LessonList: View {
                         .pickerStyle(.wheel)
                     #endif
                 }
-                .presentationDetents([.fraction(0.2)])
+                .padding()
+                .presentationDetents([.height(200), .medium])
                 .presentationDragIndicator(.visible)
             }
         }
@@ -239,5 +208,7 @@ struct LessonList: View {
 #Preview {
     LessonList(
         languages: Language.languages,
+        selectedLanguage: .constant(Language.languages.first),
+        lesson: .constant(nil)
     )
 }
