@@ -37,16 +37,17 @@ struct ProjectList: View {
                             for: .navigation
                         )
                         .listStyle(.carousel)
-                        .toolbarForegroundStyle(.mint, for: .automatic)
+                        .toolbarForegroundStyle(.teal, for: .automatic)
                     #endif
                 } else {
                     Text("No projects")
                         .navigationTitle(lesson.title)
                         #if os(watchOS)
                             .containerBackground(
-                                .mint.gradient,
+                                .teal.gradient,
                                 for: .navigation
                             )
+                            .toolbarForegroundStyle(.teal, for: .automatic)
                         #endif
                 }
             } else {
