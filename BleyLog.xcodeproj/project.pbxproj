@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F91370C32E551EE10030E98D /* BleyLogWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F91370B92E551EDF0030E98D /* BleyLogWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F91370C32E551EE10030E98D /* BleyLog for watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F91371142E552D9C0030E98D /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F91371132E552D9C0030E98D /* HighlightSwift */; };
 		F919669A2E5503FF0014E8D1 /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F91966992E5503FF0014E8D1 /* HighlightSwift */; };
 /* End PBXBuildFile section */
@@ -29,7 +29,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				F91370C32E551EE10030E98D /* BleyLogWatch Watch App.app in Embed Watch Content */,
+				F91370C32E551EE10030E98D /* BleyLog for watchOS.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,14 +37,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F91370B92E551EDF0030E98D /* BleyLogWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLogWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLog for watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F91370E82E552D070030E98D /* BleyLog for Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLog for Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F913711C2E5536350030E98D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		F94692062E49185A009E637D /* BleyLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleyLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F91370D02E551F0C0030E98D /* Exceptions for "BleyLog" folder in "BleyLogWatch Watch App" target */ = {
+		F91370D02E551F0C0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for watchOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"Projects/16-24/GuessTheFlag.swift",
@@ -61,7 +61,7 @@
 				Resources/Data/Project.swift,
 				Resources/Localizable.xcstrings,
 			);
-			target = F91370B82E551EDF0030E98D /* BleyLogWatch Watch App */;
+			target = F91370B82E551EDF0030E98D /* BleyLog for watchOS */;
 		};
 		F91370FC2E552D1F0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for Mac" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -85,9 +85,9 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F91370BA2E551EE00030E98D /* BleyLogWatch Watch App */ = {
+		F91370BA2E551EE00030E98D /* BleyLog for watchOS Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "BleyLogWatch Watch App";
+			path = "BleyLog for watchOS Watch App";
 			sourceTree = "<group>";
 		};
 		F91370E92E552D070030E98D /* BleyLog for Mac */ = {
@@ -98,7 +98,7 @@
 		F94692082E49185A009E637D /* BleyLog */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				F91370D02E551F0C0030E98D /* Exceptions for "BleyLog" folder in "BleyLogWatch Watch App" target */,
+				F91370D02E551F0C0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for watchOS" target */,
 				F91370FC2E552D1F0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for Mac" target */,
 			);
 			path = BleyLog;
@@ -145,7 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				F94692082E49185A009E637D /* BleyLog */,
-				F91370BA2E551EE00030E98D /* BleyLogWatch Watch App */,
+				F91370BA2E551EE00030E98D /* BleyLog for watchOS Watch App */,
 				F91370E92E552D070030E98D /* BleyLog for Mac */,
 				F91371122E552D9C0030E98D /* Frameworks */,
 				F94692072E49185A009E637D /* Products */,
@@ -156,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				F94692062E49185A009E637D /* BleyLog.app */,
-				F91370B92E551EDF0030E98D /* BleyLogWatch Watch App.app */,
+				F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */,
 				F91370E82E552D070030E98D /* BleyLog for Mac.app */,
 			);
 			name = Products;
@@ -165,9 +165,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F91370B82E551EDF0030E98D /* BleyLogWatch Watch App */ = {
+		F91370B82E551EDF0030E98D /* BleyLog for watchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F91370C42E551EE10030E98D /* Build configuration list for PBXNativeTarget "BleyLogWatch Watch App" */;
+			buildConfigurationList = F91370C42E551EE10030E98D /* Build configuration list for PBXNativeTarget "BleyLog for watchOS" */;
 			buildPhases = (
 				F91370B52E551EDF0030E98D /* Sources */,
 				F91370B62E551EDF0030E98D /* Frameworks */,
@@ -178,13 +178,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				F91370BA2E551EE00030E98D /* BleyLogWatch Watch App */,
+				F91370BA2E551EE00030E98D /* BleyLog for watchOS Watch App */,
 			);
-			name = "BleyLogWatch Watch App";
+			name = "BleyLog for watchOS";
 			packageProductDependencies = (
 			);
 			productName = "BleyLogWatch Watch App";
-			productReference = F91370B92E551EDF0030E98D /* BleyLogWatch Watch App.app */;
+			productReference = F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F91370E72E552D070030E98D /* BleyLog for Mac */ = {
@@ -274,7 +274,7 @@
 			projectRoot = "";
 			targets = (
 				F94692052E49185A009E637D /* BleyLog */,
-				F91370B82E551EDF0030E98D /* BleyLogWatch Watch App */,
+				F91370B82E551EDF0030E98D /* BleyLog for watchOS */,
 				F91370E72E552D070030E98D /* BleyLog for Mac */,
 			);
 		};
@@ -331,7 +331,7 @@
 /* Begin PBXTargetDependency section */
 		F91370C22E551EE10030E98D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F91370B82E551EDF0030E98D /* BleyLogWatch Watch App */;
+			target = F91370B82E551EDF0030E98D /* BleyLog for watchOS */;
 			targetProxy = F91370C12E551EE10030E98D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -690,7 +690,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F91370C42E551EE10030E98D /* Build configuration list for PBXNativeTarget "BleyLogWatch Watch App" */ = {
+		F91370C42E551EE10030E98D /* Build configuration list for PBXNativeTarget "BleyLog for watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F91370C52E551EE10030E98D /* Debug */,
