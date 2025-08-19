@@ -68,7 +68,9 @@ struct WeSplit: View {
                             Text($0, format: .percent)
                         }
                     }
-                    .pickerStyle(.segmented)
+                    #if os(iOS)
+                        .pickerStyle(.segmented)
+                    #endif
                 }
 
                 Section("Grand Total") {
@@ -93,21 +95,23 @@ struct WeSplit: View {
                 }
             }
             .navigationTitle("WeSplit")
-            .toolbar {
-                Button {
-                    isPresenting = true
-                } label: {
-                    Label("Source Code", systemImage: "terminal")
-                }
-                if amountIsFocused {
-                    Button("Done", systemImage: "checkmark") {
-                        amountIsFocused = false
+            #if !os(watchOS)
+                .toolbar {
+                    Button {
+                        isPresenting = true
+                    } label: {
+                        Label("Source Code", systemImage: "terminal")
+                    }
+                    if amountIsFocused {
+                        Button("Done", systemImage: "checkmark") {
+                            amountIsFocused = false
+                        }
                     }
                 }
-            }
-            .sheet(isPresented: $isPresenting) {
-                SheetView(isPresenting: $isPresenting, project: "weSplit")
-            }
+                .sheet(isPresented: $isPresenting) {
+                    SheetView(isPresenting: $isPresenting, project: "weSplit")
+                }
+            #endif
         }
     }
 }

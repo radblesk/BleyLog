@@ -36,11 +36,14 @@ struct SettingsView: View {
                         .foregroundStyle(.red)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
-                        .background(
-                            Color(.secondarySystemGroupedBackground).opacity(
-                                0.5
+                        #if os(iOS)
+                            .background(
+                                Color(.secondarySystemGroupedBackground)
+                                    .opacity(
+                                        0.5
+                                    )
                             )
-                        )
+                        #endif
                         .clipShape(.capsule)
                     } header: {
                         Text("Data reset")
@@ -53,24 +56,33 @@ struct SettingsView: View {
                         .multilineTextAlignment(.leading)
                     }
                     .listRowBackground(.some(Color.clear))
-                    .listRowSeparator(.hidden)
+                    #if os(iOS)
+                        .listRowSeparator(.hidden)
+                    #endif
+                    HStack {
+                        VStack {
+                            Text(
+                                "Developed by [Radoslav Bley](https://www.radobley.sk)"
+                            )
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+
+                            Text(
+                                "v0.2.0 2025819.1"
+                            )
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        }
+                        .padding()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .listRowBackground(.some(Color.clear))
+                    #if os(iOS)
+                        .listRowSeparator(.hidden)
+                    #endif
                 }
                 .listStyle(.plain)
 
-                VStack {
-                    Text(
-                        "Developed by [Radoslav Bley](https://www.radobley.sk)"
-                    )
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-
-                    Text(
-                        "v0.2.0 2025819.1"
-                    )
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                }
-                .padding()
             }
             .alert("Remove user data", isPresented: $showAlert) {
                 Button("Remove", role: .destructive) {
@@ -113,7 +125,7 @@ struct SettingsView: View {
             #endif
             .toolbar {
                 ToolbarItem {
-                    if #available(iOS 26.0, *) {
+                    if #available(iOS 26.0, watchOS 26, macOS 26, *) {
                         Button("Close", systemImage: "xmark", role: .close) {
                             presented = false
                         }

@@ -25,7 +25,7 @@ struct LessonList: View {
 
     // OS Specifics
     private var buttonPlacement: ToolbarItemPlacement {
-        #if os(iOS)
+        #if os(iOS) || os(watchOS)
             .bottomBar
         #else
             .automatic
@@ -84,50 +84,7 @@ struct LessonList: View {
                                         id: \.self
                                     ) { lesson in
                                         NavigationLink(value: lesson) {
-                                            HStack(spacing: 20) {
-                                                if lesson.inProgress {
-                                                    Image(systemName: "target")
-                                                        .symbolEffect(
-                                                            .variableColor
-                                                                .iterative
-                                                                .dimInactiveLayers
-                                                                .nonReversing,
-                                                            options: .repeat(
-                                                                .periodic(
-                                                                    delay: 1.0
-                                                                )
-                                                            )
-                                                        )
-                                                        .foregroundStyle(.blue)
-                                                } else {
-                                                    Image(
-                                                        systemName: lesson
-                                                            .finished
-                                                            ? "checkmark"
-                                                            : "book.pages"
-                                                    )
-                                                    .imageScale(.medium)
-                                                    .foregroundStyle(
-                                                        lesson.finished
-                                                            ? .green
-                                                            : .orange
-                                                    )
-                                                }
-                                                VStack(alignment: .leading) {
-                                                    Text(lesson.title)
-                                                        .font(.headline)
-                                                    Text(
-                                                        "Days \(lesson.firstDay)-\(lesson.lastDay)"
-                                                    )
-                                                    .font(.caption)
-                                                    .foregroundStyle(
-                                                        .secondary
-                                                    )
-                                                }
-                                                Spacer()
-                                                Text("\(lesson.projects.count)")
-                                                    .foregroundStyle(.secondary)
-                                            }
+                                            LessonListRow(lesson: lesson)
                                         }
                                         .disabled(
                                             lesson.projects.count == 0
@@ -144,6 +101,9 @@ struct LessonList: View {
                                 }
                             }
                         }
+                        #if os(watchOS)
+                            .listStyle(.carousel)
+                        #endif
                         .headerProminence(.increased)
                         .refreshable {
                             insertModelData()
@@ -160,67 +120,95 @@ struct LessonList: View {
                     selectedLanguage = languages.first { $0.title == "Swift" }
                 }
             }
-            .navigationTitle("Courses")
-            .toolbarTitleDisplayMode(.inlineLarge)
-            .searchable(text: $searchText)
+            .navigationTitle(Text("Courses"))
+            #if os(watchOS)
+                .containerBackground(
+                    Color(red: 1, green: 0.23, blue: 0).gradient.opacity(0.5),
+                    for: .navigation
+                )
+                .toolbarForegroundStyle(.orange, for: .automatic)
+            #endif
+            #if os(iOS) || os(macOS)
+                .searchable(text: $searchText)
+            #endif
             .toolbar {
-                ToolbarItem(placement: .automatic) {
-                    Button("Settings", systemImage: "ellipsis") {
-                        settingsPresented = true
-                    }
-                }
-                if #available(iOS 26, *) {
-                    DefaultToolbarItem(kind: .search, placement: .bottomBar)
+                #if os(watchOS)
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        Button(
+                            "Language",
+                            systemImage: "line.3.horizontal.decrease"
+                        ) {
+                            isPresented = true
+                        }
 
-                    ToolbarItem(placement: .largeSubtitle) {
-                        if let selectedLanguage {
-                            HStack {
-                                Text(
-                                    "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
-                                )
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                Spacer()
+                        Button("Settings", systemImage: "ellipsis") {
+                            settingsPresented = true
+                        }
+                    }
+                #endif
+                #if os(iOS)
+                    ToolbarItem(placement: .automatic) {
+                        Button("Settings", systemImage: "ellipsis") {
+                            settingsPresented = true
+                        }
+                    }
+                    if #available(iOS 26, *) {
+                        DefaultToolbarItem(kind: .search, placement: .bottomBar)
+
+                        ToolbarItem(placement: .largeSubtitle) {
+                            if let selectedLanguage {
+                                HStack {
+                                    Text(
+                                        "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
+                                    )
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                                    Spacer()
+                                }
+                            }
+                        }
+                        ToolbarItem(placement: .subtitle) {
+                            if let selectedLanguage {
+                                HStack {
+                                    Text(
+                                        "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
+                                    )
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                                    Spacer()
+                                }
+                            }
+                        }
+                    } else {
+                        ToolbarItem(placement: .status) {
+                            if let selectedLanguage {
+                                HStack {
+                                    Text(
+                                        "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
+                                    )
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                                    Spacer()
+                                }
                             }
                         }
                     }
-                    ToolbarItem(placement: .subtitle) {
-                        if let selectedLanguage {
-                            HStack {
-                                Text(
-                                    "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
-                                )
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                Spacer()
-                            }
+                #endif
+                #if os(iOS) || os(macOS)
+                    ToolbarItem(placement: buttonPlacement) {
+                        Button(
+                            "Language",
+                            systemImage: "line.3.horizontal.decrease"
+                        ) {
+                            isPresented = true
                         }
                     }
-                } else {
-                    ToolbarItem(placement: .status) {
-                        if let selectedLanguage {
-                            HStack {
-                                Text(
-                                    "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
-                                )
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                Spacer()
-                            }
-                        }
+                #endif
+                #if os(iOS)
+                    if #available(iOS 26, *) {
+                        ToolbarSpacer(placement: .bottomBar)
                     }
-                }
-                ToolbarItem(placement: buttonPlacement) {
-                    Button(
-                        "Language",
-                        systemImage: "line.3.horizontal.decrease"
-                    ) {
-                        isPresented = true
-                    }
-                }
-                if #available(iOS 26, *) {
-                    ToolbarSpacer(placement: .bottomBar)
-                }
+                #endif
 
             }
             .sheet(isPresented: $isPresented) {
@@ -231,17 +219,17 @@ struct LessonList: View {
                                 .tag(language)
                         }
                     }
-                    #if os(iOS)
+                    #if os(iOS) || os(watchOS)
                         .pickerStyle(.wheel)
                     #endif
                 }
                 .padding()
-                .presentationDetents([.height(200), .medium])
+                .presentationDetents([.height(250), .medium])
                 .presentationDragIndicator(.visible)
             }
             .sheet(isPresented: $settingsPresented) {
                 SettingsView(presented: $settingsPresented)
-                    .presentationDetents([.medium, .large])
+                    .presentationDetents([.height(350)])
             }
         }
     }

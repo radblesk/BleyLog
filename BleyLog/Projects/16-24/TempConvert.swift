@@ -87,21 +87,26 @@ struct TempConvert: View {
                 }
             }
             .navigationTitle("TempConvert")
-            .toolbar {
-                Button {
-                    isPresenting = true
-                } label: {
-                    Label("Source Code", systemImage: "terminal")
-                }
-                if temperatureFieldIsFocused {
-                    Button("Done", systemImage: "checkmark") {
-                        temperatureFieldIsFocused = false
+            #if !os(watchOS)
+                .toolbar {
+                    Button {
+                        isPresenting = true
+                    } label: {
+                        Label("Source Code", systemImage: "terminal")
+                    }
+                    if temperatureFieldIsFocused {
+                        Button("Done", systemImage: "checkmark") {
+                            temperatureFieldIsFocused = false
+                        }
                     }
                 }
-            }
-            .sheet(isPresented: $isPresenting) {
-                SheetView(isPresenting: $isPresenting, project: "tempConvert")
-            }
+                .sheet(isPresented: $isPresenting) {
+                    SheetView(
+                        isPresenting: $isPresenting,
+                        project: "tempConvert"
+                    )
+                }
+            #endif
         }
     }
 }

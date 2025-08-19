@@ -31,9 +31,23 @@ struct ProjectList: View {
                         }
                     }
                     .navigationTitle(lesson.title)
+                    #if os(watchOS)
+                        .containerBackground(
+                            .teal.gradient.opacity(0.5),
+                            for: .navigation
+                        )
+                        .listStyle(.carousel)
+                        .toolbarForegroundStyle(.mint, for: .automatic)
+                    #endif
                 } else {
                     Text("No projects")
                         .navigationTitle(lesson.title)
+                        #if os(watchOS)
+                            .containerBackground(
+                                .mint.gradient,
+                                for: .navigation
+                            )
+                        #endif
                 }
             } else {
                 Text("Select a lesson")
@@ -44,7 +58,7 @@ struct ProjectList: View {
 
 #Preview {
     ProjectList(
-        lesson: Lesson.hundreedDaysOfSwiftUILessons.last,
+        lesson: Lesson.hundreedDaysOfSwiftUILessons.first,
         project: .constant(nil)
     )
 }

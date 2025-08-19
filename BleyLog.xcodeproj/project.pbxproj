@@ -7,22 +7,93 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F939E7CA2E54CF170026C7D9 /* BleyWatchLog Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F939E7C02E54CF160026C7D9 /* BleyWatchLog Watch App.app */; platformFilters = (ios, xros, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F94692892E49596C009E637D /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F94692882E49596C009E637D /* HighlightSwift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F939E7C82E54CF170026C7D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F94691FE2E49185A009E637D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F939E7BF2E54CF160026C7D9;
+			remoteInfo = "BleyWatchLog Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F939E76C2E54C8AF0026C7D9 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				F939E7CA2E54CF170026C7D9 /* BleyWatchLog Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		F939E7C02E54CF160026C7D9 /* BleyWatchLog Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyWatchLog Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94692062E49185A009E637D /* BleyLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleyLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F939E7D62E54CF940026C7D9 /* Exceptions for "BleyLog" folder in "BleyWatchLog Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				BleyLogApp.swift,
+				ContentView.swift,
+				"Projects/16-24/Extensions/Title.swift",
+				"Projects/16-24/GuessTheFlag.swift",
+				"Projects/16-24/GuessTheFlag/FlagImage.swift",
+				"Projects/16-24/TempConvert.swift",
+				"Projects/16-24/WeSplit.swift",
+				Resources/Assets.xcassets,
+				"Resources/BleyLog-InfoPlist.xcstrings",
+				Resources/Data/Course.swift,
+				Resources/Data/Language.swift,
+				Resources/Data/Lesson.swift,
+				Resources/Data/ModelData.swift,
+				Resources/Data/Project.swift,
+				Resources/Localizable.xcstrings,
+				Views/Lists/LessonList.swift,
+				Views/Lists/LessonListRow.swift,
+				Views/Lists/ProjectList.swift,
+				Views/Lists/ProjectListRow.swift,
+				Views/ProjectDetailView.swift,
+				Views/Settings/SettingsView.swift,
+			);
+			target = F939E7BF2E54CF160026C7D9 /* BleyWatchLog Watch App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		F939E7C12E54CF160026C7D9 /* BleyWatchLog Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "BleyWatchLog Watch App";
+			sourceTree = "<group>";
+		};
 		F94692082E49185A009E637D /* BleyLog */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F939E7D62E54CF940026C7D9 /* Exceptions for "BleyLog" folder in "BleyWatchLog Watch App" target */,
+			);
 			path = BleyLog;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F939E7BD2E54CF160026C7D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F94692032E49185A009E637D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				F94692082E49185A009E637D /* BleyLog */,
+				F939E7C12E54CF160026C7D9 /* BleyWatchLog Watch App */,
 				F94692072E49185A009E637D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				F94692062E49185A009E637D /* BleyLog.app */,
+				F939E7C02E54CF160026C7D9 /* BleyWatchLog Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -53,6 +126,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F939E7BF2E54CF160026C7D9 /* BleyWatchLog Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F939E7CB2E54CF170026C7D9 /* Build configuration list for PBXNativeTarget "BleyWatchLog Watch App" */;
+			buildPhases = (
+				F939E7BC2E54CF160026C7D9 /* Sources */,
+				F939E7BD2E54CF160026C7D9 /* Frameworks */,
+				F939E7BE2E54CF160026C7D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F939E7C12E54CF160026C7D9 /* BleyWatchLog Watch App */,
+			);
+			name = "BleyWatchLog Watch App";
+			packageProductDependencies = (
+			);
+			productName = "BleyWatchLog Watch App";
+			productReference = F939E7C02E54CF160026C7D9 /* BleyWatchLog Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 		F94692052E49185A009E637D /* BleyLog */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F94692122E49185C009E637D /* Build configuration list for PBXNativeTarget "BleyLog" */;
@@ -60,10 +155,12 @@
 				F94692022E49185A009E637D /* Sources */,
 				F94692032E49185A009E637D /* Frameworks */,
 				F94692042E49185A009E637D /* Resources */,
+				F939E76C2E54C8AF0026C7D9 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F939E7C92E54CF170026C7D9 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				F94692082E49185A009E637D /* BleyLog */,
@@ -83,9 +180,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1640;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
+					F939E7BF2E54CF160026C7D9 = {
+						CreatedOnToolsVersion = 26.0;
+					};
 					F94692052E49185A009E637D = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -109,11 +209,19 @@
 			projectRoot = "";
 			targets = (
 				F94692052E49185A009E637D /* BleyLog */,
+				F939E7BF2E54CF160026C7D9 /* BleyWatchLog Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F939E7BE2E54CF160026C7D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F94692042E49185A009E637D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,6 +232,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F939E7BC2E54CF160026C7D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F94692022E49185A009E637D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,7 +248,88 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F939E7C92E54CF170026C7D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilters = (
+				ios,
+				xros,
+			);
+			target = F939E7BF2E54CF160026C7D9 /* BleyWatchLog Watch App */;
+			targetProxy = F939E7C82E54CF170026C7D9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F939E7CC2E54CF170026C7D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DZT7WAAW32;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = BleyWatchLog;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.radoslavbley.BleyLog;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.radoslavbley.BleyLog.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.6;
+			};
+			name = Debug;
+		};
+		F939E7CD2E54CF170026C7D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DZT7WAAW32;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = BleyWatchLog;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.radoslavbley.BleyLog;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.radoslavbley.BleyLog.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.6;
+			};
+			name = Release;
+		};
 		F94692102E49185C009E637D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -343,6 +539,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F939E7CB2E54CF170026C7D9 /* Build configuration list for PBXNativeTarget "BleyWatchLog Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F939E7CC2E54CF170026C7D9 /* Debug */,
+				F939E7CD2E54CF170026C7D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F94692012E49185A009E637D /* Build configuration list for PBXProject "BleyLog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
