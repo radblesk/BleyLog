@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProjectListRow: View {
+    // DataModel
     var project: Project
 
     var body: some View {
@@ -41,13 +42,13 @@ struct ProjectListRow: View {
                         "\(project.date.formatted(.relative(presentation: .named, unitsStyle: .wide)))"
                     )
                     .font(.caption2)
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.link)
                 } else {
                     Text(
                         "\(project.date.formatted(date: .abbreviated, time: .omitted))"
                     )
                     .font(.caption2)
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.link)
                 }
 
                 Text(project.title)

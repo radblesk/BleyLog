@@ -12,6 +12,7 @@ struct BleyLogApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .toolbarTitleDisplayMode(.inlineLarge)
         }
         .modelContainer(ModelData.shared.modelContainer)
         #if os(macOS)

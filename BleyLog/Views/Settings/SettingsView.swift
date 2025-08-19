@@ -9,35 +9,53 @@ import SwiftData
 import SwiftUI
 
 struct SettingsView: View {
+    // Model Context
     @Environment(\.modelContext) private var context
 
+    // States
     @State private var showAlert = false
     @State private var showDeleteConfirmation = false
     @State private var showErrorAlert = false
     @State private var errorMessage: String? = nil
 
+    // Bindings
+    @Binding var presented: Bool
+
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
-                Form {
+                List {
                     Section {
                         Button(
                             "Reset all data",
+                            systemImage: "trash",
                             role: .destructive
                         ) {
                             showAlert = true
                         }
+                        .foregroundStyle(.red)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
+                        .background(
+                            Color(.secondarySystemGroupedBackground).opacity(
+                                0.5
+                            )
+                        )
+                        .clipShape(.capsule)
                     } header: {
                         Text("Data reset")
                     } footer: {
                         Text(
-                            "Caution! All data will be deleted and replaced with default values. App restart is required."
+                            "Caution! This will erase all data and replace them with default ones. App restart is required."
                         )
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.leading)
                     }
+                    .listRowBackground(.some(Color.clear))
+                    .listRowSeparator(.hidden)
                 }
-                #if os(iOS)
-                    .listStyle(.insetGrouped)
-                #endif
+                .listStyle(.plain)
 
                 VStack {
                     Text(
@@ -93,10 +111,23 @@ struct SettingsView: View {
             #if os(iOS) || os(tvOS) || targetEnvironment(macCatalyst)
                 .navigationBarTitleDisplayMode(.inline)
             #endif
+            .toolbar {
+                ToolbarItem {
+                    if #available(iOS 26.0, *) {
+                        Button("Close", systemImage: "xmark", role: .close) {
+                            presented = false
+                        }
+                    } else {
+                        Button("Close", systemImage: "xmark") {
+                            presented = false
+                        }
+                    }
+                }
+            }
         }
     }
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(presented: .constant(true))
 }

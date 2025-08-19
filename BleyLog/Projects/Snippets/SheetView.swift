@@ -14,14 +14,18 @@ struct SheetView: View {
 
     var body: some View {
         NavigationStack {
-            List {
+            ScrollView(showsIndicators: false) {
                 CodeText(
                     CodeSnippets.snippets[project]
                         ?? "No code snippet found for \(project)"
                 )
                 .highlightLanguage(.swift)
                 .codeTextColors(.theme(.xcode))
+                .padding(.top, 130)
+                .padding(.bottom, 50)
             }
+            .padding(.horizontal)
+            .ignoresSafeArea()
             .textSelection(.enabled)
             .font(.caption2)
             .navigationTitle("Source Code")

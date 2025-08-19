@@ -97,7 +97,7 @@ struct WeSplit: View {
                 Button {
                     isPresenting = true
                 } label: {
-                    Label("Source Code", systemImage: "info.circle.fill")
+                    Label("Source Code", systemImage: "terminal")
                 }
                 if amountIsFocused {
                     Button("Done", systemImage: "checkmark") {

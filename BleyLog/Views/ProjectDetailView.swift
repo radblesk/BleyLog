@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProjectDetailView: View {
+    // DataModel
     var project: Project?
 
     var body: some View {

@@ -91,9 +91,11 @@ struct LessonList: View {
                                                             .variableColor
                                                                 .iterative
                                                                 .dimInactiveLayers
-                                                                .reversing,
+                                                                .nonReversing,
                                                             options: .repeat(
-                                                                .continuous
+                                                                .periodic(
+                                                                    delay: 1.0
+                                                                )
                                                             )
                                                         )
                                                         .foregroundStyle(.blue)
@@ -104,7 +106,7 @@ struct LessonList: View {
                                                             ? "checkmark"
                                                             : "book.pages"
                                                     )
-                                                    .imageScale(.large)
+                                                    .imageScale(.medium)
                                                     .foregroundStyle(
                                                         lesson.finished
                                                             ? .green
@@ -142,10 +144,10 @@ struct LessonList: View {
                                 }
                             }
                         }
+                        .headerProminence(.increased)
                         .refreshable {
                             insertModelData()
                         }
-                        .searchable(text: $searchText)
                     } else {
                         Text("No courses")
                     }
@@ -159,17 +161,53 @@ struct LessonList: View {
                 }
             }
             .navigationTitle("Courses")
-            #if os(iOS) || os(tvOS) || targetEnvironment(macCatalyst)
-                .toolbarTitleDisplayMode(.inlineLarge)
-            #endif
+            .toolbarTitleDisplayMode(.inlineLarge)
+            .searchable(text: $searchText)
             .toolbar {
-                ToolbarItem(placement: .status) {
-                    if let selectedLanguage {
-                        Text(
-                            "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
-                        )
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                ToolbarItem(placement: .automatic) {
+                    Button("Settings", systemImage: "ellipsis") {
+                        settingsPresented = true
+                    }
+                }
+                if #available(iOS 26, *) {
+                    DefaultToolbarItem(kind: .search, placement: .bottomBar)
+
+                    ToolbarItem(placement: .largeSubtitle) {
+                        if let selectedLanguage {
+                            HStack {
+                                Text(
+                                    "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
+                                )
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                Spacer()
+                            }
+                        }
+                    }
+                    ToolbarItem(placement: .subtitle) {
+                        if let selectedLanguage {
+                            HStack {
+                                Text(
+                                    "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
+                                )
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                Spacer()
+                            }
+                        }
+                    }
+                } else {
+                    ToolbarItem(placement: .status) {
+                        if let selectedLanguage {
+                            HStack {
+                                Text(
+                                    "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
+                                )
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                Spacer()
+                            }
+                        }
                     }
                 }
                 ToolbarItem(placement: buttonPlacement) {
@@ -180,10 +218,8 @@ struct LessonList: View {
                         isPresented = true
                     }
                 }
-                ToolbarItem(placement: .automatic) {
-                    Button("Settings", systemImage: "gear") {
-                        settingsPresented = true
-                    }
+                if #available(iOS 26, *) {
+                    ToolbarSpacer(placement: .bottomBar)
                 }
 
             }
@@ -204,7 +240,7 @@ struct LessonList: View {
                 .presentationDragIndicator(.visible)
             }
             .sheet(isPresented: $settingsPresented) {
-                SettingsView()
+                SettingsView(presented: $settingsPresented)
                     .presentationDetents([.medium, .large])
             }
         }
