@@ -14,7 +14,7 @@ struct SheetView: View {
 
     var body: some View {
         NavigationStack {
-            Form {
+            List {
                 CodeText(
                     CodeSnippets.snippets[project]
                         ?? "No code snippet found for \(project)"
@@ -23,10 +23,13 @@ struct SheetView: View {
                 .codeTextColors(.theme(.xcode))
             }
             .textSelection(.enabled)
-            .font(.system(size: 12))
+            .font(.caption2)
             .navigationTitle("Source Code")
             #if os(iOS)
                 .navigationBarTitleDisplayMode(.inline)
+                .listStyle(.insetGrouped)
+            #else
+                .listStyle(.inset)
             #endif
             .toolbar {
                 ToolbarItem(placement: .destructiveAction) {
