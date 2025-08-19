@@ -47,7 +47,7 @@ struct WeSplit: View {
                             code: Locale.current.currency?.identifier ?? "EUR"
                         )
                     )
-                    #if !os(watchOS)
+                    #if os(iOS)
                         .keyboardType(.decimalPad)
                     #endif
                     .focused($amountIsFocused)
@@ -57,7 +57,9 @@ struct WeSplit: View {
                             Text("\($0) people")
                         }
                     }
-                    .pickerStyle(.navigationLink)
+                    #if os(iOS)
+                        .pickerStyle(.navigationLink)
+                    #endif
                 }
 
                 Section("How much do you want to tip?") {
@@ -66,7 +68,7 @@ struct WeSplit: View {
                             Text($0, format: .percent)
                         }
                     }
-                    #if !os(watchOS)
+                    #if os(iOS)
                         .pickerStyle(.segmented)
                     #endif
                 }
@@ -93,7 +95,7 @@ struct WeSplit: View {
                 }
             }
             .navigationTitle("WeSplit")
-            #if !os(watchOS)
+            #if os(iOS)
                 .toolbar {
                     Button {
                         isPresenting = true

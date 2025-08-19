@@ -54,7 +54,7 @@ struct TempConvert: View {
                         value: $temperature,
                         format: .number
                     )
-                    #if !os(watchOS)
+                    #if os(iOS)
                         .keyboardType(.decimalPad)
                     #endif
                     .focused($temperatureFieldIsFocused)
@@ -87,7 +87,7 @@ struct TempConvert: View {
                 }
             }
             .navigationTitle("TempConvert")
-            #if !os(watchOS)
+            #if os(iOS)
                 .toolbar {
                     Button {
                         isPresenting = true

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F91370C32E551EE10030E98D /* BleyLogWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F91370B92E551EDF0030E98D /* BleyLogWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F91371142E552D9C0030E98D /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F91371132E552D9C0030E98D /* HighlightSwift */; };
 		F919669A2E5503FF0014E8D1 /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F91966992E5503FF0014E8D1 /* HighlightSwift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		F91370B92E551EDF0030E98D /* BleyLogWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLogWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F91370E82E552D070030E98D /* BleyLog for Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLog for Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F913711C2E5536350030E98D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		F94692062E49185A009E637D /* BleyLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleyLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -60,6 +63,25 @@
 			);
 			target = F91370B82E551EDF0030E98D /* BleyLogWatch Watch App */;
 		};
+		F91370FC2E552D1F0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for Mac" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Projects/16-24/GuessTheFlag.swift",
+				"Projects/16-24/GuessTheFlag/FlagImage.swift",
+				"Projects/16-24/TempConvert.swift",
+				"Projects/16-24/WeSplit.swift",
+				Projects/Snippets/CodeSnippets.swift,
+				Projects/Snippets/SheetView.swift,
+				Resources/Assets.xcassets,
+				Resources/Data/Course.swift,
+				Resources/Data/Language.swift,
+				Resources/Data/Lesson.swift,
+				Resources/Data/ModelData.swift,
+				Resources/Data/Project.swift,
+				Resources/Localizable.xcstrings,
+			);
+			target = F91370E72E552D070030E98D /* BleyLog for Mac */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -68,10 +90,16 @@
 			path = "BleyLogWatch Watch App";
 			sourceTree = "<group>";
 		};
+		F91370E92E552D070030E98D /* BleyLog for Mac */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "BleyLog for Mac";
+			sourceTree = "<group>";
+		};
 		F94692082E49185A009E637D /* BleyLog */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				F91370D02E551F0C0030E98D /* Exceptions for "BleyLog" folder in "BleyLogWatch Watch App" target */,
+				F91370FC2E552D1F0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for Mac" target */,
 			);
 			path = BleyLog;
 			sourceTree = "<group>";
@@ -86,6 +114,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F91370E52E552D070030E98D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F91371142E552D9C0030E98D /* HighlightSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F94692032E49185A009E637D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,11 +133,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F91371122E552D9C0030E98D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F913711C2E5536350030E98D /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F94691FD2E49185A009E637D = {
 			isa = PBXGroup;
 			children = (
 				F94692082E49185A009E637D /* BleyLog */,
 				F91370BA2E551EE00030E98D /* BleyLogWatch Watch App */,
+				F91370E92E552D070030E98D /* BleyLog for Mac */,
+				F91371122E552D9C0030E98D /* Frameworks */,
 				F94692072E49185A009E637D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,6 +157,7 @@
 			children = (
 				F94692062E49185A009E637D /* BleyLog.app */,
 				F91370B92E551EDF0030E98D /* BleyLogWatch Watch App.app */,
+				F91370E82E552D070030E98D /* BleyLog for Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,6 +185,29 @@
 			);
 			productName = "BleyLogWatch Watch App";
 			productReference = F91370B92E551EDF0030E98D /* BleyLogWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F91370E72E552D070030E98D /* BleyLog for Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F91370F22E552D080030E98D /* Build configuration list for PBXNativeTarget "BleyLog for Mac" */;
+			buildPhases = (
+				F91370E42E552D070030E98D /* Sources */,
+				F91370E52E552D070030E98D /* Frameworks */,
+				F91370E62E552D070030E98D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F91370E92E552D070030E98D /* BleyLog for Mac */,
+			);
+			name = "BleyLog for Mac";
+			packageProductDependencies = (
+				F91371132E552D9C0030E98D /* HighlightSwift */,
+			);
+			productName = "BleyLog for Mac";
+			productReference = F91370E82E552D070030E98D /* BleyLog for Mac.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F94692052E49185A009E637D /* BleyLog */ = {
@@ -178,6 +248,9 @@
 					F91370B82E551EDF0030E98D = {
 						CreatedOnToolsVersion = 26.0;
 					};
+					F91370E72E552D070030E98D = {
+						CreatedOnToolsVersion = 26.0;
+					};
 					F94692052E49185A009E637D = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -202,12 +275,20 @@
 			targets = (
 				F94692052E49185A009E637D /* BleyLog */,
 				F91370B82E551EDF0030E98D /* BleyLogWatch Watch App */,
+				F91370E72E552D070030E98D /* BleyLog for Mac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F91370B72E551EDF0030E98D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F91370E62E552D070030E98D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -225,6 +306,13 @@
 
 /* Begin PBXSourcesBuildPhase section */
 		F91370B52E551EDF0030E98D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F91370E42E552D070030E98D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -315,6 +403,75 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		F91370F32E552D080030E98D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DZT7WAAW32;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Developed by Radoslav Bley";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.radoslavbley.BleyLog-for-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F91370F42E552D080030E98D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DZT7WAAW32;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Developed by Radoslav Bley";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.radoslavbley.BleyLog-for-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -542,6 +699,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		F91370F22E552D080030E98D /* Build configuration list for PBXNativeTarget "BleyLog for Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F91370F32E552D080030E98D /* Debug */,
+				F91370F42E552D080030E98D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F94692012E49185A009E637D /* Build configuration list for PBXProject "BleyLog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -570,6 +736,11 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F91371132E552D9C0030E98D /* HighlightSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F91966972E5503DE0014E8D1 /* XCLocalSwiftPackageReference "../../../Downloads/highlightswift" */;
+			productName = HighlightSwift;
+		};
 		F91966992E5503FF0014E8D1 /* HighlightSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F91966972E5503DE0014E8D1 /* XCLocalSwiftPackageReference "../../../Downloads/highlightswift" */;

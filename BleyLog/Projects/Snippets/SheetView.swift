@@ -29,8 +29,10 @@ struct SheetView: View {
             .textSelection(.enabled)
             .font(.caption2)
             .navigationTitle("Source Code")
-            .navigationBarTitleDisplayMode(.inline)
-            .listStyle(.insetGrouped)
+            #if os(iOS)
+                .navigationBarTitleDisplayMode(.inline)
+                .listStyle(.insetGrouped)
+            #endif
             .listStyle(.inset)
             .toolbar {
                 ToolbarItem(placement: .destructiveAction) {
