@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F939E7CA2E54CF170026C7D9 /* BleyWatchLog Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F939E7C02E54CF160026C7D9 /* BleyWatchLog Watch App.app */; platformFilters = (ios, xros, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F94692892E49596C009E637D /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F94692882E49596C009E637D /* HighlightSwift */; };
+		F939E7CA2E54CF170026C7D9 /* BleyWatchLog Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F939E7C02E54CF160026C7D9 /* BleyWatchLog Watch App.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F94692892E49596C009E637D /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, macos, xros, ); productRef = F94692882E49596C009E637D /* HighlightSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -251,10 +251,7 @@
 /* Begin PBXTargetDependency section */
 		F939E7C92E54CF170026C7D9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilters = (
-				ios,
-				xros,
-			);
+			platformFilter = ios;
 			target = F939E7BF2E54CF160026C7D9 /* BleyWatchLog Watch App */;
 			targetProxy = F939E7C82E54CF170026C7D9 /* PBXContainerItemProxy */;
 		};
@@ -487,10 +484,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2,3,7";
+				TVOS_DEPLOYMENT_TARGET = 26.0;
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
 			name = Debug;
@@ -530,10 +529,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2,3,7";
+				TVOS_DEPLOYMENT_TARGET = 26.0;
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
 			name = Release;

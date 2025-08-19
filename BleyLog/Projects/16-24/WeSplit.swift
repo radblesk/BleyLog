@@ -95,7 +95,7 @@ struct WeSplit: View {
                 }
             }
             .navigationTitle("WeSplit")
-            #if !os(watchOS)
+            #if !os(watchOS) || !os(tvOS)
                 .toolbar {
                     Button {
                         isPresenting = true

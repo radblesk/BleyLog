@@ -120,12 +120,16 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
-            #if os(iOS) || os(tvOS) || targetEnvironment(macCatalyst)
+            #if os(iOS) || targetEnvironment(macCatalyst)
                 .navigationBarTitleDisplayMode(.inline)
             #endif
             .toolbar {
                 ToolbarItem {
-                    if #available(iOS 26.0, watchOS 26, macOS 26, *) {
+                    if #available(iOS 26.0,
+                    watchOS 26,
+                    macOS 26,
+                    tvOS 26,
+                    visionOS 26, *) {
                         Button("Close", systemImage: "xmark", role: .close) {
                             presented = false
                         }
