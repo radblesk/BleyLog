@@ -54,7 +54,7 @@ struct TempConvert: View {
                         value: $temperature,
                         format: .number
                     )
-                    #if os(iOS)
+                    #if !os(watchOS)
                         .keyboardType(.decimalPad)
                     #endif
                     .focused($temperatureFieldIsFocused)

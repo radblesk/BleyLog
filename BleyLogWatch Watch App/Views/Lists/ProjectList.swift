@@ -2,7 +2,7 @@
 //  ProjectsList.swift
 //  BleyLog
 //
-//  Created by Radoslav Bley on 10/08/2025.
+//  Created by Radoslav Bley on 19/08/2025.
 //
 
 import SwiftData
@@ -31,9 +31,28 @@ struct ProjectList: View {
                         }
                     }
                     .navigationTitle(lesson.title)
+                    .containerBackground(
+                        RadialGradient(
+                            colors: [
+                                .teal.opacity(0.8),
+                                .black,
+                            ],
+                            center: .bottom,
+                            startRadius: -200,
+                            endRadius: 400
+                        ),
+                        for: .navigation
+                    )
+                    .listStyle(.carousel)
+                    .toolbarForegroundStyle(.teal, for: .automatic)
                 } else {
                     Text("No projects")
                         .navigationTitle(lesson.title)
+                        .containerBackground(
+                            .teal.gradient,
+                            for: .navigation
+                        )
+                        .toolbarForegroundStyle(.teal, for: .automatic)
                 }
             } else {
                 Text("Select a lesson")

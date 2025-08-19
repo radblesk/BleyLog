@@ -2,7 +2,7 @@
 //  ProjectsList.swift
 //  BleyLog
 //
-//  Created by Radoslav Bley on 10/08/2025.
+//  Created by Radoslav Bley on 19/08/2025.
 //
 
 import SwiftData
@@ -40,23 +40,7 @@ struct LessonList: View {
                         ) {
                             course in
                             Section(
-                                course.title,
-                                isExpanded: Binding<Bool>(
-                                    get: {
-                                        expanded.contains(course.title)
-                                    },
-                                    set: { isExpanding in
-                                        if isExpanding {
-                                            expanded.insert(
-                                                course.title
-                                            )
-                                        } else {
-                                            expanded.remove(
-                                                course.title
-                                            )
-                                        }
-                                    }
-                                )
+                                course.title
                             ) {
                                 if !course.lessons.isEmpty {
                                     let searchResults = course.lessons.filter {
@@ -92,10 +76,7 @@ struct LessonList: View {
                                 }
                             }
                         }
-                        .headerProminence(.increased)
-                        .refreshable {
-                            insertModelData()
-                        }
+                        .listStyle(.carousel)
                     } else {
                         Text("No courses")
                     }
@@ -108,85 +89,49 @@ struct LessonList: View {
                     selectedLanguage = languages.first { $0.title == "Swift" }
                 }
             }
-            .navigationTitle(Text("Courses"))
-            .searchable(text: $searchText)
+            .navigationTitle("Courses")
+            .toolbarForegroundStyle(
+                Color(red: 1, green: 0.235, blue: 0),
+                for: .automatic
+            )
+            .containerBackground(
+                RadialGradient(
+                    colors: [
+                        Color(red: 1, green: 0.235, blue: 0).opacity(0.8),
+                        .black,
+                    ],
+                    center: .bottom,
+                    startRadius: -200,
+                    endRadius: 400
+                ),
+                for: .navigation
+            )
             .toolbar {
-                ToolbarItem(placement: .automatic) {
-                    Button("Settings", systemImage: "ellipsis") {
-                        settingsPresented = true
-                    }
-                }
-                if #available(iOS 26, *) {
-                    DefaultToolbarItem(kind: .search, placement: .bottomBar)
-
-                    ToolbarItem(placement: .largeSubtitle) {
-                        if let selectedLanguage {
-                            HStack {
-                                Text(
-                                    "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
-                                )
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                Spacer()
-                            }
-                        }
-                    }
-                    ToolbarItem(placement: .subtitle) {
-                        if let selectedLanguage {
-                            HStack {
-                                Text(
-                                    "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
-                                )
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                Spacer()
-                            }
-                        }
-                    }
-                } else {
-                    ToolbarItem(placement: .status) {
-                        if let selectedLanguage {
-                            HStack {
-                                Text(
-                                    "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
-                                )
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                Spacer()
-                            }
-                        }
-                    }
-                }
-                ToolbarItem(placement: .bottomBar) {
+                ToolbarItemGroup(placement: .bottomBar) {
                     Button(
                         "Language",
                         systemImage: "line.3.horizontal.decrease"
                     ) {
                         isPresented = true
                     }
-                }
-                if #available(iOS 26, *) {
-                    ToolbarSpacer(placement: .bottomBar)
+
+                    Button("Settings", systemImage: "ellipsis") {
+                        settingsPresented = true
+                    }
                 }
 
             }
             .sheet(isPresented: $isPresented) {
-                VStack {
-                    Picker("Language", selection: $selectedLanguage) {
-                        ForEach(languages, id: \.self) { language in
-                            Text(language.title)
-                                .tag(language)
-                        }
+                Picker("Language", selection: $selectedLanguage) {
+                    ForEach(languages, id: \.self) { language in
+                        Text(language.title)
+                            .tag(language)
                     }
-                    .pickerStyle(.wheel)
                 }
-                .padding()
-                .presentationDetents([.height(250), .medium])
-                .presentationDragIndicator(.visible)
+                .pickerStyle(.wheel)
             }
             .sheet(isPresented: $settingsPresented) {
                 SettingsView(presented: $settingsPresented)
-                    .presentationDetents([.height(350)])
             }
         }
     }

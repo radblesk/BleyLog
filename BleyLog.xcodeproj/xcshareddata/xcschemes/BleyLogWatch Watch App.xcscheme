@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F939E7BF2E54CF160026C7D9"
-               BuildableName = "BleyWatchLog Watch App.app"
-               BlueprintName = "BleyWatchLog Watch App"
+               BlueprintIdentifier = "F91370B82E551EDF0030E98D"
+               BuildableName = "BleyLogWatch Watch App.app"
+               BlueprintName = "BleyLogWatch Watch App"
                ReferencedContainer = "container:BleyLog.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -58,9 +58,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F939E7BF2E54CF160026C7D9"
-            BuildableName = "BleyWatchLog Watch App.app"
-            BlueprintName = "BleyWatchLog Watch App"
+            BlueprintIdentifier = "F91370B82E551EDF0030E98D"
+            BuildableName = "BleyLogWatch Watch App.app"
+            BlueprintName = "BleyLogWatch Watch App"
             ReferencedContainer = "container:BleyLog.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,9 +75,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F939E7BF2E54CF160026C7D9"
-            BuildableName = "BleyWatchLog Watch App.app"
-            BlueprintName = "BleyWatchLog Watch App"
+            BlueprintIdentifier = "F91370B82E551EDF0030E98D"
+            BuildableName = "BleyLogWatch Watch App.app"
+            BlueprintName = "BleyLogWatch Watch App"
             ReferencedContainer = "container:BleyLog.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

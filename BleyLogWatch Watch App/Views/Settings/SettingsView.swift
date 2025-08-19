@@ -2,7 +2,7 @@
 //  SettingsView.swift
 //  BleyLog
 //
-//  Created by Radoslav Bley on 13/08/2025.
+//  Created by Radoslav Bley on 19/08/2025.
 //
 
 import SwiftData
@@ -36,12 +36,6 @@ struct SettingsView: View {
                         .foregroundStyle(.red)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
-                        .background(
-                            Color(.secondarySystemGroupedBackground)
-                                .opacity(
-                                    0.5
-                                )
-                        )
                         .clipShape(.capsule)
                     } header: {
                         Text("Data reset")
@@ -53,8 +47,6 @@ struct SettingsView: View {
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.leading)
                     }
-                    .listRowBackground(.some(Color.clear))
-                    .listRowSeparator(.hidden)
                     HStack {
                         VStack {
                             Text(
@@ -73,7 +65,6 @@ struct SettingsView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .listRowBackground(.some(Color.clear))
-                    .listRowSeparator(.hidden)
                 }
                 .listStyle(.plain)
 
@@ -114,24 +105,6 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem {
-                    if #available(iOS 26.0,
-                    watchOS 26,
-                    macOS 26,
-                    tvOS 26,
-                    visionOS 26, *) {
-                        Button("Close", systemImage: "xmark", role: .close) {
-                            presented = false
-                        }
-                    } else {
-                        Button("Close", systemImage: "xmark") {
-                            presented = false
-                        }
-                    }
-                }
-            }
         }
     }
 }

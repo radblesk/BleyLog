@@ -12,9 +12,11 @@ struct LessonListRow: View {
     var lesson: Lesson
 
     var body: some View {
-        HStack(spacing: 20) {
+        VStack(alignment: .leading) {
             if lesson.inProgress {
                 Image(systemName: "target")
+                    .resizable()
+                    .frame(width: 26, height: 26)
                     .symbolEffect(
                         .variableColor
                             .iterative
@@ -31,31 +33,42 @@ struct LessonListRow: View {
                 Image(
                     systemName: lesson
                         .finished
-                        ? "checkmark"
-                        : "book.pages"
+                        ? "checkmark.circle.fill"
+                        : "book.pages.fill"
                 )
-                .imageScale(.medium)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 26, height: 26)
                 .foregroundStyle(
                     lesson.finished
                         ? .green
                         : .orange
                 )
             }
-            VStack(alignment: .leading) {
-                Text(lesson.title)
-                    .font(.headline)
-                Text(
-                    "Days \(lesson.firstDay)-\(lesson.lastDay)"
-                )
-                .font(.caption)
-                .foregroundStyle(
-                    .secondary
-                )
-            }
             Spacer()
-            Text("\(lesson.projects.count)")
-                .foregroundStyle(.secondary)
+            Text(lesson.title)
+                .bold()
+            Text(
+                "Days \(lesson.firstDay)-\(lesson.lastDay)"
+            )
+            .font(.caption)
+            .foregroundStyle(
+                .secondary
+            )
+            Spacer()
+            Text("\(lesson.projects.count) projects")
+                .foregroundStyle(
+                    lesson.finished
+                        ? .green
+                        : lesson.inProgress
+                            ? .blue : .orange
+                )
+                .font(.footnote)
+                .bold()
+                .textCase(.uppercase)
         }
+        .padding(.vertical)
+        .frame(height: 120)
     }
 }
 

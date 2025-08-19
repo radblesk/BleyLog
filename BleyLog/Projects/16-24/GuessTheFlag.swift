@@ -73,10 +73,10 @@ struct GuessTheFlag: View {
                     Text("Score: \(score) / \(countries.count)")
                         .foregroundStyle(.white)
                         .font(.headline.bold())
+
                     Spacer()
 
                     #if !os(watchOS)
-
                         Button {
                             isPresenting = true
                         } label: {

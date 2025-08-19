@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  BleyLog
+//  BleyLogWatch Watch App
 //
-//  Created by Radoslav Bley on 10/08/2025.
+//  Created by Radoslav Bley on 19/08/2025.
 //
 
 import SwiftData
@@ -15,7 +15,7 @@ struct ContentView: View {
 
     // States
     @State private var columnVisibility = NavigationSplitViewVisibility
-        .doubleColumn
+        .automatic
     @State private var preferredCompactColumn = NavigationSplitViewColumn
         .sidebar
     @State private var selectedLanguage: Language?
@@ -32,18 +32,11 @@ struct ContentView: View {
                 selectedLanguage: $selectedLanguage,
                 lesson: $selectedLesson,
             )
-            .navigationSplitViewColumnWidth(min: 250, ideal: 300)
-
         } content: {
             ProjectList(lesson: selectedLesson, project: $selectedProject)
-                .navigationSplitViewColumnWidth(min: 300, ideal: 300)
-                .onChange(of: selectedLesson) {
-                    columnVisibility = .doubleColumn
-                }
         } detail: {
             ProjectDetailView(project: selectedProject)
         }
-        .navigationSplitViewStyle(.balanced)
     }
 }
 

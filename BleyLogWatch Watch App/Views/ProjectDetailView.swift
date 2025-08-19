@@ -2,7 +2,7 @@
 //  ProjectDetailView.swift
 //  BleyLog
 //
-//  Created by Radoslav Bley on 13/08/2025.
+//  Created by Radoslav Bley on 19/08/2025.
 //
 
 import SwiftUI

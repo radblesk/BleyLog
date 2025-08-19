@@ -26,17 +26,12 @@ struct SheetView: View {
             }
             .padding(.horizontal)
             .ignoresSafeArea()
-            #if !os(tvOS)
-                .textSelection(.enabled)
-            #endif
+            .textSelection(.enabled)
             .font(.caption2)
             .navigationTitle("Source Code")
-            #if os(iOS)
-                .navigationBarTitleDisplayMode(.inline)
-                .listStyle(.insetGrouped)
-            #elseif !os(tvOS)
-                .listStyle(.inset)
-            #endif
+            .navigationBarTitleDisplayMode(.inline)
+            .listStyle(.insetGrouped)
+            .listStyle(.inset)
             .toolbar {
                 ToolbarItem(placement: .destructiveAction) {
                     Button("Close", systemImage: "xmark") {
