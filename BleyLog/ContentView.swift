@@ -41,6 +41,11 @@ struct ContentView: View {
         } content: {
             ProjectList(lesson: selectedLesson, project: $selectedProject)
                 .navigationSplitViewColumnWidth(min: 300, ideal: 300)
+                #if os(iOS)
+                    .onChange(of: selectedLesson) {
+                        columnVisibility = .doubleColumn
+                    }
+                #endif
         } detail: {
             ProjectDetailView(project: selectedProject)
                 #if os(macOS)

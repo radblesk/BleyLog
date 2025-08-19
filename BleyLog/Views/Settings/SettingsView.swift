@@ -19,7 +19,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
-                List {
+                Form {
                     Section {
                         Button(
                             "Reset all data",

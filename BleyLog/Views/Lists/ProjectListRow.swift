@@ -28,18 +28,6 @@ struct ProjectListRow: View {
 
             VStack(alignment: .leading, spacing: 2) {
 
-                HStack {
-                    Text(project.title)
-                        .font(.headline)
-                        .truncationMode(.tail)
-                }
-
-                Text(project.desc)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(2)
-                    .truncationMode(.tail)
-
                 let date = project.date
                 let lessThanThreeDaysAgo =
                     Calendar.current.date(
@@ -52,16 +40,25 @@ struct ProjectListRow: View {
                     Text(
                         "\(project.date.formatted(.relative(presentation: .named, unitsStyle: .wide)))"
                     )
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .font(.caption2)
+                    .foregroundStyle(.blue)
                 } else {
                     Text(
                         "\(project.date.formatted(date: .abbreviated, time: .omitted))"
                     )
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .font(.caption2)
+                    .foregroundStyle(.blue)
                 }
 
+                Text(project.title)
+                    .font(.headline)
+                    .truncationMode(.tail)
+
+                Text(project.desc)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
+                    .truncationMode(.tail)
             }
         }
     }

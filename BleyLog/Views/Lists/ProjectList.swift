@@ -33,6 +33,7 @@ struct ProjectList: View {
                     .navigationTitle(lesson.title)
                 } else {
                     Text("No projects")
+                        .navigationTitle(lesson.title)
                 }
             } else {
                 Text("Select a lesson")

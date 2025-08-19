@@ -17,6 +17,7 @@ struct LessonList: View {
     @State private var searchText: String = ""
     @State private var expanded: Set<String> = ["100 days of SwiftUI"]
     @State private var isPresented = false
+    @State private var settingsPresented = false
     @Binding var selectedLanguage: Language?
 
     // Bindings
@@ -116,7 +117,7 @@ struct LessonList: View {
                                                     Text(
                                                         "Days \(lesson.firstDay)-\(lesson.lastDay)"
                                                     )
-                                                    .font(.subheadline)
+                                                    .font(.caption)
                                                     .foregroundStyle(
                                                         .secondary
                                                     )
@@ -141,6 +142,9 @@ struct LessonList: View {
                                 }
                             }
                         }
+                        .refreshable {
+                            insertModelData()
+                        }
                         .searchable(text: $searchText)
                     } else {
                         Text("No courses")
@@ -149,15 +153,15 @@ struct LessonList: View {
                     Text("Select a language")
                 }
             }
-            //            .navigationTitle("Courses")
-            //            .toolbarTitleDisplayMode(.inlineLarge)
             .onAppear {
                 if selectedLanguage == nil {
                     selectedLanguage = languages.first { $0.title == "Swift" }
                 }
             }
             .navigationTitle("Courses")
-            .toolbarTitleDisplayMode(.inlineLarge)
+            #if os(iOS) || os(tvOS) || targetEnvironment(macCatalyst)
+                .toolbarTitleDisplayMode(.inlineLarge)
+            #endif
             .toolbar {
                 ToolbarItem(placement: .status) {
                     if let selectedLanguage {
@@ -176,11 +180,9 @@ struct LessonList: View {
                         isPresented = true
                     }
                 }
-                ToolbarItem(placement: buttonPlacement) {
-                    NavigationLink {
-                        SettingsView()
-                    } label: {
-                        Label("Settings", systemImage: "gear")
+                ToolbarItem(placement: .automatic) {
+                    Button("Settings", systemImage: "gear") {
+                        settingsPresented = true
                     }
                 }
 
@@ -200,6 +202,21 @@ struct LessonList: View {
                 .padding()
                 .presentationDetents([.height(200), .medium])
                 .presentationDragIndicator(.visible)
+            }
+            .sheet(isPresented: $settingsPresented) {
+                SettingsView()
+                    .presentationDetents([.medium, .large])
+            }
+        }
+    }
+    private func insertModelData() {
+        let descriptor = FetchDescriptor<Language>()
+
+        guard let languages = try? context.fetch(descriptor) else { return }
+
+        if languages.isEmpty {
+            for language in Language.languages {
+                context.insert(language)
             }
         }
     }
