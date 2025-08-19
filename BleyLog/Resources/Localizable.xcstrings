@@ -30,12 +30,45 @@
         }
       }
     },
-    "%@ Courses" : {
+    "%lld" : {
+      "shouldTranslate" : false
+    },
+    "%lld %@ courses" : {
       "localizations" : {
-        "sk" : {
+        "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ Kurzy"
+            "state" : "new",
+            "value" : "%1$lld %2$@ courses"
+          }
+        },
+        "sk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%1$lld %2$@ kurzov"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%1$lld %2$@ kurzov"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%1$lld %2$@ kurz"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%1$lld %2$@ kurzy"
+                }
+              }
+            }
           }
         }
       }
@@ -46,27 +79,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld osôb"
-          }
-        }
-      }
-    },
-    "About" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O aplikácii"
-          }
-        }
-      }
-    },
-    "All your in progress lessons in one place. Browse, search and start working." : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Všetky tvoje rozpracované lekcie na jednom mieste. Prehliadaj, hľadaj, začni pracovať."
           }
         }
       }
@@ -101,12 +113,12 @@
         }
       }
     },
-    "Caution! All data will be deleted and replaced with default values." : {
+    "Caution! All data will be deleted and replaced with default values. App restart is required." : {
       "localizations" : {
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pozor! Všetky užívateľské dáta budú odstránené a nahradené pôvodnými."
+            "value" : "Pozor! Všetky dáta budú zmazané a nahradené pôvodnými. Nutný reštart aplikácie."
           }
         }
       }
@@ -141,12 +153,12 @@
         }
       }
     },
-    "Course not started yet..." : {
+    "Course not started..." : {
       "localizations" : {
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kurz sa ešte nezačal..."
+            "value" : "Kurz ešte nezačal…"
           }
         }
       }
@@ -197,22 +209,6 @@
         }
       }
     },
-    "Days %lld-%lld: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Days %1$lld-%2$lld: %3$@"
-          }
-        },
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dni %1$lld-%2$lld: %3$@"
-          }
-        }
-      }
-    },
     "Developed by [Radoslav Bley](https://www.radobley.sk)" : {
       "shouldTranslate" : false
     },
@@ -242,16 +238,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chyba"
-          }
-        }
-      }
-    },
-    "For You" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pre Teba"
           }
         }
       }
@@ -316,82 +302,22 @@
         }
       }
     },
-    "Lessons in progress" : {
+    "No courses" : {
       "localizations" : {
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rozpracované lekcie"
+            "value" : "Žiadne kurzy"
           }
         }
       }
     },
-    "Mark as done" : {
+    "No projects" : {
       "localizations" : {
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Označiť ako dokončené"
-          }
-        }
-      }
-    },
-    "Mark as in progress" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Označiť ako rozpracované"
-          }
-        }
-      }
-    },
-    "No courses for %@." : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Žiadne kurzy pre %@"
-          }
-        }
-      }
-    },
-    "No lesson selected." : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nevybral si žiadnu lekciu."
-          }
-        }
-      }
-    },
-    "No lessons in progress..." : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Žiadne rozpracované lekcie…"
-          }
-        }
-      }
-    },
-    "No projects, yet." : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Žiadne projekty, zatiaľ."
-          }
-        }
-      }
-    },
-    "No results for \"%@\"" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Žiadne výsledky pre “%@”"
+            "value" : "Žiadne projekty"
           }
         }
       }
@@ -419,26 +345,6 @@
         }
       }
     },
-    "Programming courses from various sources. Track your progress and learn new programming languages." : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kurzy programovania z rôznych zdrojov. Sledujte svoj postup a naučte sa nové programovacie jazyky."
-          }
-        }
-      }
-    },
-    "Projects" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Projekty"
-          }
-        }
-      }
-    },
     "Remove" : {
       "localizations" : {
         "sk" : {
@@ -449,22 +355,22 @@
         }
       }
     },
-    "Remove all user data" : {
-      "localizations" : {
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vymazať všetky užívateľské dáta"
-          }
-        }
-      }
-    },
     "Remove user data" : {
       "localizations" : {
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vymazať užívateľské dáta"
+          }
+        }
+      }
+    },
+    "Reset all data" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetovať všetky dáta"
           }
         }
       }
@@ -485,12 +391,22 @@
         }
       }
     },
-    "Searching in %lld lessons..." : {
+    "Select a language" : {
       "localizations" : {
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vyhľadávam v %lld lekciách…"
+            "value" : "Vyber jazyk"
+          }
+        }
+      }
+    },
+    "Select a lesson" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyber lekciu"
           }
         }
       }
@@ -585,7 +501,7 @@
         }
       }
     },
-    "v0.1.0 %@" : {
+    "v0.2.0 2025819.1" : {
       "shouldTranslate" : false
     },
     "WeSplit" : {

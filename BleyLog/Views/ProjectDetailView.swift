@@ -24,7 +24,6 @@ struct ProjectDetailView: View {
                     Text("Select a project")
                 }
             }
-            // Apply the conditional modifier only once.
             #if os(macOS)
                 .padding()
             #endif
