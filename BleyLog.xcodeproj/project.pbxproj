@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F919669A2E5503FF0014E8D1 /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F91966992E5503FF0014E8D1 /* HighlightSwift */; };
 		F939E7CA2E54CF170026C7D9 /* BleyWatchLog Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F939E7C02E54CF160026C7D9 /* BleyWatchLog Watch App.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F94692892E49596C009E637D /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, macos, xros, ); productRef = F94692882E49596C009E637D /* HighlightSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,18 +98,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F94692892E49596C009E637D /* HighlightSwift in Frameworks */,
+				F919669A2E5503FF0014E8D1 /* HighlightSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F91966982E5503FF0014E8D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F94691FD2E49185A009E637D = {
 			isa = PBXGroup;
 			children = (
 				F94692082E49185A009E637D /* BleyLog */,
 				F939E7C12E54CF160026C7D9 /* BleyWatchLog Watch App */,
+				F91966982E5503FF0014E8D1 /* Frameworks */,
 				F94692072E49185A009E637D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -167,7 +175,7 @@
 			);
 			name = BleyLog;
 			packageProductDependencies = (
-				F94692882E49596C009E637D /* HighlightSwift */,
+				F91966992E5503FF0014E8D1 /* HighlightSwift */,
 			);
 			productName = HWS;
 			productReference = F94692062E49185A009E637D /* BleyLog.app */;
@@ -201,7 +209,7 @@
 			mainGroup = F94691FD2E49185A009E637D;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				F94692872E49596C009E637D /* XCRemoteSwiftPackageReference "highlightswift" */,
+				F91966972E5503DE0014E8D1 /* XCLocalSwiftPackageReference "../../../Downloads/highlightswift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F94692072E49185A009E637D /* Products */;
@@ -571,21 +579,17 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		F94692872E49596C009E637D /* XCRemoteSwiftPackageReference "highlightswift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/appstefan/highlightswift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.9;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		F91966972E5503DE0014E8D1 /* XCLocalSwiftPackageReference "../../../Downloads/highlightswift" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../../Downloads/highlightswift;
 		};
-/* End XCRemoteSwiftPackageReference section */
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F94692882E49596C009E637D /* HighlightSwift */ = {
+		F91966992E5503FF0014E8D1 /* HighlightSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F94692872E49596C009E637D /* XCRemoteSwiftPackageReference "highlightswift" */;
+			package = F91966972E5503DE0014E8D1 /* XCLocalSwiftPackageReference "../../../Downloads/highlightswift" */;
 			productName = HighlightSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

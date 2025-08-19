@@ -87,7 +87,7 @@ struct TempConvert: View {
                 }
             }
             .navigationTitle("TempConvert")
-            #if !os(watchOS) || !os(tvOS)
+            #if !os(watchOS)
                 .toolbar {
                     Button {
                         isPresenting = true
