@@ -26,36 +26,12 @@ struct ProjectListRow: View {
                     .imageScale(.large)
             }
 
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 2) {
 
                 HStack {
                     Text(project.title)
                         .font(.headline)
                         .truncationMode(.tail)
-
-                    Spacer()
-
-                    let date = project.date
-                    let lessThanThreeDaysAgo =
-                        Calendar.current.date(
-                            byAdding: .dayOfYear,
-                            value: -3,
-                            to: Date()
-                        )! < date
-
-                    if lessThanThreeDaysAgo {
-                        Text(
-                            "\(project.date.formatted(.relative(presentation: .named, unitsStyle: .wide)))"
-                        )
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    } else {
-                        Text(
-                            "\(project.date.formatted(date: .abbreviated, time: .omitted))"
-                        )
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    }
                 }
 
                 Text(project.desc)
@@ -64,9 +40,30 @@ struct ProjectListRow: View {
                     .lineLimit(2)
                     .truncationMode(.tail)
 
+                let date = project.date
+                let lessThanThreeDaysAgo =
+                    Calendar.current.date(
+                        byAdding: .dayOfYear,
+                        value: -3,
+                        to: Date()
+                    )! < date
+
+                if lessThanThreeDaysAgo {
+                    Text(
+                        "\(project.date.formatted(.relative(presentation: .named, unitsStyle: .wide)))"
+                    )
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                } else {
+                    Text(
+                        "\(project.date.formatted(date: .abbreviated, time: .omitted))"
+                    )
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                }
+
             }
         }
-        .padding(.vertical, 8)
     }
 }
 
