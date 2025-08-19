@@ -19,11 +19,10 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
-                Form {
-
+                List {
                     Section {
                         Button(
-                            "Remove all user data",
+                            "Reset all data",
                             role: .destructive
                         ) {
                             showAlert = true
@@ -32,10 +31,13 @@ struct SettingsView: View {
                         Text("Data reset")
                     } footer: {
                         Text(
-                            "Caution! All data will be deleted and replaced with default values."
+                            "Caution! All data will be deleted and replaced with default values. App restart is required."
                         )
                     }
                 }
+                #if os(iOS)
+                    .listStyle(.insetGrouped)
+                #endif
 
                 VStack {
                     Text(
@@ -45,7 +47,7 @@ struct SettingsView: View {
                     .foregroundStyle(.secondary)
 
                     Text(
-                        "v0.1.0 \(Date.now.formatted(date: .numeric, time: .omitted))"
+                        "v0.2.0 2025819.1"
                     )
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -88,6 +90,9 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
+            #if os(iOS) || os(tvOS) || targetEnvironment(macCatalyst)
+                .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
     }
 }
