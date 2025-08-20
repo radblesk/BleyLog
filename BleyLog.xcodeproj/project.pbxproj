@@ -49,6 +49,7 @@
 			membershipExceptions = (
 				"Projects/16-24/GuessTheFlag.swift",
 				"Projects/16-24/GuessTheFlag/FlagImage.swift",
+				"Projects/16-24/RockPaperScissors.swift",
 				"Projects/16-24/TempConvert.swift",
 				"Projects/16-24/WeSplit.swift",
 				Resources/AppIcon.icon,
@@ -68,6 +69,7 @@
 			membershipExceptions = (
 				"Projects/16-24/GuessTheFlag.swift",
 				"Projects/16-24/GuessTheFlag/FlagImage.swift",
+				"Projects/16-24/RockPaperScissors.swift",
 				"Projects/16-24/TempConvert.swift",
 				"Projects/16-24/WeSplit.swift",
 				Projects/Snippets/CodeSnippets.swift,

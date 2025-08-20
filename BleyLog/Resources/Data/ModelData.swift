@@ -25,7 +25,7 @@ class ModelData {
         ])
         let modelConfiguration = ModelConfiguration(
             schema: schema,
-            isStoredInMemoryOnly: false
+            isStoredInMemoryOnly: true
         )
 
         do {
