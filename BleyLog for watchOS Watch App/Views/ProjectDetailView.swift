@@ -23,6 +23,8 @@ struct ProjectDetailView: View {
                     GuessTheFlag()
                 case "RockPaperScissors":
                     RockPaperScissors()
+                case "BetterRest":
+                    BetterRest()
                 default:
                     Text("Select a project")
                 }

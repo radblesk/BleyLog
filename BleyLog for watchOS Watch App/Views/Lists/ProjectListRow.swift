@@ -47,18 +47,16 @@ struct ProjectListRow: View {
 
             if lessThanThreeDaysAgo {
                 Text(
-                    "\(project.date.formatted(.relative(presentation: .named, unitsStyle: .wide)))"
+                    "\(project.date.formatted(.dateTime.weekday(.wide)))"
                 )
-                .font(.footnote)
+                .font(.caption2)
                 .foregroundStyle(.link)
-                .bold()
             } else {
                 Text(
                     "\(project.date.formatted(date: .abbreviated, time: .omitted))"
                 )
-                .font(.footnote)
+                .font(.caption2)
                 .foregroundStyle(.link)
-                .bold()
             }
         }
         .padding(.vertical)
