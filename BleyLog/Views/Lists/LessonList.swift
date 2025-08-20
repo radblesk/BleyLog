@@ -16,8 +16,6 @@ struct LessonList: View {
     // States
     @State private var searchText: String = ""
     @State private var expanded: Set<String> = ["100 days of SwiftUI"]
-    @State private var isPresented = false
-    @State private var settingsPresented = false
     @Binding var selectedLanguage: Language?
 
     // Bindings
@@ -111,13 +109,9 @@ struct LessonList: View {
             .navigationTitle(Text("Courses"))
             .searchable(text: $searchText)
             .toolbar {
-                ToolbarItem(placement: .automatic) {
-                    Button("Settings", systemImage: "ellipsis") {
-                        settingsPresented = true
-                    }
-                }
                 if #available(iOS 26, *) {
                     DefaultToolbarItem(kind: .search, placement: .bottomBar)
+                    ToolbarSpacer(placement: .bottomBar)
 
                     ToolbarItem(placement: .largeSubtitle) {
                         if let selectedLanguage {
@@ -158,35 +152,23 @@ struct LessonList: View {
                     }
                 }
                 ToolbarItem(placement: .bottomBar) {
-                    Button(
-                        "Language",
-                        systemImage: "line.3.horizontal.decrease"
-                    ) {
-                        isPresented = true
+                    Menu {
+                        Picker("Language", selection: $selectedLanguage) {
+                            ForEach(languages, id: \.self) { language in
+                                Button(language.title) {
+                                    selectedLanguage = language
+                                }
+                                .tag(language)
+                            }
+                        }
+                    } label: {
+                        Button(
+                            "Language",
+                            systemImage: "line.3.horizontal.decrease"
+                        ) {}
                     }
-                }
-                if #available(iOS 26, *) {
-                    ToolbarSpacer(placement: .bottomBar)
                 }
 
-            }
-            .sheet(isPresented: $isPresented) {
-                VStack {
-                    Picker("Language", selection: $selectedLanguage) {
-                        ForEach(languages, id: \.self) { language in
-                            Text(language.title)
-                                .tag(language)
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                }
-                .padding()
-                .presentationDetents([.height(250), .medium])
-                .presentationDragIndicator(.visible)
-            }
-            .sheet(isPresented: $settingsPresented) {
-                SettingsView(presented: $settingsPresented)
-                    .presentationDetents([.height(350)])
             }
         }
     }
