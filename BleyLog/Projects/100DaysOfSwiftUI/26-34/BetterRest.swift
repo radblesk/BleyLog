@@ -28,20 +28,15 @@ struct BetterRest: View {
     var body: some View {
         NavigationStack {
             Form {
-                VStack(alignment: .leading) {
-                    Text("When do you want to wake up?")
-                        .font(.headline)
+                Section("When do you want to wake up?") {
                     DatePicker(
                         "Please enter a time",
                         selection: $wakeUp,
                         displayedComponents: .hourAndMinute
                     )
-                    .labelsHidden()
                 }
 
-                VStack(alignment: .leading) {
-                    Text("Desired amount of sleep.")
-                        .font(.headline)
+                Section("Desired amount of sleep.") {
                     #if !os(watchOS)
                         Stepper(
                             "\(sleepAmount.formatted()) hours",
@@ -51,7 +46,6 @@ struct BetterRest: View {
                         )
                     #else
                         VStack {
-                            Spacer()
                             Text("\(sleepAmount.formatted()) hours")
                                 .font(.title2)
                                 .contentTransition(.numericText())
@@ -70,16 +64,14 @@ struct BetterRest: View {
                                     }
                                 }
                             }
+                            .padding()
                             .buttonStyle(.bordered)
                             .labelStyle(.iconOnly)
                         }
                     #endif
                 }
 
-                VStack(alignment: .leading) {
-                    Text("Daily coffee intake.")
-                        .font(.headline)
-
+                Section("Daily coffee intake.") {
                     #if !os(watchOS)
                         Stepper(
                             "^[\(coffeeAmount.formatted()) cup](inflect: true)",
@@ -88,7 +80,6 @@ struct BetterRest: View {
                         )
                     #else
                         VStack {
-                            Spacer()
                             Text(
                                 "^[\(coffeeAmount.formatted()) cup](inflect: true)"
                             )
@@ -109,33 +100,42 @@ struct BetterRest: View {
                                     }
                                 }
                             }
+                            .padding()
                             .buttonStyle(.bordered)
                             .labelStyle(.iconOnly)
                         }
                     #endif
                 }
-                #if os(watchOS)
-                    Button("Calculate", action: calculateBedtime)
-                #endif
+
+                Section("Bedtime") {
+                    HStack {
+                        Text("Your predicted bedtime is:")
+                        Spacer()
+                        Text(alertMessage)
+                    }
+                }
 
             }
+            .onAppear(perform: calculateBedtime)
+            .onChange(of: wakeUp, calculateBedtime)
+            .onChange(of: sleepAmount, calculateBedtime)
+            .onChange(of: coffeeAmount, calculateBedtime)
             .navigationTitle("BetterRest")
-            #if !os(watchOS)
-                .toolbar {
-                    Button("Calculate", action: calculateBedtime)
-                }
-            #elseif os(watchOS)
+            #if os(watchOS)
                 .containerBackground(
-                    .brown.gradient,
+                    RadialGradient(
+                        colors: [
+                            .brown.opacity(0.8),
+                            .black,
+                        ],
+                        center: .bottom,
+                        startRadius: -200,
+                        endRadius: 400
+                    ),
                     for: .navigation
                 )
                 .toolbarForegroundStyle(.brown, for: .automatic)
             #endif
-            .alert(alertTitle, isPresented: $showAlert) {
-                Button("OK") {}
-            } message: {
-                Text("You should go to bed at: \(alertMessage)")
-            }
         }
     }
 
@@ -167,7 +167,7 @@ struct BetterRest: View {
                 "There was a problem calculating your bedtime. Please try again."
         }
 
-        showAlert = true
+        //        showAlert = true
     }
 
 }

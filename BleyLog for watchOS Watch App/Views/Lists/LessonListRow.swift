@@ -48,8 +48,11 @@ struct LessonListRow: View {
             Spacer()
             Text(lesson.title)
                 .bold()
+            let oneDay = lesson.firstDay == lesson.lastDay
             Text(
-                "Days \(lesson.firstDay)-\(lesson.lastDay)"
+                oneDay
+                    ? "Day \(lesson.firstDay)"
+                    : "Days \(lesson.firstDay)-\(lesson.lastDay)"
             )
             .font(.caption)
             .foregroundStyle(
