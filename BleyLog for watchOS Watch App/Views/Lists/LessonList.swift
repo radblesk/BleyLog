@@ -36,6 +36,7 @@ struct LessonList: View {
                             }
                         List(
                             sortedCourses,
+                            id: \.self,
                             selection: $lesson
                         ) {
                             course in

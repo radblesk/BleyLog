@@ -11,14 +11,14 @@ import SwiftUI
 @Model
 class Project {
     var title: String
-    var projectNumber: Int
+    var projectNumber: Int?
     var date: Date
     var desc: String
     var icon: String?
 
     init(
         title: String,
-        projectNumber: Int,
+        projectNumber: Int? = nil,
         date: Date,
         desc: String,
         icon: String? = nil
@@ -60,12 +60,25 @@ class Project {
             desc: "A simple flag guessing game.",
             icon: "GuessTheFlag-icon"
         ),
+    ]
+
+    static let consolidation2 = [
         Project(
             title: "RockPaperScissors",
-            projectNumber: 4,
             date: createDate(year: 2025, month: 8, day: 20),
             desc: "Rock, paper, scissors game.",
             icon: "RockPaperScissors-icon"
+        )
+    ]
+
+    static let expandingYourSkills = [
+        Project(
+            title: "BetterRest",
+            projectNumber: 4,
+            date: createDate(year: 2025, month: 8, day: 20),
+            desc:
+                "App designed to help coffee drinkers get a good night’s sleep.",
+            icon: "BetterRest-icon"
         )
     ]
 }

@@ -56,7 +56,7 @@ struct SettingsView: View {
                             .foregroundStyle(.secondary)
 
                             Text(
-                                "v1.0 2025820.1"
+                                "v1.0 2025820.3"
                             )
                             .font(.caption)
                             .foregroundStyle(.secondary)

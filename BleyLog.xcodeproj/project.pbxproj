@@ -47,11 +47,12 @@
 		F91370D02E551F0C0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for watchOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"Projects/16-24/GuessTheFlag.swift",
-				"Projects/16-24/GuessTheFlag/FlagImage.swift",
-				"Projects/16-24/RockPaperScissors.swift",
-				"Projects/16-24/TempConvert.swift",
-				"Projects/16-24/WeSplit.swift",
+				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag.swift",
+				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag/FlagImage.swift",
+				"Projects/100DaysOfSwiftUI/16-24/TempConvert.swift",
+				"Projects/100DaysOfSwiftUI/16-24/WeSplit.swift",
+				Projects/100DaysOfSwiftUI/25/RockPaperScissors.swift,
+				"Projects/100DaysOfSwiftUI/26-34/BetterRest.swift",
 				Resources/AppIcon.icon,
 				Resources/Assets.xcassets,
 				"Resources/BleyLog-InfoPlist.xcstrings",
@@ -61,17 +62,19 @@
 				Resources/Data/ModelData.swift,
 				Resources/Data/Project.swift,
 				Resources/Localizable.xcstrings,
+				"Resources/ML Data/SleepCalculator.mlmodel",
 			);
 			target = F91370B82E551EDF0030E98D /* BleyLog for watchOS */;
 		};
 		F91370FC2E552D1F0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for Mac" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"Projects/16-24/GuessTheFlag.swift",
-				"Projects/16-24/GuessTheFlag/FlagImage.swift",
-				"Projects/16-24/RockPaperScissors.swift",
-				"Projects/16-24/TempConvert.swift",
-				"Projects/16-24/WeSplit.swift",
+				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag.swift",
+				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag/FlagImage.swift",
+				"Projects/100DaysOfSwiftUI/16-24/TempConvert.swift",
+				"Projects/100DaysOfSwiftUI/16-24/WeSplit.swift",
+				Projects/100DaysOfSwiftUI/25/RockPaperScissors.swift,
+				"Projects/100DaysOfSwiftUI/26-34/BetterRest.swift",
 				Projects/Snippets/CodeSnippets.swift,
 				Projects/Snippets/SheetView.swift,
 				Resources/Assets.xcassets,
@@ -81,6 +84,7 @@
 				Resources/Data/ModelData.swift,
 				Resources/Data/Project.swift,
 				Resources/Localizable.xcstrings,
+				"Resources/ML Data/SleepCalculator.mlmodel",
 			);
 			target = F91370E72E552D070030E98D /* BleyLog for Mac */;
 		};

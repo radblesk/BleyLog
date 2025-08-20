@@ -44,8 +44,12 @@ struct LessonListRow: View {
             VStack(alignment: .leading) {
                 Text(lesson.title)
                     .font(.headline)
+
+                let oneDay = lesson.firstDay == lesson.lastDay
                 Text(
-                    "Days \(lesson.firstDay)-\(lesson.lastDay)"
+                    oneDay
+                        ? "Day \(lesson.firstDay)"
+                        : "Days \(lesson.firstDay)-\(lesson.lastDay)"
                 )
                 .font(.caption)
                 .foregroundStyle(
@@ -61,6 +65,9 @@ struct LessonListRow: View {
 
 #Preview {
     List {
-        LessonListRow(lesson: Lesson.hundreedDaysOfSwiftUILessons.first!)
+        LessonListRow(
+            lesson: Lesson.hundreedDaysOfSwiftUILessons
+                .first(where: { $0.firstDay == 25 })!
+        )
     }
 }

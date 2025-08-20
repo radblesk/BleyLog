@@ -39,7 +39,7 @@ struct ProjectListRow: View {
 
                 if lessThanThreeDaysAgo {
                     Text(
-                        "\(project.date.formatted(.relative(presentation: .named, unitsStyle: .wide)))"
+                        "\(project.date.formatted(.dateTime.weekday(.wide)))"
                     )
                     .font(.caption2)
                     .foregroundStyle(.link)
@@ -67,6 +67,6 @@ struct ProjectListRow: View {
 
 #Preview {
     List {
-        ProjectListRow(project: Project.startingSwiftUI.first!)
+        ProjectListRow(project: Project.consolidation2.first!)
     }
 }

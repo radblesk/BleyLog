@@ -56,7 +56,7 @@ struct LessonListRow: View {
                 .secondary
             )
             Spacer()
-            Text("\(lesson.projects.count) projects")
+            Text("^[\(lesson.projects.count) project](inflect: true)")
                 .foregroundStyle(
                     lesson.finished
                         ? .green
