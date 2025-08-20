@@ -60,5 +60,12 @@ class Project {
             desc: "A simple flag guessing game.",
             icon: "GuessTheFlag-icon"
         ),
+        Project(
+            title: "RockPaperScissors",
+            projectNumber: 4,
+            date: createDate(year: 2025, month: 8, day: 20),
+            desc: "Rock, paper, scissors game.",
+            icon: "RockPaperScissors-icon"
+        )
     ]
 }

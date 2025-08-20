@@ -21,6 +21,8 @@ struct ProjectDetailView: View {
                     TempConvert()
                 case "GuessTheFlag":
                     GuessTheFlag()
+                case "RockPaperScissors":
+                    RockPaperScissors()
                 default:
                     Text("Select a project")
                 }
