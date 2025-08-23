@@ -14,11 +14,10 @@ struct LessonList: View {
     var languages: [Language]
 
     // States
-    @State private var searchText: String = ""
     @State private var expanded: Set<String> = ["100 days of SwiftUI"]
-    @Binding var selectedLanguage: Language?
 
     // Bindings
+    @Binding var selectedLanguage: Language?
     @Binding var lesson: Lesson?
 
     var body: some View {
@@ -57,19 +56,13 @@ struct LessonList: View {
                                 )
                             ) {
                                 if !course.lessons.isEmpty {
-                                    let searchResults = course.lessons.filter {
-                                        $0.title.lowercased().contains(
-                                            searchText.lowercased()
-                                        )
-                                    }
 
                                     let sortedLessons = course.lessons.sorted {
                                         $0.firstDay
                                             < $1.firstDay
                                     }
                                     ForEach(
-                                        searchText.isEmpty
-                                            ? sortedLessons : searchResults,
+                                        sortedLessons,
                                         id: \.self
                                     ) { lesson in
                                         NavigationLink(value: lesson) {
@@ -91,9 +84,6 @@ struct LessonList: View {
                             }
                         }
                         .headerProminence(.increased)
-                        .refreshable {
-                            insertModelData()
-                        }
                     } else {
                         Text("No courses")
                     }
@@ -106,81 +96,7 @@ struct LessonList: View {
                     selectedLanguage = languages.first { $0.title == "Swift" }
                 }
             }
-            .navigationTitle(Text("Courses"))
-            .searchable(text: $searchText)
-            .toolbar {
-                if #available(iOS 26, *) {
-                    DefaultToolbarItem(kind: .search, placement: .bottomBar)
-                    ToolbarSpacer(placement: .bottomBar)
-
-                    ToolbarItem(placement: .largeSubtitle) {
-                        if let selectedLanguage {
-                            HStack {
-                                Text(
-                                    "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
-                                )
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                Spacer()
-                            }
-                        }
-                    }
-                    ToolbarItem(placement: .subtitle) {
-                        if let selectedLanguage {
-                            HStack {
-                                Text(
-                                    "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
-                                )
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                Spacer()
-                            }
-                        }
-                    }
-                } else {
-                    ToolbarItem(placement: .status) {
-                        if let selectedLanguage {
-                            HStack {
-                                Text(
-                                    "\(selectedLanguage.courses.count) \(selectedLanguage.title) courses"
-                                )
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                Spacer()
-                            }
-                        }
-                    }
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Menu {
-                        Picker("Language", selection: $selectedLanguage) {
-                            ForEach(languages, id: \.self) { language in
-                                Button(language.title) {
-                                    selectedLanguage = language
-                                }
-                                .tag(language)
-                            }
-                        }
-                    } label: {
-                        Button(
-                            "Language",
-                            systemImage: "line.3.horizontal.decrease"
-                        ) {}
-                    }
-                }
-
-            }
-        }
-    }
-    private func insertModelData() {
-        let descriptor = FetchDescriptor<Language>()
-
-        guard let languages = try? context.fetch(descriptor) else { return }
-
-        if languages.isEmpty {
-            for language in Language.languages {
-                context.insert(language)
-            }
+            .navigationTitle("Courses")
         }
     }
 }

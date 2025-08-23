@@ -43,6 +43,9 @@ struct ContentView: View {
         } detail: {
             ProjectDetailView(project: selectedProject)
         }
+        .onChange(of: selectedLesson) {
+            selectedProject = nil
+        }
         .navigationSplitViewStyle(.balanced)
     }
 }

@@ -18,23 +18,24 @@ struct ProjectList: View {
     var body: some View {
         NavigationStack {
             if let lesson = lesson {
-                if !lesson.projects.isEmpty {
-                    List(
-                        lesson.projects.sorted {
-                            $0.date
-                                < $1.date
-                        },
-                        selection: $project
-                    ) { project in
-                        NavigationLink(value: project) {
-                            ProjectListRow(project: project)
+                VStack {
+                    if !lesson.projects.isEmpty {
+                        List(
+                            lesson.projects.sorted {
+                                $0.date
+                                    < $1.date
+                            },
+                            selection: $project
+                        ) { project in
+                            NavigationLink(value: project) {
+                                ProjectListRow(project: project)
+                            }
                         }
+                    } else {
+                        Text("No projects")
                     }
-                    .navigationTitle(lesson.title)
-                } else {
-                    Text("No projects")
-                        .navigationTitle(lesson.title)
                 }
+                .navigationTitle(lesson.title)
             } else {
                 Text("Select a lesson")
             }
