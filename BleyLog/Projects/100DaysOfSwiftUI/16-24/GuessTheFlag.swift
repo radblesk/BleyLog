@@ -75,15 +75,6 @@ struct GuessTheFlag: View {
                         .font(.headline.bold())
 
                     Spacer()
-
-                    #if !os(watchOS)
-                        Button {
-                            isPresenting = true
-                        } label: {
-                            Label("Source Code", systemImage: "terminal")
-                        }
-                    #endif
-
                 }
                 .padding()
             }
@@ -99,14 +90,6 @@ struct GuessTheFlag: View {
                     Text("Your score is \(score)")
                 }
             }
-            #if !os(watchOS)
-                .sheet(isPresented: $isPresenting) {
-                    SheetView(
-                        isPresenting: $isPresenting,
-                        project: "guessTheFlag"
-                    )
-                }
-            #endif
         }
     }
 

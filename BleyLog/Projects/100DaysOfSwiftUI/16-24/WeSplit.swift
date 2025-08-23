@@ -95,23 +95,6 @@ struct WeSplit: View {
                 }
             }
             .navigationTitle("WeSplit")
-            #if os(iOS)
-                .toolbar {
-                    Button {
-                        isPresenting = true
-                    } label: {
-                        Label("Source Code", systemImage: "terminal")
-                    }
-                    if amountIsFocused {
-                        Button("Done", systemImage: "checkmark") {
-                            amountIsFocused = false
-                        }
-                    }
-                }
-                .sheet(isPresented: $isPresenting) {
-                    SheetView(isPresenting: $isPresenting, project: "weSplit")
-                }
-            #endif
         }
     }
 }

@@ -300,6 +300,7 @@
       }
     },
     "Done" : {
+      "extractionState" : "stale",
       "localizations" : {
         "sk" : {
           "stringUnit" : {
@@ -606,6 +607,7 @@
       }
     },
     "Source Code" : {
+      "extractionState" : "stale",
       "localizations" : {
         "sk" : {
           "stringUnit" : {

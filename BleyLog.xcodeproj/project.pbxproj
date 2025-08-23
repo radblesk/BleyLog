@@ -75,8 +75,6 @@
 				"Projects/100DaysOfSwiftUI/16-24/WeSplit.swift",
 				Projects/100DaysOfSwiftUI/25/RockPaperScissors.swift,
 				"Projects/100DaysOfSwiftUI/26-34/BetterRest.swift",
-				Projects/Snippets/CodeSnippets.swift,
-				Projects/Snippets/SheetView.swift,
 				Resources/Assets.xcassets,
 				Resources/Data/Course.swift,
 				Resources/Data/Language.swift,
