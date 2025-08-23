@@ -12,55 +12,68 @@ struct ProjectListRow: View {
     var project: Project
 
     var body: some View {
-        HStack(spacing: 20) {
-
-            if let icon = project.icon {
-                Image(icon)
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .clipShape(.rect(cornerRadius: 8))
-                    .foregroundStyle(Color.accentColor)
-                    .shadow(radius: 2, x: 0, y: 2)
-            } else {
-                Image(systemName: "folder")
-                    .foregroundStyle(Color.accentColor)
-                    .imageScale(.large)
-            }
-
-            VStack(alignment: .leading, spacing: 2) {
-
-                let date = project.date
-                let lessThanThreeDaysAgo =
-                    Calendar.current.date(
-                        byAdding: .dayOfYear,
-                        value: -3,
-                        to: Date()
-                    )! < date
-
-                if lessThanThreeDaysAgo {
-                    Text(
-                        "\(project.date.formatted(.dateTime.weekday(.wide)))"
-                    )
-                    .font(.caption2)
-                    .foregroundStyle(.link)
+        VStack(alignment: .leading, spacing: 16) {
+            HStack(spacing: 14) {
+                if let icon = project.icon {
+                    Image(icon)
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .clipShape(.rect(cornerRadius: 16))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(
+                                    .secondary.opacity(0.4),
+                                    style: StrokeStyle(lineWidth: 0.2)
+                                )
+                        }
                 } else {
-                    Text(
-                        "\(project.date.formatted(date: .abbreviated, time: .omitted))"
-                    )
-                    .font(.caption2)
-                    .foregroundStyle(.link)
+                    Image("empty-icon")
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .clipShape(.rect(cornerRadius: 16))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(
+                                    .secondary.opacity(0.4),
+                                    style: StrokeStyle(lineWidth: 0.2)
+                                )
+                        }
                 }
 
-                Text(project.title)
-                    .font(.headline)
-                    .truncationMode(.tail)
+                VStack(alignment: .leading, spacing: 4) {
 
-                Text(project.desc)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(2)
-                    .truncationMode(.tail)
+                    Text(project.title)
+                        .font(.title3)
+                        .truncationMode(.tail)
+
+                    let date = project.date
+                    let lessThanThreeDaysAgo =
+                        Calendar.current.date(
+                            byAdding: .dayOfYear,
+                            value: -3,
+                            to: Date()
+                        )! < date
+
+                    if lessThanThreeDaysAgo {
+                        Text(
+                            "\(project.date.formatted(.dateTime.weekday(.wide)))"
+                        )
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    } else {
+                        Text(
+                            "\(project.date.formatted(date: .abbreviated, time: .omitted))"
+                        )
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    }
+                }
             }
+
+            Text(project.desc)
+                .font(.subheadline)
+                .lineLimit(2)
+                .truncationMode(.tail)
         }
     }
 }

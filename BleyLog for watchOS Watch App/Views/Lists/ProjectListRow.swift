@@ -17,26 +17,19 @@ struct ProjectListRow: View {
             if let icon = project.icon {
                 Image(icon)
                     .resizable()
-                    .frame(width: 30, height: 30)
-                    .clipShape(.rect(cornerRadius: 8))
-                    .foregroundStyle(Color.accentColor)
-                    .shadow(radius: 2, x: 0, y: 2)
+                    .frame(width: 40, height: 40)
+                    .clipShape(.circle)
             } else {
-                Image(systemName: "folder")
-                    .foregroundStyle(Color.accentColor)
-                    .imageScale(.large)
+                Image("empty-icon")
+                    .resizable()
+                    .frame(width: 40, height: 40)
+                    .clipShape(.circle)
             }
-            Spacer()
+            Spacer(minLength: 6)
             Text(project.title)
                 .bold()
                 .truncationMode(.tail)
 
-            Text(project.desc)
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .lineLimit(2)
-                .truncationMode(.tail)
-            Spacer()
             let date = project.date
             let lessThanThreeDaysAgo =
                 Calendar.current.date(
@@ -49,18 +42,18 @@ struct ProjectListRow: View {
                 Text(
                     "\(project.date.formatted(.dateTime.weekday(.wide)))"
                 )
-                .font(.caption2)
-                .foregroundStyle(.link)
+                .font(.footnote)
+                .foregroundStyle(.secondary)
             } else {
                 Text(
                     "\(project.date.formatted(date: .abbreviated, time: .omitted))"
                 )
-                .font(.caption2)
-                .foregroundStyle(.link)
+                .font(.footnote)
+                .foregroundStyle(.secondary)
             }
         }
         .padding(.vertical)
-        .frame(height: 150)
+        //        .frame(height: 150)
     }
 }
 
