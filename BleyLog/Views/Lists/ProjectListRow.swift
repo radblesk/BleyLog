@@ -26,6 +26,13 @@ struct ProjectListRow: View {
                                     style: StrokeStyle(lineWidth: 0.2)
                                 )
                         }
+                        .apply {
+                            if #available(iOS 26.0, *) {
+                                $0.glassEffect(in: .rect(cornerRadius: 16))
+                            } else {
+                                // Fallback
+                            }
+                        }
                 } else {
                     Image("empty-icon")
                         .resizable()
@@ -37,6 +44,13 @@ struct ProjectListRow: View {
                                     .secondary.opacity(0.4),
                                     style: StrokeStyle(lineWidth: 0.2)
                                 )
+                        }
+                        .apply {
+                            if #available(iOS 26.0, *) {
+                                $0.glassEffect(in: .rect(cornerRadius: 16))
+                            } else {
+                                // Fallback
+                            }
                         }
                 }
 
