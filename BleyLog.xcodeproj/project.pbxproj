@@ -55,7 +55,6 @@
 				"Projects/100DaysOfSwiftUI/26-34/BetterRest.swift",
 				Resources/AppIcon.icon,
 				Resources/Assets.xcassets,
-				"Resources/BleyLog-InfoPlist.xcstrings",
 				Resources/Data/Course.swift,
 				Resources/Data/Language.swift,
 				Resources/Data/Lesson.swift,
