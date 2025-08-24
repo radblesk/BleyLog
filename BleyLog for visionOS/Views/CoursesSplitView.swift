@@ -23,10 +23,7 @@ struct CoursesSplitView: View {
     @State private var selectedProject: Project?
 
     var body: some View {
-        NavigationSplitView(
-            columnVisibility: $columnVisibility,
-            preferredCompactColumn: $preferredCompactColumn
-        ) {
+        NavigationSplitView {
             LessonList(
                 languages: languages,
                 selectedLanguage: $selectedLanguage,
@@ -43,7 +40,6 @@ struct CoursesSplitView: View {
         .onChange(of: selectedLesson) {
             selectedProject = nil
         }
-        .navigationSplitViewStyle(.balanced)
     }
 }
 
