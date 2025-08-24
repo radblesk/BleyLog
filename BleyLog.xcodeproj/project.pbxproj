@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F91370C32E551EE10030E98D /* BleyLog for watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F91371142E552D9C0030E98D /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F91371132E552D9C0030E98D /* HighlightSwift */; };
-		F919669A2E5503FF0014E8D1 /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F91966992E5503FF0014E8D1 /* HighlightSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,7 +128,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F919669A2E5503FF0014E8D1 /* HighlightSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +230,6 @@
 			);
 			name = BleyLog;
 			packageProductDependencies = (
-				F91966992E5503FF0014E8D1 /* HighlightSwift */,
 			);
 			productName = HWS;
 			productReference = F94692062E49185A009E637D /* BleyLog.app */;
@@ -625,7 +622,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.5;
@@ -671,7 +668,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.5;
@@ -740,11 +737,6 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		F91371132E552D9C0030E98D /* HighlightSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F91966972E5503DE0014E8D1 /* XCLocalSwiftPackageReference "../../../Downloads/highlightswift" */;
-			productName = HighlightSwift;
-		};
-		F91966992E5503FF0014E8D1 /* HighlightSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F91966972E5503DE0014E8D1 /* XCLocalSwiftPackageReference "../../../Downloads/highlightswift" */;
 			productName = HighlightSwift;
