@@ -30,7 +30,7 @@ struct ProjectListRow: View {
                             if #available(iOS 26.0, *) {
                                 $0.glassEffect(in: .rect(cornerRadius: 16))
                             } else {
-                                // Fallback
+                                $0.disabled(false)
                             }
                         }
                 } else {
