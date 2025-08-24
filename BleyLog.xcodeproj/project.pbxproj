@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F91370C32E551EE10030E98D /* BleyLog for watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F91371142E552D9C0030E98D /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F91371132E552D9C0030E98D /* HighlightSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,7 +169,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F91371142E552D9C0030E98D /* HighlightSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +288,6 @@
 			);
 			name = "BleyLog for Mac";
 			packageProductDependencies = (
-				F91371132E552D9C0030E98D /* HighlightSwift */,
 			);
 			productName = "BleyLog for Mac";
 			productReference = F91370E82E552D070030E98D /* BleyLog for Mac.app */;
@@ -354,7 +351,6 @@
 			mainGroup = F94691FD2E49185A009E637D;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				F91966972E5503DE0014E8D1 /* XCLocalSwiftPackageReference "../../../Downloads/highlightswift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F94692072E49185A009E637D /* Products */;
@@ -533,7 +529,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.6;
 			};
 			name = Debug;
 		};
@@ -568,7 +564,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.6;
 			};
 			name = Release;
 		};
@@ -902,21 +898,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCLocalSwiftPackageReference section */
-		F91966972E5503DE0014E8D1 /* XCLocalSwiftPackageReference "../../../Downloads/highlightswift" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../../Downloads/highlightswift;
-		};
-/* End XCLocalSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F91371132E552D9C0030E98D /* HighlightSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F91966972E5503DE0014E8D1 /* XCLocalSwiftPackageReference "../../../Downloads/highlightswift" */;
-			productName = HighlightSwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F94691FE2E49185A009E637D /* Project object */;
 }
