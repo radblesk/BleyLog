@@ -29,6 +29,8 @@ struct ProjectView: View {
                     WordScramble()
                 case "Animations":
                     Animations()
+                case "Edutainment":
+                    Edutainment()
                 default:
                     Text("Select a project")
                 }

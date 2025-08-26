@@ -100,4 +100,13 @@ class Project {
             icon: "Animations-icon"
         )
     ]
+
+    static let consolidation3 = [
+        Project(
+            title: "Edutainment",
+            date: createDate(year: 2025, month: 8, day: 26),
+            desc: "App for kids to help them practice multiplication tables – “what is 7 x 8?” and so on..",
+            icon: "Edutainment-icon"
+        )
+    ]
 }
