@@ -374,6 +374,8 @@ struct CoursesSplitView: View {
                     RockPaperScissors()
                 case "BetterRest":
                     BetterRest()
+                case "Word Scramble":
+                    WordScramble()
                 default:
                     Text("Select a project")
                 }
