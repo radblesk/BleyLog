@@ -90,6 +90,14 @@ class Project {
             desc:
                 "The game will show players a random eight-letter word, and ask them to make words out of it.",
             icon: "WordScramble-icon"
+        ),
+        Project(
+            title: "Animations",
+            projectNumber: 6,
+            date: createDate(year: 2025, month: 8, day: 26),
+            desc:
+                "This project is about learning how to use SwiftUI to create animations.",
+            icon: "Animations-icon"
         )
     ]
 }
