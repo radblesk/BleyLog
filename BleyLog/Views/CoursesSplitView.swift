@@ -294,6 +294,11 @@ struct CoursesSplitView: View {
                                         .truncationMode(.tail)
 
                                     let date = project.date
+                                    let currentDate =
+                                        date
+                                        == Calendar.current.startOfDay(
+                                            for: Date()
+                                        )
                                     let lessThanThreeDaysAgo =
                                         Calendar.current.date(
                                             byAdding: .dayOfYear,
@@ -301,7 +306,13 @@ struct CoursesSplitView: View {
                                             to: Date()
                                         )! < date
 
-                                    if lessThanThreeDaysAgo {
+                                    if currentDate {
+                                        Text(
+                                            "Today"
+                                        )
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                    } else if lessThanThreeDaysAgo {
                                         Text(
                                             "\(project.date.formatted(.dateTime.weekday(.wide)))"
                                         )
