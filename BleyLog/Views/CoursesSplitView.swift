@@ -235,7 +235,7 @@ struct CoursesSplitView: View {
                 ) {
                     project in
                     NavigationLink {
-                        projectDetailView()
+                        ProjectView(project: project)
                     } label: {
                         VStack(alignment: .leading, spacing: 16) {
                             HStack(spacing: 14) {
@@ -355,30 +355,6 @@ struct CoursesSplitView: View {
                 }
             } else {
                 Text("Select a lesson")
-            }
-        }
-    }
-
-    // MARK: - Project detail view
-    fileprivate func projectDetailView() -> some View {
-        return NavigationStack {
-            Group {
-                switch viewModel.selectedProject?.title {
-                case "WeSplit":
-                    WeSplit()
-                case "TempConvert":
-                    TempConvert()
-                case "GuessTheFlag":
-                    GuessTheFlag()
-                case "RockPaperScissors":
-                    RockPaperScissors()
-                case "BetterRest":
-                    BetterRest()
-                case "Word Scramble":
-                    WordScramble()
-                default:
-                    Text("Select a project")
-                }
             }
         }
     }

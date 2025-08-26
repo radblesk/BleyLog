@@ -13,28 +13,8 @@ struct ProjectDetailView: View {
     var projectID: Project.ID?
 
     var body: some View {
-        NavigationStack {
-            Group {
-                if let id = projectID, let project = viewModel.project(for: id)
-                {
-                    switch project.title {
-                    case "WeSplit":
-                        WeSplit()
-                    case "TempConvert":
-                        TempConvert()
-                    case "GuessTheFlag":
-                        GuessTheFlag()
-                    case "RockPaperScissors":
-                        RockPaperScissors()
-                    case "BetterRest":
-                        BetterRest()
-                    default:
-                        Text("Select a project")
-                    }
-                }
-            }
-            .scenePadding()
+        if let id = projectID, let project = viewModel.project(for: id) {
+            ProjectView(project: project)
         }
-        .frame(maxWidth: 500)
     }
 }

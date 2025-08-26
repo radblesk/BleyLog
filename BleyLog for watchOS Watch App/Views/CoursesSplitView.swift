@@ -120,24 +120,7 @@ struct CoursesSplitView: View {
             ) {
                 project in
                 NavigationLink {
-                    NavigationStack {
-                        Group {
-                            switch viewModel.selectedProject?.title {
-                            case "WeSplit":
-                                WeSplit()
-                            case "TempConvert":
-                                TempConvert()
-                            case "GuessTheFlag":
-                                GuessTheFlag()
-                            case "RockPaperScissors":
-                                RockPaperScissors()
-                            case "BetterRest":
-                                BetterRest()
-                            default:
-                                Text("Select a project")
-                            }
-                        }
-                    }
+                    ProjectView(project: project)
                 } label: {
                     ProjectListRow(project: project)
                 }.tag(project)
