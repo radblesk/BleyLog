@@ -8,39 +8,33 @@
 import SwiftUI
 
 struct ProjectDetailView: View {
+    @Environment(ViewModel.self) var viewModel
     // DataModel
-    var project: Project?
+    var projectID: Project.ID?
 
     var body: some View {
         NavigationStack {
             Group {
-                switch project?.title {
-                case "WeSplit":
-                    WeSplit()
-                case "TempConvert":
-                    TempConvert()
-                case "GuessTheFlag":
-                    GuessTheFlag()
-                case "RockPaperScissors":
-                    RockPaperScissors()
-                case "BetterRest":
-                    BetterRest()
-                default:
-                    Text("Select a project")
+                if let id = projectID, let project = viewModel.project(for: id)
+                {
+                    switch project.title {
+                    case "WeSplit":
+                        WeSplit()
+                    case "TempConvert":
+                        TempConvert()
+                    case "GuessTheFlag":
+                        GuessTheFlag()
+                    case "RockPaperScissors":
+                        RockPaperScissors()
+                    case "BetterRest":
+                        BetterRest()
+                    default:
+                        Text("Select a project")
+                    }
                 }
             }
-            .padding()
+            .scenePadding()
         }
+        .frame(maxWidth: 500)
     }
-}
-
-#Preview {
-    ProjectDetailView(
-        project: Project(
-            title: "WeSplit",
-            projectNumber: 1,
-            date: Date(),
-            desc: ""
-        )
-    )
 }
