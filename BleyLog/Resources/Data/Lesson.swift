@@ -62,7 +62,7 @@ class Lesson {
             firstDay: 26,
             lastDay: 34,
             title: "Expanding your skills",
-            inProgress: true,
+            finished: true,
             projects: Project.expandingYourSkills,
             headerImage: "expandingyourskills-header"
         ),
@@ -70,6 +70,8 @@ class Lesson {
             firstDay: 35,
             lastDay: 35,
             title: "Consolidation III",
+            inProgress: true,
+            projects: Project.consolidation3
         ),
         Lesson(
             firstDay: 36,
