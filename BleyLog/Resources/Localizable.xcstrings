@@ -111,6 +111,36 @@
         }
       }
     },
+    "Animated button" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animované tlačidlo"
+          }
+        }
+      }
+    },
+    "Animated text" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animovaný text"
+          }
+        }
+      }
+    },
+    "Animations" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animácie"
+          }
+        }
+      }
+    },
     "Are you sure? This will remove all user data and replace it with default values." : {
       "localizations" : {
         "sk" : {
@@ -227,6 +257,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aktuálne skóre: %lld"
+          }
+        }
+      }
+    },
+    "Custom transitions" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vlastné animácie"
           }
         }
       }
@@ -391,6 +431,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vývojár: [Radoslav Bley](https://www.radobley.sk)"
+          }
+        }
+      }
+    },
+    "Drag Gesture animation" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animácia potiahnutia"
           }
         }
       }
@@ -869,12 +919,42 @@
         }
       }
     },
+    "Showing/Hiding views" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazenie/Skrytie okna"
+          }
+        }
+      }
+    },
     "Start over" : {
       "localizations" : {
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Začať odznova"
+          }
+        }
+      }
+    },
+    "Tap me" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stlač ma"
+          }
+        }
+      }
+    },
+    "Tap Me" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stlač Ma"
           }
         }
       }

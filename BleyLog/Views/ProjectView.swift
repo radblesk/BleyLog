@@ -27,6 +27,8 @@ struct ProjectView: View {
                     BetterRest()
                 case "Word Scramble":
                     WordScramble()
+                case "Animations":
+                    Animations()
                 default:
                     Text("Select a project")
                 }

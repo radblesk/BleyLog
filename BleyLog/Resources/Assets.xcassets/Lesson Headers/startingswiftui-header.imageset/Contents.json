@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "u7656663153_Image_showcasing_current_lesson_topics_in_learnin_c6df2eae-5220-489f-8436-0647efdea5b5_2.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
