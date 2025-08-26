@@ -15,19 +15,22 @@ class Project {
     var date: Date
     var desc: String
     var icon: String?
+    var lesson: Lesson?
 
     init(
         title: String,
         projectNumber: Int? = nil,
         date: Date,
         desc: String,
-        icon: String? = nil
+        icon: String? = nil,
+        lesson: Lesson? = nil
     ) {
         self.title = title
         self.projectNumber = projectNumber
         self.date = date
         self.desc = desc
         self.icon = icon
+        self.lesson = lesson
     }
 
     static func createDate(year: Int, month: Int, day: Int) -> Date {

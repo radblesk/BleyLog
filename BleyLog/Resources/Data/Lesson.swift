@@ -17,6 +17,7 @@ class Lesson {
     var finished: Bool = false
 
     @Relationship(deleteRule: .cascade) var projects: [Project] = []
+    var course: Course?
 
     init(
         firstDay: Int,
@@ -24,7 +25,8 @@ class Lesson {
         title: String,
         inProgress: Bool = false,
         finished: Bool = false,
-        projects: [Project] = []
+        projects: [Project] = [],
+        course: Course? = nil
 
     ) {
         self.firstDay = firstDay
@@ -33,6 +35,7 @@ class Lesson {
         self.inProgress = inProgress
         self.finished = finished
         self.projects = projects
+        self.course = course
 
     }
 

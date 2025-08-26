@@ -11,15 +11,18 @@ import SwiftUI
 @Model
 class Course {
     var title: String
+    var language: Language?
 
     @Relationship(deleteRule: .cascade) var lessons: [Lesson] = []
 
     init(
         title: String,
-        lessons: [Lesson] = []
+        lessons: [Lesson] = [],
+        language: Language? = nil
     ) {
         self.title = title
         self.lessons = lessons
+        self.language = language
 
     }
 
