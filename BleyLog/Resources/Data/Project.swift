@@ -82,6 +82,14 @@ class Project {
             desc:
                 "App designed to help coffee drinkers get a good night’s sleep.",
             icon: "BetterRest-icon"
+        ),
+        Project(
+            title: "Word Scramble",
+            projectNumber: 5,
+            date: createDate(year: 2025, month: 8, day: 26),
+            desc:
+                "The game will show players a random eight-letter word, and ask them to make words out of it.",
+            icon: "WordScramble-icon"
         )
     ]
 }
