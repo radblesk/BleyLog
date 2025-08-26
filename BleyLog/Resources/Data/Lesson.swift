@@ -15,6 +15,7 @@ class Lesson {
     var title: String
     var inProgress: Bool = false
     var finished: Bool = false
+    var headerImage: String? = nil
 
     @Relationship(deleteRule: .cascade) var projects: [Project] = []
     var course: Course?
@@ -26,7 +27,8 @@ class Lesson {
         inProgress: Bool = false,
         finished: Bool = false,
         projects: [Project] = [],
-        course: Course? = nil
+        course: Course? = nil,
+        headerImage: String? = nil
 
     ) {
         self.firstDay = firstDay
@@ -36,6 +38,7 @@ class Lesson {
         self.finished = finished
         self.projects = projects
         self.course = course
+        self.headerImage = headerImage
 
     }
 
@@ -46,6 +49,7 @@ class Lesson {
             title: "Starting SwiftUI",
             finished: true,
             projects: Project.startingSwiftUI,
+            headerImage: "startingswiftui-header"
         ),
         Lesson(
             firstDay: 25,
@@ -60,6 +64,7 @@ class Lesson {
             title: "Expanding your skills",
             inProgress: true,
             projects: Project.expandingYourSkills,
+            headerImage: "expandingyourskills-header"
         ),
         Lesson(
             firstDay: 35,
