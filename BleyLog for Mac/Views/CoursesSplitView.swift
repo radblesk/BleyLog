@@ -32,7 +32,7 @@ struct CoursesSplitView: View {
                                     systemImage: lesson.finished
                                         ? "checkmark"
                                         : lesson.inProgress ? "circle" : "book"
-                                )
+                                ).badge(lesson.projects.count)
                             }
                         }
                     }
