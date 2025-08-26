@@ -21,7 +21,10 @@ struct CoursesSplitView: View {
         .sidebar
 
     /// Expanded State
-    @State private var expanded: Set<String> = ["100 days of SwiftUI"]
+    @State private var expanded: Set<String> = [
+        "100 days of SwiftUI", "100 days of Swift",
+    ]
+    @State private var showMore = false
 
     // MARK: - Helpers
     /// Determine wheter user is on iPhone or iPad
@@ -106,7 +109,7 @@ struct CoursesSplitView: View {
                                             Image(
                                                 systemName: "target"
                                             )
-                                            .foregroundStyle(.blue)
+                                            .foregroundStyle(.primary)
                                             .symbolEffect(
                                                 .variableColor.cumulative
                                                     .dimInactiveLayers
@@ -139,7 +142,7 @@ struct CoursesSplitView: View {
                                 )
                             }
 
-                            DisclosureGroup {
+                            if showMore {
                                 ForEach(
                                     viewModel.lessons(
                                         in: course,
@@ -187,10 +190,16 @@ struct CoursesSplitView: View {
                                             && !lesson.inProgress
                                     )
                                 }
-                            } label: {
-                                Label("Show more...", systemImage: "")
-                                    .foregroundStyle(.blue)
                             }
+
+                            Button(showMore ? "Show fewer" : "Show more") {
+                                withAnimation {
+                                    showMore.toggle()
+                                }
+                            }
+                            .padding(.horizontal)
+                            .foregroundStyle(.blue)
+                            .font(.subheadline)
                         } else {
                             Text("No lessons in this course.")
                                 .foregroundStyle(.secondary)
