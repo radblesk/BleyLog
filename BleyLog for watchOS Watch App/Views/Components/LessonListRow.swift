@@ -14,35 +14,30 @@ struct LessonListRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             if lesson.inProgress {
-                Image(systemName: "target")
-                    .resizable()
-                    .frame(width: 26, height: 26)
-                    .symbolEffect(
-                        .variableColor
-                            .iterative
-                            .dimInactiveLayers
-                            .nonReversing,
-                        options: .repeat(
-                            .periodic(
-                                delay: 1.0
-                            )
-                        )
+                Image(
+                    systemName: "target"
+                )
+                .imageScale(.large)
+                .foregroundStyle(.primary)
+                .symbolEffect(
+                    .variableColor.cumulative
+                        .dimInactiveLayers
+                        .nonReversing,
+                    options: .repeat(
+                        .periodic(delay: 1.0)
                     )
-                    .foregroundStyle(.blue)
+                )
             } else {
                 Image(
-                    systemName: lesson
-                        .finished
+                    systemName: lesson.finished
                         ? "checkmark.circle.fill"
-                        : "book.pages.fill"
+                        : "book"
                 )
-                .resizable()
-                .scaledToFit()
-                .frame(width: 26, height: 26)
+                .imageScale(.large)
                 .foregroundStyle(
                     lesson.finished
                         ? .green
-                        : .orange
+                        : Color.accentColor
                 )
             }
             Spacer()

@@ -1,6 +1,6 @@
 //
 //  BleyLogWatchApp.swift
-//  BleyLogWatch Watch App
+//  BleyLog
 //
 //  Created by Radoslav Bley on 19/08/2025.
 //
@@ -10,10 +10,13 @@ import SwiftUI
 
 @main
 struct BleyLogWatch_Watch_AppApp: App {
+    /// An object that manages the app's data and state.
+    @State private var viewModel = ViewModel()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(ModelData.shared.modelContainer)
+                .environment(viewModel)
         }
     }
 }
