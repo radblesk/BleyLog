@@ -19,6 +19,9 @@ struct GuessTheFlag: View {
     @State private var score: Int = 0
     @State private var tries: Int = 0
     @State private var isPresenting = false
+    @State private var tappedButton: Int?
+    @State private var tappedAnswer = 0.0
+    @State private var otherAnswers = 1.0
 
     var body: some View {
         NavigationStack {
@@ -57,10 +60,24 @@ struct GuessTheFlag: View {
 
                         ForEach(0..<3) { number in
                             Button {
-                                flagTapped(number)
+                                withAnimation {
+                                    flagTapped(number)
+                                }
                             } label: {
                                 FlagImage(countries: countries, number: number)
                             }
+                            .opacity(
+                                number != tappedButton ? otherAnswers : 1.0
+                            )
+                            .scaleEffect(
+                                number != tappedButton ? otherAnswers : 1.0
+                            )
+                            .rotation3DEffect(
+                                .degrees(
+                                    number == tappedButton ? tappedAnswer : 0
+                                ),
+                                axis: (x: 0, y: 1, z: 0)
+                            )
                         }
                     }
                     .frame(maxWidth: 500)
@@ -94,9 +111,14 @@ struct GuessTheFlag: View {
     }
 
     func flagTapped(_ number: Int) {
+        tappedButton = number
+
+        tappedAnswer = 360
+        otherAnswers = 0.25
         if number == correctAnswer {
             score += 1
             tries += 1
+
             if tries < countries.count {
                 scoreTitle = "Correct!"
             } else {
@@ -113,11 +135,12 @@ struct GuessTheFlag: View {
                     "Game Over! Your score is \(score) / \(countries.count)."
             }
         }
-
         showingScore = true
     }
 
     func askQuestion() {
+        tappedAnswer = 0.0
+        otherAnswers = 1.0
         countries = countries.shuffled()
         correctAnswer = Int.random(in: 0...2)
     }
