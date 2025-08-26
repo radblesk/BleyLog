@@ -73,6 +73,7 @@
 				Resources/Data/ViewModel.swift,
 				Resources/Localizable.xcstrings,
 				"Resources/ML Data/SleepCalculator.mlmodel",
+				"Resources/Project 5/start.txt",
 				Views/ProjectView.swift,
 			);
 			target = F9018D482E5B1CD900679AB2 /* BleyLog for visionOS */;
@@ -96,6 +97,7 @@
 				Resources/Data/ViewModel.swift,
 				Resources/Localizable.xcstrings,
 				"Resources/ML Data/SleepCalculator.mlmodel",
+				"Resources/Project 5/start.txt",
 				Views/ProjectView.swift,
 			);
 			target = F91370B82E551EDF0030E98D /* BleyLog for watchOS */;
@@ -119,6 +121,7 @@
 				Resources/Data/ViewModel.swift,
 				Resources/Localizable.xcstrings,
 				"Resources/ML Data/SleepCalculator.mlmodel",
+				"Resources/Project 5/start.txt",
 				Views/ProjectView.swift,
 			);
 			target = F91370E72E552D070030E98D /* BleyLog for Mac */;
