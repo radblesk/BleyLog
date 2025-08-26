@@ -235,7 +235,7 @@ struct CoursesSplitView: View {
                 ) {
                     project in
                     NavigationLink {
-                        projectDetailView()
+                        ProjectView(project: project)
                     } label: {
                         VStack(alignment: .leading, spacing: 16) {
                             HStack(spacing: 14) {
@@ -294,6 +294,11 @@ struct CoursesSplitView: View {
                                         .truncationMode(.tail)
 
                                     let date = project.date
+                                    let currentDate =
+                                        date
+                                        == Calendar.current.startOfDay(
+                                            for: Date()
+                                        )
                                     let lessThanThreeDaysAgo =
                                         Calendar.current.date(
                                             byAdding: .dayOfYear,
@@ -301,7 +306,13 @@ struct CoursesSplitView: View {
                                             to: Date()
                                         )! < date
 
-                                    if lessThanThreeDaysAgo {
+                                    if currentDate {
+                                        Text(
+                                            "Today"
+                                        )
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                    } else if lessThanThreeDaysAgo {
                                         Text(
                                             "\(project.date.formatted(.dateTime.weekday(.wide)))"
                                         )
@@ -344,28 +355,6 @@ struct CoursesSplitView: View {
                 }
             } else {
                 Text("Select a lesson")
-            }
-        }
-    }
-
-    // MARK: - Project detail view
-    fileprivate func projectDetailView() -> some View {
-        return NavigationStack {
-            Group {
-                switch viewModel.selectedProject?.title {
-                case "WeSplit":
-                    WeSplit()
-                case "TempConvert":
-                    TempConvert()
-                case "GuessTheFlag":
-                    GuessTheFlag()
-                case "RockPaperScissors":
-                    RockPaperScissors()
-                case "BetterRest":
-                    BetterRest()
-                default:
-                    Text("Select a project")
-                }
             }
         }
     }

@@ -63,6 +63,7 @@
 				"Projects/100DaysOfSwiftUI/16-24/WeSplit.swift",
 				Projects/100DaysOfSwiftUI/25/RockPaperScissors.swift,
 				"Projects/100DaysOfSwiftUI/26-34/BetterRest.swift",
+				"Projects/100DaysOfSwiftUI/26-34/WordScramble.swift",
 				Resources/AppIcon.icon,
 				Resources/Assets.xcassets,
 				Resources/Data/Course.swift,
@@ -72,6 +73,8 @@
 				Resources/Data/ViewModel.swift,
 				Resources/Localizable.xcstrings,
 				"Resources/ML Data/SleepCalculator.mlmodel",
+				"Resources/Project 5/start.txt",
+				Views/ProjectView.swift,
 			);
 			target = F9018D482E5B1CD900679AB2 /* BleyLog for visionOS */;
 		};
@@ -84,6 +87,7 @@
 				"Projects/100DaysOfSwiftUI/16-24/WeSplit.swift",
 				Projects/100DaysOfSwiftUI/25/RockPaperScissors.swift,
 				"Projects/100DaysOfSwiftUI/26-34/BetterRest.swift",
+				"Projects/100DaysOfSwiftUI/26-34/WordScramble.swift",
 				Resources/AppIcon.icon,
 				Resources/Assets.xcassets,
 				Resources/Data/Course.swift,
@@ -93,6 +97,8 @@
 				Resources/Data/ViewModel.swift,
 				Resources/Localizable.xcstrings,
 				"Resources/ML Data/SleepCalculator.mlmodel",
+				"Resources/Project 5/start.txt",
+				Views/ProjectView.swift,
 			);
 			target = F91370B82E551EDF0030E98D /* BleyLog for watchOS */;
 		};
@@ -105,6 +111,7 @@
 				"Projects/100DaysOfSwiftUI/16-24/WeSplit.swift",
 				Projects/100DaysOfSwiftUI/25/RockPaperScissors.swift,
 				"Projects/100DaysOfSwiftUI/26-34/BetterRest.swift",
+				"Projects/100DaysOfSwiftUI/26-34/WordScramble.swift",
 				Resources/AppIcon.icon,
 				Resources/Assets.xcassets,
 				Resources/Data/Course.swift,
@@ -114,6 +121,8 @@
 				Resources/Data/ViewModel.swift,
 				Resources/Localizable.xcstrings,
 				"Resources/ML Data/SleepCalculator.mlmodel",
+				"Resources/Project 5/start.txt",
+				Views/ProjectView.swift,
 			);
 			target = F91370E72E552D070030E98D /* BleyLog for Mac */;
 		};
