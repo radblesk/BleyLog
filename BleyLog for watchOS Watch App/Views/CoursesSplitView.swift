@@ -17,6 +17,8 @@ struct CoursesSplitView: View {
     // MARK: States
     /// Sheet
     @State private var isPresented = false
+    /// Expanding
+    @State private var showMore = false
 
     // MARK: - Lessons list
     fileprivate func lessonsList() -> NavigationStack<NavigationPath, some View>
@@ -32,12 +34,31 @@ struct CoursesSplitView: View {
                 course in
                 Section(course.title) {
                     if course.lessons.count > 0 {
-                        ForEach(viewModel.lessons(in: course)) { lesson in
+                        ForEach(
+                            viewModel.lessons(in: course, status: .started)
+                        ) { lesson in
                             NavigationLink(value: lesson) {
                                 LessonListRow(lesson: lesson)
                             }
                             .disabled(lesson.projects.count < 1)
                             .selectionDisabled(lesson.projects.count < 1)
+                        }
+
+                        if showMore {
+                            ForEach(
+                                viewModel
+                                    .lessons(in: course, status: .notStarted)
+                            ) { lesson in
+                                NavigationLink(value: lesson) {
+                                    LessonListRow(lesson: lesson)
+                                }
+                                .disabled(lesson.projects.count < 1)
+                                .selectionDisabled(lesson.projects.count < 1)
+                            }
+                        }
+
+                        Button(showMore ? "Show fewer" : "Show more") {
+                            withAnimation { showMore.toggle() }
                         }
                     } else {
                         Text("No lessons in this course.")
