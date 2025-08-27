@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "u7656663153_Icon_for_an_app_called_Moonshot_that_lets_users_l_76f3e924-f987-410d-9d07-0e28109e2fae_3.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

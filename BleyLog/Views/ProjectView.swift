@@ -33,6 +33,8 @@ struct ProjectView: View {
                     Edutainment()
                 case "iExpense":
                     iExpense()
+                case "Moonshot":
+                    Moonshot()
                 default:
                     Text("Select a project")
                 }

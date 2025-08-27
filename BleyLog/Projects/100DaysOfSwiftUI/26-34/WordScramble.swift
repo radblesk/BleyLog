@@ -80,7 +80,8 @@ class Leaderboard {
 
     init() {
         if let savedScores = UserDefaults.standard.data(forKey: "Leaderboard") {
-            if let decodedScores = try? JSONDecoder().decode([PlayerScore].self, from: savedScores) {
+            if let decodedScores = try? JSONDecoder().decode([PlayerScore].self, from: savedScores)
+            {
                 scores = decodedScores
             }
         } else {
@@ -204,8 +205,10 @@ struct WordScramble: View {
                                 Spacer()
                                 VStack(alignment: .trailing) {
 
-                                    Text("\(item.date.formatted(.dateTime.day().month().year().hour().minute()))")
-                                        .font(.caption)
+                                    Text(
+                                        "\(item.date.formatted(.dateTime.day().month().year().hour().minute()))"
+                                    )
+                                    .font(.caption)
                                     Spacer()
                                     HStack {
                                         if let topScore {
@@ -227,7 +230,7 @@ struct WordScramble: View {
                 }
                 .scrollContentBackground(.hidden)
                 .navigationTitle("Leaderboard")
-                #if !os(watchOS)
+                #if os(iOS)
                     .toolbar {
                         EditButton()
                     }
@@ -260,7 +263,9 @@ struct WordScramble: View {
                 }
                 .scrollContentBackground(.hidden)
                 .navigationTitle("Set a new player")
-                .navigationBarTitleDisplayMode(.inline)
+                #if os(iOS)
+                    .navigationBarTitleDisplayMode(.inline)
+                #endif
                 .toolbar {
                     Button("Save") {
                         savePlayer()

@@ -22,9 +22,9 @@ struct ContentView: View {
                 CoursesSplitView()
             }
 
-            Tab("Recents", systemImage: "clock.fill") {
-                RecentsView()
-            }
+//            Tab("Recents", systemImage: "clock.fill") {
+//                RecentsView()
+//            }
 
             Tab("Search", systemImage: "magnifyingglass", role: .search) {
                 NavigationStack {
