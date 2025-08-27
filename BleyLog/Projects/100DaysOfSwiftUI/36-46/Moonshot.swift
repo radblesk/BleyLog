@@ -12,8 +12,8 @@ struct Moonshot: View {
     let missions: [Mission] = Bundle.main.decode("missions.json")
 
     enum DisplayMode: String, CaseIterable {
-        case list = "List"
         case grid = "Grid"
+        case list = "List"
     }
 
     @State private var displayMode: DisplayMode = .grid
