@@ -16,23 +16,23 @@ struct ContentView: View {
         @Bindable var viewModel = viewModel
 
         /// Main app navigation with TabView
-        TabView {
-            Tab("Courses", systemImage: "books.vertical") {
+//        TabView {
+//            Tab("Courses", systemImage: "books.vertical") {
                 CoursesSplitView()
-            }
-
-            Tab("Recents", systemImage: "clock.fill") {
-                RecentsView()
-            }
-
-            Tab("Search", systemImage: "magnifyingglass", role: .search) {
-                NavigationStack {
-                    SearchView()
-                }
-                .searchable(text: $viewModel.search)
-
-            }
-        }
+//            }
+//
+//            Tab("Recents", systemImage: "clock.fill") {
+//                RecentsView()
+//            }
+//
+//            Tab("Search", systemImage: "magnifyingglass", role: .search) {
+//                NavigationStack {
+//                    SearchView()
+//                }
+//                .searchable(text: $viewModel.search)
+//
+//            }
+//        }
     }
 }
 
