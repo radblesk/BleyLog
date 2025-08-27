@@ -119,6 +119,14 @@ class Project {
             desc:
                 "Expense tracker that separates personal costs from business costs.",
             icon: "iExpense-icon"
+        ),
+        Project(
+            title: "Moonshot",
+            projectNumber: 8,
+            date: createDate(year: 2025, month: 8, day: 27),
+            desc:
+                "App that lets users learn about the missions and astronauts that formed NASA’s Apollo space program.",
+            icon: "Moonshot-icon"
         )
     ]
 }

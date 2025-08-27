@@ -104,7 +104,7 @@ struct iExpense: View {
             }
             .navigationTitle("iExpense")
             .toolbar {
-                #if !os(watchOS)
+                #if os(iOS)
                     EditButton()
                 #endif
                 Button("Add Expense", systemImage: "plus") {
