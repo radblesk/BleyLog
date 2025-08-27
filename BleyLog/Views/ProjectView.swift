@@ -31,6 +31,8 @@ struct ProjectView: View {
                     Animations()
                 case "Edutainment":
                     Edutainment()
+                case "iExpense":
+                    iExpense()
                 default:
                     Text("Select a project")
                 }

@@ -216,6 +216,8 @@ struct CoursesSplitView: View {
                             "for \(language.title)"
                         )
                     }
+                } else {
+                    $0.disabled(false)
                 }
             }
         }

@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "u7656663153_Icon_for_an_expense_tracker_app_that_separates_pe_42ada552-2209-4e5a-a16d-a52429b2b77b_3.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

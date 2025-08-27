@@ -98,15 +98,27 @@ class Project {
             desc:
                 "This project is about learning how to use SwiftUI to create animations.",
             icon: "Animations-icon"
-        )
+        ),
     ]
 
     static let consolidation3 = [
         Project(
             title: "Edutainment",
             date: createDate(year: 2025, month: 8, day: 26),
-            desc: "App for kids to help them practice multiplication tables – “what is 7 x 8?” and so on..",
+            desc:
+                "App for kids to help them practice multiplication tables – “what is 7 x 8?” and so on..",
             icon: "Edutainment-icon"
+        )
+    ]
+
+    static let scalingUpToBiggerApps = [
+        Project(
+            title: "iExpense",
+            projectNumber: 7,
+            date: createDate(year: 2025, month: 8, day: 26),
+            desc:
+                "Expense tracker that separates personal costs from business costs.",
+            icon: "iExpense-icon"
         )
     ]
 }
