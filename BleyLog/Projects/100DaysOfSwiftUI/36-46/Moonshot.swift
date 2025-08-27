@@ -35,23 +35,33 @@ struct Moonshot: View {
             .toolbar {
                 #if !os(watchOS)
                     Menu {
-                        Picker("Display Mode", selection: $displayMode) {
+                        Picker("Display Mode", selection: $displayMode.animation()) {
                             ForEach(DisplayMode.allCases, id: \.rawValue) { mode in
                                 Text(mode.rawValue)
                                     .tag(mode)
                             }
                         }
                     } label: {
-                        Button("Toggle view", systemImage: "line.3.horizontal.decrease") {}
+                        Button(
+                            "Toggle view",
+                            systemImage: (displayMode == .grid)
+                                ? "list.bullet" : "rectangle.grid.1x2"
+                        ) {}
                     }
                 #elseif os(watchOS)
                     ToolbarItemGroup(placement: .bottomBar) {
                         Spacer()
-                        Button("Toggle View", systemImage: "line.3.horizontal.decrease") {
-                            if displayMode == .grid {
-                                displayMode = .list
-                            } else {
-                                displayMode = .grid
+                        Button(
+                            "Toggle View",
+                            systemImage: (displayMode == .grid)
+                                ? "list.bullet" : "rectangle.grid.1x2"
+                        ) {
+                            withAnimation {
+                                if displayMode == .grid {
+                                    displayMode = .list
+                                } else {
+                                    displayMode = .grid
+                                }
                             }
                         }
                     }

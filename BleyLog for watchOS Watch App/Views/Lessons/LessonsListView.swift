@@ -1,18 +1,16 @@
 //
-//  CoursesSplitView.swift
+//  LessonsListView.swift
 //  BleyLog
 //
-//  Created by Radoslav Bley on 25/08/2025.
+//  Created by Radoslav Bley on 28/08/2025.
 //
 
 import SwiftUI
 
-struct CoursesSplitView: View {
+struct LessonsListView: View {
     // MARK: Environments
     /// ViewModel
-    @Environment(ViewModel.self) private var viewModel
-    /// Search dismiss action
-    @Environment(\.dismissSearch) private var dismissSearch
+    @Environment(ViewModel.self) var viewModel
 
     // MARK: States
     /// Sheet
@@ -20,12 +18,12 @@ struct CoursesSplitView: View {
     /// Expanding
     @State private var showMore = false
 
-    // MARK: - Lessons list
-    fileprivate func lessonsList() -> NavigationStack<NavigationPath, some View>
-    {
-        return NavigationStack {
-            /// Bindable variable for two-way data mutation
-            @Bindable var viewModel = viewModel
+    // MARK: - Main View
+    var body: some View {
+        /// Bindable variable for two-way data mutation
+        @Bindable var viewModel = viewModel
+
+        NavigationStack {
 
             List(
                 viewModel.courses(in: viewModel.selectedLanguage),
@@ -105,61 +103,12 @@ struct CoursesSplitView: View {
             }
         }
     }
-
-    // MARK: - Projects list
-    fileprivate func projectsList() -> NavigationStack<
-        NavigationPath, some View
-    > {
-        return NavigationStack {
-            /// Bindable variable for two-way data mutation
-            @Bindable var viewModel = viewModel
-
-            List(
-                viewModel.projects(in: viewModel.selectedLesson),
-                selection: $viewModel.selectedProject,
-            ) {
-                project in
-                NavigationLink {
-                    ProjectView(project: project)
-                } label: {
-                    ProjectListRow(project: project)
-                }.tag(project)
-            }
-            .navigationTitle(viewModel.selectedLesson?.title ?? "")
-            .containerBackground(
-                RadialGradient(
-                    colors: [
-                        .teal.opacity(0.8),
-                        .black,
-                    ],
-                    center: .bottom,
-                    startRadius: -200,
-                    endRadius: 400
-                ),
-                for: .navigation
-            )
-            .toolbarForegroundStyle(.teal, for: .automatic)
-        }
-    }
-
-    // MARK: - Main View
-    var body: some View {
-        NavigationSplitView(
-            sidebar: {
-                lessonsList()
-            },
-            detail: {
-                projectsList()
-            }
-        )
-        .onAppear {
-            dismissSearch()
-        }
-    }
 }
 
+// MARK: - Preview
 #Preview {
     let viewModel = ViewModel()
-    CoursesSplitView()
+
+    LessonsListView()
         .environment(viewModel)
 }

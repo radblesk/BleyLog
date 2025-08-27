@@ -8,37 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    // MARK: ViewModel
+    // MARK: Environments
+    /// ViewModel
     @Environment(ViewModel.self) var viewModel
 
     var body: some View {
-        /// Bindable variable for two-way data mutation
-        @Bindable var viewModel = viewModel
-
-        /// Main app navigation with TabView
-//        TabView {
-//            Tab("Courses", systemImage: "books.vertical") {
-                CoursesSplitView()
-//            }
-//
-//            Tab("Recents", systemImage: "clock.fill") {
-//                RecentsView()
-//            }
-//
-//            Tab("Search", systemImage: "magnifyingglass", role: .search) {
-//                NavigationStack {
-//                    SearchView()
-//                }
-//                .searchable(text: $viewModel.search)
-//
-//            }
-//        }
+        CoursesSplitView()
     }
 }
 
 // MARK: - Preview
 #Preview {
     let viewModel = ViewModel()
+
     ContentView()
         .environment(viewModel)
 }

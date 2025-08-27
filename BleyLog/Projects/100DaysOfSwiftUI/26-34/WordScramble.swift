@@ -114,6 +114,14 @@ struct WordScramble: View {
     /// Focus state
     @FocusState private var focused: Bool
 
+    var placement: ToolbarItemPlacement {
+        #if os(watchOS)
+            .bottomBar
+        #else
+            .automatic
+        #endif
+    }
+
     var body: some View {
         NavigationStack {
             List {
@@ -151,7 +159,7 @@ struct WordScramble: View {
                 Text(errorMessage)
             }
             .toolbar {
-                ToolbarItemGroup {
+                ToolbarItemGroup(placement: placement) {
                     Button("Leaderboard", systemImage: "laurel.leading.laurel.trailing") {
                         showing = true
                     }

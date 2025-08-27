@@ -56,7 +56,7 @@
 		F9018D5F2E5B1CEB00679AB2 /* Exceptions for "BleyLog" folder in "BleyLog for visionOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Extensions/Apply.swift,
+				Extensions/iOS26/Apply.swift,
 				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag.swift",
 				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag/FlagImage.swift",
 				"Projects/100DaysOfSwiftUI/16-24/TempConvert.swift",
@@ -82,15 +82,15 @@
 				Resources/Data/AppData/Lesson.swift,
 				Resources/Data/AppData/Project.swift,
 				Resources/Data/AppData/ViewModel.swift,
+				"Resources/Data/ProjectsData/Project 5 - Word Scramble/start.txt",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/Astronaut.swift",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/astronauts.json",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/Bundle-Decodable.swift",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/Mission.swift",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/missions.json",
 				Resources/Localizable.xcstrings,
 				"Resources/ML Data/SleepCalculator.mlmodel",
-				"Resources/Project 5 - Word Scramble/start.txt",
-				"Resources/Project 8 - Moonshot/Astronaut.swift",
-				"Resources/Project 8 - Moonshot/astronauts.json",
-				"Resources/Project 8 - Moonshot/Bundle-Decodable.swift",
-				"Resources/Project 8 - Moonshot/Mission.swift",
-				"Resources/Project 8 - Moonshot/missions.json",
-				Views/ProjectView.swift,
+				Views/Projects/ProjectView.swift,
 			);
 			target = F9018D482E5B1CD900679AB2 /* BleyLog for visionOS */;
 		};
@@ -122,15 +122,15 @@
 				Resources/Data/AppData/Lesson.swift,
 				Resources/Data/AppData/Project.swift,
 				Resources/Data/AppData/ViewModel.swift,
+				"Resources/Data/ProjectsData/Project 5 - Word Scramble/start.txt",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/Astronaut.swift",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/astronauts.json",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/Bundle-Decodable.swift",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/Mission.swift",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/missions.json",
 				Resources/Localizable.xcstrings,
 				"Resources/ML Data/SleepCalculator.mlmodel",
-				"Resources/Project 5 - Word Scramble/start.txt",
-				"Resources/Project 8 - Moonshot/Astronaut.swift",
-				"Resources/Project 8 - Moonshot/astronauts.json",
-				"Resources/Project 8 - Moonshot/Bundle-Decodable.swift",
-				"Resources/Project 8 - Moonshot/Mission.swift",
-				"Resources/Project 8 - Moonshot/missions.json",
-				Views/ProjectView.swift,
+				Views/Projects/ProjectView.swift,
 			);
 			target = F91370B82E551EDF0030E98D /* BleyLog for watchOS */;
 		};
@@ -162,15 +162,15 @@
 				Resources/Data/AppData/Lesson.swift,
 				Resources/Data/AppData/Project.swift,
 				Resources/Data/AppData/ViewModel.swift,
+				"Resources/Data/ProjectsData/Project 5 - Word Scramble/start.txt",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/Astronaut.swift",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/astronauts.json",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/Bundle-Decodable.swift",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/Mission.swift",
+				"Resources/Data/ProjectsData/Project 8 - Moonshot/missions.json",
 				Resources/Localizable.xcstrings,
 				"Resources/ML Data/SleepCalculator.mlmodel",
-				"Resources/Project 5 - Word Scramble/start.txt",
-				"Resources/Project 8 - Moonshot/Astronaut.swift",
-				"Resources/Project 8 - Moonshot/astronauts.json",
-				"Resources/Project 8 - Moonshot/Bundle-Decodable.swift",
-				"Resources/Project 8 - Moonshot/Mission.swift",
-				"Resources/Project 8 - Moonshot/missions.json",
-				Views/ProjectView.swift,
+				Views/Projects/ProjectView.swift,
 			);
 			target = F91370E72E552D070030E98D /* BleyLog for Mac */;
 		};

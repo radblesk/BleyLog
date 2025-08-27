@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ProjectView: View {
+    // MARK: Environments
+    /// ViewModel
     @Environment(ViewModel.self) var viewModel
-    var project: Project?
+    
+    // Passed data
+    let project: Project?
 
     var body: some View {
         NavigationStack {

@@ -219,7 +219,7 @@ class ViewModel {
         let allProjects = languages.flatMap { $0.courses }.flatMap {
             $0.lessons
         }.flatMap { $0.projects }
-        
+
         return allProjects.first { $0.id == id }
     }
 
@@ -238,8 +238,7 @@ class ViewModel {
     // MARK: - Search
     /// Lessons search results
     func lessonResults(for search: String) -> [Lesson] {
-        let allLessons = languages.flatMap(\.courses).flatMap(\.lessons).sorted
-        {
+        let allLessons = languages.flatMap(\.courses).flatMap(\.lessons).sorted {
             $0.firstDay < $1.firstDay
         }
 
@@ -265,6 +264,24 @@ class ViewModel {
             return allProjects.filter {
                 $0.title.lowercased().contains(search.lowercased())
             }
+        }
+    }
+
+    // MARK: - Date Formatter
+    func formattedDate(_ date: Date) -> String {
+        let currentDate = date == Calendar.current.startOfDay(for: Date())
+        let yesterday = Calendar.current.date(byAdding: .dayOfYear, value: -1, to: Date())! < date
+        let weekAgo =
+            Calendar.current.date(byAdding: .dayOfYear, value: -7, to: Date())! < date
+
+        if currentDate {
+            return "Today"
+        } else if yesterday {
+            return "Yesterday"
+        } else if weekAgo {
+            return date.formatted(.dateTime.weekday(.wide))
+        } else {
+            return date.formatted(date: .abbreviated, time: .omitted)
         }
     }
 }

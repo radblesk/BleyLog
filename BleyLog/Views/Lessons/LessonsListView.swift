@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct LessonsListView: View {
+    // MARK: Environments
+    /// ViewModel
     @Environment(ViewModel.self) var viewModel
 
+    // MARK: States
     /// Expanded State
     @State private var expanded: Set<String> = [
         "100 days of SwiftUI", "100 days of Swift",
@@ -17,6 +20,7 @@ struct LessonsListView: View {
     @State private var showMore = false
 
     var body: some View {
+        /// Bindable variable for two-way data mutation
         @Bindable var viewModel = viewModel
 
         NavigationStack {
@@ -50,45 +54,15 @@ struct LessonsListView: View {
                                 viewModel.lessons(in: course, status: .started),
                                 id: \.self
                             ) { lesson in
-                                NavigationLink(value: lesson) {
-                                    Label {
-                                        Text(lesson.title)
-                                    } icon: {
-                                        if lesson.inProgress {
-                                            Image(
-                                                systemName: "target"
-                                            )
-                                            .foregroundStyle(.primary)
-                                            .symbolEffect(
-                                                .variableColor.cumulative
-                                                    .dimInactiveLayers
-                                                    .nonReversing,
-                                                options: .repeat(
-                                                    .periodic(delay: 1.0)
-                                                )
-                                            )
-                                        } else {
-                                            Image(
-                                                systemName: lesson.finished
-                                                    ? "checkmark.circle"
-                                                    : "book"
-                                            ).foregroundStyle(
-                                                lesson.finished
-                                                    ? .green
-                                                    : Color.accentColor
-                                            )
-                                        }
-                                    }
-                                    .badge(lesson.projects.count)
-                                }
-                                .disabled(
-                                    lesson.projects.count == 0
-                                        && !lesson.inProgress
-                                )
-                                .selectionDisabled(
-                                    lesson.projects.count == 0
-                                        && !lesson.inProgress
-                                )
+                                LessonsListRow(lesson: lesson)
+                                    .disabled(
+                                        lesson.projects.count == 0
+                                            && !lesson.inProgress
+                                    )
+                                    .selectionDisabled(
+                                        lesson.projects.count == 0
+                                            && !lesson.inProgress
+                                    )
                             }
 
                             if showMore {
@@ -173,6 +147,7 @@ struct LessonsListView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     let viewModel = ViewModel()
 

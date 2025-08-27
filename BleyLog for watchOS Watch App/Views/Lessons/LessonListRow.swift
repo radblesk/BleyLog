@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LessonListRow: View {
-    // DataModel
+    // Passed data
     var lesson: Lesson
 
     var body: some View {
