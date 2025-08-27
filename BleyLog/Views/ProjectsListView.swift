@@ -1,24 +1,20 @@
 //
-//  RecentsView.swift
+//  ProjectsListView.swift
 //  BleyLog
 //
-//  Created by Radoslav Bley on 25/08/2025.
+//  Created by Radoslav Bley on 27/08/2025.
 //
 
-import SwiftData
 import SwiftUI
 
-struct RecentsView: View {
-    // MARK: - ViewModel
+struct ProjectsListView: View {
     @Environment(ViewModel.self) var viewModel
 
-    //    // MARK: - Projects list
-    fileprivate func projectsList() -> NavigationStack<
-        NavigationPath, some View
-    > {
-        return NavigationStack {
+    var body: some View {
+        @Bindable var viewModel = viewModel
+
+        NavigationStack {
             if viewModel.selectedLesson != nil {
-                @Bindable var viewModel = viewModel
                 List(
                     viewModel.projects(in: viewModel.selectedLesson),
                     id: \.self,
@@ -26,7 +22,7 @@ struct RecentsView: View {
                 ) {
                     project in
                     NavigationLink {
-                        projectDetailView()
+                        ProjectView(project: project)
                     } label: {
                         VStack(alignment: .leading, spacing: 16) {
                             HStack(spacing: 14) {
@@ -85,6 +81,11 @@ struct RecentsView: View {
                                         .truncationMode(.tail)
 
                                     let date = project.date
+                                    let currentDate =
+                                        date
+                                        == Calendar.current.startOfDay(
+                                            for: Date()
+                                        )
                                     let lessThanThreeDaysAgo =
                                         Calendar.current.date(
                                             byAdding: .dayOfYear,
@@ -92,7 +93,13 @@ struct RecentsView: View {
                                             to: Date()
                                         )! < date
 
-                                    if lessThanThreeDaysAgo {
+                                    if currentDate {
+                                        Text(
+                                            "Today"
+                                        )
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                    } else if lessThanThreeDaysAgo {
                                         Text(
                                             "\(project.date.formatted(.dateTime.weekday(.wide)))"
                                         )
@@ -118,15 +125,15 @@ struct RecentsView: View {
                 .navigationTitle(viewModel.selectedLesson?.title ?? "")
                 .apply {
                     if #available(iOS 26, *) {
-                        if let selection = viewModel.selectedLesson {
+                        if let lesson = viewModel.selectedLesson {
                             let oneDay =
-                                selection.firstDay
-                                == selection.lastDay
+                                lesson.firstDay
+                                == lesson.lastDay
                             $0
                                 .navigationSubtitle(
                                     oneDay
-                                        ? "Day \(selection.firstDay) in \(selection.course!.title)"
-                                        : "Days \(selection.firstDay) - \(selection.lastDay) in \(selection.course!.title)"
+                                        ? "Day \(lesson.firstDay) in \(lesson.course!.title)"
+                                        : "Days \(lesson.firstDay) - \(lesson.lastDay) in \(lesson.course!.title)"
                                 )
                         }
                     } else {
@@ -138,50 +145,11 @@ struct RecentsView: View {
             }
         }
     }
-
-    // MARK: - Project detail view
-    fileprivate func projectDetailView() -> some View {
-        return NavigationStack {
-            Group {
-                switch viewModel.selectedProject?.title {
-                case "WeSplit":
-                    WeSplit()
-                case "TempConvert":
-                    TempConvert()
-                case "GuessTheFlag":
-                    GuessTheFlag()
-                case "RockPaperScissors":
-                    RockPaperScissors()
-                case "BetterRest":
-                    BetterRest()
-                default:
-                    Text("Select a project")
-                }
-            }
-        }
-    }
-
-    // MARK: - Main View
-    var body: some View {
-        @Bindable var viewModel = viewModel
-        NavigationSplitView {
-            List(
-                viewModel.lessons(status: .inProgress),
-                id: \.self,
-                selection: $viewModel.selectedLesson
-            ) { lesson in
-                NavigationLink(lesson.title, value: lesson)
-            }
-            .navigationTitle("Recents")
-        } detail: {
-            projectsList()
-        }
-    }
 }
 
-// MARK: - Preview
 #Preview {
     let viewModel = ViewModel()
-    RecentsView()
+
+    ProjectsListView()
         .environment(viewModel)
 }
