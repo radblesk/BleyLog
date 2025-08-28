@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Mission: Codable, Identifiable {
+struct Mission: Codable, Identifiable, Hashable {
     let id: Int
     let launchDate: Date?
     let crew: [CrewRole]
     let description: String
 
-    struct CrewRole: Codable {
+    struct CrewRole: Codable, Hashable {
         let name: String
         let role: String
     }

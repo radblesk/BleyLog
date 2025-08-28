@@ -7,9 +7,63 @@
 
 import SwiftUI
 
-struct Navigation: View {
+// MARK: - Path store class
+@Observable
+class PathStore {
+    var path: NavigationPath {
+        didSet {
+            save()
+        }
+    }
+
+    private let savePath = URL.documentsDirectory.appending(path: "SavedPath")
+
+    init() {
+        if let data = try? Data(contentsOf: savePath) {
+            if let decoded = try? JSONDecoder().decode(
+                NavigationPath.CodableRepresentation.self,
+                from: data
+            ) {
+                path = NavigationPath(decoded)
+                return
+            }
+        }
+
+        path = NavigationPath()
+    }
+
+    func save() {
+        guard let representation = path.codable else { return }
+
+        do {
+            let data = try JSONEncoder().encode(representation)
+            try data.write(to: savePath)
+        } catch {
+            print("Failed to save navigation data")
+        }
+    }
+}
+
+// MARK: - Detail View
+struct DetailView: View {
+    var number: Int
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationLink("Go to random number", value: Int.random(in: 1...1000))
+            .navigationTitle("Number: \(number)")
+    }
+}
+// MARK: - Main View
+struct Navigation: View {
+    @State private var pathStore = PathStore()
+    
+    var body: some View {
+        NavigationStack(path: $pathStore.path) {
+            DetailView(number: 0)
+                .navigationDestination(for: Int.self) { i in
+                    DetailView(number: i)
+                }
+        }
     }
 }
 

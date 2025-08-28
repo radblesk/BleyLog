@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Moonshot: View {
+    @State private var path = NavigationPath()
+
     let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
     let missions: [Mission] = Bundle.main.decode("missions.json")
 
@@ -19,7 +21,7 @@ struct Moonshot: View {
     @State private var displayMode: DisplayMode = .grid
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             Group {
                 switch displayMode {
                 case .grid:
@@ -27,6 +29,9 @@ struct Moonshot: View {
                 case .list:
                     MoonshotListView(missions: missions, astronauts: astronauts)
                 }
+            }
+            .navigationDestination(for: Mission.self) { mission in
+                MissionView(mission: mission, astronauts: astronauts)
             }
             .scrollContentBackground(.hidden)
             .navigationTitle("Moonshot")
