@@ -70,7 +70,9 @@ struct Edutainment: View {
                     }
                 }
             }
-            .scrollDismissesKeyboard(.interactively)
+            #if os(iOS)
+                .scrollDismissesKeyboard(.interactively)
+            #endif
             .navigationTitle("Edutainment")
             .toolbar {
                 if check {

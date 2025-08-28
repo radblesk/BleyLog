@@ -10,10 +10,11 @@ import SwiftUI
 
 @main
 struct BleyLog_for_visionOSApp: App {
+    @State private var viewModel = ViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(ModelData.shared.modelContainer)
+        .environment(viewModel)
     }
 }

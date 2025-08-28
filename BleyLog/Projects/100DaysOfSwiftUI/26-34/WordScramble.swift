@@ -150,7 +150,9 @@ struct WordScramble: View {
                     }
                 }
             }
-            .scrollDismissesKeyboard(.interactively)
+            #if os(iOS)
+                .scrollDismissesKeyboard(.interactively)
+            #endif
             .navigationTitle(gamesave.currentWord)
             .onSubmit(addNewWord)
             .onAppear(perform: startGame)
