@@ -37,68 +37,68 @@ struct WeSplit: View {
     }
 
     var body: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    TextField(
-                        "Amount",
-                        value: $checkAmount,
-                        format: .currency(
-                            code: Locale.current.currency?.identifier ?? "EUR"
-                        )
+        Form {
+            Section {
+                TextField(
+                    "Amount",
+                    value: $checkAmount,
+                    format: .currency(
+                        code: Locale.current.currency?.identifier ?? "EUR"
                     )
-                    #if os(iOS)
-                        .keyboardType(.decimalPad)
-                    #endif
-                    .focused($amountIsFocused)
+                )
+                #if os(iOS)
+                    .keyboardType(.decimalPad)
+                #endif
+                .focused($amountIsFocused)
 
-                    Picker("Number of people", selection: $numberOfPeople) {
-                        ForEach(2..<100) {
-                            Text("\($0) people")
-                        }
+                Picker("Number of people", selection: $numberOfPeople) {
+                    ForEach(2..<100) {
+                        Text("\($0) people")
                     }
-                    #if os(iOS)
-                        .pickerStyle(.navigationLink)
-                    #endif
                 }
-
-                Section("How much do you want to tip?") {
-                    Picker("Tip Percentage", selection: $tipPercentage) {
-                        ForEach(tipPercentages, id: \.self) {
-                            Text($0, format: .percent)
-                        }
-                    }
-                    #if os(iOS)
-                        .pickerStyle(.segmented)
-                    #endif
-                }
-
-                Section("Grand Total") {
-                    Text(
-                        totalCheckAmount,
-                        format:
-                            .currency(
-                                code: Locale.current.currency?.identifier
-                                    ?? "EUR"
-                            )
-                    )
-                    .foregroundStyle(tipPercentage == 0 ? .red : .primary)
-                }
-
-                Section("Amount per person") {
-                    Text(
-                        totalPerPerson,
-                        format: .currency(
-                            code: Locale.current.currency?.identifier ?? "EUR"
-                        )
-                    )
-                }
+                #if os(iOS)
+                    .pickerStyle(.navigationLink)
+                #endif
             }
-            .navigationTitle("WeSplit")
+
+            Section("How much do you want to tip?") {
+                Picker("Tip Percentage", selection: $tipPercentage) {
+                    ForEach(tipPercentages, id: \.self) {
+                        Text($0, format: .percent)
+                    }
+                }
+                #if os(iOS)
+                    .pickerStyle(.segmented)
+                #endif
+            }
+
+            Section("Grand Total") {
+                Text(
+                    totalCheckAmount,
+                    format:
+                        .currency(
+                            code: Locale.current.currency?.identifier
+                                ?? "EUR"
+                        )
+                )
+                .foregroundStyle(tipPercentage == 0 ? .red : .primary)
+            }
+
+            Section("Amount per person") {
+                Text(
+                    totalPerPerson,
+                    format: .currency(
+                        code: Locale.current.currency?.identifier ?? "EUR"
+                    )
+                )
+            }
         }
+        .navigationTitle("WeSplit")
     }
 }
 
 #Preview {
-    WeSplit()
+    NavigationStack {
+        WeSplit()
+    }
 }

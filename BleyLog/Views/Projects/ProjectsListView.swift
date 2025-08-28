@@ -16,41 +16,31 @@ struct ProjectsListView: View {
         /// Bindable variable for two-way data mutation
         @Bindable var viewModel = viewModel
 
-        NavigationStack {
-            if viewModel.selectedLesson != nil {
-                List(
-                    viewModel.projects(in: viewModel.selectedLesson),
-                    id: \.self,
-                    selection: $viewModel.selectedProject
-                ) {
-                    project in
-                    NavigationLink {
-                        ProjectView(project: project)
-                    } label: {
-                        ProjectsListRow(project: project)
-                    }
+        if viewModel.selectedLesson != nil {
+            List(viewModel.projects(in: viewModel.selectedLesson), id: \.self) { project in
+                NavigationLink(value: project) {
+                    ProjectsListRow(project: project)
                 }
-                .navigationTitle(viewModel.selectedLesson?.title ?? "")
-                .apply {
-                    if #available(iOS 26, *) {
-                        if let lesson = viewModel.selectedLesson {
-                            let oneDay =
-                                lesson.firstDay
-                                == lesson.lastDay
-                            $0
-                                .navigationSubtitle(
-                                    oneDay
-                                        ? "Day \(lesson.firstDay) in \(lesson.course!.title)"
-                                        : "Days \(lesson.firstDay) - \(lesson.lastDay) in \(lesson.course!.title)"
-                                )
-                        }
-                    } else {
-                        $0.disabled(false)
-                    }
-                }
-            } else {
-                Text("Select a lesson")
             }
+            .navigationTitle(viewModel.selectedLesson?.title ?? "")
+            .apply {
+                if #available(iOS 26, *) {
+                    if let lesson = viewModel.selectedLesson {
+                        let oneDay =
+                            lesson.firstDay
+                            == lesson.lastDay
+                        $0.navigationSubtitle(
+                            oneDay
+                                ? "Day \(lesson.firstDay)"
+                                : "Days \(lesson.firstDay)"
+                        )
+                    }
+                } else {
+                    $0.disabled(false)
+                }
+            }
+        } else {
+            Text("Select a lesson")
         }
     }
 }

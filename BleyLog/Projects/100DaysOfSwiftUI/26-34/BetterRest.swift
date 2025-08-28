@@ -26,117 +26,115 @@ struct BetterRest: View {
     }
 
     var body: some View {
-        NavigationStack {
-            Form {
-                Section("When do you want to wake up?") {
-                    DatePicker(
-                        "Please enter a time",
-                        selection: $wakeUp,
-                        displayedComponents: .hourAndMinute
+        Form {
+            Section("When do you want to wake up?") {
+                DatePicker(
+                    "Please enter a time",
+                    selection: $wakeUp,
+                    displayedComponents: .hourAndMinute
+                )
+            }
+
+            Section("Desired amount of sleep.") {
+                #if !os(watchOS)
+                    Stepper(
+                        "\(sleepAmount.formatted()) hours",
+                        value: $sleepAmount,
+                        in: 4...12,
+                        step: 0.25
                     )
-                }
-
-                Section("Desired amount of sleep.") {
-                    #if !os(watchOS)
-                        Stepper(
-                            "\(sleepAmount.formatted()) hours",
-                            value: $sleepAmount,
-                            in: 4...12,
-                            step: 0.25
-                        )
-                    #else
-                        VStack {
-                            Text("\(sleepAmount.formatted()) hours")
-                                .font(.title2)
-                                .contentTransition(.numericText())
-                            HStack {
-                                Button("Minus", systemImage: "minus") {
-                                    withAnimation {
-                                        sleepAmount = max(4, sleepAmount - 0.25)
-                                    }
-                                }
-                                Button("Plus", systemImage: "plus") {
-                                    withAnimation {
-                                        sleepAmount = min(
-                                            12,
-                                            sleepAmount + 0.25
-                                        )
-                                    }
-                                }
-                            }
-                            .padding()
-                            .buttonStyle(.bordered)
-                            .labelStyle(.iconOnly)
-                        }
-                    #endif
-                }
-
-                Section("Daily coffee intake.") {
-                    #if !os(watchOS)
-                        Stepper(
-                            "^[\(coffeeAmount.formatted()) cup](inflect: true)",
-                            value: $coffeeAmount,
-                            in: 1...20
-                        )
-                    #else
-                        VStack {
-                            Text(
-                                "^[\(coffeeAmount.formatted()) cup](inflect: true)"
-                            )
+                #else
+                    VStack {
+                        Text("\(sleepAmount.formatted()) hours")
                             .font(.title2)
                             .contentTransition(.numericText())
-                            HStack {
-                                Button("Minus", systemImage: "minus") {
-                                    withAnimation {
-                                        coffeeAmount = max(1, coffeeAmount - 1)
-                                    }
-                                }
-                                Button("Plus", systemImage: "plus") {
-                                    withAnimation {
-                                        coffeeAmount = min(
-                                            20,
-                                            coffeeAmount + 1
-                                        )
-                                    }
+                        HStack {
+                            Button("Minus", systemImage: "minus") {
+                                withAnimation {
+                                    sleepAmount = max(4, sleepAmount - 0.25)
                                 }
                             }
-                            .padding()
-                            .buttonStyle(.bordered)
-                            .labelStyle(.iconOnly)
+                            Button("Plus", systemImage: "plus") {
+                                withAnimation {
+                                    sleepAmount = min(
+                                        12,
+                                        sleepAmount + 0.25
+                                    )
+                                }
+                            }
                         }
-                    #endif
-                }
-
-                Section("Bedtime") {
-                    HStack {
-                        Text("Your predicted bedtime is:")
-                        Spacer()
-                        Text(alertMessage)
+                        .padding()
+                        .buttonStyle(.bordered)
+                        .labelStyle(.iconOnly)
                     }
-                }
-
+                #endif
             }
-            .onAppear(perform: calculateBedtime)
-            .onChange(of: wakeUp, calculateBedtime)
-            .onChange(of: sleepAmount, calculateBedtime)
-            .onChange(of: coffeeAmount, calculateBedtime)
-            .navigationTitle("BetterRest")
-            #if os(watchOS)
-                .containerBackground(
-                    RadialGradient(
-                        colors: [
-                            .brown.opacity(0.8),
-                            .black,
-                        ],
-                        center: .bottom,
-                        startRadius: -200,
-                        endRadius: 400
-                    ),
-                    for: .navigation
-                )
-                .toolbarForegroundStyle(.brown, for: .automatic)
-            #endif
+
+            Section("Daily coffee intake.") {
+                #if !os(watchOS)
+                    Stepper(
+                        "^[\(coffeeAmount.formatted()) cup](inflect: true)",
+                        value: $coffeeAmount,
+                        in: 1...20
+                    )
+                #else
+                    VStack {
+                        Text(
+                            "^[\(coffeeAmount.formatted()) cup](inflect: true)"
+                        )
+                        .font(.title2)
+                        .contentTransition(.numericText())
+                        HStack {
+                            Button("Minus", systemImage: "minus") {
+                                withAnimation {
+                                    coffeeAmount = max(1, coffeeAmount - 1)
+                                }
+                            }
+                            Button("Plus", systemImage: "plus") {
+                                withAnimation {
+                                    coffeeAmount = min(
+                                        20,
+                                        coffeeAmount + 1
+                                    )
+                                }
+                            }
+                        }
+                        .padding()
+                        .buttonStyle(.bordered)
+                        .labelStyle(.iconOnly)
+                    }
+                #endif
+            }
+
+            Section("Bedtime") {
+                HStack {
+                    Text("Your predicted bedtime is:")
+                    Spacer()
+                    Text(alertMessage)
+                }
+            }
+
         }
+        .onAppear(perform: calculateBedtime)
+        .onChange(of: wakeUp, calculateBedtime)
+        .onChange(of: sleepAmount, calculateBedtime)
+        .onChange(of: coffeeAmount, calculateBedtime)
+        .navigationTitle("BetterRest")
+        #if os(watchOS)
+            .containerBackground(
+                RadialGradient(
+                    colors: [
+                        .brown.opacity(0.8),
+                        .black,
+                    ],
+                    center: .bottom,
+                    startRadius: -200,
+                    endRadius: 400
+                ),
+                for: .navigation
+            )
+            .toolbarForegroundStyle(.brown, for: .automatic)
+        #endif
     }
 
     func calculateBedtime() {
@@ -173,5 +171,7 @@ struct BetterRest: View {
 }
 
 #Preview {
-    BetterRest()
+    NavigationStack {
+        BetterRest()
+    }
 }

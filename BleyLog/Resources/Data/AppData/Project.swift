@@ -5,33 +5,16 @@
 //  Created by Radoslav Bley on 10/08/2025.
 //
 
-import SwiftData
 import SwiftUI
 
-@Model
-class Project {
+struct Project: Identifiable, Codable, Hashable {
+    var id = UUID()
     var title: String
     var projectNumber: Int?
     var date: Date
     var desc: String
     var icon: String?
     var lesson: Lesson?
-
-    init(
-        title: String,
-        projectNumber: Int? = nil,
-        date: Date,
-        desc: String,
-        icon: String? = nil,
-        lesson: Lesson? = nil
-    ) {
-        self.title = title
-        self.projectNumber = projectNumber
-        self.date = date
-        self.desc = desc
-        self.icon = icon
-        self.lesson = lesson
-    }
 
     static func createDate(year: Int, month: Int, day: Int, hour: Int, minute: Int) -> Date {
         var components = DateComponents()

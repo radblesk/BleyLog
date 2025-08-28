@@ -39,197 +39,196 @@ struct Animations: View {
 
     @State private var isShowingRed2 = false
 
-
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 25) {
-                    VStack(alignment: .leading) {
-                        Text("Animated button")
-                            .font(.title2)
-                            .bold()
-                            .padding(.horizontal)
-                        HStack {
-                            VStack {
-                                Button("Tap me") {
-                                    enabled.toggle()
-                                }
-                                .frame(width: 200, height: 200)
-                                .background(enabled ? .blue : .red)
-                                .foregroundStyle(.white)
-                                .animation(nil, value: enabled)
-                                .clipShape(
-                                    .rect(cornerRadius: enabled ? 60 : 0)
-                                )
-                                .animation(
-                                    .spring(duration: 1, bounce: 0.9),
-                                    value: enabled
-                                )
-                            }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(.regularMaterial)
-                            .clipShape(.rect(cornerRadius: 10))
-                        }
-                        .frame(maxWidth: .infinity)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 25) {
+                VStack(alignment: .leading) {
+                    Text("Animated button")
+                        .font(.title2)
+                        .bold()
                         .padding(.horizontal)
-                    }
-
-                    VStack(alignment: .leading) {
-                        Text("Drag Gesture animation")
-                            .font(.title2)
-                            .bold()
-                            .padding(.horizontal)
-                        HStack {
-                            VStack {
-                                LinearGradient(
-                                    colors: [.yellow, .red],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                                .frame(width: 300, height: 200)
-                                .clipShape(.rect(cornerRadius: 10))
-                                .offset(dragAmount)
-                                .gesture(
-                                    DragGesture()
-                                        .onChanged {
-                                            dragAmount = $0.translation
-                                        }
-                                        .onEnded { _ in
-                                            withAnimation(.bouncy) {
-                                                dragAmount = .zero
-                                            }
-                                        }
-                                )
+                    HStack {
+                        VStack {
+                            Button("Tap me") {
+                                enabled.toggle()
                             }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(.regularMaterial)
-                            .clipShape(.rect(cornerRadius: 10))
+                            .frame(width: 200, height: 200)
+                            .background(enabled ? .blue : .red)
+                            .foregroundStyle(.white)
+                            .animation(nil, value: enabled)
+                            .clipShape(
+                                .rect(cornerRadius: enabled ? 60 : 0)
+                            )
+                            .animation(
+                                .spring(duration: 1, bounce: 0.9),
+                                value: enabled
+                            )
                         }
+                        .padding()
                         .frame(maxWidth: .infinity)
-                        .padding(.horizontal)
+                        .background(.regularMaterial)
+                        .clipShape(.rect(cornerRadius: 10))
                     }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+                }
 
-                    VStack(alignment: .leading) {
-                        Text("Animated text")
-                            .font(.title2)
-                            .bold()
-                            .padding(.horizontal)
-                        HStack {
-                            VStack {
-                                HStack(spacing: 0) {
-                                    ForEach(0..<letters.count, id: \.self) {
-                                        num in
-                                        Text(String(letters[num]))
-                                            .padding(5)
-                                            .font(.title)
-                                            .background(
-                                                enabled2 ? .blue : .red
-                                            )
-                                            .offset(dragAmount2)
-                                            .animation(
-                                                .linear.delay(Double(num) / 20),
-                                                value: dragAmount2
-                                            )
+                VStack(alignment: .leading) {
+                    Text("Drag Gesture animation")
+                        .font(.title2)
+                        .bold()
+                        .padding(.horizontal)
+                    HStack {
+                        VStack {
+                            LinearGradient(
+                                colors: [.yellow, .red],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                            .frame(width: 300, height: 200)
+                            .clipShape(.rect(cornerRadius: 10))
+                            .offset(dragAmount)
+                            .gesture(
+                                DragGesture()
+                                    .onChanged {
+                                        dragAmount = $0.translation
                                     }
-                                }
-                                .gesture(
-                                    DragGesture()
-                                        .onChanged {
-                                            dragAmount2 = $0.translation
+                                    .onEnded { _ in
+                                        withAnimation(.bouncy) {
+                                            dragAmount = .zero
                                         }
-                                        .onEnded { _ in
-                                            dragAmount2 = .zero
-                                            enabled2.toggle()
-                                        }
-                                )
-                            }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(.regularMaterial)
-                            .clipShape(.rect(cornerRadius: 10))
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal)
-                    }
-
-                    VStack(alignment: .leading) {
-                        Text("Showing/Hiding views")
-                            .font(.title2)
-                            .bold()
-                            .padding(.horizontal)
-                        HStack {
-                            VStack {
-                                Button("Tap Me") {
-                                    withAnimation {
-                                        isShowingRed.toggle()
                                     }
-                                }
+                            )
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(.regularMaterial)
+                        .clipShape(.rect(cornerRadius: 10))
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+                }
 
-                                if isShowingRed {
-                                    Rectangle()
-                                        .fill(.red)
-                                        .frame(width: 100, height: 100)
-                                        .transition(
-                                            .asymmetric(
-                                                insertion: .scale,
-                                                removal: .opacity
-                                            )
+                VStack(alignment: .leading) {
+                    Text("Animated text")
+                        .font(.title2)
+                        .bold()
+                        .padding(.horizontal)
+                    HStack {
+                        VStack {
+                            HStack(spacing: 0) {
+                                ForEach(0..<letters.count, id: \.self) {
+                                    num in
+                                    Text(String(letters[num]))
+                                        .padding(5)
+                                        .font(.title)
+                                        .background(
+                                            enabled2 ? .blue : .red
+                                        )
+                                        .offset(dragAmount2)
+                                        .animation(
+                                            .linear.delay(Double(num) / 20),
+                                            value: dragAmount2
                                         )
                                 }
                             }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(.regularMaterial)
-                            .clipShape(.rect(cornerRadius: 10))
+                            .gesture(
+                                DragGesture()
+                                    .onChanged {
+                                        dragAmount2 = $0.translation
+                                    }
+                                    .onEnded { _ in
+                                        dragAmount2 = .zero
+                                        enabled2.toggle()
+                                    }
+                            )
                         }
+                        .padding()
                         .frame(maxWidth: .infinity)
-                        .padding(.horizontal)
+                        .background(.regularMaterial)
+                        .clipShape(.rect(cornerRadius: 10))
                     }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+                }
 
-                    VStack(alignment: .leading) {
-                        Text("Custom transitions")
-                            .font(.title2)
-                            .bold()
-                            .padding(.horizontal)
-                        HStack {
-                            VStack {
-                                ZStack {
-                                    Rectangle()
-                                        .fill(.blue)
-                                        .frame(width: 200, height: 200)
-
-                                    if isShowingRed2 {
-                                        Rectangle()
-                                            .fill(.red)
-                                            .frame(width: 200, height: 200)
-                                            .transition(.pivot)
-                                    }
-                                }
-                                .onTapGesture {
-                                    withAnimation {
-                                        isShowingRed2.toggle()
-                                    }
+                VStack(alignment: .leading) {
+                    Text("Showing/Hiding views")
+                        .font(.title2)
+                        .bold()
+                        .padding(.horizontal)
+                    HStack {
+                        VStack {
+                            Button("Tap Me") {
+                                withAnimation {
+                                    isShowingRed.toggle()
                                 }
                             }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(.regularMaterial)
-                            .clipShape(.rect(cornerRadius: 10))
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal)
-                    }
 
+                            if isShowingRed {
+                                Rectangle()
+                                    .fill(.red)
+                                    .frame(width: 100, height: 100)
+                                    .transition(
+                                        .asymmetric(
+                                            insertion: .scale,
+                                            removal: .opacity
+                                        )
+                                    )
+                            }
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(.regularMaterial)
+                        .clipShape(.rect(cornerRadius: 10))
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
                 }
-                .frame(maxWidth: .infinity)
+
+                VStack(alignment: .leading) {
+                    Text("Custom transitions")
+                        .font(.title2)
+                        .bold()
+                        .padding(.horizontal)
+                    HStack {
+                        VStack {
+                            ZStack {
+                                Rectangle()
+                                    .fill(.blue)
+                                    .frame(width: 200, height: 200)
+
+                                if isShowingRed2 {
+                                    Rectangle()
+                                        .fill(.red)
+                                        .frame(width: 200, height: 200)
+                                        .transition(.pivot)
+                                }
+                            }
+                            .onTapGesture {
+                                withAnimation {
+                                    isShowingRed2.toggle()
+                                }
+                            }
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(.regularMaterial)
+                        .clipShape(.rect(cornerRadius: 10))
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+                }
+
             }
-            .navigationTitle("Animations")
+            .frame(maxWidth: .infinity)
         }
+        .navigationTitle("Animations")
     }
 }
 
 #Preview {
-    Animations()
+    NavigationStack {
+        Animations()
+    }
 }

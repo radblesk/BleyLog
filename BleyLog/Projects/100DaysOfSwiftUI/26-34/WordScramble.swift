@@ -123,64 +123,62 @@ struct WordScramble: View {
     }
 
     var body: some View {
-        NavigationStack {
-            List {
-                Section(gamesave.playerName) {
-                    Text("Current score: \(gamesave.currentScore)")
-                }
-                Section {
-                    TextField("Enter a word", text: $newWord)
-                        .focused($focused)
-                        .autocorrectionDisabled(true)
-                        #if !os(macOS)
-                            .textInputAutocapitalization(.never)
-                        #endif
+        List {
+            Section(gamesave.playerName) {
+                Text("Current score: \(gamesave.currentScore)")
+            }
+            Section {
+                TextField("Enter a word", text: $newWord)
+                    .focused($focused)
+                    .autocorrectionDisabled(true)
+                    #if !os(macOS)
+                        .textInputAutocapitalization(.never)
+                    #endif
 
-                }
+            }
 
-                if !gamesave.usedWords.isEmpty {
+            if !gamesave.usedWords.isEmpty {
 
-                    Section("\(gamesave.usedWords.count) words") {
-                        ForEach(gamesave.usedWords.reversed()) { word in
-                            HStack {
-                                Image(systemName: "\(word.text.count).circle")
-                                Text(word.text)
-                            }
+                Section("\(gamesave.usedWords.count) words") {
+                    ForEach(gamesave.usedWords.reversed()) { word in
+                        HStack {
+                            Image(systemName: "\(word.text.count).circle")
+                            Text(word.text)
                         }
                     }
                 }
             }
-            #if os(iOS)
-                .scrollDismissesKeyboard(.interactively)
-            #endif
-            .navigationTitle(gamesave.currentWord)
-            .onSubmit(addNewWord)
-            .onAppear(perform: startGame)
-            .alert(errorTitle, isPresented: $showingError) {
-            } message: {
-                Text(errorMessage)
-            }
-            .toolbar {
-                ToolbarItemGroup(placement: placement) {
-                    Button("Leaderboard", systemImage: "laurel.leading.laurel.trailing") {
-                        showing = true
-                    }
-                    Button("Change Player", systemImage: "person") {
-                        settingPlayer = true
-                    }
-                    Button("Restart", systemImage: "arrow.clockwise") {
-                        resetGame()
-                    }
+        }
+        #if os(iOS)
+            .scrollDismissesKeyboard(.interactively)
+        #endif
+        .navigationTitle(gamesave.currentWord)
+        .onSubmit(addNewWord)
+        .onAppear(perform: startGame)
+        .alert(errorTitle, isPresented: $showingError) {
+        } message: {
+            Text(errorMessage)
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: placement) {
+                Button("Leaderboard", systemImage: "laurel.leading.laurel.trailing") {
+                    showing = true
+                }
+                Button("Change Player", systemImage: "person") {
+                    settingPlayer = true
+                }
+                Button("Restart", systemImage: "arrow.clockwise") {
+                    resetGame()
                 }
             }
-            .sheet(isPresented: $showing) {
-                LeaderboardView(leaderboard: leaderboard)
-                    .presentationDetents([.medium, .large])
-            }
-            .sheet(isPresented: $settingPlayer) {
-                SetPlayer(gamesave: gamesave)
-                    .presentationDetents([.height(160)])
-            }
+        }
+        .sheet(isPresented: $showing) {
+            LeaderboardView(leaderboard: leaderboard)
+                .presentationDetents([.medium, .large])
+        }
+        .sheet(isPresented: $settingPlayer) {
+            SetPlayer(gamesave: gamesave)
+                .presentationDetents([.height(160)])
         }
     }
 
@@ -459,5 +457,7 @@ struct WordScramble: View {
 
 // MARK: - Preview
 #Preview {
-    WordScramble()
+    NavigationStack {
+        WordScramble()
+    }
 }

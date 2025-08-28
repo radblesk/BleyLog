@@ -47,32 +47,32 @@ class PathStore {
 // MARK: - Detail View
 struct DetailView: View {
     var number: Int
-    @Binding var pathStore: PathStore
 
     var body: some View {
         NavigationLink("Go to random number", value: Int.random(in: 1...1000))
             .navigationTitle("Number: \(number)")
-            .toolbar {
-                Button("Home") {
-                    pathStore.path = NavigationPath()
-                }
-            }
+//            .toolbar {
+//                Button("Home") {
+//                    pathStore.path = NavigationPath()
+//                }
+//            }
     }
 }
 // MARK: - Main View
 struct Navigation: View {
-    @State private var pathStore = PathStore()
 
     var body: some View {
-        NavigationStack(path: $pathStore.path) {
-            DetailView(number: 0, pathStore: $pathStore)
+//        NavigationStack(path: $pathStore.path) {
+            DetailView(number: 0)
                 .navigationDestination(for: Int.self) { i in
-                    DetailView(number: i, pathStore: $pathStore)
+                    DetailView(number: i)
                 }
-        }
+//        }
     }
 }
 
 #Preview {
-    Navigation()
+    NavigationStack {
+        Navigation()
+    }
 }

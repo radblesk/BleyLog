@@ -24,88 +24,86 @@ struct GuessTheFlag: View {
     @State private var otherAnswers = 1.0
 
     var body: some View {
-        NavigationStack {
-            ZStack {
-                RadialGradient(
-                    stops: [
-                        .init(
-                            color: Color(red: 0.1, green: 0.2, blue: 0.45),
-                            location: 0
-                        ), .init(color: .black, location: 1),
-                    ],
-                    center: .top,
-                    startRadius: 10,
-                    endRadius: 700
-                )
-                .ignoresSafeArea()
-                VStack {
-                    Spacer()
+        ZStack {
+            RadialGradient(
+                stops: [
+                    .init(
+                        color: Color(red: 0.1, green: 0.2, blue: 0.45),
+                        location: 0
+                    ), .init(color: .black, location: 1),
+                ],
+                center: .top,
+                startRadius: 10,
+                endRadius: 700
+            )
+            .ignoresSafeArea()
+            VStack {
+                Spacer()
 
-                    Text("Guess the Flag")
-                        .font(.largeTitle.bold())
-                        .foregroundStyle(.white)
+                Text("Guess the Flag")
+                    .font(.largeTitle.bold())
+                    .foregroundStyle(.white)
 
-                    Spacer()
+                Spacer()
 
-                    VStack(spacing: 30) {
-                        VStack {
-                            Text("Tap the flag of")
-                                .foregroundStyle(.secondary)
-                                .font(.subheadline.weight(.heavy))
+                VStack(spacing: 30) {
+                    VStack {
+                        Text("Tap the flag of")
+                            .foregroundStyle(.secondary)
+                            .font(.subheadline.weight(.heavy))
 
-                            Text(countries[correctAnswer])
-                                .foregroundStyle(.secondary)
-                                .font(.largeTitle.weight(.semibold))
-                        }
-
-                        ForEach(0..<3) { number in
-                            Button {
-                                withAnimation {
-                                    flagTapped(number)
-                                }
-                            } label: {
-                                FlagImage(countries: countries, number: number)
-                            }
-                            .opacity(
-                                number != tappedButton ? otherAnswers : 1.0
-                            )
-                            .scaleEffect(
-                                number != tappedButton ? otherAnswers : 1.0
-                            )
-                            .rotation3DEffect(
-                                .degrees(
-                                    number == tappedButton ? tappedAnswer : 0
-                                ),
-                                axis: (x: 0, y: 1, z: 0)
-                            )
-                        }
+                        Text(countries[correctAnswer])
+                            .foregroundStyle(.secondary)
+                            .font(.largeTitle.weight(.semibold))
                     }
-                    .frame(maxWidth: 500)
-                    .padding(.vertical, 20)
-                    .background(.ultraThinMaterial)
-                    .clipShape(.rect(cornerRadius: 20))
 
-                    Spacer()
-                    Spacer()
-                    Text("Score: \(score) / \(countries.count)")
-                        .foregroundStyle(.white)
-                        .font(.headline.bold())
-
-                    Spacer()
+                    ForEach(0..<3) { number in
+                        Button {
+                            withAnimation {
+                                flagTapped(number)
+                            }
+                        } label: {
+                            FlagImage(countries: countries, number: number)
+                        }
+                        .opacity(
+                            number != tappedButton ? otherAnswers : 1.0
+                        )
+                        .scaleEffect(
+                            number != tappedButton ? otherAnswers : 1.0
+                        )
+                        .rotation3DEffect(
+                            .degrees(
+                                number == tappedButton ? tappedAnswer : 0
+                            ),
+                            axis: (x: 0, y: 1, z: 0)
+                        )
+                    }
                 }
-                .padding()
+                .frame(maxWidth: 500)
+                .padding(.vertical, 20)
+                .background(.ultraThinMaterial)
+                .clipShape(.rect(cornerRadius: 20))
+
+                Spacer()
+                Spacer()
+                Text("Score: \(score) / \(countries.count)")
+                    .foregroundStyle(.white)
+                    .font(.headline.bold())
+
+                Spacer()
             }
-            .preferredColorScheme(.dark)
-            .alert(scoreTitle, isPresented: $showingScore) {
-                if tries < countries.count {
-                    Button("Continue", action: askQuestion)
-                } else {
-                    Button("Start over", role: .destructive, action: restart)
-                }
-            } message: {
-                if tries < countries.count {
-                    Text("Your score is \(score)")
-                }
+            .padding()
+        }
+        .preferredColorScheme(.dark)
+        .alert(scoreTitle, isPresented: $showingScore) {
+            if tries < countries.count {
+                Button("Continue", action: askQuestion)
+            } else {
+                Button("Start over", role: .destructive, action: restart)
+            }
+        } message: {
+            if tries < countries.count {
+                Text("Your score is \(score)")
             }
         }
     }
@@ -153,5 +151,7 @@ struct GuessTheFlag: View {
 }
 
 #Preview {
-    GuessTheFlag()
+    NavigationStack {
+        GuessTheFlag()
+    }
 }

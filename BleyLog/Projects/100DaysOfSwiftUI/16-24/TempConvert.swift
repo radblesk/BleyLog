@@ -46,51 +46,51 @@ struct TempConvert: View {
     @State private var isPresenting = false
 
     var body: some View {
-        NavigationStack {
-            Form {
-                Section("Insert Temperature") {
-                    TextField(
-                        "Enter temperature",
-                        value: $temperature,
-                        format: .number
-                    )
-                    #if os(iOS)
-                        .keyboardType(.decimalPad)
-                    #endif
-                    .focused($temperatureFieldIsFocused)
-                }
+        Form {
+            Section("Insert Temperature") {
+                TextField(
+                    "Enter temperature",
+                    value: $temperature,
+                    format: .number
+                )
+                #if os(iOS)
+                    .keyboardType(.decimalPad)
+                #endif
+                .focused($temperatureFieldIsFocused)
+            }
 
-                Section(
-                    header: Text("Units"),
-                    footer: Text("Select units to convert from and to.")
-                ) {
-                    Picker("Input Unit", selection: $inputUnit) {
-                        ForEach(units, id: \.self) {
-                            Text($0)
-                        }
-                    }
-
-                    Picker("Output Unit", selection: $outputUnit) {
-                        ForEach(units, id: \.self) {
-                            Text($0)
-                        }
+            Section(
+                header: Text("Units"),
+                footer: Text("Select units to convert from and to.")
+            ) {
+                Picker("Input Unit", selection: $inputUnit) {
+                    ForEach(units, id: \.self) {
+                        Text($0)
                     }
                 }
 
-                Section("Converted Temperature") {
-                    Text(
-                        "\(convertedTemperature, format: .number) °\(outputUnit.first?.uppercased() ?? "")"
-                    )
-                    .contentTransition(
-                        .numericText(value: convertedTemperature)
-                    )
+                Picker("Output Unit", selection: $outputUnit) {
+                    ForEach(units, id: \.self) {
+                        Text($0)
+                    }
                 }
             }
-            .navigationTitle("TempConvert")
+
+            Section("Converted Temperature") {
+                Text(
+                    "\(convertedTemperature, format: .number) °\(outputUnit.first?.uppercased() ?? "")"
+                )
+                .contentTransition(
+                    .numericText(value: convertedTemperature)
+                )
+            }
         }
+        .navigationTitle("TempConvert")
     }
 }
 
 #Preview {
-    TempConvert()
+    NavigationStack {
+        TempConvert()
+    }
 }

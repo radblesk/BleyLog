@@ -46,9 +46,6 @@ struct Habits: View {
     // Load ViewModel
     @State private var store = HabitsStore()
 
-    // Store navigation path
-    @State private var path = NavigationPath()
-
     // Add habit sheet
     @State private var presented = false
 
@@ -58,88 +55,86 @@ struct Habits: View {
     @State private var completedSum: Int = 0
 
     var body: some View {
-        NavigationStack(path: $path) {
+        List {
+            if store.habits.isEmpty {
+                Text("Add new habit to get started!")
+            } else {
+                ForEach(store.habits) { habit in
+                    NavigationLink(habit.title, value: habit)
+                }
+                .onDelete(perform: deleteHabit)
+            }
+        }
+        .navigationTitle("Habits")
+        .navigationDestination(for: Habit.self) { habit in
             List {
-                if store.habits.isEmpty {
-                    Text("Add new habit to get started!")
-                } else {
-                    ForEach(store.habits) { habit in
-                        NavigationLink(habit.title, value: habit)
+                if !habit.description.isEmpty {
+                    Section("Description") {
+                        Text(habit.description)
                     }
-                    .onDelete(perform: deleteHabit)
                 }
-            }
-            .navigationTitle("Habits")
-            .navigationDestination(for: Habit.self) { habit in
-                List {
-                    if !habit.description.isEmpty {
-                        Section("Description") {
-                            Text(habit.description)
-                        }
-                    }
 
-                    Section {
-                        VStack {
-                            Button("\(completedSum) days completed") {
-                                updateHabit(for: habit)
-                            }
-                            .contentTransition(.numericText())
-                            .foregroundStyle(.white)
-                            .bold()
-                            .multilineTextAlignment(.center)
-                            .buttonStyle(.plain)
-                            .frame(width: 120, height: 120)
-                            .background(Color.accentColor)
-                            .clipShape(Circle())
+                Section {
+                    VStack {
+                        Button("\(completedSum) days completed") {
+                            updateHabit(for: habit)
                         }
-                        .listRowBackground(Color.clear)
-                        .frame(maxWidth: .infinity)
-                    } header: {
-                        Text("Progress")
-                    } footer: {
-                        Text(
-                            "To increase your number, tap the button above! Once you've completed a day, it will be added to the count."
-                        )
+                        .contentTransition(.numericText())
+                        .foregroundStyle(.white)
+                        .bold()
+                        .multilineTextAlignment(.center)
+                        .buttonStyle(.plain)
+                        .frame(width: 120, height: 120)
+                        .background(Color.accentColor)
+                        .clipShape(Circle())
                     }
-                }
-                .navigationTitle(habit.title)
-                .toolbar {
-                    Button("Reset", systemImage: "arrow.clockwise", role: .destructive) {
-                        withAnimation {
-                            resetHabit(for: habit)
-                        }
-                    }
-                }
-                .onAppear {
-                    loadHabitData(for: habit)
+                    .listRowBackground(Color.clear)
+                    .frame(maxWidth: .infinity)
+                } header: {
+                    Text("Progress")
+                } footer: {
+                    Text(
+                        "To increase your number, tap the button above! Once you've completed a day, it will be added to the count."
+                    )
                 }
             }
+            .navigationTitle(habit.title)
             .toolbar {
-                #if os(iOS)
-                    if !store.habits.isEmpty {
-                        EditButton()
+                Button("Reset", systemImage: "arrow.clockwise", role: .destructive) {
+                    withAnimation {
+                        resetHabit(for: habit)
                     }
-                #endif
-                Button("Add habit", systemImage: "plus") {
-                    presented = true
                 }
             }
-            .sheet(isPresented: $presented) {
-                NavigationStack {
-                    Form {
-                        TextField("Description", text: $description)
-                    }
-                    .navigationTitle($name)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        Button("Save") {
-                            addHabit()
-                        }
-                    }
-                    .onSubmit(addHabit)
-                }
-                .presentationDetents([.height(180)])
+            .onAppear {
+                loadHabitData(for: habit)
             }
+        }
+        .toolbar {
+            #if os(iOS)
+                if !store.habits.isEmpty {
+                    EditButton()
+                }
+            #endif
+            Button("Add habit", systemImage: "plus") {
+                presented = true
+            }
+        }
+        .sheet(isPresented: $presented) {
+            NavigationStack {
+                Form {
+                    TextField("Description", text: $description)
+                }
+                .navigationTitle($name)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    Button("Save") {
+                        addHabit()
+                    }
+                }
+                .onSubmit(addHabit)
+            }
+            .presentationDetents([.height(180)])
         }
     }
 
@@ -164,21 +159,22 @@ struct Habits: View {
 
     // MARK: Update existing habit at index
     func updateHabit(for habit: Habit) {
-        // Increase UI state
-        completedSum += 1
-
-        // Create new temporary habit instance
-        /// Pass previously saved data + new completedSum value
-        let updatedHabit = Habit(
-            title: habit.title,
-            description: habit.description,
-            completedSum: completedSum
-        )
-
         // Find index of updating habit
         let index = store.habits.firstIndex(of: habit)
 
         if let index {
+            // Increase UI state
+            completedSum += 1
+
+            // Create new temporary habit instance
+            /// Pass previously saved data + new completedSum value
+            let updatedHabit = Habit(
+                title: habit.title,
+                description: habit.description,
+                completedSum: completedSum
+            )
+
+            // Update habit
             store.habits[index] = updatedHabit
         }
     }
@@ -198,5 +194,7 @@ struct Habits: View {
 
 // MARK: - Preview
 #Preview {
-    Habits()
+    NavigationStack {
+        Habits()
+    }
 }

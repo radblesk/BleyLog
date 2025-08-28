@@ -11,28 +11,28 @@ struct AstronautView: View {
     let astronaut: Astronaut
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack {
-                    Image(astronaut.id)
-                        .resizable()
-                        .scaledToFit()
+        ScrollView {
+            VStack {
+                Image(astronaut.id)
+                    .resizable()
+                    .scaledToFit()
 
-                    Text(astronaut.description)
-                        .padding()
-                }
+                Text(astronaut.description)
+                    .padding()
             }
-            .background(.darkBackground)
-            .navigationTitle(astronaut.name)
-            #if os(iOS)
-                .navigationBarTitleDisplayMode(.inline)
-            #endif
         }
+        .background(.darkBackground)
+        .navigationTitle(astronaut.name)
+        #if os(iOS)
+            .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 
 #Preview {
     let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
-    return AstronautView(astronaut: astronauts["aldrin"]!)
-        .preferredColorScheme(.dark)
+    return NavigationStack {
+        AstronautView(astronaut: astronauts["aldrin"]!)
+            .preferredColorScheme(.dark)
+    }
 }

@@ -19,70 +19,68 @@ struct RockPaperScissors: View {
     @State private var isGameOver = false
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 20) {
-                #if !os(watchOS)
-                    Text(
-                        """
-                        Try to beat me. 
-                        Choose wisely!
-                        """
-                    )
-                #endif
-                #if os(watchOS)
-                    Spacer()
-                #endif
-                VStack {
-                    ForEach(moves, id: \.self) { move in
-                        Button(move) {
-                            playersMove(move)
-                        }
-                        #if os(watchOS)
-                            .tint(
-                                move == playerMove && move == computerMove
-                                    ? .green
-                                    : gameStarted
-                                        && move == computerMove
-                                        && computerMove != playerMove
-                                        ? .green
-                                        : move == playerMove
-                                            && move != computerMove
-                                            ? .red : .none
-                            )
-                        #else
-                            .tint(
-                                move == playerMove && move == computerMove
-                                    ? .green
-                                    : gameStarted
-                                        && move == computerMove
-                                        && computerMove != playerMove
-                                        ? .green
-                                        : move == playerMove
-                                            && move != computerMove
-                                            ? .red : .none
-                            )
-                        #endif
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.extraLarge)
+        VStack(spacing: 20) {
+            #if !os(watchOS)
+                Text(
+                    """
+                    Try to beat me. 
+                    Choose wisely!
+                    """
+                )
+            #endif
+            #if os(watchOS)
+                Spacer()
+            #endif
+            VStack {
+                ForEach(moves, id: \.self) { move in
+                    Button(move) {
+                        playersMove(move)
                     }
+                    #if os(watchOS)
+                        .tint(
+                            move == playerMove && move == computerMove
+                                ? .green
+                                : gameStarted
+                                    && move == computerMove
+                                    && computerMove != playerMove
+                                    ? .green
+                                    : move == playerMove
+                                        && move != computerMove
+                                        ? .red : .none
+                        )
+                    #else
+                        .tint(
+                            move == playerMove && move == computerMove
+                                ? .green
+                                : gameStarted
+                                    && move == computerMove
+                                    && computerMove != playerMove
+                                    ? .green
+                                    : move == playerMove
+                                        && move != computerMove
+                                        ? .red : .none
+                        )
+                    #endif
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.extraLarge)
                 }
             }
-            .navigationTitle("Rock, Paper, Scissors")
-            #if !os(macOS)
-                .navigationBarTitleDisplayMode(.inline)
-            #endif
-            .alert(
-                score < 5
-                    ? "Game Over! Poor performance, if you ask me."
-                    : score > 4 && score < 10
-                        ? "Not great, not terrible."
-                        : "You did it you crazy son of a bitch, you did it!",
-                isPresented: $isGameOver
-            ) {
-                Button("Play again") { resetGame() }
-            } message: {
-                Text("Your score is \(score) / \(tries)")
-            }
+        }
+        .navigationTitle("Rock, Paper, Scissors")
+        #if !os(macOS)
+            .navigationBarTitleDisplayMode(.inline)
+        #endif
+        .alert(
+            score < 5
+                ? "Game Over! Poor performance, if you ask me."
+                : score > 4 && score < 10
+                    ? "Not great, not terrible."
+                    : "You did it you crazy son of a bitch, you did it!",
+            isPresented: $isGameOver
+        ) {
+            Button("Play again") { resetGame() }
+        } message: {
+            Text("Your score is \(score) / \(tries)")
         }
     }
 
@@ -126,5 +124,7 @@ struct RockPaperScissors: View {
 }
 
 #Preview {
-    RockPaperScissors()
+    NavigationStack {
+        RockPaperScissors()
+    }
 }

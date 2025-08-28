@@ -52,82 +52,80 @@ struct iExpense: View {
     }
 
     var body: some View {
-        NavigationStack {
-            List {
-                if !personalItems.isEmpty {
-                    Section("Personal") {
-                        ForEach(personalItems) { item in
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(item.name)
-                                        .font(.headline)
+        List {
+            if !personalItems.isEmpty {
+                Section("Personal") {
+                    ForEach(personalItems) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
 
-                                    Text(item.type)
-                                }
-
-                                Spacer()
-
-                                Text(
-                                    "\(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "EUR"))"
-                                )
-                                .bold()
-                                .foregroundStyle(
-                                    item.amount > 100.0
-                                        ? .red : item.amount > 10.0 ? .orange : .primary
-                                )
+                                Text(item.type)
                             }
+
+                            Spacer()
+
+                            Text(
+                                "\(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "EUR"))"
+                            )
+                            .bold()
+                            .foregroundStyle(
+                                item.amount > 100.0
+                                    ? .red : item.amount > 10.0 ? .orange : .primary
+                            )
                         }
-                        .onDelete(perform: removePersonalItems)
                     }
-                }
-
-                if !businessItems.isEmpty {
-                    Section("Business") {
-                        ForEach(businessItems) { item in
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(item.name)
-                                        .font(.headline)
-
-                                    Text(item.type)
-                                }
-
-                                Spacer()
-
-                                Text(
-                                    "\(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "EUR"))"
-                                )
-                                .bold()
-                                .foregroundStyle(
-                                    item.amount > 100.0
-                                        ? .red : item.amount > 10.0 ? .orange : .primary
-                                )
-                            }
-                        }
-                        .onDelete(perform: removeBusinessItems)
-                    }
+                    .onDelete(perform: removePersonalItems)
                 }
             }
-            .navigationTitle("iExpense")
-            .toolbar {
-                #if os(iOS)
-                    EditButton()
-                #endif
-                //                Button("Add Expense", systemImage: "plus") {
-                //                    path.append(0)
-                //                    //                    showingAddExpense = true
-                //                }
-                NavigationLink {
-                    AddView(expenses: expenses)
-                        .navigationBarBackButtonHidden()
-                } label: {
-                    Image(systemName: "plus")
+
+            if !businessItems.isEmpty {
+                Section("Business") {
+                    ForEach(businessItems) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+
+                                Text(item.type)
+                            }
+
+                            Spacer()
+
+                            Text(
+                                "\(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "EUR"))"
+                            )
+                            .bold()
+                            .foregroundStyle(
+                                item.amount > 100.0
+                                    ? .red : item.amount > 10.0 ? .orange : .primary
+                            )
+                        }
+                    }
+                    .onDelete(perform: removeBusinessItems)
                 }
             }
-            .sheet(isPresented: $showingAddExpense) {
+        }
+        .navigationTitle("iExpense")
+        .toolbar {
+            #if os(iOS)
+                EditButton()
+            #endif
+            //                Button("Add Expense", systemImage: "plus") {
+            //                    path.append(0)
+            //                    //                    showingAddExpense = true
+            //                }
+            NavigationLink {
                 AddView(expenses: expenses)
-                    .presentationDetents([.height(300), .medium])
+                    .navigationBarBackButtonHidden()
+            } label: {
+                Image(systemName: "plus")
             }
+        }
+        .sheet(isPresented: $showingAddExpense) {
+            AddView(expenses: expenses)
+                .presentationDetents([.height(300), .medium])
         }
     }
 
@@ -152,5 +150,7 @@ struct iExpense: View {
 }
 
 #Preview {
-    iExpense()
+    NavigationStack {
+        iExpense()
+    }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CrewMember {
+struct CrewMember: Hashable {
     let role: String
     let astronaut: Astronaut
 }

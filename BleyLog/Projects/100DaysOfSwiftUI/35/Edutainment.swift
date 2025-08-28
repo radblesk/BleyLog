@@ -29,57 +29,55 @@ struct Edutainment: View {
 
     // MARK: - Main View
     var body: some View {
-        NavigationStack {
-            List {
-                Section("Multiplication table") {
-                    Stepper(
-                        "Multiplications up to \(upTo)",
-                        value: $upTo,
-                        in: 2...12
-                    )
-                }
+        List {
+            Section("Multiplication table") {
+                Stepper(
+                    "Multiplications up to \(upTo)",
+                    value: $upTo,
+                    in: 2...12
+                )
+            }
 
-                Section("Number of questions") {
-                    Picker(
-                        "Select number of questions",
-                        selection: $numberOfQuestions
-                    ) {
-                        ForEach(NumberOfQuestions.allCases, id: \.rawValue) {
-                            option in
-                            Text("\(option.rawValue)")
-                                .tag(option)
-                        }
-                    }
-                }
-
-                ForEach(generatedQuestions, id: \.self) { question in
-                    Question(question: question, check: $check)
-                }
-
-                if generatedQuestions.isEmpty {
-                    Button("Start") {
-                        withAnimation {
-                            generateQuestions()
-                        }
-                    }
-                } else {
-                    Button("Check answers") {
-                        withAnimation {
-                            check = true
-                        }
+            Section("Number of questions") {
+                Picker(
+                    "Select number of questions",
+                    selection: $numberOfQuestions
+                ) {
+                    ForEach(NumberOfQuestions.allCases, id: \.rawValue) {
+                        option in
+                        Text("\(option.rawValue)")
+                            .tag(option)
                     }
                 }
             }
-            #if os(iOS)
-                .scrollDismissesKeyboard(.interactively)
-            #endif
-            .navigationTitle("Edutainment")
-            .toolbar {
-                if check {
-                    Button("Restart") {
-                        withAnimation {
-                            generateQuestions()
-                        }
+
+            ForEach(generatedQuestions, id: \.self) { question in
+                Question(question: question, check: $check)
+            }
+
+            if generatedQuestions.isEmpty {
+                Button("Start") {
+                    withAnimation {
+                        generateQuestions()
+                    }
+                }
+            } else {
+                Button("Check answers") {
+                    withAnimation {
+                        check = true
+                    }
+                }
+            }
+        }
+        #if os(iOS)
+            .scrollDismissesKeyboard(.interactively)
+        #endif
+        .navigationTitle("Edutainment")
+        .toolbar {
+            if check {
+                Button("Restart") {
+                    withAnimation {
+                        generateQuestions()
                     }
                 }
             }
@@ -165,5 +163,7 @@ struct Question: View {
 
 // MARK: - Preview
 #Preview {
-    Edutainment()
+    NavigationStack {
+        Edutainment()
+    }
 }

@@ -5,7 +5,6 @@
 //  Created by Radoslav Bley on 10/08/2025.
 //
 
-import SwiftData
 import SwiftUI
 
 @main
@@ -16,7 +15,7 @@ struct BleyLogApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(viewModel)
         }
-        .environment(viewModel)
     }
 }

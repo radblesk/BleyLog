@@ -23,125 +23,121 @@ struct LessonsListView: View {
         /// Bindable variable for two-way data mutation
         @Bindable var viewModel = viewModel
 
-        NavigationStack {
-            VStack {
-                List(
-                    viewModel.courses(in: viewModel.selectedLanguage),
-                    selection: $viewModel.selectedLesson
-                ) {
-                    course in
-                    Section(
-                        course.title,
-                        isExpanded: Binding<Bool>(
-                            get: {
-                                expanded.contains(course.title)
-                            },
-                            set: { isExpanding in
-                                if isExpanding {
-                                    expanded.insert(
-                                        course.title
-                                    )
-                                } else {
-                                    expanded.remove(
-                                        course.title
-                                    )
-                                }
-                            }
-                        )
-                    ) {
-                        if !viewModel.lessons(in: course).isEmpty {
-                            ForEach(
-                                viewModel.lessons(in: course, status: .started),
-                                id: \.self
-                            ) { lesson in
-                                LessonsListRow(lesson: lesson)
-                                    .disabled(
-                                        lesson.projects.count == 0
-                                            && !lesson.inProgress
-                                    )
-                                    .selectionDisabled(
-                                        lesson.projects.count == 0
-                                            && !lesson.inProgress
-                                    )
-                            }
-
-                            if showMore {
-                                ForEach(
-                                    viewModel.lessons(
-                                        in: course,
-                                        status: .notStarted
-                                    ),
-                                    id: \.self
-                                ) { lesson in
-                                    NavigationLink(value: lesson) {
-                                        Label {
-                                            Text(lesson.title)
-                                        } icon: {
-                                            if lesson.inProgress {
-                                                Image(
-                                                    systemName: "target"
-                                                )
-                                                .foregroundStyle(.blue)
-                                                .symbolEffect(
-                                                    .variableColor.cumulative
-                                                        .dimInactiveLayers
-                                                        .nonReversing,
-                                                    options: .repeat(
-                                                        .periodic(delay: 1.0)
-                                                    )
-                                                )
-                                            } else {
-                                                Image(
-                                                    systemName: lesson.finished
-                                                        ? "checkmark.circle"
-                                                        : "book"
-                                                ).foregroundStyle(
-                                                    lesson.finished
-                                                        ? .green
-                                                        : Color.accentColor
-                                                )
-                                            }
-                                        }
-                                        .badge(lesson.projects.count)
-                                    }
-                                    .disabled(
-                                        lesson.projects.count == 0
-                                            && !lesson.inProgress
-                                    )
-                                    .selectionDisabled(
-                                        lesson.projects.count == 0
-                                            && !lesson.inProgress
-                                    )
-                                }
-                            }
-
-                            Button(showMore ? "Show fewer" : "Show more") {
-                                withAnimation {
-                                    showMore.toggle()
-                                }
-                            }
-                            .padding(.horizontal)
-                            .foregroundStyle(.blue)
-                            .font(.subheadline)
+        List(
+            viewModel.courses(in: viewModel.selectedLanguage),
+            selection: $viewModel.selectedLesson
+        ) {
+            course in
+            Section(
+                course.title,
+                isExpanded: Binding<Bool>(
+                    get: {
+                        expanded.contains(course.title)
+                    },
+                    set: { isExpanding in
+                        if isExpanding {
+                            expanded.insert(
+                                course.title
+                            )
                         } else {
-                            Text("No lessons in this course.")
-                                .foregroundStyle(.secondary)
+                            expanded.remove(
+                                course.title
+                            )
                         }
                     }
-                    .headerProminence(.increased)
+                )
+            ) {
+                if !viewModel.lessons(in: course).isEmpty {
+                    ForEach(
+                        viewModel.lessons(in: course, status: .started),
+                        id: \.self
+                    ) { lesson in
+                        LessonsListRow(lesson: lesson)
+                            .disabled(
+                                lesson.projects.count == 0
+                                    && !lesson.inProgress
+                            )
+                            .selectionDisabled(
+                                lesson.projects.count == 0
+                                    && !lesson.inProgress
+                            )
+                    }
+
+                    if showMore {
+                        ForEach(
+                            viewModel.lessons(
+                                in: course,
+                                status: .notStarted
+                            ),
+                            id: \.self
+                        ) { lesson in
+                            NavigationLink(value: lesson) {
+                                Label {
+                                    Text(lesson.title)
+                                } icon: {
+                                    if lesson.inProgress {
+                                        Image(
+                                            systemName: "target"
+                                        )
+                                        .foregroundStyle(.blue)
+                                        .symbolEffect(
+                                            .variableColor.cumulative
+                                                .dimInactiveLayers
+                                                .nonReversing,
+                                            options: .repeat(
+                                                .periodic(delay: 1.0)
+                                            )
+                                        )
+                                    } else {
+                                        Image(
+                                            systemName: lesson.finished
+                                                ? "checkmark.circle"
+                                                : "book"
+                                        ).foregroundStyle(
+                                            lesson.finished
+                                                ? .green
+                                                : Color.accentColor
+                                        )
+                                    }
+                                }
+                                .badge(lesson.projects.count)
+                            }
+                            .disabled(
+                                lesson.projects.count == 0
+                                    && !lesson.inProgress
+                            )
+                            .selectionDisabled(
+                                lesson.projects.count == 0
+                                    && !lesson.inProgress
+                            )
+                        }
+                    }
+
+                    Button(showMore ? "Show fewer" : "Show more") {
+                        withAnimation {
+                            showMore.toggle()
+                        }
+                    }
+                    .padding(.horizontal)
+                    .foregroundStyle(.blue)
+                    .font(.subheadline)
+                } else {
+                    Text("No lessons in this course.")
+                        .foregroundStyle(.secondary)
                 }
             }
-            .navigationTitle("Courses")
-            .apply {
-                if #available(iOS 26, *) {
-                    if let language = viewModel.selectedLanguage {
-                        $0.navigationSubtitle(
-                            "for \(language.title)"
-                        )
-                    }
-                } else {
-                    $0.disabled(false)
+            .headerProminence(.increased)
+        }
+        .navigationTitle("Courses")
+        .apply {
+            if #available(iOS 26, *) {
+                if let language = viewModel.selectedLanguage {
+                    $0.navigationSubtitle(
+                        "for \(language.title)"
+                    )
                 }
+            } else {
+                $0.disabled(false)
             }
         }
     }

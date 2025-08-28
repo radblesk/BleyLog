@@ -5,20 +5,11 @@
 //  Created by Radoslav Bley on 10/08/2025.
 //
 
-//internal import Combine
 import Foundation
-import SwiftData
 import SwiftUI
 
-@Observable @MainActor
+@Observable
 class ViewModel {
-    //    static let shared = ViewModel()
-    // MARK: -  ModelContainer
-    let modelContainer: ModelContainer
-    var context: ModelContext {
-        modelContainer.mainContext
-    }
-
     // MARK: - Enums
     /// Lesson status options
     enum LessonStatus {
@@ -31,7 +22,13 @@ class ViewModel {
 
     /// Selections
     var selectedLanguage: Language?
-    var selectedLesson: Lesson?
+    var selectedLesson: Lesson? {
+        didSet {
+            if let encodedLesson = try? JSONEncoder().encode(selectedLesson) {
+                UserDefaults.standard.set(encodedLesson, forKey: "selectedLesson")
+            }
+        }
+    }
     var selectedProject: Project?
 
     /// Search
@@ -49,50 +46,16 @@ class ViewModel {
 
     // MARK: - Initialization
     init() {
-        let schema = Schema([
-            Language.self, Course.self, Lesson.self, Project.self,
-        ])
-        let modelConfiguration = ModelConfiguration(
-            schema: schema,
-            isStoredInMemoryOnly: true
-        )
+        self.languages = Language.languages.sorted { $0.title < $1.title }
 
-        do {
-            modelContainer = try ModelContainer(
-                for: schema,
-                configurations: [modelConfiguration]
-            )
-            insertModelData()
-            defaultLanguage()
-            try context.save()
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
+        defaultLanguage()
 
-    }
-
-    // MARK: - Insert default data
-    func insertModelData() {
-        let descriptor = FetchDescriptor<Language>()
-
-        do {
-            let existingLanguages = try context.fetch(descriptor).sorted {
-                $0.title < $1.title
+        if let savedLesson = UserDefaults.standard.data(forKey: "selectedLesson") {
+            if let decodedLesson = try? JSONDecoder().decode(Lesson.self, from: savedLesson) {
+                selectedLesson = decodedLesson
             }
-
-            if existingLanguages.isEmpty {
-                let programmingLanguages = Language.languages.sorted {
-                    $0.title < $1.title
-                }
-                for language in programmingLanguages {
-                    context.insert(language)
-                }
-                self.languages = programmingLanguages
-            } else {
-                self.languages = existingLanguages
-            }
-        } catch {
-            fatalError("Failed to fetch or insert data: \(error)")
+        } else {
+            selectedLesson = nil
         }
     }
 

@@ -5,42 +5,18 @@
 //  Created by Radoslav Bley on 10/08/2025.
 //
 
-import SwiftData
 import SwiftUI
 
-@Model
-class Lesson {
+struct Lesson: Identifiable, Codable, Hashable {
+    var id = UUID()
     var firstDay: Int
     var lastDay: Int
     var title: String
     var inProgress: Bool = false
     var finished: Bool = false
+    var projects: [Project] = []
     var headerImage: String? = nil
-
-    @Relationship(deleteRule: .cascade) var projects: [Project] = []
     var course: Course?
-
-    init(
-        firstDay: Int,
-        lastDay: Int,
-        title: String,
-        inProgress: Bool = false,
-        finished: Bool = false,
-        projects: [Project] = [],
-        course: Course? = nil,
-        headerImage: String? = nil
-
-    ) {
-        self.firstDay = firstDay
-        self.lastDay = lastDay
-        self.title = title
-        self.inProgress = inProgress
-        self.finished = finished
-        self.projects = projects
-        self.course = course
-        self.headerImage = headerImage
-
-    }
 
     static let hundreedDaysOfSwiftUILessons = [
         Lesson(
@@ -49,7 +25,7 @@ class Lesson {
             title: "Starting SwiftUI",
             finished: true,
             projects: Project.startingSwiftUI,
-            headerImage: "startingswiftui-header"
+            headerImage: "startingswiftui-header",
         ),
         Lesson(
             firstDay: 25,

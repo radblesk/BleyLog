@@ -5,23 +5,12 @@
 //  Created by Radoslav Bley on 10/08/2025.
 //
 
-import SwiftData
 import SwiftUI
 
-@Model
-class Language {
+struct Language: Identifiable, Codable, Hashable {
+    var id = UUID()
     var title: String
-
-    @Relationship(deleteRule: .cascade) var courses: [Course] = []
-
-    init(
-        title: String,
-        courses: [Course] = []
-    ) {
-        self.title = title
-        self.courses = courses
-
-    }
+    var courses: [Course] = []
 
     static let languages = [
         Language(title: "Swift", courses: Course.swiftCourses),
