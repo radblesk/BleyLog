@@ -41,6 +41,8 @@ struct ProjectView: View {
                     Moonshot()
                 case "Navigation":
                     Navigation()
+                case "Habits":
+                    Habits()
                 default:
                     Text("Select a project")
                 }

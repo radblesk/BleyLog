@@ -77,13 +77,15 @@ class Lesson {
             firstDay: 36,
             lastDay: 46,
             title: "Scaling up to bigger apps",
-            inProgress: true,
+            finished: true,
             projects: Project.scalingUpToBiggerApps
         ),
         Lesson(
             firstDay: 47,
             lastDay: 48,
             title: "Consolidation IV",
+            inProgress: true,
+            projects: Project.consolidation4
         ),
         Lesson(
             firstDay: 49,
