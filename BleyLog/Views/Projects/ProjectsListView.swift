@@ -16,31 +16,32 @@ struct ProjectsListView: View {
         /// Bindable variable for two-way data mutation
         @Bindable var viewModel = viewModel
 
-        if viewModel.selectedLesson != nil {
-            List(viewModel.projects(in: viewModel.selectedLesson), id: \.self) { project in
-                NavigationLink(value: project) {
-                    ProjectsListRow(project: project)
-                }
+        List(viewModel.projects(in: viewModel.selectedLesson), id: \.self) { project in
+            NavigationLink(value: project) {
+                ProjectsListRow(project: project)
             }
-            .navigationTitle(viewModel.selectedLesson?.title ?? "")
-            .apply {
-                if #available(iOS 26, *) {
-                    if let lesson = viewModel.selectedLesson {
-                        let oneDay =
-                            lesson.firstDay
-                            == lesson.lastDay
-                        $0.navigationSubtitle(
-                            oneDay
-                                ? "Day \(lesson.firstDay)"
-                                : "Days \(lesson.firstDay)"
-                        )
-                    }
-                } else {
-                    $0.disabled(false)
-                }
+        }
+        .overlay {
+            if viewModel.selectedLesson == nil {
+                Text("Select a lesson")
             }
-        } else {
-            Text("Select a lesson")
+        }
+        .navigationTitle(viewModel.selectedLesson?.title ?? "")
+        .apply {
+            if #available(iOS 26, *) {
+                if let lesson = viewModel.selectedLesson {
+                    let oneDay =
+                        lesson.firstDay
+                        == lesson.lastDay
+                    $0.navigationSubtitle(
+                        oneDay
+                            ? "Day \(lesson.firstDay)"
+                            : "Days \(lesson.firstDay)"
+                    )
+                }
+            } else {
+                $0.disabled(false)
+            }
         }
     }
 }
@@ -55,7 +56,7 @@ struct ProjectsListView: View {
 
             ProjectsListView()
                 .environment(viewModel)
-                .onAppear(perform: setLesson)
+//                .onAppear(perform: setLesson)
         }
 
         func setLesson() {

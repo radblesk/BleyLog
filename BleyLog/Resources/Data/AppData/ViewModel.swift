@@ -21,7 +21,13 @@ class ViewModel {
     var languages: [Language] = []
 
     /// Selections
-    var selectedLanguage: Language?
+    var selectedLanguage: Language? {
+        didSet {
+            if let encodedLanguage = try? JSONEncoder().encode(selectedLanguage) {
+                UserDefaults.standard.set(encodedLanguage, forKey: "selectedLanguage")
+            }
+        }
+    }
     var selectedLesson: Lesson? {
         didSet {
             if let encodedLesson = try? JSONEncoder().encode(selectedLesson) {
@@ -48,14 +54,20 @@ class ViewModel {
     init() {
         self.languages = Language.languages.sorted { $0.title < $1.title }
 
-        defaultLanguage()
-
         if let savedLesson = UserDefaults.standard.data(forKey: "selectedLesson") {
             if let decodedLesson = try? JSONDecoder().decode(Lesson.self, from: savedLesson) {
                 selectedLesson = decodedLesson
             }
         } else {
-            selectedLesson = nil
+            defaultLesson()
+        }
+
+        if let savedLanguage = UserDefaults.standard.data(forKey: "selectedLanguage") {
+            if let decodedLanguage = try? JSONDecoder().decode(Language.self, from: savedLanguage) {
+                selectedLanguage = decodedLanguage
+            }
+        } else {
+            defaultLanguage()
         }
     }
 
@@ -70,17 +82,13 @@ class ViewModel {
     }
 
     /// Default lesson selection
-    func defaultLesson() -> Lesson? {
-        if selectedLesson == nil,
-            let firstLesson = selectedLanguage?.courses.first(where: {
-                !$0.lessons.isEmpty
-            })?.lessons.first(where: {
-                $0.inProgress == true
-            })
-        {
-            return firstLesson
+    func defaultLesson() {
+        if selectedLesson == nil {
+            selectedLesson =
+                languages.first { $0.courses.count > 0 }?.courses.first { $0.lessons.count > 0 }?
+                .lessons.first { $0.inProgress == true }
         } else {
-            return selectedLesson
+            return
         }
     }
 
