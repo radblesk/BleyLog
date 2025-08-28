@@ -23,17 +23,27 @@ struct LessonsListView: View {
         /// Bindable variable for two-way data mutation
         @Bindable var viewModel = viewModel
 
-        NavigationStack {
+        List(
+            viewModel.courses(in: viewModel.selectedLanguage),
+            selection: $viewModel.selectedLesson
+        ) {
+            course in
+            Section(course.title) {
+                if course.lessons.count > 0 {
+                    ForEach(
+                        viewModel.lessons(in: course, status: .started)
+                    ) { lesson in
+                        NavigationLink(value: lesson) {
+                            LessonListRow(lesson: lesson)
+                        }
+                        .disabled(lesson.projects.count < 1)
+                        .selectionDisabled(lesson.projects.count < 1)
+                    }
 
-            List(
-                viewModel.courses(in: viewModel.selectedLanguage),
-                selection: $viewModel.selectedLesson
-            ) {
-                course in
-                Section(course.title) {
-                    if course.lessons.count > 0 {
+                    if showMore {
                         ForEach(
-                            viewModel.lessons(in: course, status: .started)
+                            viewModel
+                                .lessons(in: course, status: .notStarted)
                         ) { lesson in
                             NavigationLink(value: lesson) {
                                 LessonListRow(lesson: lesson)
@@ -41,64 +51,51 @@ struct LessonsListView: View {
                             .disabled(lesson.projects.count < 1)
                             .selectionDisabled(lesson.projects.count < 1)
                         }
-
-                        if showMore {
-                            ForEach(
-                                viewModel
-                                    .lessons(in: course, status: .notStarted)
-                            ) { lesson in
-                                NavigationLink(value: lesson) {
-                                    LessonListRow(lesson: lesson)
-                                }
-                                .disabled(lesson.projects.count < 1)
-                                .selectionDisabled(lesson.projects.count < 1)
-                            }
-                        }
-
-                        Button(showMore ? "Show fewer" : "Show more") {
-                            withAnimation { showMore.toggle() }
-                        }
-                    } else {
-                        Text("No lessons in this course.")
-                            .foregroundStyle(.secondary)
                     }
+
+                    Button(showMore ? "Show fewer" : "Show more") {
+                        withAnimation { showMore.toggle() }
+                    }
+                } else {
+                    Text("No lessons in this course.")
+                        .foregroundStyle(.secondary)
                 }
             }
-            .navigationTitle("Courses")
-            .containerBackground(
-                RadialGradient(
-                    colors: [
-                        Color.accentColor,
-                        .black,
-                    ],
-                    center: .bottom,
-                    startRadius: -200,
-                    endRadius: 400
-                ),
-                for: .navigation
-            )
-            .toolbar {
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Spacer()
-                    Button(
-                        "Language",
-                        systemImage: "line.3.horizontal.decrease"
-                    ) {
-                        isPresented.toggle()
-                    }
-                }
-
-            }
-            .sheet(isPresented: $isPresented) {
-                Picker(
+        }
+        .navigationTitle("Courses")
+        .containerBackground(
+            RadialGradient(
+                colors: [
+                    Color.accentColor,
+                    .black,
+                ],
+                center: .bottom,
+                startRadius: -200,
+                endRadius: 400
+            ),
+            for: .navigation
+        )
+        .toolbar {
+            ToolbarItemGroup(placement: .bottomBar) {
+                Spacer()
+                Button(
                     "Language",
-                    selection: $viewModel.selectedLanguage
+                    systemImage: "line.3.horizontal.decrease"
                 ) {
-                    ForEach(viewModel.languages, id: \.self) {
-                        language in
-                        Text(language.title)
-                            .tag(language)
-                    }
+                    isPresented.toggle()
+                }
+            }
+
+        }
+        .sheet(isPresented: $isPresented) {
+            Picker(
+                "Language",
+                selection: $viewModel.selectedLanguage
+            ) {
+                ForEach(viewModel.languages, id: \.self) {
+                    language in
+                    Text(language.title)
+                        .tag(language)
                 }
             }
         }

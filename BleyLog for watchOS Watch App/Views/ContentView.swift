@@ -12,8 +12,21 @@ struct ContentView: View {
     /// ViewModel
     @Environment(ViewModel.self) var viewModel
 
+    // MARK: - States
+    /// PathStore
+    @State private var pathStore = PathStore()
+
     var body: some View {
-        CoursesSplitView()
+        NavigationSplitView {
+            LessonsListView()
+        } detail: {
+            NavigationStack(path: $pathStore.path) {
+                ProjectsListView()
+                    .navigationDestination(for: Project.self) { project in
+                        ProjectView(project: project)
+                    }
+            }
+        }
     }
 }
 

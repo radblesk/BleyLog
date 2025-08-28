@@ -13,7 +13,7 @@ struct ContentView: View {
     @Environment(ViewModel.self) var viewModel
 
     // MARK: - States
-    /// NavigationSplitView
+    /// PathStore
     @State private var pathStore = PathStore()
 
     // MARK: - Helpers
