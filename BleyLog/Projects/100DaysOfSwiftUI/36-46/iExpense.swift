@@ -71,7 +71,10 @@ struct iExpense: View {
                                     "\(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "EUR"))"
                                 )
                                 .bold()
-                                .foregroundStyle(item.amount > 100.0 ? .red : item.amount > 10.0 ? .orange : .primary)
+                                .foregroundStyle(
+                                    item.amount > 100.0
+                                        ? .red : item.amount > 10.0 ? .orange : .primary
+                                )
                             }
                         }
                         .onDelete(perform: removePersonalItems)
@@ -95,7 +98,10 @@ struct iExpense: View {
                                     "\(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "EUR"))"
                                 )
                                 .bold()
-                                .foregroundStyle(item.amount > 100.0 ? .red : item.amount > 10.0 ? .orange : .primary)
+                                .foregroundStyle(
+                                    item.amount > 100.0
+                                        ? .red : item.amount > 10.0 ? .orange : .primary
+                                )
                             }
                         }
                         .onDelete(perform: removeBusinessItems)
@@ -107,8 +113,15 @@ struct iExpense: View {
                 #if os(iOS)
                     EditButton()
                 #endif
-                Button("Add Expense", systemImage: "plus") {
-                    showingAddExpense = true
+                //                Button("Add Expense", systemImage: "plus") {
+                //                    path.append(0)
+                //                    //                    showingAddExpense = true
+                //                }
+                NavigationLink {
+                    AddView(expenses: expenses)
+                        .navigationBarBackButtonHidden()
+                } label: {
+                    Image(systemName: "plus")
                 }
             }
             .sheet(isPresented: $showingAddExpense) {

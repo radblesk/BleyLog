@@ -14,9 +14,7 @@ struct MoonshotListView: View {
     var body: some View {
         List {
             ForEach(missions) { mission in
-                NavigationLink(
-                    destination: MissionView(mission: mission, astronauts: astronauts)
-                ) {
+                NavigationLink(value: mission) {
                     HStack(spacing: 20) {
                         Image(mission.image)
                             .resizable()

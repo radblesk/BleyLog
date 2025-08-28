@@ -129,6 +129,14 @@ class Project {
             desc:
                 "App that lets users learn about the missions and astronauts that formed NASA’s Apollo space program.",
             icon: "Moonshot-icon"
-        )
+        ),
+        Project(
+            title: "Navigation",
+            projectNumber: 9,
+            date: createDate(year: 2025, month: 08, day: 28, hour: 09, minute: 41),
+            desc:
+                "In this technique project we’re going to take a close look at navigation in SwiftUI",
+            icon: "Navigation-icon"
+        ),
     ]
 }

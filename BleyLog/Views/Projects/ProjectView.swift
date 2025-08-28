@@ -11,7 +11,7 @@ struct ProjectView: View {
     // MARK: Environments
     /// ViewModel
     @Environment(ViewModel.self) var viewModel
-    
+
     // Passed data
     let project: Project?
 
@@ -39,6 +39,8 @@ struct ProjectView: View {
                     iExpense()
                 case "Moonshot":
                     Moonshot()
+                case "Navigation":
+                    Navigation()
                 default:
                     Text("Select a project")
                 }

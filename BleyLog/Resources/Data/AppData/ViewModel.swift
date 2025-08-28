@@ -269,17 +269,11 @@ class ViewModel {
 
     // MARK: - Date Formatter
     func formattedDate(_ date: Date) -> String {
-        let currentDate = date == Calendar.current.startOfDay(for: Date())
-        let yesterday = Calendar.current.date(byAdding: .dayOfYear, value: -1, to: Date())! < date
         let weekAgo =
             Calendar.current.date(byAdding: .dayOfYear, value: -7, to: Date())! < date
 
-        if currentDate {
-            return "Today"
-        } else if yesterday {
-            return "Yesterday"
-        } else if weekAgo {
-            return date.formatted(.dateTime.weekday(.wide))
+        if weekAgo {
+            return date.formatted(.relative(presentation: .numeric, unitsStyle: .wide))
         } else {
             return date.formatted(date: .abbreviated, time: .omitted)
         }
