@@ -139,4 +139,14 @@ class Project {
             icon: "Navigation-icon"
         ),
     ]
+
+    static let consolidation4 = [
+        Project(
+            title: "Habits",
+            date: createDate(year: 2025, month: 08, day: 28, hour: 13, minute: 24),
+            desc:
+                "A habit-tracking app, for folks who want to keep track of how much they do certain things.",
+            icon: "Habits-icon"
+        )
+    ]
 }
