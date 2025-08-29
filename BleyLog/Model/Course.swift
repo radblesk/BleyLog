@@ -12,14 +12,4 @@ struct Course: Identifiable, Codable, Hashable {
     var title: String
     var language: Language?
     var lessons: [Lesson] = []
-
-    static let swiftCourses = [
-        Course(
-            title: "100 days of SwiftUI",
-            lessons: Lesson.hundreedDaysOfSwiftUILessons
-        ),
-//        Course(
-//            title: "100 days of Swift",
-//        ),
-    ]
 }

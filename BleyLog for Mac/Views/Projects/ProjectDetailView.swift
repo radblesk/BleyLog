@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ProjectDetailView: View {
-    @Environment(ViewModel.self) var viewModel
+    @Environment(ModelData.self) var modelData
     // DataModel
     var projectID: Project.ID?
 
     var body: some View {
-        if let id = projectID, let project = viewModel.project(for: id) {
+        if let id = projectID, let project = modelData.project(for: id) {
             ProjectView(project: project)
         }
     }

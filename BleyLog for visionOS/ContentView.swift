@@ -15,8 +15,8 @@ struct ContentView: View {
 }
 
 #Preview {
-    let viewModel = ViewModel()
+    let ModelData = ModelData()
     
     ContentView()
-        .environment(viewModel)
+        .environment(ModelData)
 }
