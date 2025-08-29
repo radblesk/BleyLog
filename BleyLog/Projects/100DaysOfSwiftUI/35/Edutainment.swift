@@ -31,11 +31,19 @@ struct Edutainment: View {
     var body: some View {
         List {
             Section("Multiplication table") {
-                Stepper(
-                    "Multiplications up to \(upTo)",
-                    value: $upTo,
-                    in: 2...12
-                )
+                #if !os(watchOS)
+                    Stepper(
+                        "Multiplications up to \(upTo)",
+                        value: $upTo,
+                        in: 2...12
+                    )
+                #else
+                    Picker("Multiplications up to", selection: $upTo) {
+                        ForEach(2...12, id: \.self) {
+                            Text("\($0)")
+                        }
+                    }
+                #endif
             }
 
             Section("Number of questions") {

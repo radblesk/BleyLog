@@ -24,9 +24,7 @@ struct ProjectView {
         case "Moonshot": Moonshot()
         case "Navigation": Navigation()
         case "Habits": Habits()
-        #if os(iOS)
-            case "CupcakeCorner": CupcakeCorner()
-        #endif
+        case "CupcakeCorner": CupcakeCorner()
         default: Text("Select a project")
         }
     }
