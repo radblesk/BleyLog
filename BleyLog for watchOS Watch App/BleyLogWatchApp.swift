@@ -11,12 +11,12 @@ import SwiftUI
 @main
 struct BleyLogWatch_Watch_AppApp: App {
     /// An object that manages the app's data and state.
-    @State private var viewModel = ViewModel()
+    @State private var modelData = ModelData()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(viewModel)
+                .environment(modelData)
         }
     }
 }

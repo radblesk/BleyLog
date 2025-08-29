@@ -9,19 +9,19 @@ import SwiftUI
 
 @main
 struct BleyLog_for_MacApp: App {
-    @State private var viewModel = ViewModel()
+    @State private var modelData = ModelData()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .environment(viewModel)
+        .environment(modelData)
         .defaultSize(width: 2000, height: 1000)
         .defaultPosition(.center)
 
         WindowGroup(for: Project.ID.self) { $projectID in
             ProjectDetailView(projectID: $projectID.wrappedValue)
-                .environment(viewModel)
+                .environment(modelData)
         }
         .windowResizability(.contentSize)
 

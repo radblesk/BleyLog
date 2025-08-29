@@ -1,21 +1,15 @@
 //
-//  Projects.swift
+//  ProjectData.swift
 //  BleyLog
 //
-//  Created by Radoslav Bley on 10/08/2025.
+//  Created by Radoslav Bley on 29/08/2025.
 //
 
-import SwiftUI
+import Foundation
 
-struct Project: Identifiable, Codable, Hashable {
-    var id = UUID()
-    var title: String
-    var projectNumber: Int?
-    var date: Date
-    var desc: String
-    var icon: String?
-    var lesson: Lesson?
-
+extension Project {
+    static let exampleProject = expandingYourSkills[1]
+    
     static func createDate(year: Int, month: Int, day: Int, hour: Int, minute: Int) -> Date {
         var components = DateComponents()
         components.year = year
@@ -130,6 +124,16 @@ struct Project: Identifiable, Codable, Hashable {
             desc:
                 "A habit-tracking app, for folks who want to keep track of how much they do certain things.",
             icon: "Habits-icon"
+        )
+    ]
+
+    static let focusOnData = [
+        Project(
+            title: "CupcakeCorner",
+            projectNumber: 10,
+            date: createDate(year: 2025, month: 08, day: 28, hour: 19, minute: 29),
+            desc: "A multi-screen app for ordering cupcakes",
+            icon: "CupcakeCorner-icon"
         )
     ]
 }

@@ -15,7 +15,7 @@ struct Habit: Identifiable, Codable, Hashable, Equatable {
     var completedSum: Int
 }
 
-// MARK: - Habits ViewModel
+// MARK: - Habits ModelData
 @Observable
 class HabitsStore {
     var habits = [Habit]() {
@@ -43,7 +43,7 @@ struct Habits: View {
     // Environments
     @Environment(\.dismiss) private var dismiss
 
-    // Load ViewModel
+    // Load ModelData
     @State private var store = HabitsStore()
 
     // Add habit sheet

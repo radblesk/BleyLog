@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SearchView: View {
     // MARK: - ModelData
-    @Environment(ViewModel.self) var viewModel
+    @Environment(ModelData.self) var modelData
 
     // MARK: States
     /// Expanded states
@@ -28,7 +28,7 @@ struct SearchView: View {
     {
         return NavigationStack {
             List(
-                viewModel.projects(in: selectedLesson),
+                modelData.projects(in: selectedLesson),
                 id: \.self,
                 selection: $selectedProject
             ) {
@@ -171,7 +171,7 @@ struct SearchView: View {
         NavigationStack {
             List {
                 Section("Lessons", isExpanded: $expandedLessons) {
-                    ForEach(viewModel.lessonResults(for: viewModel.search)) { lesson in
+                    ForEach(modelData.lessonResults(for: modelData.search)) { lesson in
                         NavigationLink(lesson.title) {
                             projectsList(for: lesson)
                         }
@@ -179,7 +179,7 @@ struct SearchView: View {
                 }
 
                 Section("Projects", isExpanded: $expandedProjects) {
-                    ForEach(viewModel.projectsResults(for: viewModel.search)) { project in
+                    ForEach(modelData.projectsResults(for: modelData.search)) { project in
                         NavigationLink(project.title) {
                             projectDetailView(for: project)
                         }
@@ -196,7 +196,6 @@ struct SearchView: View {
 // MARK: - Preview
 
 #Preview {
-    let viewModel = ViewModel()
     SearchView()
-        .environment(viewModel)
+        .environment(ModelData())
 }

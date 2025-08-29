@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    // MARK: Environments
-    /// ViewModel
-    @Environment(ViewModel.self) var viewModel
-
-    // MARK: - States
-    /// PathStore
+    @Environment(ModelData.self) var modelData
     @State private var pathStore = PathStore()
 
     var body: some View {
@@ -21,19 +16,16 @@ struct ContentView: View {
             LessonsListView()
         } detail: {
             NavigationStack(path: $pathStore.path) {
-                ProjectsListView()
+                ProjectsListView(modelData: modelData)
                     .navigationDestination(for: Project.self) { project in
-                        ProjectView(project: project)
+                        ProjectView(project: project).viewForProject()
                     }
             }
         }
     }
 }
 
-// MARK: - Preview
 #Preview {
-    let viewModel = ViewModel()
-
     ContentView()
-        .environment(viewModel)
+        .environment(ModelData())
 }

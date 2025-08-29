@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct ProjectsListRow: View {
-    // MARK: Environments
-    /// ViewModel
-    @Environment(ViewModel.self) var viewModel
-
-    // Passed data
+    @Environment(ModelData.self) var modelData
     let project: Project
 
     var body: some View {
@@ -25,18 +21,11 @@ struct ProjectsListRow: View {
                         .clipShape(.rect(cornerRadius: 16))
                         .overlay {
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(
-                                    .secondary.opacity(0.4),
-                                    style: StrokeStyle(
-                                        lineWidth: 0.2
-                                    )
-                                )
+                                .stroke(.secondary.opacity(0.4), style: StrokeStyle(lineWidth: 0.2))
                         }
                         .apply {
                             if #available(iOS 26.0, *) {
-                                $0.glassEffect(
-                                    in: .rect(cornerRadius: 16)
-                                )
+                                $0.glassEffect(in: .rect(cornerRadius: 16))
                             } else {
                                 $0.disabled(false)
                             }
@@ -48,18 +37,11 @@ struct ProjectsListRow: View {
                         .clipShape(.rect(cornerRadius: 16))
                         .overlay {
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(
-                                    .secondary.opacity(0.4),
-                                    style: StrokeStyle(
-                                        lineWidth: 0.2
-                                    )
-                                )
+                                .stroke(.secondary.opacity(0.4), style: StrokeStyle(lineWidth: 0.2))
                         }
                         .apply {
                             if #available(iOS 26.0, *) {
-                                $0.glassEffect(
-                                    in: .rect(cornerRadius: 16)
-                                )
+                                $0.glassEffect(in: .rect(cornerRadius: 16))
                             } else {
                                 $0.disabled(false)
                             }
@@ -72,7 +54,7 @@ struct ProjectsListRow: View {
                         .font(.title3)
                         .truncationMode(.tail)
 
-                    Text(viewModel.formattedDate(project.date))
+                    Text(modelData.formattedDate(project.date))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -87,11 +69,8 @@ struct ProjectsListRow: View {
 }
 
 #Preview {
-    let viewModel = ViewModel()
-    let project = Project.scalingUpToBiggerApps[1]
-
     List {
-        ProjectsListRow(project: project)
-            .environment(viewModel)
+        ProjectsListRow(project: Project.exampleProject)
+            .environment(ModelData())
     }
 }

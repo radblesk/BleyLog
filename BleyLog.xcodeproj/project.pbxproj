@@ -35,7 +35,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F9018D492E5B1CD900679AB2 /* BleyLog for visionOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLog for visionOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9018D4C2E5B1CDA00679AB2 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RealityKitContent; sourceTree = "<group>"; };
 		F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLog for watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F91370E82E552D070030E98D /* BleyLog for Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLog for Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,59 +45,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F9018D562E5B1CDB00679AB2 /* Exceptions for "BleyLog for visionOS" folder in "BleyLog for visionOS" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = F9018D482E5B1CD900679AB2 /* BleyLog for visionOS */;
-		};
-		F9018D5F2E5B1CEB00679AB2 /* Exceptions for "BleyLog" folder in "BleyLog for visionOS" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Extensions/iOS26/Apply.swift,
-				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag.swift",
-				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag/FlagImage.swift",
-				"Projects/100DaysOfSwiftUI/16-24/TempConvert.swift",
-				"Projects/100DaysOfSwiftUI/16-24/WeSplit.swift",
-				Projects/100DaysOfSwiftUI/25/RockPaperScissors.swift,
-				"Projects/100DaysOfSwiftUI/26-34/Animations.swift",
-				"Projects/100DaysOfSwiftUI/26-34/BetterRest.swift",
-				"Projects/100DaysOfSwiftUI/26-34/WordScramble.swift",
-				Projects/100DaysOfSwiftUI/35/Edutainment.swift,
-				"Projects/100DaysOfSwiftUI/36-46/iExpense Views/AddView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/iExpense.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot Views/AstronautsScrollView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot Views/AstronautView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot Views/Color-Theme.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot Views/MissionView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot Views/MoonshotGridView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot Views/MoonshotListView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Navigation.swift",
-				Projects/100DaysOfSwiftUI/47/Habits.swift,
-				Resources/AppIcon.icon,
-				Resources/Assets.xcassets,
-				Resources/Data/AppData/Course.swift,
-				Resources/Data/AppData/Language.swift,
-				Resources/Data/AppData/Lesson.swift,
-				Resources/Data/AppData/Project.swift,
-				Resources/Data/AppData/ViewModel.swift,
-				"Resources/Data/ProjectsData/Project 5 - Word Scramble/start.txt",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/Astronaut.swift",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/astronauts.json",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/Bundle-Decodable.swift",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/Mission.swift",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/missions.json",
-				Resources/Localizable.xcstrings,
-				"Resources/ML Data/SleepCalculator.mlmodel",
-				Views/Projects/ProjectView.swift,
-			);
-			target = F9018D482E5B1CD900679AB2 /* BleyLog for visionOS */;
-		};
 		F91370D02E551F0C0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for watchOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Extensions/iOS26/Apply.swift,
+				Model/Course.swift,
+				Model/CourseData.swift,
+				Model/Language.swift,
+				Model/LanguageData.swift,
+				Model/Lesson.swift,
+				Model/LessonData.swift,
+				Model/ModelData.swift,
+				Model/Project.swift,
+				Model/ProjectData.swift,
 				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag.swift",
 				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag/FlagImage.swift",
 				"Projects/100DaysOfSwiftUI/16-24/TempConvert.swift",
@@ -121,26 +80,30 @@
 				Projects/100DaysOfSwiftUI/47/Habits.swift,
 				Resources/AppIcon.icon,
 				Resources/Assets.xcassets,
-				Resources/Data/AppData/Course.swift,
-				Resources/Data/AppData/Language.swift,
-				Resources/Data/AppData/Lesson.swift,
-				Resources/Data/AppData/Project.swift,
-				Resources/Data/AppData/ViewModel.swift,
-				"Resources/Data/ProjectsData/Project 5 - Word Scramble/start.txt",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/Astronaut.swift",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/astronauts.json",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/Bundle-Decodable.swift",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/Mission.swift",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/missions.json",
 				Resources/Localizable.xcstrings,
 				"Resources/ML Data/SleepCalculator.mlmodel",
-				Views/Projects/ProjectView.swift,
+				"Resources/ProjectsData/Project 5 - Word Scramble/start.txt",
+				"Resources/ProjectsData/Project 8 - Moonshot/Astronaut.swift",
+				"Resources/ProjectsData/Project 8 - Moonshot/astronauts.json",
+				"Resources/ProjectsData/Project 8 - Moonshot/Bundle-Decodable.swift",
+				"Resources/ProjectsData/Project 8 - Moonshot/Mission.swift",
+				"Resources/ProjectsData/Project 8 - Moonshot/missions.json",
+				"Views/Project Detail/ProjectView.swift",
 			);
 			target = F91370B82E551EDF0030E98D /* BleyLog for watchOS */;
 		};
 		F91370FC2E552D1F0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for Mac" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Model/Course.swift,
+				Model/CourseData.swift,
+				Model/Language.swift,
+				Model/LanguageData.swift,
+				Model/Lesson.swift,
+				Model/LessonData.swift,
+				Model/ModelData.swift,
+				Model/Project.swift,
+				Model/ProjectData.swift,
 				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag.swift",
 				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag/FlagImage.swift",
 				"Projects/100DaysOfSwiftUI/16-24/TempConvert.swift",
@@ -163,34 +126,21 @@
 				Projects/100DaysOfSwiftUI/47/Habits.swift,
 				Resources/AppIcon.icon,
 				Resources/Assets.xcassets,
-				Resources/Data/AppData/Course.swift,
-				Resources/Data/AppData/Language.swift,
-				Resources/Data/AppData/Lesson.swift,
-				Resources/Data/AppData/Project.swift,
-				Resources/Data/AppData/ViewModel.swift,
-				"Resources/Data/ProjectsData/Project 5 - Word Scramble/start.txt",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/Astronaut.swift",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/astronauts.json",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/Bundle-Decodable.swift",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/Mission.swift",
-				"Resources/Data/ProjectsData/Project 8 - Moonshot/missions.json",
 				Resources/Localizable.xcstrings,
 				"Resources/ML Data/SleepCalculator.mlmodel",
-				Views/Projects/ProjectView.swift,
+				"Resources/ProjectsData/Project 5 - Word Scramble/start.txt",
+				"Resources/ProjectsData/Project 8 - Moonshot/Astronaut.swift",
+				"Resources/ProjectsData/Project 8 - Moonshot/astronauts.json",
+				"Resources/ProjectsData/Project 8 - Moonshot/Bundle-Decodable.swift",
+				"Resources/ProjectsData/Project 8 - Moonshot/Mission.swift",
+				"Resources/ProjectsData/Project 8 - Moonshot/missions.json",
+				"Views/Project Detail/ProjectView.swift",
 			);
 			target = F91370E72E552D070030E98D /* BleyLog for Mac */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F9018D4A2E5B1CDA00679AB2 /* BleyLog for visionOS */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				F9018D562E5B1CDB00679AB2 /* Exceptions for "BleyLog for visionOS" folder in "BleyLog for visionOS" target */,
-			);
-			path = "BleyLog for visionOS";
-			sourceTree = "<group>";
-		};
 		F91370BA2E551EE00030E98D /* BleyLog for watchOS Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "BleyLog for watchOS Watch App";
@@ -206,7 +156,6 @@
 			exceptions = (
 				F91370D02E551F0C0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for watchOS" target */,
 				F91370FC2E552D1F0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for Mac" target */,
-				F9018D5F2E5B1CEB00679AB2 /* Exceptions for "BleyLog" folder in "BleyLog for visionOS" target */,
 			);
 			path = BleyLog;
 			sourceTree = "<group>";
@@ -214,13 +163,6 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F9018D462E5B1CD900679AB2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F91370B62E551EDF0030E98D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,7 +211,6 @@
 				F94692082E49185A009E637D /* BleyLog */,
 				F91370BA2E551EE00030E98D /* BleyLog for watchOS Watch App */,
 				F91370E92E552D070030E98D /* BleyLog for Mac */,
-				F9018D4A2E5B1CDA00679AB2 /* BleyLog for visionOS */,
 				F91371122E552D9C0030E98D /* Frameworks */,
 				F9018D4B2E5B1CDA00679AB2 /* Packages */,
 				F94692072E49185A009E637D /* Products */,
@@ -282,7 +223,6 @@
 				F94692062E49185A009E637D /* BleyLog.app */,
 				F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */,
 				F91370E82E552D070030E98D /* BleyLog for Mac.app */,
-				F9018D492E5B1CD900679AB2 /* BleyLog for visionOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -290,28 +230,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F9018D482E5B1CD900679AB2 /* BleyLog for visionOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F9018D572E5B1CDB00679AB2 /* Build configuration list for PBXNativeTarget "BleyLog for visionOS" */;
-			buildPhases = (
-				F9018D452E5B1CD900679AB2 /* Sources */,
-				F9018D462E5B1CD900679AB2 /* Frameworks */,
-				F9018D472E5B1CD900679AB2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				F9018D4A2E5B1CDA00679AB2 /* BleyLog for visionOS */,
-			);
-			name = "BleyLog for visionOS";
-			packageProductDependencies = (
-			);
-			productName = "BleyLog for visionOS";
-			productReference = F9018D492E5B1CD900679AB2 /* BleyLog for visionOS.app */;
-			productType = "com.apple.product-type.application";
-		};
 		F91370B82E551EDF0030E98D /* BleyLog for watchOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F91370C42E551EE10030E98D /* Build configuration list for PBXNativeTarget "BleyLog for watchOS" */;
@@ -390,9 +308,6 @@
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
-					F9018D482E5B1CD900679AB2 = {
-						CreatedOnToolsVersion = 26.0;
-					};
 					F91370B82E551EDF0030E98D = {
 						CreatedOnToolsVersion = 26.0;
 					};
@@ -423,19 +338,11 @@
 				F94692052E49185A009E637D /* BleyLog */,
 				F91370B82E551EDF0030E98D /* BleyLog for watchOS */,
 				F91370E72E552D070030E98D /* BleyLog for Mac */,
-				F9018D482E5B1CD900679AB2 /* BleyLog for visionOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F9018D472E5B1CD900679AB2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F91370B72E551EDF0030E98D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -460,13 +367,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F9018D452E5B1CD900679AB2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F91370B52E551EDF0030E98D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -499,69 +399,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		F9018D582E5B1CDB00679AB2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DZT7WAAW32;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.radoslavbley.BleyLog-for-visionOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = xros;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "xros xrsimulator";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 7;
-				XROS_DEPLOYMENT_TARGET = 2.6;
-			};
-			name = Debug;
-		};
-		F9018D592E5B1CDB00679AB2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DZT7WAAW32;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.radoslavbley.BleyLog-for-visionOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = xros;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "xros xrsimulator";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 7;
-				VALIDATE_PRODUCT = YES;
-				XROS_DEPLOYMENT_TARGET = 2.6;
-			};
-			name = Release;
-		};
 		F91370C52E551EE10030E98D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -918,15 +755,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F9018D572E5B1CDB00679AB2 /* Build configuration list for PBXNativeTarget "BleyLog for visionOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F9018D582E5B1CDB00679AB2 /* Debug */,
-				F9018D592E5B1CDB00679AB2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		F91370C42E551EE10030E98D /* Build configuration list for PBXNativeTarget "BleyLog for watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -1,23 +1,16 @@
 //
-//  Projects.swift
+//  LessonData.swift
 //  BleyLog
 //
-//  Created by Radoslav Bley on 10/08/2025.
+//  Created by Radoslav Bley on 29/08/2025.
 //
 
-import SwiftUI
+import Foundation
 
-struct Lesson: Identifiable, Codable, Hashable {
-    var id = UUID()
-    var firstDay: Int
-    var lastDay: Int
-    var title: String
-    var inProgress: Bool = false
-    var finished: Bool = false
-    var projects: [Project] = []
-    var headerImage: String? = nil
-    var course: Course?
-
+extension Lesson {
+    //    @MainActor
+    static let exampleLesson = hundreedDaysOfSwiftUILessons[2]
+    
     static let hundreedDaysOfSwiftUILessons = [
         Lesson(
             firstDay: 16,
@@ -60,13 +53,15 @@ struct Lesson: Identifiable, Codable, Hashable {
             firstDay: 47,
             lastDay: 48,
             title: "Consolidation IV",
-            inProgress: true,
+            finished: true,
             projects: Project.consolidation4
         ),
         Lesson(
             firstDay: 49,
             lastDay: 59,
             title: "Focus on data",
+            inProgress: true,
+            projects: Project.focusOnData
         ),
         Lesson(
             firstDay: 60,

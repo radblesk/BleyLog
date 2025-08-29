@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import Observation
 import SwiftUI
 
-@Observable
-class ViewModel {
+@Observable @MainActor
+class ModelData {
     // MARK: - Enums
     /// Lesson status options
     enum LessonStatus {
@@ -21,17 +22,13 @@ class ViewModel {
     var languages: [Language] = []
 
     /// Selections
-    var selectedLanguage: Language? {
+    var selectedLanguage: Language?
+    var selectedLesson: Lesson? = .exampleLesson {
         didSet {
-            if let encodedLanguage = try? JSONEncoder().encode(selectedLanguage) {
-                UserDefaults.standard.set(encodedLanguage, forKey: "selectedLanguage")
-            }
-        }
-    }
-    var selectedLesson: Lesson? {
-        didSet {
-            if let encodedLesson = try? JSONEncoder().encode(selectedLesson) {
-                UserDefaults.standard.set(encodedLesson, forKey: "selectedLesson")
+            guard selectedLesson != oldValue && selectedLesson != nil else { return }
+            if let lesson = selectedLesson {
+                let lessonID: String = lesson.id
+                UserDefaults.standard.set(lessonID, forKey: "selectedLesson")
             }
         }
     }
@@ -53,27 +50,22 @@ class ViewModel {
     // MARK: - Initialization
     init() {
         self.languages = Language.languages.sorted { $0.title < $1.title }
+        setDefaultLanguage()
 
-        if let savedLesson = UserDefaults.standard.data(forKey: "selectedLesson") {
-            if let decodedLesson = try? JSONDecoder().decode(Lesson.self, from: savedLesson) {
-                selectedLesson = decodedLesson
+        let allLessons = languages.flatMap(\.courses).flatMap(\.lessons)
+        if let savedLesson = UserDefaults.standard.string(forKey: "selectedLesson") {
+
+            if let lesson = allLessons.first(where: { $0.id == savedLesson }) {
+                selectedLesson = lesson
             }
         } else {
-            defaultLesson()
-        }
-
-        if let savedLanguage = UserDefaults.standard.data(forKey: "selectedLanguage") {
-            if let decodedLanguage = try? JSONDecoder().decode(Language.self, from: savedLanguage) {
-                selectedLanguage = decodedLanguage
-            }
-        } else {
-            defaultLanguage()
+            setDefaultLesson()
         }
     }
 
     // MARK: - Defaults
     /// Default language selection
-    func defaultLanguage() {
+    func setDefaultLanguage() {
         if selectedLanguage == nil {
             selectedLanguage = languages.first(where: { $0.title == "Swift" })
         } else {
@@ -82,14 +74,13 @@ class ViewModel {
     }
 
     /// Default lesson selection
-    func defaultLesson() {
-        if selectedLesson == nil {
-            selectedLesson =
-                languages.first { $0.courses.count > 0 }?.courses.first { $0.lessons.count > 0 }?
-                .lessons.first { $0.inProgress == true }
-        } else {
-            return
-        }
+    func setDefaultLesson() {
+        selectedLesson = defaultLesson()
+    }
+
+    func defaultLesson() -> Lesson {
+        let lesson = selectedLanguage!.courses.flatMap(\.lessons).first!
+        return lesson
     }
 
     // MARK: - Lists data
