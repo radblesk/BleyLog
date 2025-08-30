@@ -14,27 +14,15 @@ struct ProjectListRow: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            if let icon = project.icon {
-                Image(icon)
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .clipShape(.circle)
-                    .apply {
-                        if #available(watchOS 26, *) {
-                            $0.glassEffect()
-                        }
+            Image(project.icon)
+                .resizable()
+                .frame(width: 40, height: 40)
+                .clipShape(.circle)
+                .apply {
+                    if #available(watchOS 26, *) {
+                        $0.glassEffect()
                     }
-            } else {
-                Image("empty-icon")
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .clipShape(.circle)
-                    .apply {
-                        if #available(watchOS 26, *) {
-                            $0.glassEffect()
-                        }
-                    }
-            }
+                }
             Spacer(minLength: 6)
             Text(project.title)
                 .bold()
