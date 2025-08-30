@@ -14,7 +14,7 @@ struct BleyLogApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainSplitView()
                 .environment(modelData)
                 .frame(minWidth: 375, minHeight: 375)
         }
