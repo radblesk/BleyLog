@@ -47,14 +47,6 @@ struct MigrationView: View {
             }
         }
         .navigationTitle("Data migration")
-//        #if os(iOS)
-//            ToolbarItem(placement: .bottomBar) {
-//                NavigationLink("Migration") {
-//                    MigrationView()
-//                }
-//            }
-//        #endif
-
     }
     func findData() {
         progressMessage = "Looking for saved scores..."
@@ -78,7 +70,7 @@ struct MigrationView: View {
 
         for score in scores {
             progressMessage = "Migrating score: \(score.date.formatted())"
-            let name = "radblesk"
+            let name = score.name
             let scoreNumber = score.score
             let date = score.date
             let word = score.word

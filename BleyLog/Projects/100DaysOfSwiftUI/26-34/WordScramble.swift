@@ -77,6 +77,13 @@ struct WordScramble: View {
             Text(errorMessage)
         }
         .toolbar {
+            #if os(iOS)
+                ToolbarItem(placement: .bottomBar) {
+                    NavigationLink("Data Migration") {
+                        MigrationView()
+                    }
+                }
+            #endif
             ToolbarItemGroup(placement: placement) {
                 Button("Leaderboard", systemImage: "laurel.leading.laurel.trailing") {
                     showing = true
