@@ -19,11 +19,17 @@ struct LeaderboardView: View {
         let topPlayer = scores.first.map(\.name) ?? ""
         NavigationStack {
             List {
-                Section("\(scores.count) entries") {
-                    ForEach(scores) { score in
-                        PlayerView(player: score, top: topPlayer)
+                if !scores.isEmpty {
+                    Section("\(scores.count) entries") {
+                        ForEach(scores) { score in
+                            PlayerView(player: score, top: topPlayer)
+                        }
+                        .onDelete(perform: deleteItem)
                     }
-                    .onDelete(perform: deleteItem)
+                } else {
+                    Text("No scores yet. Play and try to beat the leaderboard!")
+                        .foregroundStyle(.secondary)
+                        .font(.caption)
                 }
             }
             .scrollContentBackground(.hidden)

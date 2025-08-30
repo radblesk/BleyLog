@@ -8,7 +8,6 @@
 import SwiftData
 import SwiftUI
 
-// MARK: - Main View
 struct WordScramble: View {
     @Environment(\.modelContext) var modelContext
     @Query(sort: \WSUsedWord.createdAt, order: .reverse) var words: [WSUsedWord]
@@ -44,7 +43,7 @@ struct WordScramble: View {
 
     var body: some View {
         List {
-            Section(playerName) {
+            Section(playerName.trimmingCharacters(in: .whitespacesAndNewlines)) {
                 Text("Current score: \(playerScore)")
             }
             Section {
@@ -132,12 +131,10 @@ struct WordScramble: View {
             return
         }
 
-        #if os(iOS)
-            guard isReal(word: answer) else {
-                wordError(title: "Word not recognized", message: "You can't just make them up")
-                return
-            }
-        #endif
+        guard isReal(word: answer) else {
+            wordError(title: "Word not recognized", message: "You can't just make them up")
+            return
+        }
 
         do {
             let newWord = WSUsedWord(text: answer, createdAt: Date.now)
@@ -190,7 +187,7 @@ struct WordScramble: View {
                 let wordsArray = words.map(\.text)
                 /// Save to leaderboard
                 let player = WSPlayer(
-                    name: playerName,
+                    name: playerName.trimmingCharacters(in: .whitespacesAndNewlines),
                     word: currentWord,
                     usedWords: wordsArray,
                     score: playerScore,
@@ -254,6 +251,18 @@ struct WordScramble: View {
                 language: "en"
             )
             return misspelledRange.location == NSNotFound
+        }
+    #elseif os(watchOS)
+        func isReal(word: String) -> Bool {
+            if let existingWords = Bundle.main.url(forResource: "words_alpha", withExtension: "txt") {
+                if let words = try? String(contentsOf: existingWords, encoding: .utf8) {
+                    let allWords = words.components(separatedBy: "\n").map {
+                        $0.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+                    }
+                    return allWords.contains(word)
+                }
+            }
+            return false
         }
     #endif
 

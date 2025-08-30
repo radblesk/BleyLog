@@ -17,21 +17,37 @@ struct PlayerView: View {
         HStack {
             VStack(alignment: .leading) {
                 Text("\(player.score) points")
-                    .font(.title3.bold())
+                    #if os(iOS)
+                        .font(.title3.bold())
+                    #else
+                        .font(.system(size: 16, weight: .bold))
+                    #endif
 
-                HStack(spacing: 4) {
-                    Text("\(player.wordsCount) words")
-                        .font(.subheadline)
+                HStack(spacing: 2) {
+                    Text("^[\(player.wordsCount) word](inflect: true)")
+                        #if os(iOS)
+                            .font(.subheadline)
+                        #else
+                            .font(.system(size: 12))
+                        #endif
                         .onTapGesture {
                             showing.toggle()
                         }
-                    
+
                     Image(systemName: "chevron.down")
-                        .font(.footnote)
+                        #if os(iOS)
+                            .font(.footnote)
+                        #else
+                            .font(.system(size: 10))
+                        #endif
                 }
 
                 Text(player.word)
-                    .font(.footnote)
+                    #if os(iOS)
+                        .font(.footnote)
+                    #else
+                        .font(.system(size: 10))
+                    #endif
 
             }
             Spacer()
@@ -40,15 +56,27 @@ struct PlayerView: View {
                 Text(
                     "\(player.date.formatted(.dateTime.day().month().year().hour().minute()))"
                 )
-                .font(.caption)
+                .multilineTextAlignment(.trailing)
+                #if os(iOS)
+                    .font(.caption)
+                #else
+                    .font(.system(size: 10))
+                #endif
                 Spacer()
                 HStack {
                     if !top.isEmpty && top == player.name {
                         Image(systemName: "crown.fill")
                             .foregroundStyle(.yellow)
+                            #if os(watchOS)
+                                .font(.system(size: 10))
+                            #endif
                     }
                     Text(player.name)
-                        .font(.headline)
+                        #if os(iOS)
+                            .font(.headline)
+                        #else
+                            .font(.system(size: 10, weight: .semibold))
+                        #endif
                 }
 
             }.padding(.vertical)
@@ -72,14 +100,16 @@ struct PlayerView: View {
         let examplePlayer = WSPlayer(
             name: "Radoslav",
             word: "word",
-            usedWords: ["word"],
+            usedWords: ["word", "work"],
             score: 534,
             date: Date()
         )
 
         return NavigationStack {
-            PlayerView(player: examplePlayer, top: "Radoslav")
-                .modelContainer(container)
+            List {
+                PlayerView(player: examplePlayer, top: "Radoslav")
+                    .modelContainer(container)
+            }
         }
     } catch {
         return Text("Failed to create example player: \(error.localizedDescription)")
