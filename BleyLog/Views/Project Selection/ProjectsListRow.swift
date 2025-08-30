@@ -14,39 +14,21 @@ struct ProjectsListRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack(spacing: 14) {
-                if let icon = project.icon {
-                    Image(icon)
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .clipShape(.rect(cornerRadius: 16))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(.secondary.opacity(0.4), style: StrokeStyle(lineWidth: 0.2))
+                Image(project.icon)
+                    .resizable()
+                    .frame(width: 60, height: 60)
+                    .clipShape(.rect(cornerRadius: 16))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.secondary.opacity(0.4), style: StrokeStyle(lineWidth: 0.2))
+                    }
+                    .apply {
+                        if #available(iOS 26.0, *) {
+                            $0.glassEffect(in: .rect(cornerRadius: 16))
+                        } else {
+                            $0.disabled(false)
                         }
-                        .apply {
-                            if #available(iOS 26.0, *) {
-                                $0.glassEffect(in: .rect(cornerRadius: 16))
-                            } else {
-                                $0.disabled(false)
-                            }
-                        }
-                } else {
-                    Image("empty-icon")
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .clipShape(.rect(cornerRadius: 16))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(.secondary.opacity(0.4), style: StrokeStyle(lineWidth: 0.2))
-                        }
-                        .apply {
-                            if #available(iOS 26.0, *) {
-                                $0.glassEffect(in: .rect(cornerRadius: 16))
-                            } else {
-                                $0.disabled(false)
-                            }
-                        }
-                }
+                    }
 
                 VStack(alignment: .leading, spacing: 4) {
 

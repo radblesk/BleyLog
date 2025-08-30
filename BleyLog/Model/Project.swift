@@ -13,6 +13,8 @@ struct Project: Identifiable, Codable, Hashable {
     var projectNumber: Int?
     var date: Date
     var desc: String
-    var icon: String?
+    var icon: String {
+        return "\(title)-icon"
+    }
     var lesson: Lesson?
 }
