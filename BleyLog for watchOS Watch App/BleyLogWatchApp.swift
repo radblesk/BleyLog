@@ -18,5 +18,6 @@ struct BleyLogWatch_Watch_AppApp: App {
             ContentView()
                 .environment(modelData)
         }
+        .modelContainer(for: Book.self)
     }
 }
