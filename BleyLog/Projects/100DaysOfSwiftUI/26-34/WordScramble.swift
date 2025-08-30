@@ -5,98 +5,18 @@
 //  Created by Radoslav Bley on 26/08/2025.
 //
 
+import SwiftData
 import SwiftUI
-
-// MARK: - Player Model
-struct PlayerScore: Identifiable, Codable {
-    var id = UUID()
-    let name: String
-    let score: Int
-    let scoredWords: Int
-    let date: Date
-    let word: String
-}
-
-// MARK: - Word Model
-struct UsedWord: Identifiable, Codable {
-    var id = UUID()
-    let text: String
-}
-
-// MARK: - GameSave Model
-@Observable
-class GameSave {
-
-    var playerName: String {
-        didSet {
-            UserDefaults.standard.set(playerName, forKey: "CurrentPlayer")
-        }
-    }
-
-    var currentWord: String {
-        didSet {
-            UserDefaults.standard.set(currentWord, forKey: "CurrentWord")
-        }
-    }
-
-    var currentScore: Int {
-        didSet {
-            UserDefaults.standard.set(currentScore, forKey: "CurrentScore")
-        }
-    }
-
-    var usedWords = [UsedWord]() {
-        didSet {
-            if let encodedWords = try? JSONEncoder().encode(usedWords) {
-                UserDefaults.standard.set(encodedWords, forKey: "UsedWords")
-            }
-        }
-    }
-
-    init() {
-        if let savedWords = UserDefaults.standard.data(forKey: "UsedWords") {
-            if let decodedWords = try? JSONDecoder().decode([UsedWord].self, from: savedWords) {
-                usedWords = decodedWords
-            }
-        } else {
-            usedWords = []
-        }
-        playerName = UserDefaults.standard.string(forKey: "CurrentPlayer") ?? "Anonymous"
-        currentWord = UserDefaults.standard.string(forKey: "CurrentWord") ?? ""
-        currentScore = UserDefaults.standard.integer(forKey: "CurrentScore")
-    }
-}
-
-// MARK: - Leaderboard Model
-@Observable
-class Leaderboard {
-    var scores = [PlayerScore]() {
-        didSet {
-            if let encodedScores = try? JSONEncoder().encode(scores) {
-                UserDefaults.standard.set(encodedScores, forKey: "Leaderboard")
-            }
-        }
-    }
-
-    init() {
-        if let savedScores = UserDefaults.standard.data(forKey: "Leaderboard") {
-            if let decodedScores = try? JSONDecoder().decode([PlayerScore].self, from: savedScores)
-            {
-                scores = decodedScores
-            }
-        } else {
-            scores = []
-        }
-    }
-}
 
 // MARK: - Main View
 struct WordScramble: View {
-    // MARK: Models
-    @State private var gamesave = GameSave()
-    @State private var leaderboard = Leaderboard()
+    @Environment(\.modelContext) var modelContext
+    @Query(sort: \WSUsedWord.createdAt, order: .reverse) var words: [WSUsedWord]
 
-    // MARK: States
+    @AppStorage("currentWord") private var currentWord: String = ""
+    @AppStorage("playerName") private var playerName: String = "Anonymous"
+    @AppStorage("playerScore") private var playerScore: Int = 0
+
     /// Words
     @State private var newWord = ""
 
@@ -124,8 +44,8 @@ struct WordScramble: View {
 
     var body: some View {
         List {
-            Section(gamesave.playerName) {
-                Text("Current score: \(gamesave.currentScore)")
+            Section(playerName) {
+                Text("Current score: \(playerScore)")
             }
             Section {
                 TextField("Enter a word", text: $newWord)
@@ -137,22 +57,20 @@ struct WordScramble: View {
 
             }
 
-            if !gamesave.usedWords.isEmpty {
-
-                Section("\(gamesave.usedWords.count) words") {
-                    ForEach(gamesave.usedWords.reversed()) { word in
-                        HStack {
-                            Image(systemName: "\(word.text.count).circle")
-                            Text(word.text)
-                        }
+            Section("\(words.count) words") {
+                ForEach(words) { word in
+                    HStack {
+                        Image(systemName: "\(word.text.count).circle")
+                        Text(word.text)
                     }
                 }
             }
+
         }
         #if os(iOS)
             .scrollDismissesKeyboard(.interactively)
         #endif
-        .navigationTitle(gamesave.currentWord)
+        .navigationTitle(currentWord)
         .onSubmit(addNewWord)
         .onAppear(perform: startGame)
         .alert(errorTitle, isPresented: $showingError) {
@@ -173,124 +91,12 @@ struct WordScramble: View {
             }
         }
         .sheet(isPresented: $showing) {
-            LeaderboardView(leaderboard: leaderboard)
+            LeaderboardView()
                 .presentationDetents([.medium, .large])
         }
         .sheet(isPresented: $settingPlayer) {
-            SetPlayer(gamesave: gamesave)
+            SetPlayer(playerName: $playerName)
                 .presentationDetents([.height(160)])
-        }
-    }
-
-    // MARK: - Leaderboard view
-    struct LeaderboardView: View {
-        var leaderboard: Leaderboard
-
-        var sortedScores: [PlayerScore] {
-            return leaderboard.scores.sorted { $0.score > $1.score }
-        }
-
-        var body: some View {
-            NavigationStack {
-                let topScore = leaderboard.scores.sorted { $0.score > $1.score }.first
-                List {
-                    if leaderboard.scores.isEmpty {
-                        Text("No scores yet. Play and try to beat the leaderboard!")
-                    } else {
-                        ForEach(sortedScores) { item in
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text("\(item.score) points")
-                                        .font(.title3.bold())
-
-                                    Text("\(item.scoredWords) words")
-                                        .font(.subheadline)
-
-                                    Text(item.word)
-                                        .font(.footnote)
-
-                                }
-                                Spacer()
-                                VStack(alignment: .trailing) {
-
-                                    Text(
-                                        "\(item.date.formatted(.dateTime.day().month().year().hour().minute()))"
-                                    )
-                                    .font(.caption)
-                                    Spacer()
-                                    HStack {
-                                        if let topScore {
-                                            if topScore.name == item.name {
-                                                Image(systemName: "crown.fill")
-                                                    .foregroundStyle(.yellow)
-                                            }
-                                        }
-                                        Text(item.name)
-                                            .font(.headline)
-                                    }
-
-                                }.padding(.vertical)
-                            }
-
-                        }
-                        .onDelete(perform: remove)
-                    }
-                }
-                .scrollContentBackground(.hidden)
-                .navigationTitle("Leaderboard")
-                #if os(iOS)
-                    .toolbar {
-                        EditButton()
-                    }
-                #endif
-            }
-        }
-
-        func remove(at offsets: IndexSet) {
-            let itemsToDelete = offsets.map { sortedScores[$0] }
-
-            leaderboard.scores.removeAll { score in
-                itemsToDelete.contains(where: { $0.id == score.id })
-            }
-        }
-    }
-
-    // MARK: - Set player view
-    struct SetPlayer: View {
-        @Environment(\.dismiss) var dismiss
-        var gamesave: GameSave
-
-        @State private var playerName: String = ""
-        @State private var date = Date()
-
-        var body: some View {
-            NavigationStack {
-                Form {
-                    TextField("Name", text: $playerName)
-                        .autocorrectionDisabled()
-                }
-                .scrollContentBackground(.hidden)
-                .navigationTitle("Set a new player")
-                #if os(iOS)
-                    .navigationBarTitleDisplayMode(.inline)
-                #endif
-                .toolbar {
-                    Button("Save") {
-                        savePlayer()
-                    }
-                }
-                .onAppear(perform: retrievePlayer)
-                .onSubmit(savePlayer)
-            }
-        }
-
-        func savePlayer() {
-            gamesave.playerName = playerName
-            dismiss()
-        }
-
-        func retrievePlayer() {
-            playerName = gamesave.playerName
         }
     }
 
@@ -301,7 +107,6 @@ struct WordScramble: View {
         let answer = newWord.lowercased().trimmingCharacters(
             in: .whitespacesAndNewlines
         )
-        let newItem = UsedWord(text: answer)
 
         /// Checks if answer property has at least one character
         guard answer.count > 2 else {
@@ -309,7 +114,7 @@ struct WordScramble: View {
             return
         }
 
-        guard answer != gamesave.currentWord.lowercased() else {
+        guard answer != currentWord.lowercased() else {
             wordError(title: "Word matches root word", message: "You can't use the root word again")
             return
         }
@@ -322,7 +127,7 @@ struct WordScramble: View {
         guard isPossible(word: answer) else {
             wordError(
                 title: "Word is not possible",
-                message: "You can't spell that word from '\(gamesave.currentWord)'"
+                message: "You can't spell that word from '\(currentWord)'"
             )
             return
         }
@@ -334,11 +139,16 @@ struct WordScramble: View {
             }
         #endif
 
-        withAnimation {
-            /// Inserts answer at the start of an array
-            gamesave.usedWords.append(newItem)
+        do {
+            let newWord = WSUsedWord(text: answer, createdAt: Date.now)
+            modelContext.insert(newWord)
+
+            try modelContext.save()
+        } catch {
+            print("Failed to save new word: \(error.localizedDescription)")
         }
-        gamesave.currentScore = gamesave.currentScore + score(for: answer)
+
+        playerScore = playerScore + score(for: answer)
 
         /// Empties text field input
         newWord = ""
@@ -347,11 +157,11 @@ struct WordScramble: View {
 
     // Start a new game
     func startGame() {
-        if gamesave.usedWords.isEmpty {
+        if words.isEmpty {
             /// Resets textfield
             newWord = ""
             focused = true
-            if gamesave.playerName == "Anonymous" {
+            if playerName == "Anonymous" {
                 settingPlayer = true
             }
 
@@ -362,7 +172,7 @@ struct WordScramble: View {
                     /// Breaks string on line breaks to create an array of words from inside the file
                     let allWords = startWords.components(separatedBy: "\n")
                     /// Pick a random word from an array
-                    gamesave.currentWord = allWords.randomElement() ?? "silkworm"
+                    currentWord = allWords.randomElement() ?? "silkworm"
                     return
                 }
             }
@@ -375,44 +185,50 @@ struct WordScramble: View {
     }
 
     func resetGame() {
-        if !gamesave.usedWords.isEmpty {
-            /// Save to leaderboard
-            let score = PlayerScore(
-                name: gamesave.playerName,
-                score: gamesave.currentScore,
-                scoredWords: gamesave.usedWords.count,
-                date: Date(),
-                word: gamesave.currentWord,
-            )
-            leaderboard.scores.append(score)
-        }
+        do {
+            if !words.isEmpty {
+                let wordsArray = words.map(\.text)
+                /// Save to leaderboard
+                let player = WSPlayer(
+                    name: playerName,
+                    word: currentWord,
+                    usedWords: wordsArray,
+                    score: playerScore,
+                    date: Date.now
+                )
 
-        gamesave.currentScore = 0
-        gamesave.usedWords.removeAll()
-        newWord = ""
-        focused = true
+                modelContext.insert(player)
 
-        /// Finds URL for start.txt
-        if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
-            /// Converts file content into String
-            if let startWords = try? String(contentsOf: startWordsURL, encoding: .utf8) {
-                /// Breaks string on line breaks to create an array of words from inside the file
-                let allWords = startWords.components(separatedBy: "\n")
-                /// Pick a random word from an array
-                gamesave.currentWord = allWords.randomElement() ?? "silkworm"
-                return
+                try modelContext.delete(model: WSUsedWord.self)
+                playerScore = 0
+                newWord = ""
+                focused = true
             }
+
+            /// Finds URL for start.txt
+            if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
+                /// Converts file content into String
+                if let startWords = try? String(contentsOf: startWordsURL, encoding: .utf8) {
+                    /// Breaks string on line breaks to create an array of words from inside the file
+                    let allWords = startWords.components(separatedBy: "\n")
+                    /// Pick a random word from an array
+                    currentWord = allWords.randomElement() ?? "silkworm"
+                    return
+                }
+            }
+        } catch {
+            print("Failed to delete used words array: \(error.localizedDescription)")
         }
     }
 
     // Checks whether inserted word is already contained in the array
     func isOriginal(word: String) -> Bool {
-        !gamesave.usedWords.contains(where: { $0.text == word })
+        !words.contains(where: { $0.text == word })
     }
 
     // Checks whether letters used in input word are included in root word
     func isPossible(word: String) -> Bool {
-        var tempWord = gamesave.currentWord
+        var tempWord = currentWord
 
         for letter in word {
             if let pos = tempWord.firstIndex(of: letter) {

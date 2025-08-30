@@ -61,6 +61,11 @@
 				Projects/100DaysOfSwiftUI/25/RockPaperScissors.swift,
 				"Projects/100DaysOfSwiftUI/26-34/Animations.swift",
 				"Projects/100DaysOfSwiftUI/26-34/BetterRest.swift",
+				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Model/WSPlayer.swift",
+				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Model/WSUsedWord.swift",
+				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Views/LeaderboardView.swift",
+				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Views/PlayerView.swift",
+				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Views/SetPlayer.swift",
 				"Projects/100DaysOfSwiftUI/26-34/WordScramble.swift",
 				Projects/100DaysOfSwiftUI/35/Edutainment.swift,
 				"Projects/100DaysOfSwiftUI/36-46/iExpense Views/AddView.swift",
@@ -117,6 +122,11 @@
 				Projects/100DaysOfSwiftUI/25/RockPaperScissors.swift,
 				"Projects/100DaysOfSwiftUI/26-34/Animations.swift",
 				"Projects/100DaysOfSwiftUI/26-34/BetterRest.swift",
+				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Model/WSPlayer.swift",
+				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Model/WSUsedWord.swift",
+				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Views/LeaderboardView.swift",
+				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Views/PlayerView.swift",
+				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Views/SetPlayer.swift",
 				"Projects/100DaysOfSwiftUI/26-34/WordScramble.swift",
 				Projects/100DaysOfSwiftUI/35/Edutainment.swift,
 				"Projects/100DaysOfSwiftUI/36-46/iExpense Views/AddView.swift",
@@ -660,7 +670,7 @@
 				CODE_SIGN_ENTITLEMENTS = BleyLog/BleyLog.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_APP_SANDBOX = YES;
@@ -708,7 +718,7 @@
 				CODE_SIGN_ENTITLEMENTS = BleyLog/BleyLog.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_APP_SANDBOX = YES;
