@@ -268,6 +268,7 @@ struct WordScramble: View {
                 Form {
                     TextField("Name", text: $playerName)
                         .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
                 }
                 .scrollContentBackground(.hidden)
                 .navigationTitle("Set a new player")
