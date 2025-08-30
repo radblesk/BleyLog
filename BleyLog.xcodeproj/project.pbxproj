@@ -35,13 +35,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F9018D4C2E5B1CDA00679AB2 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RealityKitContent; sourceTree = "<group>"; };
 		F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLog for watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F91370E82E552D070030E98D /* BleyLog for Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLog for Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F913711C2E5536350030E98D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		F94692062E49185A009E637D /* BleyLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleyLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F9D66F712E5B1E640033D0E9 /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealityKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/RealityKit.framework; sourceTree = DEVELOPER_DIR; };
-		F9D66F762E5B1EA30033D0E9 /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealityKit.framework; path = Platforms/XROS.platform/Developer/SDKs/XROS26.0.sdk/System/Library/Frameworks/RealityKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -203,32 +199,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F9018D4B2E5B1CDA00679AB2 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				F9018D4C2E5B1CDA00679AB2 /* RealityKitContent */,
-			);
-			path = Packages;
-			sourceTree = "<group>";
-		};
-		F91371122E552D9C0030E98D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F9D66F712E5B1E640033D0E9 /* RealityKit.framework */,
-				F9D66F762E5B1EA30033D0E9 /* RealityKit.framework */,
-				F913711C2E5536350030E98D /* CloudKit.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		F94691FD2E49185A009E637D = {
 			isa = PBXGroup;
 			children = (
 				F94692082E49185A009E637D /* BleyLog */,
 				F91370BA2E551EE00030E98D /* BleyLog for watchOS Watch App */,
 				F91370E92E552D070030E98D /* BleyLog for Mac */,
-				F91371122E552D9C0030E98D /* Frameworks */,
-				F9018D4B2E5B1CDA00679AB2 /* Packages */,
 				F94692072E49185A009E637D /* Products */,
 			);
 			sourceTree = "<group>";
