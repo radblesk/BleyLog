@@ -12,37 +12,37 @@ struct AdressView: View {
         case name, streetAdress, city, zip
     }
     @Bindable var order: Order
-    
+
     @FocusState private var focusedField: Field?
 
     var body: some View {
         Form {
             Section {
-                TextField("Name", text: $order.name)
+                TextField("Name", text: $order.address.name)
                     .textContentType(.name)
                     .submitLabel(.next)
                     .focused($focusedField, equals: .name)
                     .onSubmit {
                         focusedField = .streetAdress
                     }
-                
-                TextField("Street Adress", text: $order.streetAdress)
+
+                TextField("Street Adress", text: $order.address.streetAdress)
                     .textContentType(.streetAddressLine1)
                     .submitLabel(.next)
                     .focused($focusedField, equals: .streetAdress)
                     .onSubmit {
                         focusedField = .city
                     }
-                
-                TextField("City", text: $order.city)
+
+                TextField("City", text: $order.address.city)
                     .textContentType(.addressCity)
                     .submitLabel(.next)
                     .focused($focusedField, equals: .city)
                     .onSubmit {
                         focusedField = .zip
                     }
-                
-                TextField("Zip", text: $order.zip)
+
+                TextField("Zip", text: $order.address.zip)
                     .textContentType(.postalCode)
                     .submitLabel(.next)
                     .focused($focusedField, equals: .zip)
