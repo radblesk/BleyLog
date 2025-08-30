@@ -16,10 +16,16 @@ struct LessonListRow: View {
                 Image(systemName: "target")
                     .imageScale(.large)
                     .foregroundStyle(.primary)
-                    .symbolEffect(
-                        .variableColor.cumulative.dimInactiveLayers.nonReversing,
-                        options: .repeat(.periodic(delay: 1.0))
-                    )
+                    .apply {
+                        if #available(watchOS 11, *) {
+                            $0.symbolEffect(
+                                .variableColor.cumulative.dimInactiveLayers.nonReversing,
+                                options: .repeat(.periodic(delay: 1.0))
+                            )
+                        } else {
+                            $0.disabled(false)
+                        }
+                    }
             } else {
                 Image(systemName: lesson.finished ? "checkmark.circle.fill" : "book")
                     .imageScale(.large)

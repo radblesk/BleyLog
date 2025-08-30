@@ -231,8 +231,7 @@ class ModelData {
 
     // MARK: - Date Formatter
     func formattedDate(_ date: Date) -> String {
-        let weekAgo =
-            Calendar.current.date(byAdding: .dayOfYear, value: -7, to: Date())! < date
+        let weekAgo = Calendar.current.date(byAdding: .day, value: -7, to: Date())! < date
 
         if weekAgo {
             return date.formatted(.relative(presentation: .numeric, unitsStyle: .wide))
