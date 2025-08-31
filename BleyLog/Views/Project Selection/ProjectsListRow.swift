@@ -42,10 +42,12 @@ struct ProjectsListRow: View {
                 }
             }
 
-            Text(project.desc)
-                .font(.subheadline)
-                .lineLimit(2)
-                .truncationMode(.tail)
+            if !project.desc.isEmpty {
+                Text(project.desc)
+                    .font(.subheadline)
+                    .lineLimit(2)
+                    .truncationMode(.tail)
+            }
         }
     }
 }
