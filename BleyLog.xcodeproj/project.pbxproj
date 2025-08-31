@@ -103,7 +103,7 @@
 				"Projects/100DaysOfSwiftUI/49-59/SwiftDataProject/Model/User.swift",
 				"Projects/100DaysOfSwiftUI/49-59/SwiftDataProject/Views/EditUserView.swift",
 				"Projects/100DaysOfSwiftUI/49-59/SwiftDataProject/Views/UsersView.swift",
-				"Projects/100DaysOfSwiftUI/60-61/Model/SocialsUser.swift",
+				"Projects/100DaysOfSwiftUI/60-61/Model/UserModel.swift",
 				"Projects/100DaysOfSwiftUI/60-61/Views/SocialsUserView.swift",
 				"Projects/100DaysOfSwiftUI/60-61/Views/SocialsView.swift",
 				Resources/AppIcon.icon,
@@ -166,7 +166,7 @@
 				"Projects/100DaysOfSwiftUI/49-59/Bookworm/Views/BookDetailView.swift",
 				"Projects/100DaysOfSwiftUI/49-59/Bookworm/Views/EmojiRatingView.swift",
 				"Projects/100DaysOfSwiftUI/49-59/Bookworm/Views/RatingView.swift",
-				"Projects/100DaysOfSwiftUI/60-61/Model/SocialsUser.swift",
+				"Projects/100DaysOfSwiftUI/60-61/Model/UserModel.swift",
 				"Projects/100DaysOfSwiftUI/60-61/Views/SocialsUserView.swift",
 				"Projects/100DaysOfSwiftUI/60-61/Views/SocialsView.swift",
 				Resources/AppIcon.icon,
@@ -454,7 +454,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "BleyLog for watchOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -491,7 +491,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "BleyLog for watchOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -530,7 +530,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -568,7 +568,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -726,7 +726,7 @@
 				CODE_SIGN_ENTITLEMENTS = BleyLog/BleyLog.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_APP_SANDBOX = YES;
@@ -776,7 +776,7 @@
 				CODE_SIGN_ENTITLEMENTS = BleyLog/BleyLog.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_APP_SANDBOX = YES;

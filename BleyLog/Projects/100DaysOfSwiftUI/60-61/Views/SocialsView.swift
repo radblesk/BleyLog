@@ -10,28 +10,27 @@ import SwiftUI
 
 struct SocialsView: View {
     @Environment(\.modelContext) var modelContext
-    @Query var savedUsers: [SocSDUser]
-    @State private var users = [SocialsUser]()
+    @Query(sort: [SortDescriptor(\UserModel.isActive, order: .reverse)]) var savedUsers: [UserModel]
 
     var body: some View {
         List(savedUsers) { user in
-            NavigationLink {
-                SocialsUserView(user: user)
-            } label: {
+            NavigationLink(value: user) {
                 HStack {
                     Image(systemName: user.isActive ? "circlebadge.fill" : "circlebadge")
                         .foregroundStyle(user.isActive ? .green : .gray)
 
                     Text(user.name)
                 }
+
             }
+        }
+        .navigationDestination(for: UserModel.self) { user in
+            SocialsUserView(user: user)
         }
         .navigationTitle("Socials")
         .toolbar {
             Button("Refresh", systemImage: "arrow.clockwise") {
-                try? modelContext.delete(model: SocSDUser.self)
-                print("saved users removed")
-                
+                try? modelContext.delete(model: UserModel.self)
                 Task {
                     await fetchUsers()
                 }
@@ -42,35 +41,30 @@ struct SocialsView: View {
         }
     }
 
+    /// If there are no saved users, fetch new users from JSON and save them using SwiftData models
     func fetchUsers() async {
-        print("Checking if users are already fetched...")
         if savedUsers.isEmpty {
-            print("Fetching users...")
             guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
                 print("Invalid URL")
                 return
             }
 
-            print(url)
-
             do {
                 let (data, _) = try await URLSession.shared.data(from: url)
-                print(data)
 
                 let decoder = JSONDecoder()
                 let formatter = DateFormatter()
                 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXX"
                 decoder.dateDecodingStrategy = .formatted(formatter)
 
-                if let decodedResponse = try? decoder.decode([SocialsUser].self, from: data) {
-                    users = decodedResponse
+                if let decodedResponse = try? decoder.decode([UserModel].self, from: data) {
+                    for user in decodedResponse {
 
-                    for user in users {
-                        let friends = user.friends.map { friend in
-                            SocSDFriend(id: friend.id, name: friend.name)
+                        let friends = user.unwrappedFriends.map { friend in
+                            FriendModel(id: friend.id, name: friend.name)
                         }
 
-                        let savedUser = SocSDUser(
+                        let newUser = UserModel(
                             id: user.id,
                             isActive: user.isActive,
                             name: user.name,
@@ -84,10 +78,8 @@ struct SocialsView: View {
                             friends: friends
                         )
 
-                        modelContext.insert(savedUser)
+                        modelContext.insert(newUser)
                     }
-
-                    try modelContext.save()
                 }
             } catch {
                 print("Invalid data")
@@ -97,5 +89,8 @@ struct SocialsView: View {
 }
 
 #Preview {
-    SocialsView()
+    NavigationStack {
+        SocialsView()
+            .modelContainer(for: [UserModel.self, FriendModel.self])
+    }
 }

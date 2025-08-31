@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SocialsUserView: View {
-    var user: SocSDUser
+    var user: UserModel
     let layout = [
         GridItem(.flexible(minimum: 20, maximum: 80))
     ]
@@ -45,7 +45,7 @@ struct SocialsUserView: View {
             }
 
             Section("Friends") {
-                ForEach(user.unwrappedFriends, id: \.id) { friend in
+                ForEach(user.unwrappedFriends) { friend in
                     Text(friend.name)
                 }
             }
