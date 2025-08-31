@@ -37,6 +37,8 @@
 /* Begin PBXFileReference section */
 		F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLog for watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F91370E82E552D070030E98D /* BleyLog for Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLog for Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F92FF3D72E645C9100901296 /* BleyLog for watchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BleyLog for watchOS.entitlements"; sourceTree = "<group>"; };
+		F92FF3D82E645C9900901296 /* BleyLog-for-watchOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BleyLog-for-watchOS-Info.plist"; sourceTree = "<group>"; };
 		F94692062E49185A009E637D /* BleyLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleyLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -167,6 +169,13 @@
 			);
 			target = F91370E72E552D070030E98D /* BleyLog for Mac */;
 		};
+		F92FF3D62E645C4C00901296 /* Exceptions for "BleyLog" folder in "BleyLog" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F94692052E49185A009E637D /* BleyLog */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -183,6 +192,7 @@
 		F94692082E49185A009E637D /* BleyLog */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				F92FF3D62E645C4C00901296 /* Exceptions for "BleyLog" folder in "BleyLog" target */,
 				F91370D02E551F0C0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for watchOS" target */,
 				F91370FC2E552D1F0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for Mac" target */,
 			);
@@ -219,6 +229,8 @@
 		F94691FD2E49185A009E637D = {
 			isa = PBXGroup;
 			children = (
+				F92FF3D82E645C9900901296 /* BleyLog-for-watchOS-Info.plist */,
+				F92FF3D72E645C9100901296 /* BleyLog for watchOS.entitlements */,
 				F94692082E49185A009E637D /* BleyLog */,
 				F91370BA2E551EE00030E98D /* BleyLog for watchOS Watch App */,
 				F91370E92E552D070030E98D /* BleyLog for Mac */,
@@ -413,11 +425,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "BleyLog for watchOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BleyLog-for-watchOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = BleyLog;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.radoslavbley.BleyLog;
@@ -447,11 +461,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "BleyLog for watchOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BleyLog-for-watchOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = BleyLog;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.radoslavbley.BleyLog;
@@ -685,6 +701,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BleyLog/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BleyLog;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -733,6 +750,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BleyLog/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BleyLog;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

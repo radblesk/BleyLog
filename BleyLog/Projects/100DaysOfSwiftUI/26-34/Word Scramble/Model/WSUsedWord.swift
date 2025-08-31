@@ -10,8 +10,8 @@ import SwiftData
 
 @Model
 class WSUsedWord {
-    var text: String
-    var createdAt: Date
+    var text: String = "None"
+    var createdAt: Date = Date.now
 
     init(text: String, createdAt: Date) {
         self.text = text
