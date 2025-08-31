@@ -53,7 +53,9 @@ struct WordScramble: View {
                     #if !os(macOS)
                         .textInputAutocapitalization(.never)
                     #endif
-
+            } footer: {
+                Text(isDuplicate())
+                    .contentTransition(.opacity)
             }
 
             Section("\(words.count) words") {
@@ -77,13 +79,6 @@ struct WordScramble: View {
             Text(errorMessage)
         }
         .toolbar {
-            #if os(iOS)
-                ToolbarItem(placement: .bottomBar) {
-                    NavigationLink("Data Migration") {
-                        MigrationView()
-                    }
-                }
-            #endif
             ToolbarItemGroup(placement: placement) {
                 Button("Leaderboard", systemImage: "laurel.leading.laurel.trailing") {
                     showing = true
@@ -164,9 +159,11 @@ struct WordScramble: View {
         if words.isEmpty {
             /// Resets textfield
             newWord = ""
-            focused = true
             if playerName == "Anonymous" {
+                focused = false
                 settingPlayer = true
+            } else {
+                focused = true
             }
 
             /// Finds URL for start.txt
@@ -284,6 +281,17 @@ struct WordScramble: View {
     func score(for word: String) -> Int {
         let wordScore = word.count
         return wordScore
+    }
+
+    func isDuplicate() -> String {
+        let answer = newWord.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let allWords = words.map(\.text)
+        
+        if allWords.contains(answer) {
+            return "You've already used that word. Try again."
+        } else {
+            return ""
+        }
     }
 }
 
