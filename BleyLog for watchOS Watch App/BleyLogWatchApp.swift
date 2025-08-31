@@ -18,6 +18,8 @@ struct BleyLogWatch_Watch_AppApp: App {
             ContentView()
                 .environment(modelData)
         }
-        .modelContainer(for: [Book.self, WSPlayer.self, WSUsedWord.self, User.self, ExpenseItem.self])
+        .modelContainer(for: [
+            Book.self, WSPlayer.self, WSUsedWord.self, User.self, ExpenseItem.self, SocSDUser.self, SocSDFriend.self,
+        ])
     }
 }

@@ -13,17 +13,19 @@ struct UsersView: View {
     @Query var users: [User]
 
     var body: some View {
-        List(users) { user in
-            NavigationLink(value: user) {
-                HStack {
-                    Text(user.name)
-                    Spacer()
-                    Text(String(user.unwrappedJobs.count))
-                        .foregroundStyle(.secondary)
+        List {
+            ForEach(users) { user in
+                NavigationLink(value: user) {
+                    HStack {
+                        Text(user.name)
+                        Spacer()
+                        Text(String(user.unwrappedJobs.count))
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
+            .onDelete(perform: deleteUser)
         }
-//        .onAppear(perform: addSample)
     }
 
     init(contains: String, sortOrder: [SortDescriptor<User>]) {
@@ -38,16 +40,23 @@ struct UsersView: View {
             _users = Query(sort: sortOrder)
         }
     }
-    
+
     func addSample() {
         let user1 = User(name: "Piper Chapman", city: "New Yorl", joinDate: .now)
         let job1 = Job(name: "Organize sock drawer", priority: 3)
         let job2 = Job(name: "Buy groceries", priority: 1)
-        
+
         modelContext.insert(user1)
-        
+
         user1.jobs?.append(job1)
         user1.jobs?.append(job2)
+    }
+
+    func deleteUser(at offsets: IndexSet) {
+        for offset in offsets {
+            let user = users[offset]
+            modelContext.delete(user)
+        }
     }
 }
 

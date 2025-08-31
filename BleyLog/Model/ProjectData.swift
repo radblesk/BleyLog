@@ -130,4 +130,8 @@ extension Project {
         ),
         Project(title: "SwiftData", projectNumber: 12, date: createDate(year: 2025, month: 08, day: 31, hour: 10, minute: 53), desc: "This technique project is going to explore SwiftData in more detail, starting with a summary of some basic techniques then building up to tackling some more complex problems.")
     ]
+    
+    static let consolidation5 = [
+        Project(title: "Socials", date: createDate(year: 2025, month: 08, day: 31, hour: 16, minute: 36), desc: "")
+    ]
 }

@@ -10,7 +10,7 @@ import Foundation
 extension Lesson {
     //    @MainActor
     static let exampleLesson = hundreedDaysOfSwiftUILessons[2]
-    
+
     static let hundreedDaysOfSwiftUILessons = [
         Lesson(
             firstDay: 16,
@@ -60,13 +60,15 @@ extension Lesson {
             firstDay: 49,
             lastDay: 59,
             title: "Focus on data",
-            inProgress: true,
+            finished: true,
             projects: Project.focusOnData
         ),
         Lesson(
             firstDay: 60,
             lastDay: 61,
             title: "Consolidation V",
+            finished: true,
+            projects: Project.consolidation5
         ),
         Lesson(
             firstDay: 62,
