@@ -5,12 +5,16 @@
 //  Created by Radoslav Bley on 31/08/2025.
 //
 
+import SwiftData
 import SwiftUI
 
 struct SocialsView: View {
+    @Environment(\.modelContext) var modelContext
+    @Query var savedUsers: [SocSDUser]
     @State private var users = [SocialsUser]()
+
     var body: some View {
-        List(users, id: \.id) { user in
+        List(savedUsers) { user in
             NavigationLink {
                 SocialsUserView(user: user)
             } label: {
@@ -23,6 +27,16 @@ struct SocialsView: View {
             }
         }
         .navigationTitle("Socials")
+        .toolbar {
+            Button("Refresh", systemImage: "arrow.clockwise") {
+                try? modelContext.delete(model: SocSDUser.self)
+                print("saved users removed")
+                
+                Task {
+                    await fetchUsers()
+                }
+            }
+        }
         .task {
             await fetchUsers()
         }
@@ -30,7 +44,7 @@ struct SocialsView: View {
 
     func fetchUsers() async {
         print("Checking if users are already fetched...")
-        if users.isEmpty {
+        if savedUsers.isEmpty {
             print("Fetching users...")
             guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
                 print("Invalid URL")
@@ -50,6 +64,30 @@ struct SocialsView: View {
 
                 if let decodedResponse = try? decoder.decode([SocialsUser].self, from: data) {
                     users = decodedResponse
+
+                    for user in users {
+                        let friends = user.friends.map { friend in
+                            SocSDFriend(id: friend.id, name: friend.name)
+                        }
+
+                        let savedUser = SocSDUser(
+                            id: user.id,
+                            isActive: user.isActive,
+                            name: user.name,
+                            age: user.age,
+                            company: user.company,
+                            email: user.email,
+                            address: user.address,
+                            about: user.about,
+                            registered: user.registered,
+                            tags: user.tags,
+                            friends: friends
+                        )
+
+                        modelContext.insert(savedUser)
+                    }
+
+                    try modelContext.save()
                 }
             } catch {
                 print("Invalid data")

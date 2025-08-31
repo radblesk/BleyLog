@@ -67,7 +67,7 @@ extension Lesson {
             firstDay: 60,
             lastDay: 61,
             title: "Consolidation V",
-            inProgress: true,
+            finished: true,
             projects: Project.consolidation5
         ),
         Lesson(
