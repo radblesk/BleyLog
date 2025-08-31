@@ -19,6 +19,6 @@ struct BleyLogApp: App {
                 .environment(modelData)
                 .frame(minWidth: 375, minHeight: 375)
         }
-        .modelContainer(for: [Book.self, WSUsedWord.self, WSPlayer.self])
+        .modelContainer(for: [Book.self, WSUsedWord.self, WSPlayer.self, User.self])
     }
 }

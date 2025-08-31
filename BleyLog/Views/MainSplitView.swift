@@ -5,6 +5,7 @@
 //  Created by Radoslav Bley on 30/08/2025.
 //
 
+import SwiftData
 import SwiftUI
 
 struct MainSplitView: View {
@@ -121,6 +122,21 @@ struct MainSplitView: View {
 }
 
 #Preview {
-    MainSplitView()
-        .environment(ModelData())
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(
+            for: Book.self,
+            WSPlayer.self,
+            WSUsedWord.self,
+            User.self,
+            configurations: config
+        )
+
+        return 
+            MainSplitView()
+                .environment(ModelData())
+                .modelContainer(container)
+    } catch {
+        return Text("Failed to create a preview: \(error.localizedDescription)")
+    }
 }
