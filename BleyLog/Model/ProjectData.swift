@@ -128,5 +128,6 @@ extension Project {
             date: createDate(year: 2025, month: 08, day: 30, hour: 15, minute: 28),
             desc: "An app to track which books you’ve read and what you thought of them"
         ),
+        Project(title: "SwiftData", projectNumber: 12, date: createDate(year: 2025, month: 08, day: 31, hour: 10, minute: 53), desc: "This technique project is going to explore SwiftData in more detail, starting with a summary of some basic techniques then building up to tackling some more complex problems.")
     ]
 }

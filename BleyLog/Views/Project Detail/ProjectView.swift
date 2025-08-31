@@ -26,6 +26,7 @@ struct ProjectView {
         case "Habits": Habits()
         case "CupcakeCorner": CupcakeCorner()
         case "Bookworm": Bookworm()
+        case "SwiftData": SwiftDataProject()
         default: Text("Select a project")
         }
     }
