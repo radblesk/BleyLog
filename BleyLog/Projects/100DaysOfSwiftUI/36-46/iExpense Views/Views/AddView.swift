@@ -5,23 +5,30 @@
 //  Created by Radoslav Bley on 26/08/2025.
 //
 
+import SwiftData
 import SwiftUI
 
 struct AddView: View {
+    @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
+    private var placement: ToolbarItemPlacement {
+        #if os(iOS)
+            .automatic
+        #else
+            .bottomBar
+        #endif
+    }
 
     @State private var name = "Untitled"
     @State private var type = "Personal"
     @State private var amount = 0.0
 
-    var expenses: Expenses
-
     let types = ["Business", "Personal"]
     var body: some View {
         NavigationStack {
             Form {
-                //                TextField("Name", text: $name)
-                //                    .listRowBackground(Color.secondary.opacity(0.2))
+                TextField("Name", text: $name)
+                    .listRowBackground(Color.secondary.opacity(0.2))
 
                 Picker("Type", selection: $type) {
                     ForEach(types, id: \.self) {
@@ -44,18 +51,16 @@ struct AddView: View {
                 #endif
             }
             .scrollContentBackground(.hidden)
-            .navigationTitle($name)
+            .navigationTitle("Add new expense")
             .toolbarTitleDisplayMode(.inline)
             .toolbar {
-                Button("Save") {
-                    let item = ExpenseItem(
-                        name: name,
-                        type: type,
-                        amount: amount
-                    )
+                ToolbarItem(placement: placement) {
+                    Button("Save") {
+                        let newExpense = ExpenseItem(name: name, type: type, amount: amount)
 
-                    expenses.items.append(item)
-                    dismiss()
+                        modelContext.insert(newExpense)
+                        dismiss()
+                    }
                 }
             }
         }
@@ -63,5 +68,5 @@ struct AddView: View {
 }
 
 #Preview {
-    AddView(expenses: Expenses())
+    AddView()
 }
