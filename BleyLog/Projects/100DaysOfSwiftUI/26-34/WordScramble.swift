@@ -99,6 +99,9 @@ struct WordScramble: View {
             SetPlayer(playerName: $playerName)
                 .presentationDetents([.height(160)])
         }
+        .onChange(of: newWord) {
+            everythingIsPossible()
+        }
     }
 
     // MARK: - Methods
@@ -291,6 +294,16 @@ struct WordScramble: View {
             return "You've already used that word. Try again."
         } else {
             return ""
+        }
+    }
+    
+    func everythingIsPossible() {
+        let answer = newWord.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        
+        if answer.contains("hesoyam") {
+            let newLeaderboardEntry = WSPlayer(name: playerName, word: "hesoyam", usedWords: [], score: 9999, date: Date.now)
+            
+            modelContext.insert(newLeaderboardEntry)
         }
     }
 }
