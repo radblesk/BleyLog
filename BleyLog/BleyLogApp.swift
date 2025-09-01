@@ -21,6 +21,7 @@ struct BleyLogApp: App {
         }
         .modelContainer(for: [
             Book.self, WSUsedWord.self, WSPlayer.self, User.self, ExpenseItem.self, UserModel.self, FriendModel.self,
+            Habit.self,
         ])
     }
 }
