@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F91370C32E551EE10030E98D /* BleyLog for watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F92FFBFB2E64804900901296 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92FFBFA2E64804900901296 /* CloudKit.framework */; };
-		F92FFBFD2E64808500901296 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92FFBFC2E64808500901296 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,11 +36,8 @@
 
 /* Begin PBXFileReference section */
 		F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLog for watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F91370E82E552D070030E98D /* BleyLog for Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleyLog for Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92FF3D72E645C9100901296 /* BleyLog for watchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BleyLog for watchOS.entitlements"; sourceTree = "<group>"; };
 		F92FF3D82E645C9900901296 /* BleyLog-for-watchOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BleyLog-for-watchOS-Info.plist"; sourceTree = "<group>"; };
-		F92FFBFA2E64804900901296 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
-		F92FFBFC2E64808500901296 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS26.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		F94692062E49185A009E637D /* BleyLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleyLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -124,72 +119,6 @@
 			);
 			target = F91370B82E551EDF0030E98D /* BleyLog for watchOS */;
 		};
-		F91370FC2E552D1F0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for Mac" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Model/Course.swift,
-				Model/CourseData.swift,
-				Model/Language.swift,
-				Model/LanguageData.swift,
-				Model/Lesson.swift,
-				Model/LessonData.swift,
-				Model/ModelData.swift,
-				Model/Project.swift,
-				Model/ProjectData.swift,
-				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag.swift",
-				"Projects/100DaysOfSwiftUI/16-24/GuessTheFlag/FlagImage.swift",
-				"Projects/100DaysOfSwiftUI/16-24/TempConvert.swift",
-				"Projects/100DaysOfSwiftUI/16-24/WeSplit.swift",
-				Projects/100DaysOfSwiftUI/25/RockPaperScissors.swift,
-				"Projects/100DaysOfSwiftUI/26-34/Animations.swift",
-				"Projects/100DaysOfSwiftUI/26-34/BetterRest.swift",
-				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Model/WSPlayer.swift",
-				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Model/WSUsedWord.swift",
-				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Views/LeaderboardView.swift",
-				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Views/PlayerView.swift",
-				"Projects/100DaysOfSwiftUI/26-34/Word Scramble/Views/SetPlayer.swift",
-				"Projects/100DaysOfSwiftUI/26-34/WordScramble.swift",
-				Projects/100DaysOfSwiftUI/35/Edutainment.swift,
-				"Projects/100DaysOfSwiftUI/36-46/iExpense Views/Views/AddView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/iExpense Views/Views/ExpenseItemsView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/iExpense Views/Views/ExpenseItemView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/iExpense.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot Views/AstronautsScrollView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot Views/AstronautView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot Views/Color-Theme.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot Views/MissionView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot Views/MoonshotGridView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot Views/MoonshotListView.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Moonshot.swift",
-				"Projects/100DaysOfSwiftUI/36-46/Navigation.swift",
-				Projects/100DaysOfSwiftUI/47/AddHabit.swift,
-				Projects/100DaysOfSwiftUI/47/Habits.swift,
-				Projects/100DaysOfSwiftUI/47/HabitView.swift,
-				Projects/100DaysOfSwiftUI/47/Model/Habit.swift,
-				"Projects/100DaysOfSwiftUI/49-59/Bookworm.swift",
-				"Projects/100DaysOfSwiftUI/49-59/Bookworm/Model/Book.swift",
-				"Projects/100DaysOfSwiftUI/49-59/Bookworm/Views/AddBookView.swift",
-				"Projects/100DaysOfSwiftUI/49-59/Bookworm/Views/BookDetailView.swift",
-				"Projects/100DaysOfSwiftUI/49-59/Bookworm/Views/EmojiRatingView.swift",
-				"Projects/100DaysOfSwiftUI/49-59/Bookworm/Views/RatingView.swift",
-				"Projects/100DaysOfSwiftUI/60-61/Model/UserModel.swift",
-				"Projects/100DaysOfSwiftUI/60-61/Views/SocialsUserView.swift",
-				"Projects/100DaysOfSwiftUI/60-61/Views/SocialsView.swift",
-				Resources/AppIcon.icon,
-				Resources/Assets.xcassets,
-				Resources/Localizable.xcstrings,
-				"Resources/ML Data/SleepCalculator.mlmodel",
-				"Resources/ProjectsData/Project 5 - Word Scramble/start.txt",
-				"Resources/ProjectsData/Project 5 - Word Scramble/words_alpha.txt",
-				"Resources/ProjectsData/Project 8 - Moonshot/Astronaut.swift",
-				"Resources/ProjectsData/Project 8 - Moonshot/astronauts.json",
-				"Resources/ProjectsData/Project 8 - Moonshot/Bundle-Decodable.swift",
-				"Resources/ProjectsData/Project 8 - Moonshot/Mission.swift",
-				"Resources/ProjectsData/Project 8 - Moonshot/missions.json",
-				"Views/Project Detail/ProjectView.swift",
-			);
-			target = F91370E72E552D070030E98D /* BleyLog for Mac */;
-		};
 		F92FF3D62E645C4C00901296 /* Exceptions for "BleyLog" folder in "BleyLog" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -205,17 +134,11 @@
 			path = "BleyLog for watchOS Watch App";
 			sourceTree = "<group>";
 		};
-		F91370E92E552D070030E98D /* BleyLog for Mac */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "BleyLog for Mac";
-			sourceTree = "<group>";
-		};
 		F94692082E49185A009E637D /* BleyLog */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				F92FF3D62E645C4C00901296 /* Exceptions for "BleyLog" folder in "BleyLog" target */,
 				F91370D02E551F0C0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for watchOS" target */,
-				F91370FC2E552D1F0030E98D /* Exceptions for "BleyLog" folder in "BleyLog for Mac" target */,
 			);
 			path = BleyLog;
 			sourceTree = "<group>";
@@ -227,14 +150,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F92FFBFD2E64808500901296 /* CloudKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F91370E52E552D070030E98D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,22 +157,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F92FFBFB2E64804900901296 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F92FFBF92E64804900901296 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F92FFBFC2E64808500901296 /* CloudKit.framework */,
-				F92FFBFA2E64804900901296 /* CloudKit.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		F94691FD2E49185A009E637D = {
 			isa = PBXGroup;
 			children = (
@@ -265,8 +170,6 @@
 				F92FF3D72E645C9100901296 /* BleyLog for watchOS.entitlements */,
 				F94692082E49185A009E637D /* BleyLog */,
 				F91370BA2E551EE00030E98D /* BleyLog for watchOS Watch App */,
-				F91370E92E552D070030E98D /* BleyLog for Mac */,
-				F92FFBF92E64804900901296 /* Frameworks */,
 				F94692072E49185A009E637D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -276,7 +179,6 @@
 			children = (
 				F94692062E49185A009E637D /* BleyLog.app */,
 				F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */,
-				F91370E82E552D070030E98D /* BleyLog for Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -304,28 +206,6 @@
 			);
 			productName = "BleyLogWatch Watch App";
 			productReference = F91370B92E551EDF0030E98D /* BleyLog for watchOS.app */;
-			productType = "com.apple.product-type.application";
-		};
-		F91370E72E552D070030E98D /* BleyLog for Mac */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F91370F22E552D080030E98D /* Build configuration list for PBXNativeTarget "BleyLog for Mac" */;
-			buildPhases = (
-				F91370E42E552D070030E98D /* Sources */,
-				F91370E52E552D070030E98D /* Frameworks */,
-				F91370E62E552D070030E98D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				F91370E92E552D070030E98D /* BleyLog for Mac */,
-			);
-			name = "BleyLog for Mac";
-			packageProductDependencies = (
-			);
-			productName = "BleyLog for Mac";
-			productReference = F91370E82E552D070030E98D /* BleyLog for Mac.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F94692052E49185A009E637D /* BleyLog */ = {
@@ -365,9 +245,6 @@
 					F91370B82E551EDF0030E98D = {
 						CreatedOnToolsVersion = 26.0;
 					};
-					F91370E72E552D070030E98D = {
-						CreatedOnToolsVersion = 26.0;
-					};
 					F94692052E49185A009E637D = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -391,20 +268,12 @@
 			targets = (
 				F94692052E49185A009E637D /* BleyLog */,
 				F91370B82E551EDF0030E98D /* BleyLog for watchOS */,
-				F91370E72E552D070030E98D /* BleyLog for Mac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F91370B72E551EDF0030E98D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F91370E62E552D070030E98D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -422,13 +291,6 @@
 
 /* Begin PBXSourcesBuildPhase section */
 		F91370B52E551EDF0030E98D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F91370E42E552D070030E98D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -460,7 +322,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "BleyLog for watchOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -497,7 +359,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "BleyLog for watchOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -525,82 +387,6 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 10.6;
-			};
-			name = Release;
-		};
-		F91370F32E552D080030E98D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
-				DEVELOPMENT_TEAM = DZT7WAAW32;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "BleyLog-for-Mac-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = BleyLog;
-				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Developed by Radoslav Bley";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.radoslavbley.BleyLog-for-Mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		F91370F42E552D080030E98D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
-				DEVELOPMENT_TEAM = DZT7WAAW32;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "BleyLog-for-Mac-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = BleyLog;
-				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Developed by Radoslav Bley";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.radoslavbley.BleyLog-for-Mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -732,7 +518,7 @@
 				CODE_SIGN_ENTITLEMENTS = BleyLog/BleyLog.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_APP_SANDBOX = YES;
@@ -782,7 +568,7 @@
 				CODE_SIGN_ENTITLEMENTS = BleyLog/BleyLog.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = DZT7WAAW32;
 				ENABLE_APP_SANDBOX = YES;
@@ -832,15 +618,6 @@
 			buildConfigurations = (
 				F91370C52E551EE10030E98D /* Debug */,
 				F91370C62E551EE10030E98D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F91370F22E552D080030E98D /* Build configuration list for PBXNativeTarget "BleyLog for Mac" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F91370F32E552D080030E98D /* Debug */,
-				F91370F42E552D080030E98D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
