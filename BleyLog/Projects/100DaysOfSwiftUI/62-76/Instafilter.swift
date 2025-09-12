@@ -14,6 +14,7 @@ import SwiftUI
 struct Instafilter: View {
     @State private var processedImage: Image?
     @State private var filterIntensity = 0.5
+    @State private var filterRadius = 10.0
     @State private var selectedItem: PhotosPickerItem?
     @State private var showingFilters = false
 
@@ -48,10 +49,19 @@ struct Instafilter: View {
                 Text("Intensity")
                 Slider(value: $filterIntensity)
                     .onChange(of: filterIntensity, applyProcessing)
+                    .disabled((processedImage != nil) ? false : true)
+            }
+
+            HStack {
+                Text("Radius")
+                Slider(value: $filterRadius)
+                    .onChange(of: filterRadius, applyProcessing)
+                    .disabled((processedImage != nil) ? false : true)
             }
 
             HStack {
                 Button("Change filter", action: changeFilter)
+                    .disabled((processedImage != nil) ? false : true)
                 Spacer()
 
                 if let processedImage {
@@ -69,6 +79,9 @@ struct Instafilter: View {
             Button("Sepia Tone") { setFilter(CIFilter.sepiaTone()) }
             Button("Unsharp Mask") { setFilter(CIFilter.unsharpMask()) }
             Button("Vignette") { setFilter(CIFilter.vignette()) }
+            Button("Bloom") { setFilter(CIFilter.bloom()) }
+            Button("Dot Screen") { setFilter(CIFilter.dotScreen()) }
+            Button("Chrome") { setFilter(CIFilter.photoEffectChrome()) }
             Button("Cancel", role: .cancel) {}
         }
     }
@@ -96,7 +109,7 @@ struct Instafilter: View {
             currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey)
         }
         if inputKeys.contains(kCIInputRadiusKey) {
-            currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey)
+            currentFilter.setValue(filterRadius * 200, forKey: kCIInputRadiusKey)
         }
         if inputKeys.contains(kCIInputScaleKey) {
             currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey)
@@ -115,7 +128,7 @@ struct Instafilter: View {
 
         filterCount += 1
 
-        if filterCount >= 3 {
+        if filterCount >= 20 {
             requestReview()
         }
     }
