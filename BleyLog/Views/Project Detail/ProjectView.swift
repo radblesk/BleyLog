@@ -28,6 +28,9 @@ struct ProjectView {
         case "Bookworm": Bookworm()
         case "SwiftData": SwiftDataProject()
         case "Socials": SocialsView()
+        #if os(iOS)
+            case "Instafilter": Instafilter()
+        #endif
         default: Text("Select a project")
         }
     }

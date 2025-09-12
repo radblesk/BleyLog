@@ -74,6 +74,8 @@ extension Lesson {
             firstDay: 62,
             lastDay: 76,
             title: "Filters, maps, and more",
+            inProgress: true,
+            projects: Project.filtersMapsAndMore
         ),
         Lesson(
             firstDay: 77,
